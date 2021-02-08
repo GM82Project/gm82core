@@ -93,6 +93,22 @@
     return floor(argument0/argument1)*argument1
 
 
+#define instance_destroy_id
+    with (argument0) instance_destroy()
+
+
+#define strong
+    var i,str;
+    
+    str=""
+    for (i=0;i<argument_count;i+=1) str+=string(argument[i])
+    return str
+
+
+#define instance_some
+    return (instance_find(argument0,irandom(instance_number(argument0)-1))
+
+
 #define ds_map_read_ini
 ///ds_map_read_ini(map,filename)
     var map,f,section,str,p;
@@ -126,6 +142,7 @@
     return make_color_rgb(color_get_blue(argument0),color_get_green(argument0),color_get_red(argument0))
 
 #define wrap
+    //note: benchmark vs. temp vars
     return (argument0-argument1)-floor((argument0-argument1)/(argument2-argument1))*(argument2-argument1)+argument1
 
 

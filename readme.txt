@@ -123,6 +123,12 @@ ds_map_read_ini(map,filename)
 ds_map_set(map,key,value)
     Sets a key in the ds map, even if it already exists.
 
+instance_destroy_id(id)
+    Destroys the instance.
+
+instance_some(object)
+    Returns a random instance from the object.
+
 merge_color_corrected(col1,col2,factor)
     Square-corrected color merge.
 
@@ -140,6 +146,9 @@ rgb_to_bgr(color)
 
 string_hex(real)
     Converts a real into a hex string.
+
+strong(val1,val2,val3...)
+    Concatenates the arguments as strings and returns it.
 
 window_minimize()
     Minimizes the game window.
