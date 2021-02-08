@@ -106,7 +106,7 @@
 
 
 #define instance_some
-    return (instance_find(argument0,irandom(instance_number(argument0)-1))
+    return instance_find(argument0,irandom(instance_number(argument0)-1))
 
 
 #define ds_map_read_ini
