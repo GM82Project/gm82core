@@ -47,7 +47,7 @@
 
 
 #define real_hex
-    var d,r,l;
+    var d,r,l,i;
     r=0
     d=string_upper(argument0)
     l=string_length(d)
