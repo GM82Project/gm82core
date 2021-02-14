@@ -5,6 +5,14 @@ number of helper functions that are commonly used, and also geometry functions
 introduced in GM:Studio. This extension is also required for using the other
 GM 8.2 extensions, Sound and Joystick.
 
+[globals]
+
+fps_real
+    Gives a slightly faster, but less accurate, measure of frames per second.
+
+delta_time
+    Approximate number of milliseconds since last frame.
+
 
 [geometry]
 
@@ -80,6 +88,9 @@ roundto(val,to)
 wrap(val,min,max)
     Wraps <val> around both directions inside a box defined by <min> and <max>.
     Lower bound is inclusive, upper bound is exclusive.
+
+inch(val,goto,stepsize)
+    Approximates <val> to <goto> by <stepsize> amounts until they match.
 
 
 [studio functions]

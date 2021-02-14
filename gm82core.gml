@@ -1,12 +1,35 @@
 #define __gm82core_init
-    __gm82core_setdir(temp_directory+"\gm82")
-    
-    object_event_add(__gm82core_object,ev_create,0,"if (instance_number(__gm82core_object)>1) instance_destroy()")
+    object_event_add(__gm82core_object,ev_create,0,"
+        if (instance_number(__gm82core_object)>1) instance_destroy()
+        __gm82core_timer=get_timer()
+        __gm82core_dtmemi=0
+        __gm82core_dtmema[10]=0
+    ")
+    object_event_add(__gm82core_object,ev_step,ev_step_begin,"__gm82core_update()")
     object_event_add(__gm82core_object,ev_destroy,0,"if (instance_number(__gm82core_object)==1) instance_create(x,y,__gm82core_object)")
     object_set_persistent(__gm82core_object,1)
     room_instance_add(room_first,0,0,__gm82core_object)
     
     surface_free(surface_create(0,0))
+    
+    globalvar delta_time;
+    globalvar fps_real;
+    
+
+#define __gm82core_update
+    var tmp,i;
+    
+    tmp=get_timer()
+    delta_time=tmp-__gm82core_timer
+    __gm82core_timer=tmp
+    
+    if (delta_time!=0) {
+        __gm82core_dtmema[__gm82core_dtmemi]=1000/delta_time
+        __gm82core_dtmemi=(__gm82core_dtmemi+1) mod 10
+        if (!__gm82core_dtmemi) {
+            fps_real=0 for (i=0;i<10;i+=1) fps_real+=__gm82core_dtmema[i]/10
+        }
+    }
 
 
 #define move_towards_gravity
@@ -91,6 +114,13 @@
 #define roundto
 ///roundto(val,to)
     return floor(argument0/argument1)*argument1
+
+
+#define inch
+///inch(val,goto,stepsize)
+
+    if (argument[0]<argument[1]) return min(argument[1],argument[0]+argument[2])
+    return max(argument[1],argument[0]-argument[2])
 
 
 #define instance_destroy_id
