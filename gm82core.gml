@@ -13,6 +13,8 @@
     globalvar delta_time;
     globalvar fps_real;
     
+    surface_free(surface_create(8,8))
+    
 
 #define __gm82core_update
     var tmp,i;

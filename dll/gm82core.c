@@ -5,7 +5,7 @@
 
 GMREAL set_dll_loaddir(const char* name) {
     int len = MultiByteToWideChar(CP_UTF8, 0, name, -1, NULL, 0);
-    wchar_t *wname = malloc(len);
+    wchar_t *wname = malloc(len*2);
     MultiByteToWideChar(CP_UTF8, 0, name, -1, wname, len);
     SetDllDirectoryW(wname); 
     free(wname);
