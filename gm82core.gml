@@ -9,9 +9,7 @@
     object_event_add(__gm82core_object,ev_destroy,0,"if (instance_number(__gm82core_object)==1) instance_create(x,y,__gm82core_object)")
     object_set_persistent(__gm82core_object,1)
     room_instance_add(room_first,0,0,__gm82core_object)
-    
-    surface_free(surface_create(0,0))
-    
+        
     globalvar delta_time;
     globalvar fps_real;
     

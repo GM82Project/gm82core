@@ -167,7 +167,6 @@ window_minimize()
 [notes]
 
 -> This extension is required for GM8.2 Sound and GM8.2 Joystick.
--> Fixes crashes related to surfaces when the pc is locked. Thanks Chernov!
 
 
 - Created by renex & floogle-
