@@ -177,7 +177,7 @@
 
 
 #define pick
-    return argument[(argument0 mod (argument_number-1))+1]
+    return argument[(argument0 mod (argument_count-1))+1]
 
 
 #define alarm_get
@@ -288,7 +288,7 @@
 
 #define dot_product_normalised
     ///dot_product(x1,y1,x2,y2)
-    var x1,y1,x2,y2,z2,a,b;
+    var x1,y1,x2,y2,a,b;
                 
     x1=argument0
     y1=argument1
@@ -308,6 +308,11 @@
     if (ds_map_exists(argument0,argument1)) ds_map_replace(argument0,argument1,argument2)
     else ds_map_add(argument0,argument1,argument2)
 
+
+#define string_pad
+    ///string_pad(number,digits)
+    return string_repeat("-",argument0<0)+string_replace_all(string_format(abs(argument0),argument1,0)," ","0")
+    
 
 #define dsin
     return sin(degtorad(argument0))
