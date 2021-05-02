@@ -347,8 +347,8 @@
     return argument1
 
 
-#define point_direction_z
-    ///point_direction_z(x1,y1,z1,x2,y2,z2)
+#define point_direction_pitch
+    ///point_direction_pitch(x1,y1,z1,x2,y2,z2)
     var x1,y1,z1,x2,y2,z2;
                 
     x1=argument0
