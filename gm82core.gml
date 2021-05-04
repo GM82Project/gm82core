@@ -171,7 +171,7 @@
 #define rgb_to_bgr
     return make_color_rgb(color_get_blue(argument0),color_get_green(argument0),color_get_red(argument0))
 
-#define wrap
+#define modwrap
     //note: benchmark vs. temp vars
     return (argument0-argument1)-floor((argument0-argument1)/(argument2-argument1))*(argument2-argument1)+argument1
 
