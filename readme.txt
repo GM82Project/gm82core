@@ -117,10 +117,10 @@ draw_enable_alphablend(enable)
     Can be used to turn off alpha blending. Useful for drawing screen surfaces.
 
 get_timer()
-    Gets the current system time in microseconds.
+    Gets the current system time in ms.
 
 string_ord_at(str,pos)
-    Gets the character code at position in the string.
+    Gets the character code at position <pos> in the string.
 
 url_open(url)
     Opens a web link in the default browser.
@@ -153,7 +153,7 @@ instance_destroy_id(id)
     Destroys <id>.
 
 instance_some(object)
-    Returns a random instance from the object.
+    Returns a random instance of the object.
 
 merge_color_corrected(col1,col2,factor)
     Square-corrected color merge.
