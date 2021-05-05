@@ -7,11 +7,15 @@ GM 8.2 extensions, Sound and Joystick.
 
 [globals]
 
+There's no color coding for those, but they're available as constants.
+
 fps_real
     Gives a slightly faster, but less accurate, measure of frames per second.
+    Estimated every 10 frames as opposed to Game Maker's once a second.
 
 delta_time
     Approximate number of milliseconds since last frame.
+    Precision was measured to be around 2ms, but it's stable over time.
 
 
 [geometry]
@@ -51,6 +55,9 @@ lengthdir_zz(len,yaw,pitch)
 
 point_direction_pitch(x1,y1,z1,x2,y2,z2)
     Returns the pitch component of a 3d vector.
+    To use with the above lengthdir functions, use regular point_direction from
+    x1,y1 to x2,y2 for the yaw.
+    This system simplifies projections and pointing for simple 3d games.
 
 
 [math]
@@ -78,6 +85,8 @@ cosine(a,b,amount)
 
 esign(val,default)
     Returns the <default> argument when the sign of <val> is zero.
+    Example:
+        image_xscale = esign(hspeed, image_xscale);
 
 gauss(range)
     Returns a gaussian distribution random value within the supplied <range>.
@@ -135,7 +144,7 @@ ds_map_set(map,key,value)
     Sets a key in the ds map, even if it already exists.
 
 instance_destroy_id(id)
-    Destroys the instance.
+    Destroys <id>.
 
 instance_some(object)
     Returns a random instance from the object.
@@ -153,7 +162,7 @@ real_hex(string)
     Converts a hex string into a real.
 
 rgb_to_bgr(color)
-    Reverses blue and red components of a color.
+    Reverses the blue and red components of a color.
 
 string_hex(real)
     Converts a real into a hex string.
@@ -164,9 +173,10 @@ strong(val1,val2,val3...)
 window_minimize()
     Minimizes the game window.
 
+
 [notes]
 
 -> This extension is required for GM8.2 Sound and GM8.2 Joystick.
 
 
-- Created by renex & floogle-
+- Created by renex && floogle -
