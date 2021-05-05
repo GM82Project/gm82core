@@ -94,7 +94,10 @@ gauss(range)
 roundto(val,to)
     Rounds <val> to the closest multiple of <to>.
 
-wrap(val,min,max)
+floorto(val,to)
+    Floors <val> to the closest multiple of <to>.
+
+modwrap(val,min,max)
     Wraps <val> around both directions inside a box defined by <min> and <max>.
     Lower bound is inclusive, upper bound is exclusive.
 
@@ -136,6 +139,9 @@ window_has_focus()
 
 
 [convenience functions]
+
+d3d_reset_projection()
+    Restores the current view's projection.
 
 ds_map_read_ini(map,filename)
     Reads an ini file into a dsmap.

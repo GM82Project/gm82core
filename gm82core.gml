@@ -32,6 +32,10 @@
     }
 
 
+#define d3d_reset_projection
+    d3d_set_projection_ortho(view_xview[view_current],view_yview[view_current],view_wview[view_current],view_hview[view_current],view_angle[view_current])
+
+
 #define move_towards_gravity
 ///move_towards_gravity(xto,yto,gravity)
     var dX, dY, ang;
@@ -50,12 +54,6 @@
         direction=radtodeg(ang)
     }
 
-#define cosine
-///cosine(a,b,amount)
-    var mu;
-    mu = (1-cos(argument2*pi))/2;
-     
-    return (argument0*(1-mu2)+argument1*mu2)
     
 #define string_hex
     var n,r;
@@ -77,12 +75,6 @@
     
     for (i=1;i<=l;i+=1) r=r*16+(string_pos(string_char_at(d,i),"0123456789ABCDEF")-1)
     return r
-
-
-#define esign
-///esign(val,default)
-    if (argument0=0) return argument1
-    return sign(argument0)
 
 
 #define gauss
@@ -109,18 +101,6 @@
         sqrt(lerp(g1,g2,argument2)),
         sqrt(lerp(b1,b2,argument2))
     )
-
-
-#define roundto
-///roundto(val,to)
-    return floor(argument0/argument1)*argument1
-
-
-#define inch
-///inch(val,goto,stepsize)
-
-    if (argument[0]<argument[1]) return min(argument[1],argument[0]+argument[2])
-    return max(argument[1],argument[0]-argument[2])
 
 
 #define instance_destroy_id
@@ -168,14 +148,6 @@
     return 0
 
 
-#define rgb_to_bgr
-    return make_color_rgb(color_get_blue(argument0),color_get_green(argument0),color_get_red(argument0))
-
-#define modwrap
-    //note: benchmark vs. temp vars
-    return (argument0-argument1)-floor((argument0-argument1)/(argument2-argument1))*(argument2-argument1)+argument1
-
-
 #define pick
     return argument[(argument0 mod (argument_count-1))+1]
 
@@ -186,10 +158,6 @@
 
 #define alarm_set
     alarm[argument0]=argument1
-
-
-#define angle_difference
-    return ((argument0-argument1+540) mod 360)-180
 
 
 #define angle_difference_3d
@@ -209,64 +177,6 @@
     if (a*b==0) return 180
 
     return radtodeg(arccos(median(-1,dot_product_3d(x1/a,y1/a,z1/a,x2/b,y2/b,z2/b),1)))
-
-
-#define triangle_is_clockwise
-    /*
-    **  Usage:
-    **      clockwise = is_clockwise(x0, y0, x1, y1, x2, y2);
-    **
-    **  Description:
-    **      Given a sequence of three 2D points, return whether or not
-    **      the sequence is in clockwise or counter-clockwise order.
-    **
-    **  Arguments:
-    **      x0, y0    coordinate pair for the first point
-    **      x1, y1    coordinate pair for the second point
-    **      x2, y2    coordinate pair for the third point
-    **
-    **  Returns:
-    **      TRUE if the points are in clockwise order,
-    **      FALSE if the points are in counter-clockwize order,
-    **      or (-1) if there is no solution.
-    **
-    **  copyright (c) 2006, John Leffingwell
-    **  www.planetxot.com
-    */
-    var x0, y0, x1, y1, x2, y2, m, b, clockwise;
-    x0 = argument0;
-    y0 = argument1;
-    x1 = argument2;
-    y1 = argument3;
-    x2 = argument4;
-    y2 = argument5;
-    clockwise = -1;
-    if ((x0 != x1) || (y0 != y1)) {
-        if (x0 == x1) {
-            clockwise = (x2 < x1) xor (y0 > y1);
-        }else{
-            m = (y0 - y1) / (x0 - x1);
-            b = y0 - m * x0;
-            clockwise = (y2 > (m * x2 + b)) xor (x0 > x1);
-        }
-    }
-    return clockwise;
-    
-    
-#define darccos
-    return arccos(degtorad(argument0))
-
-
-#define darcsin
-    return arcsin(degtorad(argument0))
-
-
-#define darctan
-    return arctan(degtorad(argument0))
-
-
-#define dcos
-    return cos(degtorad(argument0))
 
 
 #define dot_product_3d_normalised
@@ -312,53 +222,10 @@
 #define string_pad
     ///string_pad(number,digits)
     return string_repeat("-",argument0<0)+string_replace_all(string_format(abs(argument0),argument1,0)," ","0")
-    
-
-#define dsin
-    return sin(degtorad(argument0))
-
-
-#define dtan
-    return tan(degtorad(argument0))
 
 
 #define get_timer
     return (date_current_time()*1000)/__gm82core_second
-
-
-#define lengthdir_zx
-    ///lengthdir_zx(len,dir,dirz)
-
-    return lengthdir_x(lengthdir_x(argument0,argument2),argument1)
-
-
-#define lengthdir_zy
-    ///lengthdir_zy(len,dir,dirz)
-
-    return lengthdir_y(lengthdir_x(argument0,argument2),argument1)
-
-
-#define lengthdir_zz
-    ///lengthdir_zz(len,dir,dirz)
-
-    return lengthdir_y(argument0,argument2)
-
-    //discard argument1
-    return argument1
-
-
-#define point_direction_pitch
-    ///point_direction_pitch(x1,y1,z1,x2,y2,z2)
-    var x1,y1,z1,x2,y2,z2;
-                
-    x1=argument0
-    y1=argument1
-    z1=argument2
-    x2=argument3                  
-    y2=argument4
-    z2=argument5
-
-    return point_direction(0,z1,point_distance(x1,y1,x2,y2),z2)
 
 
 #define string_ord_at
@@ -386,56 +253,8 @@
 
 
 #define window_minimize
-    set_application_title(string(game_id))
-    __gm82core_min(string(game_id))
+    var owo;
+    owo=string(game_id)+string(irandom(1000000))
+    set_application_title(owo)
+    __gm82core_min(owo)
     set_application_title(room_caption)
-    
-
-#define point_in_circle
-///point_in_circle(px, py, x1, y1, r);
-    return (point_distance(argument0,argument1,argument2,argument3)<argument4)
-
-
-#define point_in_rectangle
-    ///point_in_rectangle(px,py,x1,y1,x2,y2)
-    return (argument0>=argument2 && argument0<argument4 && argument1>=argument3 && argument1<argument5)
-
-
-#define point_in_triangle
-    /*
-    **  Usage:
-    **      inside = point_in_triangle(x0, y0, x1, y1, x2, y2, x3, y3);
-    **
-    **  Description:
-    **      Determines if a given point lays within a given triangle.
-    **
-    **  Arguments:
-    **      x0, y0    1st coordinate pair for the triangle
-    **      x1, y1    2nd coordinate pair for the triangle
-    **      x2, y2    3rd coordinate pair for the triangle
-    **      x3, y3    Coordinate pair of the test point
-    **
-    **  Returns:
-    **      TRUE when the test point is inside of the given triangle,
-    **      or FALSE otherwise.
-    **
-    **  Dependencies:
-    **      is_clockwise()
-    **
-    **  Notes:
-    **      Triangle coordinates should be given in traditional
-    **      counter-clockwise order.
-    **
-    **  copyright (c) 2006, John Leffingwell
-    **  www.planetxot.com
-    */
-    var x0, y0, x1, y1, x2, y2, x3, y3;
-    x0 = argument0;
-    y0 = argument1;
-    x1 = argument2;
-    y1 = argument3;
-    x2 = argument4;
-    y2 = argument5;
-    x3 = argument6;
-    y3 = argument7;
-    return (not triangle_is_clockwise(x0,y0,x1,y1,x3,y3) && not triangle_is_clockwise(x1,y1,x2,y2,x3,y3) && not triangle_is_clockwise(x2,y2,x0,y0,x3,y3));
