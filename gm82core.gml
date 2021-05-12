@@ -85,6 +85,22 @@
     return ((i-6)/6+0.5)*argument0
 
 
+#define file_text_read_all
+    var f,str;
+    
+    if (file_exists(argument0)) {
+        str=""
+        f=file_text_open_read(argument0)
+        do {
+            str+=file_text_read_string(f)
+            file_text_readln(f)
+        } until (file_text_eof(f))        
+        file_text_close(f)
+        return str
+    }
+    return noone
+
+
 #define merge_color_corrected
 ///merge_color_corrected(col1,col2,factor)
     var r1,g1,b1,r2,g2,b2;
