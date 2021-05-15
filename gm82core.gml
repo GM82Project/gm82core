@@ -32,6 +32,28 @@
     }
 
 
+#define surface_engage
+///surface_ensure(id,width,height)
+    var s;
+    if (surface_exists(argument0)) {
+        surface_set_target(argument0)
+        return argument0
+    } else {
+        s=surface_create(argument1,argument2)
+        surface_set_target(s)
+        return s
+    }
+
+
+#define surface_disengage
+    surface_reset_target()
+    //yeah i know duplication but this is a lot faster in gml
+    if (view_enabled)
+        d3d_set_projection_ortho(view_xview[view_current],view_yview[view_current],view_wview[view_current],view_hview[view_current],view_angle[view_current])
+    else
+        d3d_set_projection_ortho(0,0,room_width,room_height,0)
+
+
 #define d3d_reset_projection
     d3d_set_projection_ortho(view_xview[view_current],view_yview[view_current],view_wview[view_current],view_hview[view_current],view_angle[view_current])
 
