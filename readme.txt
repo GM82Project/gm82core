@@ -140,6 +140,20 @@ window_has_focus()
 
 [convenience functions]
 
+surface_engage(id,width,height):id
+    Automatically re-creates a surface when expired, and sets target to it.
+    Set the surface id to the return value of this function. Example:
+    mySurf=surface_engage(mySurf,400,300);
+
+surface_disengage()
+    Resets target, and fixes viewport based on studio behavior.
+    
+file_text_read_all(fname)
+    Reads an entire text file and returns its contents as a string.
+    
+event_step()
+    Executes this instance's normal step event.
+
 window_resize_buffer(w,h)
     Resizes the internal window buffer to a desired resolution.
     Can be used to fix messy pixels when resizing the window.
