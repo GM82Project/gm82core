@@ -32,6 +32,19 @@
     }
 
 
+#define window_resize_buffer
+//window_resize_buffer(w,h)
+//this function uses an offset specific to 8.1.141 so we need to check first
+//thanks chernov <3
+if (execute_string("return get_function_address('display_get_orientation')") <= 0) {
+    __gm82core_resizebuffer(argument0,argument1)
+    return 1
+}
+
+show_error("window_resize_buffer() needs GM 8.1.141.",0)
+return 0
+
+
 #define surface_engage
 ///surface_ensure(id,width,height)
     var s;
@@ -79,7 +92,11 @@
         direction=radtodeg(ang)
     }
 
-    
+
+#define event_step
+    event_perform(ev_step, ev_step_normal)
+
+
 #define string_hex
     var n,r;
     n=argument0

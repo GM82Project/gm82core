@@ -11,6 +11,18 @@ GMREAL modwrap(double val, double minv, double maxv) {
     return f-floor(f/w)*w+minv;
 }
 
+GMREAL resize_backbuffer(double width, double height) {
+    int iwidth = width;
+    int iheight = height;
+    const void *fun = 0x61fbc0; //YoYo_resize_backbuffer
+    __asm {
+        mov eax, iwidth
+        mov edx, iheight
+        call fun
+    }
+    return 0;
+}
+
 double pointdir(double x1,double y1,double x2,double y2) {
     return modwrap(atan2(y1-y2,x1-x2)*180/M_PI,0,360);
 }

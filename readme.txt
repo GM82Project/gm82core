@@ -140,6 +140,10 @@ window_has_focus()
 
 [convenience functions]
 
+window_resize_buffer(w,h)
+    Resizes the internal window buffer to a desired resolution.
+    Can be used to fix messy pixels when resizing the window.
+
 d3d_reset_projection()
     Restores the current view's projection.
 
