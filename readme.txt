@@ -140,6 +140,9 @@ window_has_focus()
 
 [convenience functions]
 
+draw_make_opaque()
+    Will make the current surface opaque without changing the colors.
+
 surface_engage(id,width,height):id
     Automatically re-creates a surface when expired, and sets target to it.
     Set the surface id to the return value of this function. Example:
