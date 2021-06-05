@@ -32,6 +32,9 @@
     }
 
 
+#define draw_enable_alphablend
+YoYo_EnableAlphaBlend(argument0)
+
 #define window_resize_buffer
 //window_resize_buffer(w,h)
 //this function uses an offset specific to 8.1.141 so we need to check first
@@ -43,6 +46,12 @@ if (execute_string("return get_function_address('display_get_orientation')") <= 
 
 show_error("window_resize_buffer() needs GM 8.1.141.",0)
 return 0
+
+
+#define draw_make_opaque
+    draw_set_blend_mode(bm_add)
+    draw_rectangle_color(minus_infinite,minus_infinite,infinite,infinite,0,0,0,0,0)
+    draw_set_blend_mode(0)
 
 
 #define surface_engage
