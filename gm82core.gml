@@ -56,7 +56,7 @@ return 0
 
 
 #define surface_engage
-///surface_ensure(id,width,height)
+///surface_engage(id,width,height)
     var s;
     if (surface_exists(argument0)) {
         surface_set_target(argument0)
@@ -68,13 +68,9 @@ return 0
     }
 
 
-#define surface_disengage
-    surface_reset_target()
-    //yeah i know duplication but this is a lot faster in gml
-    if (view_enabled)
-        d3d_set_projection_ortho(view_xview[view_current],view_yview[view_current],view_wview[view_current],view_hview[view_current],view_angle[view_current])
-    else
-        d3d_set_projection_ortho(0,0,room_width,room_height,0)
+#define surface_reset_target
+    internal_call_real0(6298932)
+    d3d_reset_projection()
 
 
 #define d3d_reset_projection
