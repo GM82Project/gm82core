@@ -14,7 +14,7 @@ GMREAL modwrap(double val, double minv, double maxv) {
 GMREAL resize_backbuffer(double width, double height) {
     int iwidth = width;
     int iheight = height;
-    const void *fun = 0x61fbc0; //YoYo_resize_backbuffer
+    const void *fun = (void*)0x61fbc0; //YoYo_resize_backbuffer
     __asm {
         mov eax, iwidth
         mov edx, iheight
