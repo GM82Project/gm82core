@@ -1,5 +1,5 @@
-call "C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\Common7\Tools\VsDevCmd.bat"
+call "%VS120COMNTOOLS%vsvars32.bat"
 
-cl gm82core.c /link /dll /out:gm82core.dll
+cl gm82core.c /O1 /MD /GS- /nologo /link /nologo /dll /out:gm82core.dll
 
 pause
