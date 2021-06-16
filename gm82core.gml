@@ -67,6 +67,12 @@ return 0
         return s
     }
 
+
+#define surface_disengage
+    surface_reset_target()//internal_call_real0(6298932)
+    d3d_reset_projection()
+
+
 #define base64_encode
 /// base64_encode(str)
 //
@@ -125,11 +131,6 @@ return 0
     }
     return str;
 }
-
-
-#define surface_reset_target
-    internal_call_real0(6298932)
-    d3d_reset_projection()
 
 
 #define d3d_reset_projection
