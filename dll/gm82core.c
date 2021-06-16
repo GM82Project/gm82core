@@ -14,6 +14,22 @@
 const void* delphi_clear = (void*)0x4072d8;
 static char* retstr = NULL;
 
+void (*d3d8_display_reset)() = (void (*)())0x61f9f4; // :)
+
+int* gm8_display_window = (int*)0x85b3a8;
+int* gm8_display_hertz = (int*)0x85b3b8;
+
+GMREAL __gm82core_setfullscreen(double hz) {
+    int z = (int)hz;
+    
+    *gm8_display_window = !z;
+    *gm8_display_hertz = z;
+    
+    d3d8_display_reset();
+
+    return 1;
+}
+
 typedef struct {
     int is_string;
     int padding;
