@@ -142,6 +142,7 @@ window_has_focus()
 
 window_set_exclusive_fullscreen(full)
     Sets the window mode to exclusive fullscreen, reducing input lag.
+    Note: this will destroy all your surfaces!
 
 draw_make_opaque()
     Will make the current surface opaque without changing the colors.
