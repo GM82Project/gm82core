@@ -1,9 +1,12 @@
 #define GMREAL __declspec(dllexport) double __cdecl
 #define GMSTR __declspec(dllexport) char* __cdecl
 #define _USE_MATH_DEFINES
+#define _WIN32_WINNT 0x0601
 #include <windows.h>
+#include <versionhelpers.h>
 #include <math.h>
 
+#pragma comment(lib, "advapi32.lib")
 #pragma comment(lib, "user32.lib")
 
 //begin really terrible gm hacking//
@@ -102,6 +105,28 @@ GMSTR internal_call_string1s(double func, char* arg0) {
 }
 
 //end really terrible gm hacking//
+
+GMREAL get_window_col() {
+	HKEY key;
+	HRESULT res = RegOpenKeyExA(HKEY_CURRENT_USER, "SOFTWARE\\Microsoft\\Windows\\DWM", 0, KEY_READ, &key);
+	if (res == 0) {
+		int col;
+		int size = 4;
+		res = RegQueryValueExA(key, "ColorizationColor", NULL, NULL, (LPBYTE)&col, &size);
+		RegCloseKey(key);
+		if (res == 0) {
+			return ((col & 0xff0000) >> 16) | (col & 0xff00) | ((col & 0xff) << 16);
+		} else { return res; }
+	} else { return res; }
+}
+
+GMREAL win_ver() {
+    if (IsWindows8OrGreater()) return 8;
+    if (IsWindows7OrGreater()) return 7;
+    if (IsWindowsVistaOrGreater()) return 6;
+    if (IsWindowsXPOrGreater()) return 5;
+    return 4;
+}
 
 GMREAL modwrap(double val, double minv, double maxv) {
     double f=val-minv;

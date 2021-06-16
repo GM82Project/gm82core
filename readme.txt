@@ -198,7 +198,13 @@ strong(val1,val2,val3...)
     Concatenates the arguments as strings and returns it.
 
 window_minimize()
-    Minimizes the game window.
+    Minimizes the game window. Will reset the application title to room_caption.
+    
+window_get_caption_color()
+    Returns the Windows 8+ accent color.
+
+windows_version()
+    Returns the Windows version as a number (xp=5, vista=6, etc. w10 returns 8).
 
 
 [notes]
