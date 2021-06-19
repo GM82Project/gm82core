@@ -4,7 +4,6 @@
         __gm82core_timer=get_timer()
         __gm82core_dtmemi=0
         __gm82core_dtmema[10]=0
-        __gm82core_fullscreen=false
     ")
     object_event_add(__gm82core_object,ev_step,ev_step_begin,"__gm82core_update()")
     object_event_add(__gm82core_object,ev_destroy,0,"if (instance_number(__gm82core_object)==1) instance_create(x,y,__gm82core_object)")
@@ -386,16 +385,14 @@ return 0
 
     
 #define window_set_exclusive_fullscreen
-///window_set_exclusive_fullscreen(full)
+///window_set_exclusive_fullscreen(enabled)
     with (__gm82core_object) {
-        if (argument0 ^ __gm82core_fullscreen) {
-            if (__gm82core_fullscreen) {
-                __gm82core_fullscreen=false            
+        if (argument0 ^ window_get_fullscreen()) {
+            if (window_get_fullscreen()) {
                 __gm82core_setfullscreen(0)
                 window_set_fullscreen(0)
                 return 1
             } else {
-                __gm82core_fullscreen=true
                 window_set_fullscreen(1)
                 __gm82core_setfullscreen(display_get_frequency())
                 return 1
