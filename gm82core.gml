@@ -14,7 +14,7 @@
     globalvar fps_real;
     
     surface_free(surface_create(8,8))
-    
+    draw_set_color($ffffff)
 
 #define __gm82core_update
     var tmp,i;
