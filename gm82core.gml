@@ -211,19 +211,19 @@ return 0
 
 #define merge_color_corrected
 ///merge_color_corrected(col1,col2,factor)
-    var r1,g1,b1,r2,g2,b2;
-    r1=sqr(color_get_red  (argument0))
-    g1=sqr(color_get_green(argument0))
-    b1=sqr(color_get_blue (argument0))
+    var __r1,__g1,__b1,__r2,__g2,__b2;
+    __r1=sqr(color_get_red  (argument0))
+    __g1=sqr(color_get_green(argument0))
+    __b1=sqr(color_get_blue (argument0))
 
-    r2=sqr(color_get_red  (argument1))
-    g2=sqr(color_get_green(argument1))
-    b2=sqr(color_get_blue (argument1))
+    __r2=sqr(color_get_red  (argument1))
+    __g2=sqr(color_get_green(argument1))
+    __b2=sqr(color_get_blue (argument1))
 
     return make_color_rgb(
-        sqrt(lerp(r1,r2,argument2)),
-        sqrt(lerp(g1,g2,argument2)),
-        sqrt(lerp(b1,b2,argument2))
+        sqrt(lerp(__r1,__r2,argument2)),
+        sqrt(lerp(__g1,__g2,argument2)),
+        sqrt(lerp(__b1,__b2,argument2))
     )
 
 
