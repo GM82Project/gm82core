@@ -227,6 +227,13 @@ return 0
     )
 
 
+#define color_get_luminance
+///color_get_luminance(color)
+//kodak human luminance perception factors
+
+return (color_get_red(argument0)*0.2126+color_get_green(argument0)*0.7152+color_get_blue(argument0)*0.0722)
+
+
 #define instance_destroy_id
     with (argument0) instance_destroy()
 
