@@ -202,6 +202,10 @@ GMREAL floorto(double val, double to) {
     return floor(val/to)*to;
 }
 
+GMREAL ceilto(double val, double to) {
+    return ceil(val/to)*to;
+}
+
 GMREAL cosine(double a, double b, double amount) {
     double mu = (1-cos(amount*M_PI))/2;     
     return (a*(1-mu)+b*mu);
