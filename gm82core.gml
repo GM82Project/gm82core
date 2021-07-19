@@ -16,6 +16,7 @@
     surface_free(surface_create(8,8))
     draw_set_color($ffffff)
 
+
 #define __gm82core_update
     var tmp,i;
     
@@ -200,7 +201,7 @@ return 0
         str=""
         f=file_text_open_read(argument0)
         do {
-            str+=file_text_read_string(f)
+            str+=file_text_read_string(f)+chr(13)+chr(10)
             file_text_readln(f)
         } until (file_text_eof(f))        
         file_text_close(f)
