@@ -210,6 +210,10 @@ return 0
     return noone
 
 
+#define registry_read_dword
+return __registry_read_dword(string_replace_all(filename_dir(argument0),"/","\"),filename_name(argument0))
+
+
 #define merge_color_corrected
 ///merge_color_corrected(col1,col2,factor)
     var __r1,__g1,__b1,__r2,__g2,__b2;
