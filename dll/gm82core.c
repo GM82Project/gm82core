@@ -142,6 +142,19 @@ GMREAL __registry_read_dword(char* dir, char* keyname) {
 		RegCloseKey(key);
 		if (res == 0) {
 			return buffer;
+		} else { return -4; }
+	} else { return -4; }
+}
+
+GMREAL __registry_write_dword(char* dir, char* keyname, double dword) {
+	HKEY key;
+	HRESULT res = RegOpenKeyExA(HKEY_CURRENT_USER, dir, 0, KEY_SET_VALUE, &key);
+	if (res == 0) {
+		int buffer=(int)dword;
+		res = RegSetValueExA(key, keyname, 0, REG_DWORD, (LPBYTE)&buffer, 4);
+		RegCloseKey(key);
+		if (res == 0) {
+			return buffer;
 		} else { return res; }
 	} else { return res; }
 }

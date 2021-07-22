@@ -211,7 +211,16 @@ return 0
 
 
 #define registry_read_dword
-return __registry_read_dword(string_replace_all(filename_dir(argument0),"/","\"),filename_name(argument0))
+    var ret;
+    ret=__registry_read_dword(string_replace_all(filename_dir(argument0),"/","\"),filename_name(argument0))
+    if (argument_count==2) {
+        if (ret==noone) return argument[1]        
+    }
+    return ret
+
+
+#define registry_write_dword
+    return __registry_write_dword(string_replace_all(filename_dir(argument0),"/","\"),filename_name(argument0),real(argument1)&$ffffffff)
 
 
 #define merge_color_corrected
