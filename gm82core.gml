@@ -423,3 +423,22 @@ return (color_get_red(argument0)*0.2126+color_get_green(argument0)*0.7152+color_
     }
     
     return 0
+
+
+#define mouse_check_direct
+    switch (argument0) {
+        case mb_left  : return keyboard_check_direct(1)
+        case mb_right : return keyboard_check_direct(2)
+        case mb_middle: return keyboard_check_direct(4)
+        default: return 0
+    }
+
+
+#define mouse_back_button
+    if (__gm82core_object.__gm82core_hasfocus) return keyboard_check_direct(5)
+    return 0
+
+    
+#define mouse_forward_button
+    if (__gm82core_object.__gm82core_hasfocus) return keyboard_check_direct(6)
+    return 0

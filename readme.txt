@@ -95,7 +95,10 @@ roundto(val,to)
     Rounds <val> to the closest multiple of <to>.
 
 floorto(val,to)
-    Floors <val> to the closest multiple of <to>.
+    Floors <val> to the closest multiple of <to>.   
+    
+ceilto(val,to)
+    Ceils <val> to the closest multiple of <to>.    
 
 modwrap(val,min,max)
     Wraps <val> around both directions inside a box defined by <min> and <max>.
@@ -139,6 +142,22 @@ window_has_focus()
 
 
 [convenience functions]
+
+mouse_check_direct(button)
+    Directly checks the hardware for updated mouse button states.
+
+mouse_back_button
+    Returns if the back button is pressed on mice with navigation controls.
+
+mouse_forward_button
+    Returns if the forward button is pressed on mice with navigation controls.
+
+registry_read_dword(key,[default])
+    Reads a REG_DWORD from the specified key.
+    Returns default if the value is not found.
+
+registry_write_dword(key,value)
+    Writes a REG_DWORD to the specified key.
 
 window_set_exclusive_fullscreen(full)
     Sets the window mode to exclusive fullscreen, reducing input lag.
@@ -194,6 +213,9 @@ real_hex(string)
 
 rgb_to_bgr(color)
     Reverses the blue and red components of a color.
+
+color_get_luminance(color)
+    Returns a Kodak-corrected luminance value from a color.
 
 string_hex(real)
     Converts a real into a hex string.
