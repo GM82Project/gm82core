@@ -20,6 +20,7 @@
 #define __gm82core_update
     var tmp,i;
     
+    __gm82core_hasfocus=(__gm82core_getfore()==window_handle())
     tmp=get_timer()
     delta_time=tmp-__gm82core_timer
     __gm82core_timer=tmp
@@ -394,7 +395,7 @@ return (color_get_red(argument0)*0.2126+color_get_green(argument0)*0.7152+color_
 
 
 #define window_has_focus
-    return __gm82core_getfore()==window_handle()
+    return __gm82core_object.__gm82core_hasfocus
 
 
 #define window_minimize
