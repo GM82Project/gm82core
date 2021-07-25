@@ -46,7 +46,7 @@ if (execute_string("return get_function_address('display_get_orientation')") <= 
     return 1
 }
 
-show_error("window_resize_buffer() needs GM 8.1.141.",0)
+show_error("We're sorry, but the gm82core function 'window_resize_buffer()' needs GM 8.1.141.",0)
 return 0
 
 
@@ -253,11 +253,11 @@ return (color_get_red(argument0)*0.2126+color_get_green(argument0)*0.7152+color_
 
 
 #define strong
-    var i,str;
+    var __i,__str;
     
-    str=""
-    for (i=0;i<argument_count;i+=1) str+=string(argument[i])
-    return str
+    __str=""
+    for (__i=0;__i<argument_count;__i+=1) __str+=string(argument[__i])
+    return __str
 
 
 #define instance_some

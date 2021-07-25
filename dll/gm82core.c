@@ -14,16 +14,17 @@
 const void* delphi_clear = (void*)0x4072d8;
 static char* retstr = NULL;
 
+//GMREAL funny_test(double ptr, double value) {int a = (int)ptr;int* where = (int*)a;int what = (int)value;*where = what;return 0;
 
 GMREAL __gm82core_setfullscreen(double hz) {
     int z = (int)hz;
     
-    *(int*)0x85af74 = 0;  //multisample
+    *(int*)0x85af74 = 0;  //multisample off
     *(int*)0x85af7c = 3;  //swap effect copy
-    *(int*)0x85b3a8 = !z; //window
-    *(int*)0x85b3b8 = z;  //hertz
+    *(int*)0x85b3a8 = !z; //windowed mode
+    *(int*)0x85b3b8 = z;  //refresh rate
     
-    ((void (*)())0x61f9f4)(); //display_reset
+    ((void (*)())0x61f9f4)(); //display_reset()
 
     return 1;
 }
