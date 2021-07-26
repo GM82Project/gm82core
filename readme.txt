@@ -146,10 +146,10 @@ window_has_focus()
 mouse_check_direct(button)
     Directly checks the hardware for updated mouse button states.
 
-mouse_back_button
+mouse_back_button()
     Returns if the back button is pressed on mice with navigation controls.
 
-mouse_forward_button
+mouse_forward_button()
     Returns if the forward button is pressed on mice with navigation controls.
 
 registry_read_dword(key,[default])
