@@ -220,6 +220,9 @@ color_get_luminance(color)
 string_hex(real)
     Converts a real into a hex string.
 
+string_number(string)
+    A version of string_digits() that also keeps the dot in floats.
+
 strong(val1,val2,val3...)
     Concatenates the arguments as strings and returns it.
 

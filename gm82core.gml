@@ -51,6 +51,15 @@ show_error("We're sorry, but the gm82core function 'window_resize_buffer()' need
 return 0
 
 
+#define string_number
+    var p;
+    p=string_pos(".",argument0)
+    if (p) {
+        return string_digits(string_copy(argument0,1,p-1))+"."+string_digits(string_delete(argument0,1,p))
+    }
+    return string_digits(argument0)
+
+
 #define draw_make_opaque
     draw_set_blend_mode(bm_add)
     draw_rectangle_color(-9999999,-9999999,9999999,9999999,0,0,0,0,0)
