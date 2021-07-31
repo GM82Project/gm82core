@@ -43,6 +43,7 @@ YoYo_EnableAlphaBlend(argument0)
 //this function uses an offset specific to 8.1.141 so we need to check first
 //thanks chernov <3
 if (execute_string("return get_function_address('display_get_orientation')") <= 0) {
+    //THANKS FLOOGLE <3 <3 <3 <3
     __gm82core_resizebuffer(argument0,argument1)
     return 1
 }
@@ -52,12 +53,17 @@ return 0
 
 
 #define string_number
-    var p;
+    var p,m,str;
+    if (string_pos("-",argument0)) m="-"
+    else m=""
     p=string_pos(".",argument0)
     if (p) {
-        return string_digits(string_copy(argument0,1,p-1))+"."+string_digits(string_delete(argument0,1,p))
+        str=string_digits(string_copy(argument0,1,p-1))+"."+string_digits(string_delete(argument0,1,p))
     }
-    return string_digits(argument0)
+    str=string_digits(argument0)
+    while (string_char_at(str,1)=="0") str=string_delete(str,1,1)
+    if (str="") return "0"
+    return m+str
 
 
 #define draw_make_opaque
