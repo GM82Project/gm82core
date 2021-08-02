@@ -107,6 +107,9 @@ modwrap(val,min,max)
 inch(val,goto,stepsize)
     Approximates <val> to <goto> by <stepsize> amounts until they match.
 
+inch_angle(ang1,ang2,stepsize)
+    Approximates angles <ang1> to <ang2> by <stepsize> amounts until they match.
+
 
 [studio functions]
 
