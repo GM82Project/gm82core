@@ -457,3 +457,29 @@ return (color_get_red(argument0)*0.2126+color_get_green(argument0)*0.7152+color_
 #define mouse_forward_button
     if (__gm82core_object.__gm82core_hasfocus) return keyboard_check_direct(6)
     return 0
+
+
+#define d3d_set_projection_simple
+///d3d_set_projection_simple(x,y,w,h,angle,dollyzoom,depthmin,depth,depthmax)
+    var xfrom,yfrom,zfrom;
+
+    if (argument5<=0) {
+        // ¯\_(º_o)_/¯
+        d3d_set_projection_ortho(argument0,argument1,argument2,argument3,argument4)
+    } else {
+        xfrom=argument0+argument2/2
+        yfrom=argument1+argument3/2    
+        zfrom=min(-tan(degtorad(90*(1-argument5)))*argument3/2,argument6-argument7)
+
+        d3d_set_projection_ext(
+            xfrom,yfrom,zfrom+argument7,                               //from
+            xfrom,yfrom,argument7,                                     //to
+            lengthdir_x(1,-argument4+90),lengthdir_y(1,-argument4+90),0, //up
+            -point_direction(zfrom,0,0,argument3/2)*2,                 //angle
+            -argument2/argument3,                                      //aspect
+            max(1,argument6-argument7-zfrom),                          //znear
+            argument8-argument7-zfrom                                  //zfar
+        )
+        d3d_start()
+    }
+    
