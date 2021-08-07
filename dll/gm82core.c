@@ -449,3 +449,7 @@ GMSTR string_hex(double num) {
 
   return (char*)ret;
 }
+
+GMREAL in_range(double val, double vmin, double vmax) {
+    return (val>=vmin && val<=vmax)?1.0:0.0;
+}
