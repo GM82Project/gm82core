@@ -432,7 +432,7 @@ GMSTR string_hex(double num) {
   // Return buffer  
   static char retbuf[17] = {0}; // Initialize to all 0's
 
-  static const unsigned short lookup[256] = {
+  static const char lookup[] = {
     '0', '1', '2', '3',
     '4', '5', '6', '7',
     '8', '9', 'A', 'B',
