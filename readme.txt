@@ -226,6 +226,9 @@ string_hex(real)
 string_number(string)
     A version of string_digits() that also keeps the dot in floats.
 
+string_better(val)
+    Regular string() but displaying up to 8 decimal digits.
+
 strong(val1,val2,val3...)
     Concatenates the arguments as strings and returns it.
 

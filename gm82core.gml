@@ -65,6 +65,17 @@ return 0
     return m+str
 
 
+#define string_better
+    ///string_better(real):string
+    // string(1.012562536) = "1.01"
+    // string_better(1.012562536) = "1.01256254"
+    var s;
+
+    s=string_format(argument0,0,8)+";"
+    repeat (8) s=string_replace(s,"0;",";")
+    return string_replace(string_replace(s,".;",""),";","")
+
+
 #define draw_make_opaque
     draw_set_blend_mode(bm_add)
     draw_rectangle_color(-9999999,-9999999,9999999,9999999,0,0,0,0,0)
