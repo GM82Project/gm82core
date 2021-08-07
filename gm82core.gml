@@ -59,8 +59,7 @@ return 0
     p=string_pos(".",argument0)
     if (p) {
         str=string_digits(string_copy(argument0,1,p-1))+"."+string_digits(string_delete(argument0,1,p))
-    }
-    str=string_digits(argument0)
+    } else str=string_digits(argument0)
     while (string_char_at(str,1)=="0") str=string_delete(str,1,1)
     if (str="") return "0"
     return m+str
