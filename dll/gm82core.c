@@ -15,8 +15,7 @@ const void* delphi_clear = (void*)0x4072d8;
 static char* retstr = NULL;
 
 static char* tokenstore = NULL;
-static size_t tokenlen = 0;
-static size_t tokenpos = 0;
+static char* tokenpos = NULL;
 static char tokensep[256] = {0};
 static size_t tokenseplen = 0;
 
@@ -461,39 +460,22 @@ GMREAL in_range(double val, double vmin, double vmax) {
 }
 
 GMREAL string_token_start(const char* str, const char* sep) {
-    tokenlen = strlen(str);
     tokenseplen = min(255,strlen(sep));
-    tokenstore = realloc(tokenstore, tokenlen+1);
+    tokenstore = realloc(tokenstore, strlen(str)+1);
     strcpy(tokenstore, str);
     strncpy(tokensep, sep, tokenseplen);
-    tokenpos = 0;
+    tokenpos = tokenstore;
     return 0;
 }
 
 GMSTR string_token_next() {
-    size_t startpos = tokenpos;
-    if (tokenpos == tokenlen) {
-        tokenstore[0] = 0;
-        return tokenstore;
-    }
-    while (tokenpos < tokenlen) {
-        int pass = 1;
-        for (size_t i=0; i < tokenseplen; i++) {
-            if (tokenpos + i >= tokenlen) {
-                pass = 0;
-                break;
-            }
-            if (tokenstore[tokenpos + i] != tokensep[i]) {
-                pass = 0;
-                break;
-            }
+    char* startpos = tokenpos;
+    if (startpos) {
+        tokenpos = strstr(tokenpos, tokensep);        
+        if (tokenpos) {
+            tokenpos[0]=0;
+            tokenpos+=tokenseplen;
         }
-        if (pass) {
-            tokenstore[tokenpos] = 0;
-            tokenpos += tokenseplen;
-            break;
-        }
-        tokenpos++;
     }
-    return (char*) tokenstore + startpos;
+    return startpos;
 }
