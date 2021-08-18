@@ -110,6 +110,8 @@ inch(val,goto,stepsize)
 inch_angle(ang1,ang2,stepsize)
     Approximates angles <ang1> to <ang2> by <stepsize> amounts until they match.
 
+in_range(val,min,max)
+    Returns whether val is inbetween min and max.
 
 [studio functions]
 
@@ -154,6 +156,9 @@ mouse_back_button()
 
 mouse_forward_button()
     Returns if the forward button is pressed on mice with navigation controls.
+
+mouse_in_window()
+    Returns if the mouse cursor is currently inside the window rectangle.
 
 registry_read_dword(key,[default])
     Reads a REG_DWORD from the specified key.
@@ -231,6 +236,12 @@ string_better(val)
 
 strong(val1,val2,val3...)
     Concatenates the arguments as strings and returns it.
+
+string_token_start(str,sep)
+    Starts splitting <str> by <sep>.
+
+string_token_next()
+    Returns the next bit of text before the next <sep> set up earlier.
 
 window_minimize()
     Minimizes the game window. Will reset the application title to room_caption.
