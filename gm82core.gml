@@ -506,3 +506,14 @@ return (color_get_red(argument0)*0.2126+color_get_green(argument0)*0.7152+color_
     wh=window_get_height();
 
     return (dx >= wx && dy >= wy && dx < wx + ww && dy < wy + wh);
+
+
+#define directory_previous
+///directory_previous(dir)
+    var fn,l;
+
+    fn=string_replace_all(argument0,"/","\")
+    l=string_length(fn)
+    if (string_char_at(fn,l)=="\") fn=string_copy(fn,1,l-2)
+    return filename_dir(fn)+"\"
+
