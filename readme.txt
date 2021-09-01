@@ -7,7 +7,7 @@ GM 8.2 extensions, Sound and Joystick.
 
 [globals]
 
-There's no color coding for those, but they're available as constants.
+There's no color coding for those, but they're available as variables.
 
 fps_real
     Gives a slightly faster, but less accurate, measure of frames per second.
@@ -18,7 +18,30 @@ delta_time
     Precision was measured to be around 2ms, but it's stable over time.
 
 
-[geometry]
+[constants]
+
+path_action_stop = 0
+path_action_restart = 1
+path_action_continue = 2
+path_action_reverse = 3
+    Path end action constants from Studio.
+    
+infinity = 2305843009213693952
+minus_infinity = -2305843009213693952
+    Largest representable integers in a GM double.
+
+vk_minus = 189
+vk_equals = 187
+    Additional keyboard keys.
+
+undefined = "<undefined>"
+    String value used in some data structure functions.
+
+core
+    Handle to the controller object for gm82core. Keep this object activated.
+
+
+[geometry functions]
 
 angle_difference(ang1,ang2)
     Returns the relative difference in degrees between the angles.
@@ -60,7 +83,7 @@ point_direction_pitch(x1,y1,z1,x2,y2,z2)
     This system simplifies projections and pointing for simple 3d games.
 
 
-[math]
+[math functions]
 
 dcos(x)
     Cosine in degrees.
@@ -113,6 +136,7 @@ inch_angle(ang1,ang2,stepsize)
 in_range(val,min,max)
     Returns whether val is inbetween min and max.
 
+
 [studio functions]
 
 alarm_get(index)
@@ -144,6 +168,9 @@ variable_instance_set(instance_id,name,value)
 
 window_has_focus()
     Returns whether the game window is currently in front and active.
+
+is_undefined()
+    Returns if the value is equal to the undefined constant.
 
 
 [convenience functions]
