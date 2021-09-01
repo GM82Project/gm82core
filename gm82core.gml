@@ -522,3 +522,6 @@ return (color_get_red(argument0)*0.2126+color_get_green(argument0)*0.7152+color_
     return string(argument0)==undefined
 
 
+#define filename_remove_ext
+    return string_copy(argument0,1,string_pos(".",argument0)-1)
+
