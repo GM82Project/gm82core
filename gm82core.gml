@@ -517,3 +517,8 @@ return (color_get_red(argument0)*0.2126+color_get_green(argument0)*0.7152+color_
     if (string_char_at(fn,l)=="\") fn=string_copy(fn,1,l-2)
     return filename_dir(fn)+"\"
 
+
+#define is_undefined
+    return string(argument0)==undefined
+
+
