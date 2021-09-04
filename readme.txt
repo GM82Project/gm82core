@@ -228,6 +228,9 @@ ds_map_read_ini(map,filename)
 ds_map_set(map,key,value)
     Sets a key in the ds map, even if it already exists.
 
+ds_map_get(map,key)
+    Returns the key in the ds map, or undefined if it doesn't exist.
+
 instance_destroy_id(id)
     Destroys <id>.
 

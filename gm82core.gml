@@ -390,6 +390,13 @@ return (color_get_red(argument0)*0.2126+color_get_green(argument0)*0.7152+color_
     else ds_map_add(argument0,argument1,argument2)
 
 
+#define ds_map_get
+    ///ds_map_get(map,key)
+
+    if (ds_map_exists(argument0,argument1)) return ds_map_find_value(argument0,argument1,argument2)
+    return undefined
+
+
 #define string_pad
     ///string_pad(number,digits)
     return string_repeat("-",argument0<0)+string_replace_all(string_format(abs(argument0),argument1,0)," ","0")
