@@ -393,7 +393,7 @@ return (color_get_red(argument0)*0.2126+color_get_green(argument0)*0.7152+color_
 #define ds_map_get
     ///ds_map_get(map,key)
 
-    if (ds_map_exists(argument0,argument1)) return ds_map_find_value(argument0,argument1,argument2)
+    if (ds_map_exists(argument0,argument1)) return ds_map_find_value(argument0,argument1)
     return undefined
 
 
