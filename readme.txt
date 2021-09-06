@@ -175,6 +175,13 @@ is_undefined()
 
 [convenience functions]
 
+instance_create_moving(x,y,object,speed,direction)
+    Creates a moving instance and returns its id. Speed and direction are
+    applied before the create event executes.
+
+outside_room()
+    Returns whether the instance's sprite is completely outside of the room.
+
 mouse_check_direct(button)
     Directly checks the hardware for updated mouse button states.
 

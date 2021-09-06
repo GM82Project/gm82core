@@ -551,3 +551,9 @@ return (color_get_red(argument0)*0.2126+color_get_green(argument0)*0.7152+color_
         || bbox_top >= room_height
         || bbox_bottom < 0
 
+
+#define instance_create_moving
+    //(x,y,object,speed,direction)
+    action_create_object_motion(argument2,argument0,argument1,argument3,argument4)
+    return instance_find(argument2,instance_number(argument2)-1)
+
