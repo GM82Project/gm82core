@@ -538,3 +538,16 @@ return (color_get_red(argument0)*0.2126+color_get_green(argument0)*0.7152+color_
     return string_pad(date_get_day(t),2)+"/"+string_pad(date_get_month(t),2)+"/"+string_pad(date_get_year(t) mod 100,2)+" "+string_pad(date_get_hour(t),2)+":"+string_pad(date_get_minute(t),2)
 
 
+#define outside_room
+    //workaround for instances without a sprite
+    if (bbox_right-bbox_left+bbox_bottom-bbox_top == 0)
+    return x >= room_width
+        || x < 0
+        || y >= room_height
+        || y < 0
+
+    return bbox_left >= room_width
+        || bbox_right < 0
+        || bbox_top >= room_height
+        || bbox_bottom < 0
+
