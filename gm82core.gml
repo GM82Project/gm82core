@@ -1,17 +1,20 @@
 #define __gm82core_init
-    object_event_add(__gm82core_object,ev_create,0,"
-        if (instance_number(__gm82core_object)>1) instance_destroy()
-        __gm82core_timer=get_timer()
-        __gm82core_dtmemi=0
-        __gm82core_dtmema[10]=0
-    ")
+    object_event_add(__gm82core_object,ev_create,0,"if (instance_number(__gm82core_object)>1) instance_destroy()")
     object_event_add(__gm82core_object,ev_step,ev_step_begin,"__gm82core_update()")
-    object_event_add(__gm82core_object,ev_destroy,0,"if (instance_number(__gm82core_object)==1) instance_create(x,y,__gm82core_object)")
+    object_event_add(__gm82core_object,ev_destroy,0,"instance_copy(0)")
     object_set_persistent(__gm82core_object,1)
     room_instance_add(room_first,0,0,__gm82core_object)
         
-    globalvar delta_time;
-    globalvar fps_real;
+    globalvar delta_time,fps_real;
+    globalvar __gm82core_timer,__gm82core_dtmemi,__gm82core_dtmema;
+    globalvar __gm82core_version,__gm82core_appsurf_interop;
+    
+    delta_time=1000/30
+    fps_real=30
+    __gm82core_timer=get_timer()
+    __gm82core_dtmemi=0
+    __gm82core_dtmema[10]=0
+    __gm82core_version=132
     
     surface_free(surface_create(8,8))
     draw_set_color($ffffff)
@@ -96,8 +99,12 @@ return 0
 
 
 #define surface_disengage
-    surface_reset_target()//internal_call_real0(6298932)
-    d3d_reset_projection()
+    if (__gm82core_appsurf_interop) {
+        surface_set_target(application_surface)
+    } else {
+        surface_reset_target()
+        d3d_reset_projection()
+    }    
 
 
 #define base64_encode
