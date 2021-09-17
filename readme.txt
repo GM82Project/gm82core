@@ -175,6 +175,9 @@ is_undefined()
 
 [convenience functions]
 
+direction_to_object(obj)
+    Returns the direction towards the nearest instance of <obj>, or -1 if none.
+
 instance_create_moving(x,y,object,speed,direction)
     Creates a moving instance and returns its id. Speed and direction are
     applied before the create event executes.

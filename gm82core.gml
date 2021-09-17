@@ -40,6 +40,12 @@
 #define draw_enable_alphablend
 YoYo_EnableAlphaBlend(argument0)
 
+#define direction_to_object
+    ///(obj/inst)
+    var n;n=instance_nearest(argument0)
+    if (n==noone) return -1
+    return point_direction(x,y,n.x,n.y)
+
 
 #define window_resize_buffer
 //window_resize_buffer(w,h)
