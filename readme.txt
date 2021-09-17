@@ -218,6 +218,7 @@ surface_engage(id,width,height):id
 
 surface_disengage()
     Resets target, and fixes viewport based on studio behavior.
+    Also resets target properly when using gm82AppSurf.
     
 file_text_read_all(fname)
     Reads an entire text file and returns its contents as a string.

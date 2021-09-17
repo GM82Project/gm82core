@@ -38,7 +38,8 @@
 
 
 #define draw_enable_alphablend
-YoYo_EnableAlphaBlend(argument0)
+    YoYo_EnableAlphaBlend(argument0)
+
 
 #define direction_to_object
     ///(obj/inst)
@@ -48,17 +49,17 @@ YoYo_EnableAlphaBlend(argument0)
 
 
 #define window_resize_buffer
-//window_resize_buffer(w,h)
-//this function uses an offset specific to 8.1.141 so we need to check first
-//thanks chernov <3
-if (execute_string("return get_function_address('display_get_orientation')") <= 0) {
-    //THANKS FLOOGLE <3 <3 <3 <3
-    __gm82core_resizebuffer(argument0,argument1)
-    return 1
-}
+    //window_resize_buffer(w,h)
+    //this function uses an offset specific to 8.1.141 so we need to check first
+    //thanks chernov <3
+    if (execute_string("return get_function_address('display_get_orientation')") <= 0) {
+        //THANKS FLOOGLE <3 <3 <3 <3
+        __gm82core_resizebuffer(argument0,argument1)
+        return 1
+    }
 
-show_error("We're sorry, but the gm82core function 'window_resize_buffer()' needs GM 8.1.141.",0)
-return 0
+    show_error("We're sorry, but the gm82core function 'window_resize_buffer()' needs GM 8.1.141.",0)
+    return 0
 
 
 #define string_number
