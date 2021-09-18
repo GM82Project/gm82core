@@ -108,7 +108,7 @@
 
 #define surface_disengage
     if (__gm82core_appsurf_interop) {
-        surface_engage(application_surface,__resw,__resh)
+        surface_engage(application_surface,core.__resw,core.__resh)
     } else {
         surface_reset_target()
         d3d_reset_projection()
