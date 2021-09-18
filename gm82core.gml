@@ -94,20 +94,21 @@
 
 #define surface_engage
 ///surface_engage(id,width,height)
-    var s;
-    if (surface_exists(argument0)) {
-        surface_set_target(argument0)
-        return argument0
-    } else {
-        s=surface_create(argument1,argument2)
-        surface_set_target(s)
-        return s
+    var s;s=argument0
+    if (surface_exists(s)) {
+        if (surface_get_width(s)==argument1 && surface_get_height(s)==argument2) {
+            surface_set_target(s)
+            return s
+        }
     }
+    s=surface_create(argument1,argument2)
+    surface_set_target(s)
+    return s
 
 
 #define surface_disengage
     if (__gm82core_appsurf_interop) {
-        surface_set_target(application_surface)
+        surface_engage(application_surface,__resw,__resh)
     } else {
         surface_reset_target()
         d3d_reset_projection()
