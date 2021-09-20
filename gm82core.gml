@@ -512,7 +512,6 @@ return (color_get_red(argument0)*0.2126+color_get_green(argument0)*0.7152+color_
             max(1,argument6-argument7-zfrom),                          //znear
             argument8-argument7-zfrom                                  //zfar
         )
-        d3d_start()
     }
     
 
