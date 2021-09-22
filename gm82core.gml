@@ -38,18 +38,19 @@
 
 
 #define draw_enable_alphablend
+    ///draw_enable_alphablend(enable)
     YoYo_EnableAlphaBlend(argument0)
 
 
 #define direction_to_object
-    ///(obj/inst)
-    var n;n=instance_nearest(x,y,argument0)
-    if (n==noone) return -1
-    return point_direction(x,y,n.x,n.y)
+    ///direction_to_object(obj)
+    var __n;__n=instance_nearest(x,y,argument0)
+    if (__n==noone) return -1
+    return point_direction(x,y,__n.x,__n.y)
 
 
 #define window_resize_buffer
-    //window_resize_buffer(w,h)
+    ///window_resize_buffer(w,h)
     //this function uses an offset specific to 8.1.141 so we need to check first
     //thanks chernov <3
     if (execute_string("return get_function_address('display_get_orientation')") <= 0) {
@@ -58,55 +59,58 @@
         return 1
     }
 
-    show_error("We're sorry, but the gm82core function 'window_resize_buffer()' needs GM 8.1.141.",0)
+    show_error("Sorry, but the gm82core function 'window_resize_buffer()' needs GM 8.1.141.",0)
     return 0
 
 
 #define string_number
-    var p,m,str;
-    if (string_pos("-",argument0)) m="-"
-    else m=""
-    p=string_pos(".",argument0)
-    if (p) {
-        str=string_digits(string_copy(argument0,1,p-1))+"."+string_digits(string_delete(argument0,1,p))
-    } else str=string_digits(argument0)
-    while (string_char_at(str,1)=="0") str=string_delete(str,1,1)
-    if (str="") return "0"
-    return m+str
+    ///string_number(string)
+    var __p,__m,__str;
+    if (string_pos("-",argument0)) __m="-"
+    else __m=""
+    __p=string_pos(".",argument0)
+    if (__p) {
+        __str=string_digits(string_copy(argument0,1,__p-1))+"."+string_digits(string_delete(argument0,1,__p))
+    } else __str=string_digits(argument0)
+    while (string_char_at(__str,1)=="0") __str=string_delete(__str,1,1)
+    if (__str="") return "0"
+    return __m+__str
 
 
 #define string_better
-    ///string_better(real):string
+    ///string_better(real)
     // string(1.012562536) = "1.01"
     // string_better(1.012562536) = "1.01256254"
-    var s;
+    var __s;
 
-    s=string_format(argument0,0,8)+";"
-    repeat (8) s=string_replace(s,"0;",";")
-    return string_replace(string_replace(s,".;",""),";","")
+    __s=string_format(argument0,0,8)+";"
+    repeat (8) __s=string_replace(__s,"0;",";")
+    return string_replace(string_replace(__s,".;",""),";","")
 
 
 #define draw_make_opaque
+    ///draw_make_opaque()
     draw_set_blend_mode(bm_add)
     draw_rectangle_color(-9999999,-9999999,9999999,9999999,0,0,0,0,0)
     draw_set_blend_mode(0)
 
 
 #define surface_engage
-///surface_engage(id,width,height)
-    var s;s=argument0
-    if (surface_exists(s)) {
-        if (surface_get_width(s)==argument1 && surface_get_height(s)==argument2) {
-            surface_set_target(s)
-            return s
+    ///surface_engage(id,width,height)
+    var __s;__s=argument0
+    if (surface_exists(__s)) {
+        if (surface_get_width(__s)==argument1 && surface_get_height(__s)==argument2) {
+            surface_set_target(__s)
+            return __s
         }
     }
-    s=surface_create(argument1,argument2)
-    surface_set_target(s)
-    return s
+    __s=surface_create(argument1,argument2)
+    surface_set_target(__s)
+    return __s
 
 
 #define surface_disengage
+    ///surface_disengage()
     if (__gm82core_appsurf_interop) {
         surface_engage(application_surface,core.__resw,core.__resh)
     } else {
@@ -116,63 +120,63 @@
 
 
 #define base64_encode
-/// base64_encode(str)
-//
-//  Returns a string of base64 digits (RFC 3548), 6 bits each.
-//
-//      str         raw bytes, 8 bits each, string
-//
-/// GMLscripts.com/license
-{
-    var str, len, pad, tab, b64, i, bin;
-    str = argument0;
-    len = string_length(str);
-    pad = "=";
-    tab = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
-    b64 = "";
-    for (i=0; i<len; i+=3) {
-        bin[0] = ord(string_char_at(str,i+1));
-        bin[1] = ord(string_char_at(str,i+2));
-        bin[2] = ord(string_char_at(str,i+3));
-        b64 += string_char_at(tab,1+(bin[0]>>2));
-        b64 += string_char_at(tab,1+(((bin[0]&3)<<4)|(bin[1]>>4)));
-        if (i+1 >= len) b64 += pad;
-        else b64 += string_char_at(tab,1+(((bin[1]&15)<<2)|(bin[2]>>6)));
-        if (i+2 >= len) b64 += pad;
-        else b64 += string_char_at(tab,1+(bin[2]&63));
+    /// base64_encode(str)
+    //
+    //  Returns a string of base64 digits (RFC 3548), 6 bits each.
+    //
+    //      str         raw bytes, 8 bits each, string
+    //
+    /// GMLscripts.com/license
+    {
+        var __str, __len, __pad, __tab, __b64, __i, __bin;
+        __str = argument0;
+        __len = string_length(__str);
+        __pad = "=";
+        __tab = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+        __b64 = "";
+        for (__i=0; __i<__len; __i+=3) {
+            __bin[0] = ord(string_char_at(__str,__i+1));
+            __bin[1] = ord(string_char_at(__str,__i+2));
+            __bin[2] = ord(string_char_at(__str,__i+3));
+            __b64 += string_char_at(__tab,1+(__bin[0]>>2));
+            __b64 += string_char_at(__tab,1+(((__bin[0]&3)<<4)|(__bin[1]>>4)));
+            if (__i+1 >= __len) __b64 += __pad;
+            else __b64 += string_char_at(__tab,1+(((__bin[1]&15)<<2)|(__bin[2]>>6)));
+            if (__i+2 >= len) __b64 += __pad;
+            else __b64 += string_char_at(__tab,1+(__bin[2]&63));
+        }
+        return __b64;
     }
-    return b64;
-}
 
 #define base64_decode
-/// base64_decode(b64)
-//
-//  Returns a string of raw bytes, 8 bits each. b64 strings with 
-//  characters outside of the RFC 3548 standard or with excess
-//  padding characters at the end will not decode correctly.
-//
-//      b64         base64 digits (RFC 3548), 6 bits each, string
-//
-/// GMLscripts.com/license
-{
-    var b64, len, pad, tab, str, i, bin;
-    b64 = argument0;
-    len = string_length(b64);
-    pad = "=";
-    tab = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
-    str = "";
-    while (string_length(b64) mod 4) b64 += pad;
-    for(i=0; i<len; i+=4) {
-        bin[0] = string_pos(string_char_at(b64,i+1),tab)-1;
-        bin[1] = string_pos(string_char_at(b64,i+2),tab)-1;
-        bin[2] = string_pos(string_char_at(b64,i+3),tab)-1;
-        bin[3] = string_pos(string_char_at(b64,i+4),tab)-1;
-        str += chr(255&(bin[0]<<2)|(bin[1]>>4));
-        if (bin[2] >= 0) str += chr(255&(bin[1]<<4)|(bin[2]>>2));
-        if (bin[3] >= 0) str += chr(255&(bin[2]<<6)|(bin[3]));
+    /// base64_decode(b64)
+    //
+    //  Returns a string of raw bytes, 8 bits each. b64 strings with 
+    //  characters outside of the RFC 3548 standard or with excess
+    //  padding characters at the end will not decode correctly.
+    //
+    //      b64         base64 digits (RFC 3548), 6 bits each, string
+    //
+    /// GMLscripts.com/license
+    {
+        var __b64, __len, __pad, __tab, __str, __i, __bin;
+        __b64 = argument0;
+        __len = string_length(__b64);
+        __pad = "=";
+        __tab = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+        __str = "";
+        while (string_length(__b64) mod 4) __b64 += __pad;
+        for(__i=0; __i<__len; __i+=4) {
+            __bin[0] = string_pos(string_char_at(__b64,__i+1),__tab)-1;
+            __bin[1] = string_pos(string_char_at(__b64,__i+2),__tab)-1;
+            __bin[2] = string_pos(string_char_at(__b64,__i+3),__tab)-1;
+            __bin[3] = string_pos(string_char_at(__b64,__i+4),__tab)-1;
+            __str += chr(255&(__bin[0]<<2)|(__bin[1]>>4));
+            if (__bin[2] >= 0) __str += chr(255&(__bin[1]<<4)|(__bin[2]>>2));
+            if (__bin[3] >= 0) __str += chr(255&(__bin[2]<<6)|(__bin[3]));
+        }
+        return __str;
     }
-    return str;
-}
 
 
 #define d3d_reset_projection
@@ -183,8 +187,8 @@
 
 
 #define move_towards_gravity
-///move_towards_gravity(xto,yto,gravity)
-    var dX, dY, ang;
+    ///move_towards_gravity(xto,yto,gravity)
+    var __dX, __dY, __ang;
     
     if (argument2==0) {
         show_error("Calling move_towards_gravity with gravity==0.",1)
@@ -192,47 +196,50 @@
     }
 
     gravity=argument2
-    dX=argument0-x
-    dY=argument1-y
-    ang=(arctan2(-dY,dX)+degtorad(90))/2
-    if (ang!=pi/2) {
-        speed=dX/(cos(ang)*sqrt(2*(dY+tan(ang)*dX)/gravity))
-        direction=radtodeg(ang)
+    __dX=argument0-x
+    __dY=argument1-y
+    __ang=(arctan2(-__dY,__dX)+degtorad(90))/2
+    if (__ang!=pi/2) {
+        speed=__dX/(cos(__ang)*sqrt(2*(__dY+tan(__ang)*__dX)/gravity))
+        direction=radtodeg(__ang)
     }
 
 
 #define event_step
+    ///event_step()
     event_perform(ev_step, ev_step_normal)
 
 
 #define string_hex
-    var n,r;
-    n=argument0
-    r=""
+    ///string_hex(real)
+    var __n,__r;
+    __n=argument0
+    __r=""
     
-    while (n) {
-        r=string_char_at("0123456789ABCDEF",n mod 16+1)+r
-        n=n div 16
+    while (__n) {
+        __r=string_char_at("0123456789ABCDEF",__n mod 16+1)+__r
+        __n=__n div 16
     }
-    return r
+    return __r
 
 
 #define real_hex
-    var d,r,l,i;
-    r=0
-    d=string_upper(argument0)
-    l=string_length(d)
+    ///real_hex(string)
+    var __d,__r,__l,__i;
+    __r=0
+    __d=string_upper(argument0)
+    __l=string_length(__d)
     
-    for (i=1;i<=l;i+=1) r=r*16+(string_pos(string_char_at(d,i),"0123456789ABCDEF")-1)
-    return r
+    for (__i=1;__i<=__l;__i+=1) __r=__r*16+(string_pos(string_char_at(__d,__i),"0123456789ABCDEF")-1)
+    return __r
 
 
 #define gauss
     ///gauss(range)
-    var i;
-    i=0
-    repeat (12) i+=random(1)
-    return ((i-6)/6+0.5)*argument0
+    var __i;
+    __i=0
+    repeat (12) __i+=random(1)
+    return ((__i-6)/6+0.5)*argument0
 
 
 #define file_text_read_all
@@ -252,20 +259,22 @@
 
 
 #define registry_read_dword
-    var ret;
-    ret=__registry_read_dword(string_replace_all(filename_dir(argument0),"/","\"),filename_name(argument0))
+    ///registry_read_dword(addr)
+    var __ret;
+    __ret=__registry_read_dword(string_replace_all(filename_dir(argument0),"/","\"),filename_name(argument0))
     if (argument_count==2) {
-        if (ret==noone) return argument[1]        
+        if (__ret==noone) return argument[1]        
     }
-    return ret
+    return __ret
 
 
 #define registry_write_dword
+    ///registry_write_dword(addr,val)
     return __registry_write_dword(string_replace_all(filename_dir(argument0),"/","\"),filename_name(argument0),real(argument1)&$ffffffff)
 
 
 #define merge_color_corrected
-///merge_color_corrected(col1,col2,factor)
+    ///merge_color_corrected(col1,col2,factor)
     var __r1,__g1,__b1,__r2,__g2,__b2;
     __r1=sqr(color_get_red  (argument0))
     __g1=sqr(color_get_green(argument0))
@@ -283,17 +292,19 @@
 
 
 #define color_get_luminance
-///color_get_luminance(color)
-//kodak human luminance perception factors
-
-return (color_get_red(argument0)*0.2126+color_get_green(argument0)*0.7152+color_get_blue(argument0)*0.0722)
+    ///color_get_luminance(color)
+    
+    //kodak human luminance perception factors
+    return (color_get_red(argument0)*0.2126+color_get_green(argument0)*0.7152+color_get_blue(argument0)*0.0722)
 
 
 #define instance_destroy_id
+    ///instance_destroy_id(obj)
     with (argument0) instance_destroy()
 
 
 #define strong
+    ///strong(val1,val2,...)
     var __i,__str;
     
     __str=""
@@ -302,31 +313,32 @@ return (color_get_red(argument0)*0.2126+color_get_green(argument0)*0.7152+color_
 
 
 #define instance_some
+    ///instance_some(obj)
     return instance_find(argument0,irandom(instance_number(argument0)-1))
 
 
 #define ds_map_read_ini
-///ds_map_read_ini(map,filename)
-    var map,f,section,str,p;
+    ///ds_map_read_ini(map,filename)
+    var __map,__f,__section,__str,__p;
 
     if (file_exists(argument1)) {
-        map=argument0
+        __map=argument0
         
-        f=file_text_open_read(argument1)
-        section=""
-        do {            
-            str=file_text_read_string(f)
-            file_text_readln(f)
-            if (str!="") {
-                p=string_pos("=",str)
-                if (string_pos("[",str) && string_pos("]",str) && !p)
-                    section=string_replace(string_replace(str,"[",""),"]","")+" "
-                else if (p) {
-                    ds_map_add(map,section+string_copy(str,1,p-1),string_delete(str,1,p))
+        __f=file_text_open_read(argument1)
+        __section=""
+        while (!file_text_eof(__f)) {            
+            str=file_text_read_string(__f)
+            file_text_readln(__f)
+            if (__str!="") {
+                __p=string_pos("=",__str)
+                if (string_pos("[",__str) && string_pos("]",__str) && !__p)
+                    __section=string_replace(string_replace(__str,"[",""),"]","")+" "
+                else if (__p) {
+                    ds_map_add(__map,__section+string_copy(__str,1,p-1),string_delete(__str,1,__p))
                 }            
             }
-        } until (file_text_eof(f))        
-        file_text_close(f)
+        }   
+        file_text_close(__f)
         
         return 1
     }
@@ -335,79 +347,79 @@ return (color_get_red(argument0)*0.2126+color_get_green(argument0)*0.7152+color_
 
 
 #define pick
+    ///pick(which,opt1,opt2,...)
     return argument[(argument0 mod (argument_count-1))+1]
 
 
 #define alarm_get
+    ///alarm_get(numb)
     return alarm[argument0]
 
 
 #define alarm_set
+    ///alarm_set(numb)
     alarm[argument0]=argument1
 
 
 #define angle_difference_3d
     ///angle_difference_3d(x1,y1,z1,x2,y2,z2)
-    var x1,y1,z1,x2,y2,z2,a,b;
+    var __x1,__y1,__z1,__x2,__y2,__z2,__a,__b;
                 
-    x1=argument0
-    y1=argument1
-    z1=argument2
-    x2=argument3
-    y2=argument4
-    z2=argument5
+    __x1=argument0
+    __y1=argument1
+    __z1=argument2
+    __x2=argument3
+    __y2=argument4
+    __z2=argument5
 
-    a=point_distance_3d(0,0,0,x1,y1,z1)
-    b=point_distance_3d(0,0,0,x2,y2,z2)
+    __a=point_distance_3d(0,0,0,__x1,__y1,__z1)
+    __b=point_distance_3d(0,0,0,__x2,__y2,__z2)
 
-    if (a*b==0) return 180
+    if (__a*__b==0) return 180
 
-    return radtodeg(arccos(median(-1,dot_product_3d(x1/a,y1/a,z1/a,x2/b,y2/b,z2/b),1)))
+    return radtodeg(arccos(median(-1,dot_product_3d(__x1/__a,__y1/__a,__z1/__a,__x2/__b,__y2/__b,__z2/__b),1)))
 
 
 #define dot_product_3d_normalised
     ///dot_product_3d_normalised(x1,y1,z1,x2,y2,z2)
-    var x1,y1,z1,x2,y2,z2,a,b;
+    var __x1,__y1,__z1,__x2,__y2,__z2,__a,__b;
                 
-    x1=argument0
-    y1=argument1
-    z1=argument2
-    x2=argument3
-    y2=argument4
-    z2=argument5
+    __x1=argument0
+    __y1=argument1
+    __z1=argument2
+    __x2=argument3
+    __y2=argument4
+    __z2=argument5
 
-    a=point_distance_3d(0,0,0,x1,y1,z1)
-    b=point_distance_3d(0,0,0,x2,y2,z2)
+    __a=point_distance_3d(0,0,0,__x1,__y1,__z1)
+    __b=point_distance_3d(0,0,0,__x2,__y2,__z2)
 
-    return dot_product_3d(x1/a,y1/a,z1/a,x2/b,y2/b,z2/b)
+    return dot_product_3d(__x1/__a,__y1/__a,__z1/__a,__x2/__b,__y2/__b,__z2/__b)
 
 
 #define dot_product_normalised
-    ///dot_product(x1,y1,x2,y2)
-    var x1,y1,x2,y2,a,b;
+    ///dot_product_normalised(x1,y1,x2,y2)
+    var __x1,__y1,__x2,__y2,__a,__b;
                 
-    x1=argument0
-    y1=argument1
-    x2=argument2
-    y2=argument3
+    __x1=argument0
+    __y1=argument1
+    __x2=argument2
+    __y2=argument3
 
-    a=point_distance(0,0,x1,y1)
-    b=point_distance(0,0,x2,y2)
+    __a=point_distance(0,0,__x1,__y1)
+    __b=point_distance(0,0,__x2,__y2)
 
-    return dot_product(x1/a,y1/a,x2/b,y2/b)
+    return dot_product(__x1/__a,__y1/__a,__x2/__b,__y2/__b)
 
 
 #define ds_map_set
     ///ds_map_set(map,key,value)
-    //convenience for existing key replacement
-
     if (ds_map_exists(argument0,argument1)) ds_map_replace(argument0,argument1,argument2)
     else ds_map_add(argument0,argument1,argument2)
 
 
 #define ds_map_get
     ///ds_map_get(map,key)
-
     if (ds_map_exists(argument0,argument1)) return ds_map_find_value(argument0,argument1)
     return undefined
 
@@ -418,10 +430,12 @@ return (color_get_red(argument0)*0.2126+color_get_green(argument0)*0.7152+color_
 
 
 #define get_timer
+    ///get_timer()
     return (date_current_time()*1000)/__gm82core_second
 
 
 #define string_ord_at
+    ///string_ord_at(str,pos)
     return ord(string_char_at(argument0,argument1))
 
 
@@ -430,31 +444,36 @@ return (color_get_red(argument0)*0.2126+color_get_green(argument0)*0.7152+color_
 
 
 #define variable_instance_exists
+    ///variable_instance_exists(inst,var)
     with (argument0) return variable_local_exists(argument1)
 
 
 #define variable_instance_get
+    ///variable_instance_get(inst,var)
     with (argument0) return variable_local_get(argument1)
 
 
 #define variable_instance_set
+    ///variable_instance_set(inst,var,val)
     with (argument0) variable_local_set(argument1,argument2)
 
 
 #define window_has_focus
+    ///window_has_focus()
     return __gm82core_object.__gm82core_hasfocus
 
 
 #define window_minimize
-    var owo;
-    owo=string(game_id)+string(irandom(1000000))
-    set_application_title(owo)
-    __gm82core_min(owo)
+    ///window_minimize()
+    var __owo;
+    __owo=string(game_id)+string(irandom(1000000))
+    set_application_title(__owo)
+    __gm82core_min(__owo)
     set_application_title(room_caption)
 
     
 #define window_set_exclusive_fullscreen
-///window_set_exclusive_fullscreen(enabled)
+    ///window_set_exclusive_fullscreen(enabled)
     with (__gm82core_object) {
         if (argument0 ^ window_get_fullscreen()) {
             if (window_get_fullscreen()) {
@@ -473,6 +492,7 @@ return (color_get_red(argument0)*0.2126+color_get_green(argument0)*0.7152+color_
 
 
 #define mouse_check_direct
+    ///mouse_check_direct()
     switch (argument0) {
         case mb_left  : return keyboard_check_direct(1)
         case mb_right : return keyboard_check_direct(2)
@@ -482,68 +502,72 @@ return (color_get_red(argument0)*0.2126+color_get_green(argument0)*0.7152+color_
 
 
 #define mouse_back_button
+    ///mouse_back_button()
     if (__gm82core_object.__gm82core_hasfocus) return keyboard_check_direct(5)
     return 0
 
     
 #define mouse_forward_button
+    ///mouse_forward_button()
     if (__gm82core_object.__gm82core_hasfocus) return keyboard_check_direct(6)
     return 0
 
 
 #define d3d_set_projection_simple
-///d3d_set_projection_simple(x,y,w,h,angle,dollyzoom,depthmin,depth,depthmax)
-    var xfrom,yfrom,zfrom;
+    ///d3d_set_projection_simple(x,y,w,h,angle,dollyzoom,depthmin,depthfocus,depthmax)
+    var __xfrom,__yfrom,__zfrom;
 
     if (argument5<=0) {
         // ¯\_(º_o)_/¯
         d3d_set_projection_ortho(argument0,argument1,argument2,argument3,argument4)
     } else {
-        xfrom=argument0+argument2/2
-        yfrom=argument1+argument3/2    
-        zfrom=min(-tan(degtorad(90*(1-argument5)))*argument3/2,argument6-argument7)
+        __xfrom=argument0+argument2/2
+        __yfrom=argument1+argument3/2    
+        __zfrom=min(-tan(degtorad(90*(1-argument5)))*argument3/2,argument6-argument7)
 
         d3d_set_projection_ext(
-            xfrom,yfrom,zfrom+argument7,                               //from
-            xfrom,yfrom,argument7,                                     //to
+            __xfrom,__yfrom,__zfrom+argument7,                           //from
+            __xfrom,__yfrom,argument7,                                   //to
             lengthdir_x(1,-argument4+90),lengthdir_y(1,-argument4+90),0, //up
-            -point_direction(zfrom,0,0,argument3/2)*2,                 //angle
-            -argument2/argument3,                                      //aspect
-            max(1,argument6-argument7-zfrom),                          //znear
-            argument8-argument7-zfrom                                  //zfar
+            -point_direction(__zfrom,0,0,argument3/2)*2,                 //angle
+            -argument2/argument3,                                        //aspect
+            max(1,argument6-argument7-__zfrom),                          //znear
+            argument8-argument7-__zfrom                                  //zfar
         )
     }
     
 
 #define mouse_in_window
-///mouse_in_window()
-    var dx,dy,wx,wy,ww,wh;
+    ///mouse_in_window()
+    var __dx,__dy,__wx,__wy,__ww,__wh;
 
-    dx=display_mouse_get_x();
-    dy=display_mouse_get_y();
-    wx=window_get_x();
-    wy=window_get_y();
-    ww=window_get_width();
-    wh=window_get_height();
+    __dx=display_mouse_get_x()
+    __dy=display_mouse_get_y()
+    __wx=window_get_x()
+    __wy=window_get_y()
+    __ww=window_get_width()
+    __wh=window_get_height()
 
-    return (dx >= wx && dy >= wy && dx < wx + ww && dy < wy + wh);
+    return (__dx>=__wx && __dy>=__wy && __dx<__wx+__ww && __dy<__wy+__wh)
 
 
 #define directory_previous
-///directory_previous(dir)
-    var fn,l;
+    ///directory_previous(dir)
+    var __fn,__l;
 
-    fn=string_replace_all(argument0,"/","\")
-    l=string_length(fn)
-    if (string_char_at(fn,l)=="\") fn=string_copy(fn,1,l-2)
-    return filename_dir(fn)+"\"
+    __fn=string_replace_all(argument0,"/","\")
+    __l=string_length(__fn)
+    if (string_char_at(__fn,__l)=="\") __fn=string_copy(__fn,1,__l-2)
+    return filename_dir(__fn)+"\"
 
 
 #define is_undefined
+    ///is_undefined(val)
     return string(argument0)==undefined
 
 
 #define filename_remove_ext
+    ///filename_remove_ext(fn)
     return string_copy(argument0,1,string_pos(".",argument0)-1)
 
 
@@ -553,6 +577,7 @@ return (color_get_red(argument0)*0.2126+color_get_green(argument0)*0.7152+color_
 
 
 #define outside_room
+    ///outside_room()
     //workaround for instances without a sprite
     if (bbox_right-bbox_left+bbox_bottom-bbox_top == 0)
     return x >= room_width
@@ -567,7 +592,7 @@ return (color_get_red(argument0)*0.2126+color_get_green(argument0)*0.7152+color_
 
 
 #define instance_create_moving
-    //(x,y,object,speed,direction)
+    ///instance_create_moving(x,y,object,speed,direction)
     action_create_object_motion(argument2,argument0,argument1,argument3,argument4)
     return instance_find(argument2,instance_number(argument2)-1)
 
