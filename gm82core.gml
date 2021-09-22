@@ -180,6 +180,7 @@
 
 
 #define d3d_reset_projection
+    ///d3d_reset_projection()
     if (view_enabled)
         d3d_set_projection_ortho(view_xview[view_current],view_yview[view_current],view_wview[view_current],view_hview[view_current],view_angle[view_current])
     else
@@ -244,17 +245,21 @@
 
 
 #define file_text_read_all
-    var f,str;
+    ///file_text_read_all(filename,[line separator])
+    var __f,__str,__lf;
+    
+    if (argument_count==2) __lf=argument1
+    else __lf=chr(13)+chr(10)
     
     if (file_exists(argument0)) {
-        str=""
-        f=file_text_open_read(argument0)
-        do {
-            str+=file_text_read_string(f)+chr(13)+chr(10)
-            file_text_readln(f)
-        } until (file_text_eof(f))        
-        file_text_close(f)
-        return str
+        __str=""
+        __f=file_text_open_read(argument0)
+        while (!file_text_eof(__f)) {
+            str+=file_text_read_string(__f)+__lf
+            file_text_readln(__f)
+        }
+        file_text_close(__f)
+        return __str
     }
     return noone
 
@@ -575,8 +580,19 @@
 
 
 #define date_get_timestamp
-    var t; t=date_current_datetime()
-    return string_pad(date_get_day(t),2)+"/"+string_pad(date_get_month(t),2)+"/"+string_pad(date_get_year(t) mod 100,2)+" "+string_pad(date_get_hour(t),2)+":"+string_pad(date_get_minute(t),2)
+    ///date_get_timestamp([date])
+    var __t;
+    if (argument_count) __t=argument0 else __t=date_current_datetime()
+    return
+        string_pad(date_get_day(__t),2)+
+        "/"+
+        string_pad(date_get_month(__t),2)+
+        "/"+
+        string_pad(date_get_year(__t) mod 100,2)+
+        " "+
+        string_pad(date_get_hour(__t),2)+
+        ":"+
+        string_pad(date_get_minute(__t),2)
 
 
 #define outside_room
