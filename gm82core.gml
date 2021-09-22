@@ -255,7 +255,7 @@
         __str=""
         __f=file_text_open_read(argument0)
         while (!file_text_eof(__f)) {
-            str+=file_text_read_string(__f)+__lf
+            __str+=file_text_read_string(__f)+__lf
             file_text_readln(__f)
         }
         file_text_close(__f)
@@ -333,7 +333,7 @@
         __f=file_text_open_read(argument1)
         __section=""
         while (!file_text_eof(__f)) {            
-            str=file_text_read_string(__f)
+            __str=file_text_read_string(__f)
             file_text_readln(__f)
             if (__str!="") {
                 __p=string_pos("=",__str)
