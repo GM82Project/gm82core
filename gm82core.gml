@@ -441,7 +441,9 @@
 
 
 #define url_open
-    execute_shell(argument0,"")
+    ///url_open(url)
+    if (!string_pos("http://",argument0) && !string_pos("https://",argument0)) execute_shell("http://"+argument0,"")
+    else execute_shell(argument0,"")
 
 
 #define variable_instance_exists
