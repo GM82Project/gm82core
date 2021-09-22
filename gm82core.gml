@@ -191,7 +191,8 @@
     var __dX, __dY, __ang;
     
     if (argument2==0) {
-        show_error("Calling move_towards_gravity with gravity==0.",1)
+        direction=point_direction(x,y,argument0,argument1)
+        speed=1
         exit
     }
 
