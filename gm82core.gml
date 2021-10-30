@@ -2,6 +2,7 @@
     object_event_add(__gm82core_object,ev_create,0,"if (instance_number(__gm82core_object)>1) instance_destroy()")
     object_event_add(__gm82core_object,ev_step,ev_step_begin,"__gm82core_update()")
     object_event_add(__gm82core_object,ev_destroy,0,"instance_copy(0)")
+    object_event_add(__gm82core_object,ev_other,ev_room_end,"persistent=true")
     object_set_persistent(__gm82core_object,1)
     room_instance_add(room_first,0,0,__gm82core_object)
         
