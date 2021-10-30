@@ -340,7 +340,7 @@
                 if (string_pos("[",__str) && string_pos("]",__str) && !__p)
                     __section=string_replace(string_replace(__str,"[",""),"]","")+" "
                 else if (__p) {
-                    ds_map_add(__map,__section+string_copy(__str,1,p-1),string_delete(__str,1,__p))
+                    ds_map_add(__map,__section+string_copy(__str,1,__p-1),string_delete(__str,1,__p))
                 }            
             }
         }   
