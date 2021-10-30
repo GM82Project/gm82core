@@ -220,8 +220,9 @@ surface_disengage()
     Resets target, and fixes viewport based on studio behavior.
     Also resets target properly when using gm82AppSurf.
     
-file_text_read_all(fname)
+file_text_read_all(fname,[separator])
     Reads an entire text file and returns its contents as a string.
+    The optional <separator> string is placed between lines (default crlf).
     
 event_step()
     Executes this instance's normal step event.
@@ -229,6 +230,10 @@ event_step()
 window_resize_buffer(w,h)
     Resizes the internal window buffer to a desired resolution.
     Can be used to fix messy pixels when resizing the window.
+
+date_get_timestamp([date])
+    Returns a standard timestamp string from a <date> (default current date)
+    Format is: "dd/mm/yy hh:mm"
 
 d3d_reset_projection()
     Restores the current view's projection.
