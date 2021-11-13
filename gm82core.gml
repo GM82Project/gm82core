@@ -640,3 +640,19 @@
     action_create_object_motion(argument2,argument0,argument1,argument3,argument4)
     return instance_find(argument2,instance_number(argument2)-1)
 
+
+#define ds_list_equal
+    ///ds_list_equal(list1,list2)
+    var i,s;
+
+    s=ds_list_size(argument0)
+    if (s!=ds_list_size(argument1)) return false
+
+    i=0
+    repeat (s) {
+        if (ds_list_find_value(argument0,i)!=ds_list_find_value(argument1,i)) return false
+        i+=1
+    }
+
+    return true
+
