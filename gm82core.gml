@@ -637,8 +637,9 @@
 
 #define instance_create_moving
     ///instance_create_moving(x,y,object,speed,direction)
+    var lastinst;lastinst=instance_count
     action_create_object_motion(argument2,argument0,argument1,argument3,argument4)
-    return instance_find(argument2,instance_number(argument2)-1)
+    return instance_id[lastinst]
 
 
 #define ds_list_equal
