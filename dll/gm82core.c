@@ -9,6 +9,43 @@
 #pragma comment(lib, "advapi32.lib")
 #pragma comment(lib, "user32.lib")
 
+//begin high resolution timer//
+
+ULONGLONG resolution = 1000000, lastTime = 0, frequency = 1;
+
+GMREAL hrt_init() {
+	if (QueryPerformanceFrequency((LARGE_INTEGER *)&frequency) && QueryPerformanceCounter((LARGE_INTEGER*)&lastTime)) {
+		return 1;
+	}
+	else {
+		return 0;
+	}
+}
+
+GMREAL hrt_now() {
+	ULONGLONG now;
+	if (QueryPerformanceCounter((LARGE_INTEGER*)&now)) {
+		return (double)(now*resolution/frequency);
+	}
+	else {
+		return -1.0;
+	}
+}
+
+GMREAL hrt_delta() {
+	ULONGLONG now, lt;
+	if (QueryPerformanceCounter((LARGE_INTEGER*)&now)) {
+		lt = lastTime;
+		lastTime = now;
+		return (double)((now - lt)*resolution/frequency);
+	}
+	else {
+		return -1.0;
+	}
+}
+
+//end high resolution timer//
+
 //begin really terrible gm hacking//
 
 const void* delphi_clear = (void*)0x4072d8;

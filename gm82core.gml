@@ -3,6 +3,8 @@
     object_event_add(__gm82core_object,ev_step,ev_step_begin,"__gm82core_update()")
     object_event_add(__gm82core_object,ev_destroy,0,"instance_copy(0)")
     object_event_add(__gm82core_object,ev_other,ev_room_end,"persistent=true")
+    object_event_add(__gm82core_object,ev_other,ev_animation_end,"fps_real=room_speed/max(0.00000001,room_speed*((get_timer()-__gm82core_timer)/1000000))")
+    
     object_set_persistent(__gm82core_object,1)
     room_instance_add(room_first,0,0,__gm82core_object)
         
@@ -10,32 +12,24 @@
     globalvar __gm82core_timer,__gm82core_dtmemi,__gm82core_dtmema;
     globalvar __gm82core_version,__gm82core_appsurf_interop;
     
+    __gm82core_hrt_init()
+    
     delta_time=1000/30
-    fps_real=30
+    fps_real=00
     __gm82core_timer=get_timer()
-    __gm82core_dtmemi=0
-    __gm82core_dtmema[10]=0
-    __gm82core_version=132
+    __gm82core_version=134
     
     surface_free(surface_create(8,8))
     draw_set_color($ffffff)
 
 
 #define __gm82core_update
-    var tmp,i;
+    var tmp;
     
     __gm82core_hasfocus=(__gm82core_getfore()==window_handle())
     tmp=get_timer()
     delta_time=tmp-__gm82core_timer
     __gm82core_timer=tmp
-    
-    if (delta_time!=0) {
-        __gm82core_dtmema[__gm82core_dtmemi]=1000/delta_time
-        __gm82core_dtmemi=(__gm82core_dtmemi+1) mod 10
-        if (!__gm82core_dtmemi) {
-            fps_real=0 for (i=0;i<10;i+=1) fps_real+=__gm82core_dtmema[i]/10
-        }
-    }
 
 
 #define draw_enable_alphablend
@@ -452,11 +446,6 @@
 #define string_pad
     ///string_pad(number,digits)
     return string_repeat("-",argument0<0)+string_replace_all(string_format(abs(argument0),argument1,0)," ","0")
-
-
-#define get_timer
-    ///get_timer()
-    return (date_current_time()*1000)/__gm82core_second
 
 
 #define string_ord_at

@@ -149,7 +149,7 @@ draw_enable_alphablend(enable)
     Can be used to turn off alpha blending. Useful for drawing screen surfaces.
 
 get_timer()
-    Gets the current system time in ms.
+    Gets the current system time in nanoseconds.
 
 string_ord_at(str,pos)
     Gets the character code at position <pos> in the string.
@@ -174,6 +174,9 @@ is_undefined()
 
 
 [convenience functions]
+
+get_delta()
+    Gets the time since the last call of this function in nanoseconds.
 
 direction_to_object(obj)
     Returns the direction towards the nearest instance of <obj>, or -1 if none.
@@ -303,5 +306,6 @@ windows_version()
 
 -> This extension is required for GM8.2 Sound and GM8.2 Joystick.
 
+-> Created by renex & Floogle
 
-- Created by renex && floogle -
+-> Includes parts of High Resolution Timer 2 - check license.txt
