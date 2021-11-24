@@ -58,6 +58,11 @@ static size_t tokenseplen = 0;
 
 //GMREAL funny_test(double ptr, double value) {int a = (int)ptr;int* where = (int*)a;int what = (int)value;*where = what;return 0;
 
+GMREAL __gm82core_cleardepth() {
+    ((void (*)())0x563a8c)(); //clear depth buffer
+    return 1;
+}
+
 GMREAL __gm82core_setfullscreen(double hz) {
     int z = (int)hz;
     

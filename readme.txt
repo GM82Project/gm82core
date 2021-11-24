@@ -175,6 +175,9 @@ is_undefined()
 
 [convenience functions]
 
+d3d_clear_depth()
+    Clears the depth buffer. Only works in 3d mode.
+
 get_delta()
     Gets the time since the last call of this function in nanoseconds.
 
