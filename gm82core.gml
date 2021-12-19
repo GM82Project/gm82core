@@ -633,16 +633,24 @@
 
 #define ds_list_equal
     ///ds_list_equal(list1,list2)
-    var i,s;
+    var __i,__s;
 
-    s=ds_list_size(argument0)
-    if (s!=ds_list_size(argument1)) return false
+    __s=ds_list_size(argument0)
+    if (__s!=ds_list_size(argument1)) return false
 
-    i=0
-    repeat (s) {
-        if (ds_list_find_value(argument0,i)!=ds_list_find_value(argument1,i)) return false
-        i+=1
+    __i=0
+    repeat (__s) {
+        if (ds_list_find_value(argument0,__i)!=ds_list_find_value(argument1,__i)) return false
+        __i+=1
     }
 
     return true
+
+#define file_size
+    var __f,__size;
+    __f=file_bin_open(argument0,0)
+    __size=file_bin_size(__f)
+    file_bin_close(__f)
+    return __size
+
 
