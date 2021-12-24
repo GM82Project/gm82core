@@ -8,14 +8,16 @@
     object_set_persistent(__gm82core_object,1)
     room_instance_add(room_first,0,0,__gm82core_object)
         
-    globalvar delta_time,fps_real;
-    globalvar __gm82core_timer,__gm82core_dtmemi,__gm82core_dtmema;
+    globalvar delta_time,fps_real,fps_fast;
+    globalvar __gm82core_timer,__gm82core_fpsmem,__gm82core_fps_queue;
     globalvar __gm82core_version,__gm82core_appsurf_interop;
     
     __gm82core_hrt_init()
     
     delta_time=1000/30
     fps_real=00
+    __gm82core_fps_queue=ds_queue_create()
+    __gm82core_fpsmem=0
     __gm82core_timer=get_timer()
     __gm82core_version=134
     
@@ -24,12 +26,26 @@
 
 
 #define __gm82core_update
-    var tmp;
+    var __tmp,__stamp;
     
     __gm82core_hasfocus=(__gm82core_getfore()==window_handle())
-    tmp=get_timer()
-    delta_time=tmp-__gm82core_timer
-    __gm82core_timer=tmp
+    __tmp=get_timer()
+    delta_time=__tmp-__gm82core_timer
+    __gm82core_timer=__tmp
+    
+    while 1 {
+        __stamp=ds_queue_head(__gm82core_fps_queue)
+        if (__stamp && __tmp-__stamp>=1000000-(500000/room_speed)) {
+            //why is the correction value half a frame?
+            //no clue! i just don't question it at this point.
+            ds_queue_dequeue(__gm82core_fps_queue)
+        }
+        else break
+    }
+    ds_queue_enqueue(__gm82core_fps_queue,__tmp)
+
+    __gm82core_fpsmem=mean(__gm82core_fpsmem,ds_queue_size(__gm82core_fps_queue))
+    fps_fast=round(__gm82core_fpsmem)
 
 
 #define draw_enable_alphablend
