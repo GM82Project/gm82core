@@ -5,17 +5,27 @@ number of helper functions that are commonly used, and also geometry functions
 introduced in GM:Studio. This extension is also required for using the other
 GM 8.2 extensions, Sound and Joystick.
 
-[globals]
+
+[note about game restarting]
+
+None of the Game Maker 8.2 extensions are designed to tolerate game_restart().
+If you use this function, things will become unstable and this may lead to
+unpredictable errors and crashes.
+
+
+[globalvars]
 
 There's no color coding for those, but they're available as variables.
 
 fps_real
-    Gives a slightly faster, but less accurate, measure of frames per second.
-    Estimated every 10 frames as opposed to Game Maker's once a second.
+    Same as studio: measures theoretical maximum fps based on 1 second divided
+    by the time it takes to complete one game step.
+
+fps_fast
+    Fast FPS estimate based on well known FRAPS algorithm.
 
 delta_time
-    Approximate number of milliseconds since last frame.
-    Precision was measured to be around 2ms, but it's stable over time.
+    Number of milliseconds since last frame.
 
 
 [constants]
@@ -28,7 +38,7 @@ path_action_reverse = 3
     
 infinity = 2305843009213693952
 minus_infinity = -2305843009213693952
-    Largest representable integers in a GM double.
+    Largest representable integers.
 
 vk_minus = 189
 vk_equals = 187
@@ -38,7 +48,8 @@ undefined = "<undefined>"
     String value used in some data structure functions.
 
 core
-    Handle to the controller object for gm82core. Keep this object activated.
+    Handle to the controller object for gm82core. Keep this object activated for
+    proper functioning of the extension.
 
 
 [geometry functions]
@@ -137,7 +148,7 @@ in_range(val,min,max)
     Returns whether val is inbetween min and max.
 
 
-[studio functions]
+[studio shim functions]
 
 alarm_get(index)
     Gets the value of the alarm for the current instance.
@@ -149,7 +160,7 @@ draw_enable_alphablend(enable)
     Can be used to turn off alpha blending. Useful for drawing screen surfaces.
 
 get_timer()
-    Gets the current system time in nanoseconds.
+    Gets the current system time in microseconds.
 
 string_ord_at(str,pos)
     Gets the character code at position <pos> in the string.
@@ -176,10 +187,10 @@ is_undefined()
 [convenience functions]
 
 d3d_clear_depth()
-    Clears the depth buffer. Only works in 3d mode.
+    Clears the current target's depth buffer. Only works in 3d mode.
 
 get_delta()
-    Gets the time since the last call of this function in nanoseconds.
+    Gets the time since the last call of this function in microseconds.
 
 direction_to_object(obj)
     Returns the direction towards the nearest instance of <obj>, or -1 if none.

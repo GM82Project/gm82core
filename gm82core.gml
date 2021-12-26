@@ -30,7 +30,7 @@
     
     __gm82core_hasfocus=(__gm82core_getfore()==window_handle())
     __tmp=get_timer()
-    delta_time=__tmp-__gm82core_timer
+    delta_time=(__tmp-__gm82core_timer)/1000
     __gm82core_timer=__tmp
     
     while 1 {
