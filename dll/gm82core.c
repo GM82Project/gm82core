@@ -9,6 +9,14 @@
 #pragma comment(lib, "advapi32.lib")
 #pragma comment(lib, "user32.lib")
 
+static int has_started;
+
+GMREAL __gm82core_checkstart() {
+    if (has_started) return 0;
+    has_started = 1;
+    return 1;
+}
+
 //begin high resolution timer//
 
 ULONGLONG resolution = 1000000, lastTime = 0, frequency = 1;
