@@ -24,8 +24,7 @@ ULONGLONG resolution = 1000000, lastTime = 0, frequency = 1;
 GMREAL hrt_init() {
 	if (QueryPerformanceFrequency((LARGE_INTEGER *)&frequency) && QueryPerformanceCounter((LARGE_INTEGER*)&lastTime)) {
 		return 1;
-	}
-	else {
+	} else {
 		return 0;
 	}
 }
@@ -34,8 +33,7 @@ GMREAL hrt_now() {
 	ULONGLONG now;
 	if (QueryPerformanceCounter((LARGE_INTEGER*)&now)) {
 		return (double)(now*resolution/frequency);
-	}
-	else {
+	} else {
 		return -1.0;
 	}
 }
@@ -46,8 +44,7 @@ GMREAL hrt_delta() {
 		lt = lastTime;
 		lastTime = now;
 		return (double)((now - lt)*resolution/frequency);
-	}
-	else {
+	} else {
 		return -1.0;
 	}
 }
@@ -65,24 +62,6 @@ static char tokensep[256] = {0};
 static size_t tokenseplen = 0;
 
 //GMREAL funny_test(double ptr, double value) {int a = (int)ptr;int* where = (int*)a;int what = (int)value;*where = what;return 0;
-
-GMREAL __gm82core_cleardepth() {
-    ((void (*)())0x563a8c)(); //clear depth buffer
-    return 1;
-}
-
-GMREAL __gm82core_setfullscreen(double hz) {
-    int z = (int)hz;
-    
-    *(int*)0x85af74 = 0;  //multisample off
-    *(int*)0x85af7c = 3;  //swap effect copy
-    *(int*)0x85b3a8 = !z; //windowed mode
-    *(int*)0x85b3b8 = z;  //refresh rate
-    
-    ((void (*)())0x61f9f4)(); //display_reset()
-
-    return 1;
-}
 
 typedef struct {
     int is_string;
@@ -227,18 +206,6 @@ GMREAL modwrap(double val, double minv, double maxv) {
     double f=val-minv;
     double w=maxv-minv;
     return f-floor(f/w)*w+minv;
-}
-
-GMREAL resize_backbuffer(double width, double height) {
-    int iwidth = width;
-    int iheight = height;
-    const void *fun = (void*)0x61fbc0; //YoYo_resize_backbuffer
-    __asm {
-        mov eax, iwidth
-        mov edx, iheight
-        call fun
-    }
-    return 0;
 }
 
 double pointdir(double x1,double y1,double x2,double y2) {

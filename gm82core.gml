@@ -48,30 +48,11 @@
     fps_fast=round(__gm82core_fpsmem)
 
 
-#define draw_enable_alphablend
-    ///draw_enable_alphablend(enable)
-    YoYo_EnableAlphaBlend(argument0)
-
-
 #define direction_to_object
     ///direction_to_object(obj)
     var __n;__n=instance_nearest(x,y,argument0)
     if (__n==noone) return -1
     return point_direction(x,y,__n.x,__n.y)
-
-
-#define window_resize_buffer
-    ///window_resize_buffer(w,h)
-    //this function uses an offset specific to 8.1.141 so we need to check first
-    //thanks chernov <3
-    if (execute_string("return get_function_address('display_get_orientation')") <= 0) {
-        //THANKS FLOOGLE <3 <3 <3 <3
-        __gm82core_resizebuffer(argument0,argument1)
-        return 1
-    }
-
-    show_error("Sorry, but the gm82core function 'window_resize_buffer()' needs GM 8.1.141.",0)
-    return 0
 
 
 #define string_number
@@ -97,37 +78,6 @@
     __s=string_format(argument0,0,8)+";"
     repeat (8) __s=string_replace(__s,"0;",";")
     return string_replace(string_replace(__s,".;",""),";","")
-
-
-#define draw_make_opaque
-    ///draw_make_opaque()
-    draw_set_blend_mode(bm_add)
-    draw_rectangle_color(-9999999,-9999999,9999999,9999999,0,0,0,0,0)
-    draw_set_blend_mode(0)
-
-
-#define surface_engage
-    ///surface_engage(id,width,height)
-    var __s;__s=argument0
-    if (surface_exists(__s)) {
-        if (surface_get_width(__s)==argument1 && surface_get_height(__s)==argument2) {
-            surface_set_target(__s)
-            return __s
-        }
-    }
-    __s=surface_create(argument1,argument2)
-    surface_set_target(__s)
-    return __s
-
-
-#define surface_disengage
-    ///surface_disengage()
-    if (__gm82core_appsurf_interop) {
-        surface_engage(application_surface,core.__resw,core.__resh)
-    } else {
-        surface_reset_target()
-        d3d_reset_projection()
-    }    
 
 
 #define base64_encode
@@ -188,14 +138,6 @@
         }
         return __str;
     }
-
-
-#define d3d_reset_projection
-    ///d3d_reset_projection()
-    if (view_enabled)
-        d3d_set_projection_ortho(view_xview[view_current],view_yview[view_current],view_wview[view_current],view_hview[view_current],view_angle[view_current])
-    else
-        d3d_set_projection_ortho(0,0,room_width,room_height,0)
 
 
 #define move_towards_gravity
@@ -503,25 +445,6 @@
     __gm82core_min(__owo)
     set_application_title(room_caption)
 
-    
-#define window_set_exclusive_fullscreen
-    ///window_set_exclusive_fullscreen(enabled)
-    with (__gm82core_object) {
-        if (argument0 ^ window_get_fullscreen()) {
-            if (window_get_fullscreen()) {
-                __gm82core_setfullscreen(0)
-                window_set_fullscreen(0)
-                return 1
-            } else {
-                window_set_fullscreen(1)
-                __gm82core_setfullscreen(display_get_frequency())
-                return 1
-            }
-        }
-    }
-    
-    return 0
-
 
 #define mouse_check_direct
     ///mouse_check_direct()
@@ -550,30 +473,6 @@
     }
     return 0
 
-
-#define d3d_set_projection_simple
-    ///d3d_set_projection_simple(x,y,w,h,angle,dollyzoom,depthmin,depthfocus,depthmax)
-    var __xfrom,__yfrom,__zfrom;
-
-    if (argument5<=0) {
-        // ¯\_(º_o)_/¯
-        d3d_set_projection_ortho(argument0,argument1,argument2,argument3,argument4)
-    } else {
-        __xfrom=argument0+argument2/2
-        __yfrom=argument1+argument3/2    
-        __zfrom=min(-tan(degtorad(90*(1-argument5)))*argument3/2,argument6-argument7)
-
-        d3d_set_projection_ext(
-            __xfrom,__yfrom,__zfrom+argument7,                           //from
-            __xfrom,__yfrom,argument7,                                   //to
-            lengthdir_x(1,-argument4+90),lengthdir_y(1,-argument4+90),0, //up
-            -point_direction(__zfrom,0,0,argument3/2)*2,                 //angle
-            -argument2/argument3,                                        //aspect
-            max(1,argument6-argument7-__zfrom),                          //znear
-            argument8-argument7-__zfrom                                  //zfar
-        )
-    }
-    
 
 #define mouse_in_window
     ///mouse_in_window()
