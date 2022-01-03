@@ -84,7 +84,7 @@
         __str=string_digits(string_copy(argument0,1,__p-1))+"."+string_digits(string_delete(argument0,1,__p))
     } else __str=string_digits(argument0)
     while (string_char_at(__str,1)=="0") __str=string_delete(__str,1,1)
-    if (__str="") return "0"
+    if (__str="") return __m+"0"
     return __m+__str
 
 
