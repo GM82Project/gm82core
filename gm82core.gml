@@ -3,16 +3,7 @@
     object_event_add(__gm82core_object,ev_step,ev_step_begin,"__gm82core_update()")
     object_event_add(__gm82core_object,ev_destroy,0,"instance_copy(0)")
     object_event_add(__gm82core_object,ev_other,ev_room_end,"persistent=true")
-    object_event_add(__gm82core_object,ev_other,ev_animation_end,"
-        fps_real=1/max(0.00000001,(get_timer()-__gm82core_timer)/1000000)
-        //we`ve determined that directx likes to get the new frame a few ms after a vblank
-        //so we sleep a few ms to drastically improve frame pacing.
-        //we`re not entirely sure why this works, but it seems to be extremely consistent and
-        //reproducible on windows 10 and 8.
-        screen_wait_vsync()
-        if (fps_real>1000) sleep(2)
-        else if (fps_real>500) sleep(1)
-    ")
+    object_event_add(__gm82core_object,ev_other,ev_animation_end,"fps_real=1/max(0.00000001,(get_timer()-__gm82core_timer)/1000000)")
     
     object_set_persistent(__gm82core_object,1)
     room_instance_add(room_first,0,0,__gm82core_object)
