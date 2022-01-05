@@ -144,12 +144,12 @@ GMSTR internal_call_string0(double func) {
     return internal_call_string(func,NULL,0);
 }
 
-GMSTR internal_call_string1s(double func, char* arg0) {
+/*GMSTR internal_call_string1s(double func, char* arg0) {
     GMVAL args[1];
     args[0].is_string=1; args[0].string=arg0;
 
     return internal_call_string(func,args,1);
-}
+}*/
 
 //end really terrible gm hacking//
 
