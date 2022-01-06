@@ -22,31 +22,31 @@ GMREAL __gm82core_checkstart() {
 ULONGLONG resolution = 1000000, lastTime = 0, frequency = 1;
 
 GMREAL hrt_init() {
-	if (QueryPerformanceFrequency((LARGE_INTEGER *)&frequency) && QueryPerformanceCounter((LARGE_INTEGER*)&lastTime)) {
-		return 1;
-	} else {
-		return 0;
-	}
+    if (QueryPerformanceFrequency((LARGE_INTEGER *)&frequency) && QueryPerformanceCounter((LARGE_INTEGER*)&lastTime)) {
+        return 1;
+    } else {
+        return 0;
+    }
 }
 
 GMREAL hrt_now() {
-	ULONGLONG now;
-	if (QueryPerformanceCounter((LARGE_INTEGER*)&now)) {
-		return (double)(now*resolution/frequency);
-	} else {
-		return -1.0;
-	}
+    ULONGLONG now;
+    if (QueryPerformanceCounter((LARGE_INTEGER*)&now)) {
+        return (double)(now*resolution/frequency);
+    } else {
+        return -1.0;
+    }
 }
 
 GMREAL hrt_delta() {
-	ULONGLONG now, lt;
-	if (QueryPerformanceCounter((LARGE_INTEGER*)&now)) {
-		lt = lastTime;
-		lastTime = now;
-		return (double)((now - lt)*resolution/frequency);
-	} else {
-		return -1.0;
-	}
+    ULONGLONG now, lt;
+    if (QueryPerformanceCounter((LARGE_INTEGER*)&now)) {
+        lt = lastTime;
+        lastTime = now;
+        return (double)((now - lt)*resolution/frequency);
+    } else {
+        return -1.0;
+    }
 }
 
 //end high resolution timer//
@@ -154,44 +154,49 @@ GMSTR internal_call_string0(double func) {
 //end really terrible gm hacking//
 
 GMREAL get_window_col() {
-	HKEY key;
-	HRESULT res = RegOpenKeyExA(HKEY_CURRENT_USER, "SOFTWARE\\Microsoft\\Windows\\DWM", 0, KEY_READ, &key);
-	if (res == 0) {
-		int col;
-		int size = 4;
-		res = RegQueryValueExA(key, "ColorizationColor", NULL, NULL, (LPBYTE)&col, &size);
-		RegCloseKey(key);
-		if (res == 0) {
-			return ((col & 0xff0000) >> 16) | (col & 0xff00) | ((col & 0xff) << 16);
-		} else { return res; }
-	} else { return res; }
+    HKEY key;
+    HRESULT res = RegOpenKeyExA(HKEY_CURRENT_USER, "SOFTWARE\\Microsoft\\Windows\\DWM", 0, KEY_READ, &key);
+    if (res == 0) {
+        int col;
+        int size = 4;
+        res = RegQueryValueExA(key, "ColorPrevalence", NULL, NULL, (LPBYTE)&col, &size);
+        if (res==0) {
+            //if color prevalence is turned off, window titles are just colored white
+            if (col==0) return 0xffffff;
+        }        
+        res = RegQueryValueExA(key, "ColorizationColor", NULL, NULL, (LPBYTE)&col, &size);
+        RegCloseKey(key);
+        if (res == 0) {
+            return ((col & 0xff0000) >> 16) | (col & 0xff00) | ((col & 0xff) << 16);
+        } else { return res; }
+    } else { return res; }
 }
 
 GMREAL __registry_read_dword(char* dir, char* keyname) {
-	HKEY key;
-	HRESULT res = RegOpenKeyExA(HKEY_CURRENT_USER, dir, 0, KEY_READ, &key);
-	if (res == 0) {
-		int buffer;
-		int size = 4;
-		res = RegQueryValueExA(key, keyname, NULL, NULL, (LPBYTE)&buffer, &size);
-		RegCloseKey(key);
-		if (res == 0) {
-			return buffer;
-		} else { return -4; }
-	} else { return -4; }
+    HKEY key;
+    HRESULT res = RegOpenKeyExA(HKEY_CURRENT_USER, dir, 0, KEY_READ, &key);
+    if (res == 0) {
+        int buffer;
+        int size = 4;
+        res = RegQueryValueExA(key, keyname, NULL, NULL, (LPBYTE)&buffer, &size);
+        RegCloseKey(key);
+        if (res == 0) {
+            return buffer;
+        } else { return -4; }
+    } else { return -4; }
 }
 
 GMREAL __registry_write_dword(char* dir, char* keyname, double dword) {
-	HKEY key;
-	HRESULT res = RegOpenKeyExA(HKEY_CURRENT_USER, dir, 0, KEY_SET_VALUE, &key);
-	if (res == 0) {
-		int buffer=(int)dword;
-		res = RegSetValueExA(key, keyname, 0, REG_DWORD, (LPBYTE)&buffer, 4);
-		RegCloseKey(key);
-		if (res == 0) {
-			return buffer;
-		} else { return res; }
-	} else { return res; }
+    HKEY key;
+    HRESULT res = RegOpenKeyExA(HKEY_CURRENT_USER, dir, 0, KEY_SET_VALUE, &key);
+    if (res == 0) {
+        int buffer=(int)dword;
+        res = RegSetValueExA(key, keyname, 0, REG_DWORD, (LPBYTE)&buffer, 4);
+        RegCloseKey(key);
+        if (res == 0) {
+            return buffer;
+        } else { return res; }
+    } else { return res; }
 }
 
 GMREAL win_ver() {
@@ -225,12 +230,12 @@ GMREAL set_dll_loaddir(const char* name) {
 }
 
 GMREAL get_foreground_window() {
-	return (double)(int)GetForegroundWindow();
+    return (double)(int)GetForegroundWindow();
 }
 
 GMREAL window_minimize(const char* winname) {
-	ShowWindow(FindWindowA(NULL, winname), 6);
-	return 0;
+    ShowWindow(FindWindowA(NULL, winname), 6);
+    return 0;
 }
 
 GMREAL esign(double x, double def) {
