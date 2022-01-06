@@ -501,3 +501,9 @@ GMSTR string_token_next() {
     }
     return startpos;
 }
+
+GMREAL sleep_ext(double ms) {
+    SleepEx((DWORD)ms,TRUE);
+    return 0;
+}
+
