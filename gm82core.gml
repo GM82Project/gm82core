@@ -55,6 +55,14 @@
     return point_direction(x,y,__n.x,__n.y)
 
 
+#define distance_to_instance
+    //you've heard of elf on the shelf, now get ready for 
+    ///distance_to_instance(obj)
+    var __n;__n=instance_nearest(x,y,argument0)
+    if (__n==noone) return -1
+    return point_distance(x,y,__n.x,__n.y)
+
+
 #define string_number
     ///string_number(string)
     var __p,__m,__str;
