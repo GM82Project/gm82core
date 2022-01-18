@@ -186,6 +186,9 @@ is_undefined()
 
 [convenience functions]
 
+distance_to_instance(obj)
+    Returns the distance to the center of the nearest instance of <obj>.
+
 d3d_clear_depth()
     Clears the current target's depth buffer. Only works in 3d mode.
 
@@ -313,10 +316,14 @@ window_minimize()
     Minimizes the game window. Will reset the application title to room_caption.
     
 window_get_caption_color()
-    Returns the Windows 8+ accent color.
+    Returns the Windows 8+ accent color. If the accent color is disabled in
+    theme preferences, white is returned. Returns black in Windows 7 and older.
 
 windows_version()
-    Returns the Windows version as a number (xp=5, vista=6, etc. w10 returns 8).
+    Returns the Windows version as a number (5=xp, 6=vista, 7=w7 and 8=w8+w10).
+
+sleep_ex(ms)
+    Sleeps <ms> milliseconds without updating keyboard state.
 
 
 [notes]
