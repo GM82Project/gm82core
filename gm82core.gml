@@ -170,7 +170,17 @@
 
 #define event_step
     ///event_step()
-    event_perform(ev_step, ev_step_normal)
+    event_perform(ev_step,ev_step_normal)
+
+
+#define event_draw
+    ///event_draw()
+    event_perform(ev_draw,0)
+
+
+#define draw_self_floored
+    ///draw_self_floored
+    draw_sprite_ext(sprite_index,floor(image_index),floor(x),floor(y),image_xscale,image_yscale,image_angle,image_blend,image_alpha)
 
 
 #define string_hex
