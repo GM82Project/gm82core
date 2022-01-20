@@ -153,12 +153,24 @@ GMSTR internal_call_string0(double func) {
 
 //end really terrible gm hacking//
 
+GMREAL win_ver() {
+    if (IsWindows8OrGreater()) return 8;
+    if (IsWindows7OrGreater()) return 7;
+    if (IsWindowsVistaOrGreater()) return 6;
+    if (IsWindowsXPOrGreater()) return 5;
+    return 4;
+}
+
 GMREAL get_window_col() {
+    if (win_ver()==5) {
+        //windows xp: reading theme information was over 100 lines long and too complicated so i just return luna blue
+        return 0xe55500;
+    }
     HKEY key;
     HRESULT res = RegOpenKeyExA(HKEY_CURRENT_USER, "SOFTWARE\\Microsoft\\Windows\\DWM", 0, KEY_READ, &key);
     if (res == 0) {
         int col;
-        int size = 4;
+        int size=4;
         res = RegQueryValueExA(key, "ColorPrevalence", NULL, NULL, (LPBYTE)&col, &size);
         if (res==0) {
             //if color prevalence is turned off, window titles are just colored white
@@ -168,8 +180,9 @@ GMREAL get_window_col() {
         RegCloseKey(key);
         if (res == 0) {
             return ((col & 0xff0000) >> 16) | (col & 0xff00) | ((col & 0xff) << 16);
-        } else { return res; }
-    } else { return res; }
+        }
+    }
+    return -1;
 }
 
 GMREAL __registry_read_dword(char* dir, char* keyname) {
@@ -197,14 +210,6 @@ GMREAL __registry_write_dword(char* dir, char* keyname, double dword) {
             return buffer;
         } else { return res; }
     } else { return res; }
-}
-
-GMREAL win_ver() {
-    if (IsWindows8OrGreater()) return 8;
-    if (IsWindows7OrGreater()) return 7;
-    if (IsWindowsVistaOrGreater()) return 6;
-    if (IsWindowsXPOrGreater()) return 5;
-    return 4;
 }
 
 GMREAL modwrap(double val, double minv, double maxv) {
