@@ -343,7 +343,7 @@
 
 #define pick
     ///pick(which,opt1,opt2,...)
-    return argument[(argument0 mod (argument_count-1))+1]
+    return argument[(argument[0] mod (argument_count-1))+1]
 
 
 #define alarm_get
