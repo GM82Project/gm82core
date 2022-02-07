@@ -153,6 +153,11 @@ GMSTR internal_call_string0(double func) {
 
 //end really terrible gm hacking//
 
+GMREAL set_working_directory(char* dir) {
+    SetCurrentDirectory(dir);
+    return 0;
+}
+
 GMREAL win_ver() {
     if (IsWindows8OrGreater()) return 8;
     if (IsWindows7OrGreater()) return 7;
