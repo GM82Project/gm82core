@@ -332,7 +332,7 @@ GMREAL lengthdir_zx(double len,double dir,double dirz) {
 }
 
 GMREAL lengthdir_zy(double len,double dir,double dirz) {
-    return -len*dsin(dirz)*dcos(dir);
+    return -len*dcos(dirz)*dsin(dir);
 }
 
 GMREAL lengthdir_zz(double len,double dir,double dirz) {
