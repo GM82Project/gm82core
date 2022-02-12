@@ -587,3 +587,10 @@
     return __size
 
 
+#define irandom_fresh
+    ///irandom_fresh(oldval,min,max):val
+    //randomizes an integer within supplied range without repeating current value
+
+    return modwrap(argument0+1+irandom(argument2-argument1-1),argument1,argument2+1)
+
+
