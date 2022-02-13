@@ -158,6 +158,18 @@ GMREAL set_working_directory(char* dir) {
     return 0;
 }
 
+GMREAL file_size(const char *filename) {
+    //(c) Lovey01
+    // Get size of file
+    // Returns -1 if file doesn't exist
+    WIN32_FILE_ATTRIBUTE_DATA attr;
+
+    if (!GetFileAttributesExA(filename, GetFileExInfoStandard, &attr))
+        return -1.0;
+
+    return (double)((unsigned __int64)attr.nFileSizeLow | ((unsigned __int64)attr.nFileSizeHigh << 32));
+}
+
 GMREAL win_ver() {
     if (IsWindows8OrGreater()) return 8;
     if (IsWindows7OrGreater()) return 7;

@@ -579,13 +579,6 @@
 
     return true
 
-#define file_size
-    var __f,__size;
-    __f=file_bin_open(argument0,0)
-    __size=file_bin_size(__f)
-    file_bin_close(__f)
-    return __size
-
 
 #define irandom_fresh
     ///irandom_fresh(oldval,min,max):val
