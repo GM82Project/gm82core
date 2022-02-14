@@ -8,16 +8,18 @@
     object_set_persistent(__gm82core_object,1)
     room_instance_add(room_first,0,0,__gm82core_object)
         
-    globalvar delta_time,fps_real,fps_fast;
+    globalvar delta_time,fps_real,fps_fast,windows_version;
     globalvar __gm82core_timer,__gm82core_fpsmem,__gm82core_fps_queue;
     globalvar __gm82core_version,__gm82core_appsurf_interop;
     
     __gm82core_hrt_init()
     
+    windows_version=__gm82core_winver()
+    
     delta_time=1000/30
-    fps_real=00
+    fps_real=1
     __gm82core_fps_queue=ds_queue_create()
-    __gm82core_fpsmem=0
+    __gm82core_fpsmem=1
     __gm82core_timer=get_timer()
     __gm82core_version=136
     

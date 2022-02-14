@@ -170,7 +170,7 @@ GMREAL file_size(const char *filename) {
     return (double)((unsigned __int64)attr.nFileSizeLow | ((unsigned __int64)attr.nFileSizeHigh << 32));
 }
 
-GMREAL win_ver() {
+GMREAL __gm82core_winver() {
     if (IsWindows8OrGreater()) return 8;
     if (IsWindows7OrGreater()) return 7;
     if (IsWindowsVistaOrGreater()) return 6;
@@ -179,7 +179,7 @@ GMREAL win_ver() {
 }
 
 GMREAL get_window_col() {
-    if (win_ver()==5) {
+    if (__gm82core_winver()==5) {
         //windows xp: reading theme information was over 100 lines long and too complicated so i just return luna blue
         return 0xe55500;
     }
@@ -339,7 +339,7 @@ GMREAL triangle_is_clockwise(double x0, double y0, double x1, double y1, double 
     return (double)clockwise;
 }
 
-GMREAL rgb_to_bgr(double color) {
+GMREAL color_reverse(double color) {
     int col=round(color);
     return ((col & 0xff)<<16) + (col & 0xff00) + ((col & 0xff0000)>>16);
 }
