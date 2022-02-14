@@ -1,0 +1,117 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html>
+    <head>
+        <title>Game Maker 8.2 Core</title>
+        <link href="style.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body background="back.gif">
+        <!--START-->
+        <h1>Game Maker 8.2 Core</h1>
+        
+        <p>
+            <b>Core</b>, also known as <b>gm82core</b>, is a quality of life improvement extension for Game Maker 8.1.
+            It adds a number of helper functions, precise timing, globalvars and utility constants, geometry and math, input, registry, and also some functions imported from studio.
+        </p>
+        <p>
+            Core is also required for running most of the other extensions in the <b>GM 8.2</b> family.
+        </p>
+        <p>
+            Created by renex & Floogle. Contains contributions by Lovey01 and includes parts of High Resolution Timer 2 - check the License for usage.
+        </p>
+        
+        <h3>Constants</h3>
+        <blockquote>
+            <tt><table border="2" style="background-color:white">
+                <tr><td width=200 style="background-color:silver">Name</td><td width=200 style="background-color:silver">Value</td></tr>
+                <tr><td>core</td><td>(object id)</td></tr>
+                <tr><td>infinity</td><td>2305843009213693952</td></tr>
+                <tr><td>minus_infinity</td><td>-2305843009213693952</td></tr>
+                <tr><td>path_action_continue</td><td>2</td></tr>
+                <tr><td>path_action_restart</td><td>1</td></tr>
+                <tr><td>path_action_reverse</td><td>3</td></tr>
+                <tr><td>path_action_stop</td><td>0</td></tr>
+                <tr><td>undefined</td><td>"&lt;undefined>"</td></tr>
+                <tr><td>vk_equals</td><td>187</td></tr>
+                <tr><td>vk_minus</td><td>189</td></tr>
+            </table></tt>
+            <p>
+                Notes<br/>
+                <ul>
+                    <li>The <tt><b>core</b></tt> object must be active at all times. It is used to run step code for the extension and any attached accessory extensions (such as gm82snd).</li>
+                    <li>The <tt><b>undefined</b></tt> constant is used by a few functions as an error return value. It's just a string value.
+                    </li>
+                </ul>
+            </p>
+        </blockquote>
+        
+        <h3>Globalvars</h3>
+        <p>These values are updated for you, and can be used in code.</p>
+        <blockquote>
+            <p>
+                <tt><b>delta_time*</b></tt>
+                Number of milliseconds since last frame.<br/>
+                <tt><b>fps_fast*</b></tt>
+                Fast FPS estimate based on well-known FRAPS algorithm.<br/>
+                <tt><b>fps_real*</b></tt>
+                Same as Studio - measures theoretical maximum fps based on one second divided by the time it took to complete the last game step.<br/>
+                <tt><b>windows_version*</b></tt>
+                Windows version as a number - 5 = XP, 6 = Vista, etc (8 and later return 8).<br/>                
+            </p>
+        </blockquote>
+        
+        <h3>Utility</h3>
+        <p>These functions provide shortcuts for common operations.</p>
+        <blockquote>
+            <p>
+                <tt><b>draw_self_floored()</b></tt>
+                Draws the instance at a floored coordinate instead of fractionary.<br/>
+                <tt><b>ds_list_equal(list1,list2)</b></tt>
+                Compares two ds lists to see if their contents match. Returns true or false.<br/>
+                <tt><b>ds_map_get(map,key)</b></tt>
+                Gets <tt>key</tt> from <tt>map</tt>. If the key doesn't exist, <tt>undefined</tt> is returned.<br/>
+                <tt><b>ds_map_set(map,key,value)</b></tt>
+                Sets <tt>key</tt> from <tt>map</tt> to <tt>value</tt>. If the key already exists, it is replaced.<br/>                
+                <tt><b>ds_map_read_ini(map,filename)</b></tt>
+                Windows version as a number - 5 = XP, 6 = Vista, etc (8 and later return 8).<br/>
+                <tt><b>event_draw()</b></tt>
+                Calls the instance's Draw event.<br/>   
+                <tt><b>event_step()</b></tt>
+                Calls the instance's Step event.<br/>    
+                <tt><b>instance_create_moving(x,y,object,speed,direction)</b></tt>
+                Creates an instance of <tt>object</tt> at <tt>x,y</tt> moving with <tt>speed</tt> and <tt>direction</tt>. The speed and direction values are given to the instance before the Create event is executed.<br/>                 
+            </p>
+        </blockquote>
+        
+        <h3>Files</h3>
+        <p>Functions for dealing with files.</p>
+        <blockquote>
+            <p>
+                <tt><b>ds_map_read_ini(map,filename)</b></tt>
+                Reads ini file at <tt>filename</tt> into <tt>map</tt>. Section names are prepended to keys, separated by a space.<br/>
+                <tt><b>file_size(filename)</b></tt>
+                Returns the size of file <tt>filename</tt>. If the file doesn't exist, -1 is returned.<br/>
+                <tt><b>file_text_read_all(fname,[separator])</b></tt>
+                Reads file <tt>filename</tt> in its entirety and returns it as a string. If a separator is set, it is used inbetween lines.<br/>
+            </p>
+        </blockquote>
+        
+        <h3>Colors</h3>
+        <p>Functions for dealing with color values.</p>
+        <blockquote>
+            <p>
+                <tt><b>color_blend(col1,col2)</b></tt>
+                Multiplies <tt>col1</tt> with <tt>col2</tt> and returns the color.<br/>
+                <tt><b>color_get_luminance(color)</b></tt>
+                Returns a Kodak-corrected luminance value from <tt>color</tt> (0-255).<br/>
+                <tt><b>merge_color_corrected(col1,col2,factor)</b></tt>
+                Merges <tt>col1</tt> towards <tt>col2</tt> by <tt>factor</tt>. Uses corrected square formula for more natural results.<br/>
+                <tt><b>color_reverse(color)</b></tt>
+                Reverses the blue and red components of <tt>color</tt> (works both ways).<br/>                
+            </p>
+        </blockquote>
+        <!--END-->
+    </body>
+</html>

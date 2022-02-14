@@ -224,22 +224,6 @@ registry_read_dword(key,[default])
 registry_write_dword(key,value)
     Writes a REG_DWORD to the specified key.
 
-window_set_exclusive_fullscreen(full)
-    Sets the window mode to exclusive fullscreen, reducing input lag.
-    Note: this will destroy all your surfaces!
-
-draw_make_opaque()
-    Will make the current surface opaque without changing the colors.
-
-surface_engage(id,width,height):id
-    Automatically re-creates a surface when expired, and sets target to it.
-    Set the surface id to the return value of this function. Example:
-    mySurf=surface_engage(mySurf,400,300);
-
-surface_disengage()
-    Resets target, and fixes viewport based on studio behavior.
-    Also resets target properly when using gm82AppSurf.
-
 file_size(filename)
     Gets the size of a file on disk.
     
