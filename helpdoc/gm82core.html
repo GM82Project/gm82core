@@ -40,8 +40,8 @@
             <p>
                 Notes<br/>
                 <ul>
-                    <li>The <tt><b>core</b></tt> object must be active at all times. It is used to run step code for the extension and any attached accessory extensions (such as gm82snd).</li>
-                    <li>The <tt><b>undefined</b></tt> constant is used by a few functions as an error return value. It's just a string value.
+                    <li>The <tt><b>core</b></tt> object is used to run step code for the extension and any attached accessory extensions from the 8.2 family. If your game uses instance deactivation, make sure <tt>core</tt> is always activated.</li>
+                    <li>The <tt><b>undefined</b></tt> constant is used by a few functions as an error return value, and is a simple string value.
                     </li>
                 </ul>
             </p>
@@ -58,7 +58,7 @@
                 <tt><b>fps_real*</b></tt>
                 Same as Studio - measures theoretical maximum fps based on one second divided by the time it took to complete the last game step.<br/>
                 <tt><b>windows_version*</b></tt>
-                Windows version as a number - 5 = XP, 6 = Vista, etc (8 and later return 8).<br/>                
+                Windows version as a number - 5 = XP, 6 = Vista, 7 = Seven, 8 and later return 8.<br/>                
             </p>
         </blockquote>
         
@@ -74,12 +74,20 @@
                 Gets <tt>key</tt> from <tt>map</tt>. If the key doesn't exist, <tt>undefined</tt> is returned.<br/>
                 <tt><b>ds_map_set(map,key,value)</b></tt>
                 Sets <tt>key</tt> from <tt>map</tt> to <tt>value</tt>. If the key already exists, it is replaced.<br/>                
-                <tt><b>ds_map_read_ini(map,filename)</b></tt>
-                Windows version as a number - 5 = XP, 6 = Vista, etc (8 and later return 8).<br/>
+                <tt><b>instance_destroy_id(instance)</b></tt>
+                Destroys the <tt>instance</tt>.<br/>
+                <tt><b>instance_some(object)</b></tt>
+                Returns a random instance of the <tt>object</tt>.<br/>
+                <tt><b>mouse_in_window()</b></tt>
+                Returns whether the mouse cursor is currently inside the game window.<br/>
+                <tt><b>outside_room()</b></tt>
+                Returns whether the instance is completely outside the room region.<br/>
                 <tt><b>event_draw()</b></tt>
                 Calls the instance's Draw event.<br/>   
                 <tt><b>event_step()</b></tt>
-                Calls the instance's Step event.<br/>    
+                Calls the instance's Step event.<br/>
+                <tt><b>pick(which,opt1,opt2,...)</b></tt>
+                Returns <tt>which</tt> one option, up to 15 options.<br/>                  
                 <tt><b>instance_create_moving(x,y,object,speed,direction)</b></tt>
                 Creates an instance of <tt>object</tt> at <tt>x,y</tt> moving with <tt>speed</tt> and <tt>direction</tt>. The speed and direction values are given to the instance before the Create event is executed.<br/>                 
             </p>
@@ -92,9 +100,9 @@
                 <tt><b>ds_map_read_ini(map,filename)</b></tt>
                 Reads ini file at <tt>filename</tt> into <tt>map</tt>. Section names are prepended to keys, separated by a space.<br/>
                 <tt><b>file_size(filename)</b></tt>
-                Returns the size of file <tt>filename</tt>. If the file doesn't exist, -1 is returned.<br/>
+                Returns the size of file <tt>filename</tt> in bytes. If the file doesn't exist, -1 is returned.<br/>
                 <tt><b>file_text_read_all(fname,[separator])</b></tt>
-                Reads file <tt>filename</tt> in its entirety and returns it as a string. If a separator is set, it is used inbetween lines.<br/>
+                Reads file <tt>filename</tt> in its entirety and returns it as a string. If a separator string is provided, it is used inbetween lines, otherwise CR LF is used.<br/>
             </p>
         </blockquote>
         
@@ -110,6 +118,21 @@
                 Merges <tt>col1</tt> towards <tt>col2</tt> by <tt>factor</tt>. Uses corrected square formula for more natural results.<br/>
                 <tt><b>color_reverse(color)</b></tt>
                 Reverses the blue and red components of <tt>color</tt> (works both ways).<br/>                
+            </p>
+        </blockquote>
+        
+        <h3>Math</h3>
+        <p>Shortcuts for common math operations.</p>
+        <blockquote>
+            <p>
+                <tt><b>ceilto(val,to)</b></tt>
+                Rounds up <tt>val</tt> to the nearest multiple of <tt>to</tt>.<br/>
+                <tt><b>floorto(val,to)</b></tt>
+                Rounds down <tt>val</tt> to the nearest multiple of <tt>to</tt>.<br/> 
+                <tt><b>roundto(val,to)</b></tt>
+                Rounds <tt>val</tt> to the nearest multiple of <tt>to</tt>.<br/>   
+                <tt><b>cosine(a,b,amount)</b></tt>
+                Cosine interpolation from <tt>a</tt> to <tt>b</tt> by specified <tt>amount</tt>.<br/>                 
             </p>
         </blockquote>
         <!--END-->
