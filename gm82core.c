@@ -1,15 +1,11 @@
-#define GMREAL __declspec(dllexport) double __cdecl
-#define GMSTR __declspec(dllexport) char* __cdecl
-#define _USE_MATH_DEFINES
-#define _WIN32_WINNT 0x0601
-#include <windows.h>
-#include <versionhelpers.h>
-#include <math.h>
-
-#pragma comment(lib, "advapi32.lib")
-#pragma comment(lib, "user32.lib")
+#include "gm82core.h"
 
 static int has_started;
+
+static char* tokenstore = NULL;
+static char* tokenpos = NULL;
+static char tokensep[256] = {0};
+static size_t tokenseplen = 0;
 
 GMREAL __gm82core_checkstart() {
     if (has_started) return 0;
@@ -17,157 +13,9 @@ GMREAL __gm82core_checkstart() {
     return 1;
 }
 
-//begin high resolution timer//
-
-ULONGLONG resolution = 1000000, lastTime = 0, frequency = 1;
-
-GMREAL hrt_init() {
-    if (QueryPerformanceFrequency((LARGE_INTEGER *)&frequency) && QueryPerformanceCounter((LARGE_INTEGER*)&lastTime)) {
-        return 1;
-    } else {
-        return 0;
-    }
-}
-
-GMREAL hrt_now() {
-    ULONGLONG now;
-    if (QueryPerformanceCounter((LARGE_INTEGER*)&now)) {
-        return (double)(now*resolution/frequency);
-    } else {
-        return -1.0;
-    }
-}
-
-GMREAL hrt_delta() {
-    ULONGLONG now, lt;
-    if (QueryPerformanceCounter((LARGE_INTEGER*)&now)) {
-        lt = lastTime;
-        lastTime = now;
-        return (double)((now - lt)*resolution/frequency);
-    } else {
-        return -1.0;
-    }
-}
-
-//end high resolution timer//
-
-//begin really terrible gm hacking//
-
-const void* delphi_clear = (void*)0x4072d8;
-static char* retstr = NULL;
-
-static char* tokenstore = NULL;
-static char* tokenpos = NULL;
-static char tokensep[256] = {0};
-static size_t tokenseplen = 0;
-
-//GMREAL funny_test(double ptr, double value) {int a = (int)ptr;int* where = (int*)a;int what = (int)value;*where = what;return 0;
-
-typedef struct {
-    int is_string;
-    int padding;    
-    double real;    
-    char* string;
-    int padding2;    
-}GMVAL;
-
-double internal_call_real(double func,GMVAL* args,int argc) {
-    int addr = (int)func;
-    char* (*callptr)()=(void*)addr;
-    
-    GMVAL ret={0};
-    GMVAL* retptr = &ret;    
-    
-    __asm {
-        mov ecx, argc //argc
-        push args //pointer to gml argument array
-        push 16 //args length (unused)
-        push retptr        
-        call callptr
-    }   
-
-    return ret.real;
-}
-
-char* internal_call_string(double func,GMVAL* args,int argc) {
-    int addr = (int)func;
-    char* (*callptr)()=(void*)addr;
-    
-    GMVAL ret={0};    
-    GMVAL* retptr = &ret;
-
-    char** retstrptr = &retstr;
-
-    __asm {
-        mov ecx, argc //argc
-        push args //pointer to gml argument array
-        push 16 //args length (unused)
-        push retptr        
-        call callptr
-    
-        mov eax, retstrptr
-        call delphi_clear
-    }   
-
-    retstr=ret.string;
-
-    return retstr;
-}
-
-GMREAL internal_call_real0(double func) {
-    return internal_call_real(func,NULL,0);
-}
-
-GMREAL internal_call_real1r(double func, double arg0) {
-    GMVAL args[1];
-    args[0].is_string=0; args[0].real=arg0;
-
-    return internal_call_real(func,args,1);
-}
-GMREAL internal_call_real2rr(double func, double arg0, double arg1) {
-    GMVAL args[2];
-    args[0].is_string=0; args[0].real=arg0;
-    args[1].is_string=0; args[1].real=arg1;
-
-    return internal_call_real(func,args,2);
-}
-GMREAL internal_call_real3rrr(double func, double arg0, double arg1, double arg2) {
-    GMVAL args[3];
-    args[0].is_string=0; args[0].real=arg0;
-    args[1].is_string=0; args[1].real=arg1;
-    args[2].is_string=0; args[2].real=arg2;
-
-    return internal_call_real(func,args,3);
-}
-
-GMSTR internal_call_string0(double func) {
-    return internal_call_string(func,NULL,0);
-}
-
-/*GMSTR internal_call_string1s(double func, char* arg0) {
-    GMVAL args[1];
-    args[0].is_string=1; args[0].string=arg0;
-
-    return internal_call_string(func,args,1);
-}*/
-
-//end really terrible gm hacking//
-
 GMREAL set_working_directory(char* dir) {
     SetCurrentDirectory(dir);
     return 0;
-}
-
-GMREAL file_size(const char *filename) {
-    //(c) Lovey01
-    // Get size of file
-    // Returns -1 if file doesn't exist
-    WIN32_FILE_ATTRIBUTE_DATA attr;
-
-    if (!GetFileAttributesExA(filename, GetFileExInfoStandard, &attr))
-        return -1.0;
-
-    return (double)((unsigned __int64)attr.nFileSizeLow | ((unsigned __int64)attr.nFileSizeHigh << 32));
 }
 
 GMREAL __gm82core_winver() {
@@ -372,133 +220,6 @@ GMREAL point_in_triangle(double x0, double y0, double x1, double y1, double x2, 
     );
 }
 
-GMREAL real_hex(const char *str) {
-  //(c) Lovey01
-  // Avoids subtraction at the cost of more memory
-  static const unsigned long long lookup[256] = {
-    // First 32 chars
-    0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0,
-
-    // ASCII map
-    0,  // Space
-    0,  // !
-    0,  // "
-    0,  // #
-    0,  // $
-    0,  // %
-    0,  // &
-    0,  // '
-    0,  // (
-    0,  // )
-    0,  // *
-    0,  // +
-    0,  // ,
-    0,  // -
-    0,  // .
-    0,  // /
-    0,  // 0
-    1,  // 1
-    2,  // 2
-    3,  // 3
-    4,  // 4
-    5,  // 5
-    6,  // 6
-    7,  // 7
-    8,  // 8
-    9,  // 9
-    0,  // :
-    0,  // ;
-    0,  // <
-    0,  // =
-    0,  // >
-    0,  // ?
-    0,  // @
-    10, // A
-    11, // B
-    12, // C
-    13, // D
-    14, // E
-    15, // F
-    0,  // G
-    0,  // H
-    0,  // I
-    0,  // J
-    0,  // K
-    0,  // L
-    0,  // M
-    0,  // N
-    0,  // O
-    0,  // P
-    0,  // Q
-    0,  // R
-    0,  // S
-    0,  // T
-    0,  // U
-    0,  // V
-    0,  // W
-    0,  // X
-    0,  // Y
-    0,  // Z
-    0,  // [
-    0,  // |
-    0,  // ]
-    0,  // ^
-    0,  // _
-    0,  // `
-    10, // a
-    11, // b
-    12, // c
-    13, // d
-    14, // e
-    15, // f
-
-    // The rest are zeros
-  };
-
-  unsigned char c;
-  unsigned long long ret = 0;
-
-  // Process 16 chars at a time
-#define LOOP                                      \
-  if (!(c = *(unsigned char*)str++)) return ret;  \
-  ret = ret<<4 | lookup[c]
-
-  for (;;) {
-    LOOP;LOOP;LOOP;LOOP;
-    LOOP;LOOP;LOOP;LOOP;
-    LOOP;LOOP;LOOP;LOOP;
-    LOOP;LOOP;LOOP;LOOP;
-  }
-
-#undef LOOP
-}
-    
-GMSTR string_hex(double num) {
-  //(c) Lovey01
-  // Return buffer  
-  static char retbuf[17] = {0}; // Initialize to all 0's
-
-  static const char lookup[] = {
-    '0', '1', '2', '3',
-    '4', '5', '6', '7',
-    '8', '9', 'A', 'B',
-    'C', 'D', 'E', 'F'
-  };
-
-  unsigned long long i = num;
-  char *ret = retbuf+15; // Last character minus one, NULL terminator required
-
-  *ret = lookup[i&0xf];
-  while ((i >>= 4) != 0) {
-    *--ret = lookup[i&0xf];
-  }
-
-  return (char*)ret;
-}
-
 GMREAL in_range(double val, double vmin, double vmax) {
     return (val>=vmin && val<=vmax)?1.0:0.0;
 }
@@ -528,4 +249,3 @@ GMREAL sleep_ext(double ms) {
     SleepEx((DWORD)ms,TRUE);
     return 0;
 }
-
