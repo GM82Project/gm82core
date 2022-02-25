@@ -103,7 +103,7 @@ GMREAL real_hex(const char *str) {
 
   // Process 16 chars at a time
 #define LOOP                                                                   \
-  if (!(c = *(unsigned char*)str++)) return (double)(ret&0x7FFFFFFFFFFFFFFF);  \
+  if (!(c = *(unsigned char*)str++)) return (double)ret;  \
   ret = ret<<4 | lookup[c]
 
   for (;;) {
@@ -127,7 +127,7 @@ GMSTR string_hex(double num) {
     'C', 'D', 'E', 'F'
   };
 
-  unsigned long long i = (unsigned long long)round(num);
+  unsigned long long i = (unsigned long long)num;
   char *ret = retbuf+15; // Last character minus one, NULL terminator required
 
   *ret = lookup[i&0xf];
