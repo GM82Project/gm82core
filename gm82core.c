@@ -188,7 +188,7 @@ GMREAL triangle_is_clockwise(double x0, double y0, double x1, double y1, double 
 }
 
 GMREAL color_reverse(double color) {
-    int col=round(color);
+    int col=(int)round(color);
     return ((col & 0xff)<<16) + (col & 0xff00) + ((col & 0xff0000)>>16);
 }
 
