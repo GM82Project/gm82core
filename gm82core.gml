@@ -142,7 +142,7 @@
             __bin[1] = string_pos(string_char_at(__b64,__i+2),__tab)-1;
             __bin[2] = string_pos(string_char_at(__b64,__i+3),__tab)-1;
             __bin[3] = string_pos(string_char_at(__b64,__i+4),__tab)-1;
-            __str += chr(255&(__bin[0]<<2)|(__bin[1]>>4));
+            __str += ansi_char(255&(__bin[0]<<2)|(__bin[1]>>4));
             if (__bin[2] >= 0) __str += chr(255&(__bin[1]<<4)|(__bin[2]>>2));
             if (__bin[3] >= 0) __str += chr(255&(__bin[2]<<6)|(__bin[3]));
         }
