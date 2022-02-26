@@ -1,0 +1,63 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html>
+    <head>
+        <title>Game Maker 8.2 Core</title>
+        <link href="style.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body background="back.gif">
+        <!--START-->
+        <h1>Geometry</h1>
+        
+        <p>Trigonometry and angle math helpers. Can be used to great effect to simplify 3d engines.</p>
+        <dl>
+            <dt><tt>angle_difference(ang1,ang2)</tt></dt>
+            <dd>Returns the relative difference in degrees between the angles.</dd>
+            <dt><tt>angle_difference_3d(x1,y1,z1,x2,y2,z2)</tt></dt>
+            <dd>Returns the difference in degrees between the two 3d vectors.</dd>
+            <dt><tt>darccos(x)</tt></dt><tt></tt>
+            <dd>Arc cosine in degrees.</dd>
+            <dt><tt>darcsin(x)</tt></dt>
+            <dd>Arc sine in degrees.</dd>
+            <dt><tt>darctan(x)</tt></dt>
+            <dd>Arc tangent in degrees.</dd>
+            <dt><tt>dcos(x)</tt></dt>
+            <dd>Cosine in degrees.</dd>
+            <dt><tt>dsin(x)</tt></dt>
+            <dd>Sine in degrees.</dd>
+            <dt><tt>dtan(x)</tt></dt>
+            <dd>Tangent in degrees.</dd>
+            <dt><tt>direction_to_object(obj)</tt></dt>
+            <dd>Returns the direction towards the nearest instance of <obj>, or -1 if none is found.</dd>
+            <dt><tt>distance_to_instance(obj)</tt></dt>
+            <dd>Returns the distance to the center of the nearest instance of <obj>, or -1 if none is found.</dd>
+            <dt><tt>dot_product_normalised(x1,y1,x2,y2)</tt></dt>
+            <dd>Normalized version of dot product.</dd>
+            <dt><tt>dot_product_3d_normalised(x1,y1,z1,x2,y2,z2)</tt></dt>
+            <dd>Normalized version of 3d dot product.</dd>
+            <dt><tt>inch_angle(ang1,ang2,stepsize)</tt></dt>
+            <dd>Approximates angle <tt>ang1</tt> to <tt>ang2</tt> by <tt>stepsize</tt> until they match exactly.</dd>
+            <dt><tt>lengthdir_zx(len,yaw,pitch)</tt></dt>
+            <dd>Returns the x component of a yaw + pitch angle system.</dd>
+            <dt><tt>lengthdir_zy(len,yaw,pitch)</tt></dt>
+            <dd>Returns the y component of a yaw + pitch angle system.</dd>
+            <dt><tt>lengthdir_zz(len,yaw,pitch)</tt></dt>
+            <dd>Returns the z component of a yaw + pitch angle system.</dd>
+            <dt><tt>move_towards_gravity(xto,yto,gravity)</tt></dt>
+            <dd>Sets the instance's trajectory and gravity for an arc towards the point.</dd>
+            <dt><tt>point_direction_pitch(x1,y1,z1,x2,y2,z2)</tt></dt>
+            <dd>Returns the pitch component of a 3d vector. To use with the above lengthdir functions, use regular point_direction from x1,y1 to x2,y2 for the yaw. This system simplifies projections and pointing for simple 3d games.</dd>
+            <dt><tt>point_in_circle(px,py,x1,y1,r)</tt></dt>
+            <dd>Returns whether the point is inside the specified circle.</dd>
+            <dt><tt>point_in_rectangle(px,py,x1,y1,x2,y2)</tt></dt>
+            <dd>Returns whether the point is inside the specified rectangle.</dd>
+            <dt><tt>point_in_triangle(px,py,x1,y1,x2,y2,x3,y3)</tt></dt>
+            <dd>Returns whether the point is inside the specified triangle.</dd>
+            <dt><tt>triangle_is_clockwise(x1,y1,x2,y2,x3,y3)</tt></dt>
+            <dd>Returns whether the sequence of points is clockwise.</dd>
+        </dl>
+        <!--END-->
+    </body>
+</html>

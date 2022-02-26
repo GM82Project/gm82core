@@ -9,6 +9,17 @@ Language=0x809 English (United Kingdom)
 
 [FILES]
 gm82core.html
+gm82core_constants.html
+gm82core_globals.html
+gm82core_utility.html
+gm82core_files.html
+gm82core_colors.html
+gm82core_math.html
+gm82core_geometry.html
+gm82core_strings.html
+gm82core_windows.html
+gm82core_studio.html
+gm82core_license.html
 
 [INFOTYPES]
 

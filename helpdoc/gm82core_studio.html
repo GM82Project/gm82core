@@ -1,0 +1,35 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html>
+    <head>
+        <title>Game Maker 8.2 Core</title>
+        <link href="style.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body background="back.gif">
+        <!--START-->
+        <h1>Studio</h1>
+        
+        <p>Functions to help backporting Studio games.</p>
+        <dl>
+            <dt><tt>get_timer()</tt></dt>
+            <dd>Gets the current system time in microseconds.</dd>
+            <dt><tt>alarm_get(index,value)</tt></dt>
+            <dd>Gets the value of the alarm for the current instance.</dd>
+            <dt><tt>alarm_set(index,value)</tt></dt>
+            <dd>Sets the value of the alarm for the current instance.</dd>
+            <dt><tt>is_undefined(val)</tt></dt>
+            <dd>Returns if the value is equal to the undefined constant. This function can be used to check if the return value of <tt>ds_map_get()</tt> is valid.</dd>
+            <dt><tt>url_open(url)</tt></dt>
+            <dd>Opens a web link in the default browser.</dd>
+            <dt><tt>variable_instance_exists(instance_id,name)</tt></dt>
+            <dd>Checks to see if a variable exists in the selected instance.</dd>
+            <dt><tt>variable_instance_get(instance_id,name)</tt></dt>
+            <dd>Gets a variable from the selected instance.</dd>
+            <dt><tt>variable_instance_set(instance_id,name)</tt></dt>
+            <dd>Sets a variable in the selected instance.</dd>
+        </dl>
+        <!--END-->
+    </body>
+</html>

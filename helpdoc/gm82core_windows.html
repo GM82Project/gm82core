@@ -1,0 +1,44 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html>
+    <head>
+        <title>Game Maker 8.2 Core</title>
+        <link href="style.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body background="back.gif">
+        <!--START-->
+        <h1>Windows</h1>
+        
+        <h3>Windows</h3>
+        <p>Functions for interacting with the operating system.</p>
+        <dl>
+            <dt><tt>get_delta()</tt></dt>
+            <dd>Gets the time since the last call of this function in microseconds.</dd>
+            <dt><tt>mouse_back_button()</tt></dt>
+            <dd>Returns if the back button is pressed on mice with navigation controls.</dd>
+            <dt><tt>mouse_forward_button()</tt></dt>
+            <dd>Returns if the forward button is pressed on mice with navigation controls.</dd>
+            <dt><tt>mouse_check_direct(button)</tt></dt>
+            <dd>Directly checks the hardware for updated mouse <tt>button</tt> states.</dd>
+            <dt><tt>mouse_in_window()</tt></dt>
+            <dd>Returns whether the mouse cursor is currently inside the game window.</dd>
+            <dt><tt>registry_read_dword(key,[default])</tt></dt>
+            <dd>Reads a REG_DWORD from the specified <tt>key</tt>. Returns <tt>default</tt> if the value is not found.</dd>
+            <dt><tt>registry_write_dword(key,value)</tt></dt>
+            <dd>Writes a REG_DWORD to the specified <tt>key</tt>.</dd>
+            <dt><tt>set_working_directory(dir)</tt></dt>
+            <dd>Changes <tt>working_directory</tt> to the specified directory.</dd>
+            <dt><tt>sleep_ext(ms)</tt></dt>
+            <dd>Sleeps <tt>ms</tt> milliseconds without updating keyboard and mouse state.</dd>
+            <dt><tt>window_get_caption_color()</tt></dt>
+            <dd>Returns the Windows 8+ user accent color. If the accent color is disabled in Windows theme preferences, white is returned. Returns black in Windows 7 and older.</dd>
+            <dt><tt>window_has_focus()</tt></dt>
+            <dd>Returns whether the game window is currently in front and active.</dd>
+            <dt><tt>window_minimize()</tt></dt>
+            <dd>Minimizes the game window. Will reset the application title to room_caption.</dd>    
+        </dl>
+        <!--END-->
+    </body>
+</html>

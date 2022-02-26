@@ -4,9 +4,16 @@ body {
 	background-attachment: fixed;
 }
 
-table {
-	font: 12px/1.5em Verdana,Arial, Helvetica, sans-serif;
+table,td,tr {
+	font: 12px/1.5em courier;
 	background-attachment: fixed;
+	background-color:silver;
+	border: 1px solid black;
+	font-weight: bold;
+}
+
+td,tr {
+	background-color:white;
 }
 
 A {color: #0000AA; text-decoration: none}
@@ -47,8 +54,16 @@ h3 a, h3 a:link, h3 a:visited, h3 a:hover {
   color: #fff;
 }
 
+tt {
+	font-weight: bold;
+}
+
 pre {
 	background-color: #ddd;
-   padding: 5px 24px;
-   border: 1px dotted #000;
+	padding: 5px 24px;
+	border: 1px dotted #000;
 }
+
+dl,pre { margin: 1.5em; }
+dt { margin-top: .7em; font-weight: bold; }
+dd { margin-top: .1em; }

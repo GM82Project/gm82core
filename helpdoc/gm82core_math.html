@@ -1,0 +1,47 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html>
+    <head>
+        <title>Game Maker 8.2 Core</title>
+        <link href="style.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body background="back.gif">
+        <!--START-->
+        <h1>Math</h1>
+        
+        <p>Shortcuts for common math operations.</p>
+        <dl>
+            <dt><tt>ceilto(val,to)</tt></dt>
+            <dd>Rounds up <tt>val</tt> to the nearest multiple of <tt>to</tt>.</dd>
+            <dt><tt>floorto(val,to)</tt></dt>
+            <dd>Rounds down <tt>val</tt> to the nearest multiple of <tt>to</tt>.</dd>
+            <dt><tt>roundto(val,to)</tt></dt>
+            <dd>Rounds <tt>val</tt> to the nearest multiple of <tt>to</tt>.</dd> 
+            <dt><tt>cosine(a,b,amount)</tt></dt>
+            <dd>Cosine ease from <tt>a</tt> to <tt>b</tt> by specified <tt>amount</tt>.</dd>
+            <dt><tt>esign(val,default)</tt></dt>
+            <dd>Returns the <tt>default</tt> argument when the sign of <tt>val</tt> is zero.
+                Example:
+                <pre>    
+image_xscale = esign(hspeed, image_xscale);
+                </pre>
+                Here, image_xscale will be kept if the hspeed is zero, preventing the instance from becoming flat.
+            </dd>
+            <dt><tt>gauss(range)</tt></dt>
+            <dd>Returns a gaussian distribution random value within the supplied <tt>range</tt>.</dt>
+            <dt><tt>in_range(val,min,max)</tt></dt>
+            <dd>Returns whether <tt>val</tt> is inbetween <tt>min</tt> and <tt>max</tt>.</dt>
+            <dt><tt>inch(val,goto,stepsize)</tt></dt>
+            <dd>Approximates <tt>val</tt> to <tt>goto</tt> by <tt>stepsize</tt> until they match exactly.</dt>    
+            <dt><tt>irandom_fresh(oldval,min,max)</tt></dt>
+            <dd>randomizes an integer within <tt>min</tt> and <tt>max</tt> range without repeating <tt>oldval</tt>.</dt>  
+            <dt><tt>modwrap(val,min,max)</tt></dt>
+            <dd>Wraps <tt>val</tt> around both directions inside a box defined by <tt>min</tt> and <tt>max</tt>. Lower bound is inclusive, upper bound is exclusive, like a modulo.</dt>              
+            <dt><tt>real_hex(string)</tt></dt>
+            <dd>Converts a hex <tt>string</tt> into a real.</dd>
+        </dl>
+        <!--END-->
+    </body>
+</html>

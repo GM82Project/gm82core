@@ -1,0 +1,43 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html>
+    <head>
+        <title>Game Maker 8.2 Core</title>
+        <link href="style.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body background="back.gif">
+        <!--START-->
+        <h1>Utility</h1>
+        
+        <p>These functions provide shortcuts for common operations.</p>
+        <dl>           
+            <dt><tt>draw_self_floored()</tt></dt>
+            <dd>Draws the instance at a floored coordinate instead of fractionary.</dd>
+            <dt><tt>ds_list_equal(list1,list2)</tt></dt>
+            <dd>Compares two ds lists to see if their contents match. Returns true or false.</dd>
+            <dt><tt>ds_map_get(map,key)</tt></dt>
+            <dd>Gets <tt>key</tt> from <tt>map</tt>. If the key doesn't exist, <tt>undefined</tt> is returned.</dd>
+            <dt><tt>ds_map_set(map,key,value)</tt></dt>
+            <dd>Sets <tt>key</tt> from <tt>map</tt> to <tt>value</tt>. If the key already exists, it is replaced.</dd>               
+            <dt><tt>instance_destroy_id(instance)</tt></dt>
+            <dd>Destroys the <tt>instance</tt>.</dd>
+            <dt><tt>instance_some(object)</tt></dt>
+            <dd>Returns a random instance of the <tt>object</tt>.</dd>
+            <dt><tt>mouse_in_window()</tt></dt>
+            <dd>Returns whether the mouse cursor is currently inside the game window.</dd>
+            <dt><tt>outside_room()</tt></dt>
+            <dd>Returns whether the instance is completely outside the room region.</dd>
+            <dt><tt>event_draw()</tt></dt>
+            <dd>Calls the instance's Draw event.</dd>   
+            <dt><tt>event_step()</tt></dt>
+            <dd>Calls the instance's Step event.</dd>
+            <dt><tt>pick(which,opt1,opt2,...)</tt></dt>
+            <dd>Returns <tt>which</tt> one option, up to 15 options.</dd>                 
+            <dt><tt>instance_create_moving(x,y,object,speed,direction)</tt></dt>
+            <dd>Creates an instance of <tt>object</tt> at <tt>x,y</tt> moving with <tt>speed</tt> and <tt>direction</tt>. The speed and direction values are given to the instance before the Create event is executed.</dd>
+        </dl>
+        <!--END-->
+    </body>
+</html>
