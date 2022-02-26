@@ -6,7 +6,6 @@
 </HEAD><BODY>
 <OBJECT type="text/site properties">
 	<param name="Window Styles" value="0x800025">
-	<param name="ImageType" value="Folder">
 </OBJECT>
 <UL>
 	<LI> <OBJECT type="text/sitemap">
@@ -19,39 +18,39 @@
 			<param name="Name" value="Constants">
 			<param name="Local" value="gm82core_constants.html">
 			</OBJECT>
-        <LI> <OBJECT type="text/sitemap">
+		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="Globals">
 			<param name="Local" value="gm82core_globals.html">
 			</OBJECT>
-        <LI> <OBJECT type="text/sitemap">
+		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="Utility">
 			<param name="Local" value="gm82core_utility.html">
 			</OBJECT>
-        <LI> <OBJECT type="text/sitemap">
+		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="Files">
 			<param name="Local" value="gm82core_files.html">
 			</OBJECT>
-        <LI> <OBJECT type="text/sitemap">
+		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="Colors">
 			<param name="Local" value="gm82core_colors.html">
 			</OBJECT>
-        <LI> <OBJECT type="text/sitemap">
+		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="Math">
 			<param name="Local" value="gm82core_math.html">
 			</OBJECT>
-        <LI> <OBJECT type="text/sitemap">
+		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="Geometry">
 			<param name="Local" value="gm82core_geometry.html">
 			</OBJECT>
-        <LI> <OBJECT type="text/sitemap">
+		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="Strings">
 			<param name="Local" value="gm82core_strings.html">
 			</OBJECT>
-        <LI> <OBJECT type="text/sitemap">
+		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="Windows">
 			<param name="Local" value="gm82core_windows.html">
 			</OBJECT>
-        <LI> <OBJECT type="text/sitemap">
+		<LI> <OBJECT type="text/sitemap">
 			<param name="Name" value="Studio">
 			<param name="Local" value="gm82core_studio.html">
 			</OBJECT>
