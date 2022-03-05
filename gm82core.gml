@@ -589,3 +589,8 @@
     return modwrap(argument0+1+irandom(argument2-argument1-1),argument1,argument2+1)
 
 
+#define draw_sprite_ext_fixed
+    ///draw_sprite_ext_fixed(sprite,image,x,y,xscale,yscale,angle,color,alpha)
+    draw_sprite_ext(argument0,floor(argument1),argument2+(lengthdir_x(argument4,argument6)+lengthdir_x(argument5,argument6-90))*0.5,argument3+(lengthdir_y(argument4,argument6)+lengthdir_y(argument5,argument6-90))*0.5,argument4,argument5,argument6,argument7,argument8)
+//
+//
