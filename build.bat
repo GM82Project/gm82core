@@ -8,10 +8,6 @@ del *.obj
 del *.exp
 del *.lib
 
-cd helpdoc
-if not exist gm82core.chm call rebuild_help.bat
-cd ..
-
 build_gex.py gm82core.ged
 
 pause
