@@ -343,6 +343,20 @@
     return 0
 
 
+#define ds_map
+    ///ds_map(map,value,[write value]):value
+    if (argument_count==1) {
+        if (ds_map_exists(argument0,argument1)) 
+            return ds_map_find_value(argument0,argument1)
+        return undefined
+    }
+    if (ds_map_exists(argument0,argument1))
+        ds_map_replace(argument0,argument1,argument2)
+    else
+        ds_map_add(argument0,argument1,argument2)        
+    return argument2
+    
+
 #define pick
     ///pick(which,opt1,opt2,...)
     return argument[(argument[0] mod (argument_count-1))+1]
