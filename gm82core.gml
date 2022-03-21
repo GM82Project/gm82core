@@ -175,6 +175,16 @@
     event_perform(ev_step,ev_step_normal)
 
 
+#define event_endstep
+    ///event_step()
+    event_perform(ev_step,ev_step_end)
+
+
+#define event_beginstep
+    ///event_step()
+    event_perform(ev_step,ev_step_begin)
+
+
 #define event_draw
     ///event_draw()
     event_perform(ev_draw,0)
