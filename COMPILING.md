@@ -2,7 +2,6 @@
 
 ### Prerequisites:
 - microsoft c++ build tools v120 (vs 2013) (in path)
-- microsoft html workshop (default location)
 - python 3 (in path)
 
 ### Steps:
