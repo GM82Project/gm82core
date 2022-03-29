@@ -1,0 +1,1228 @@
+{
+	"name": "Game Maker 8.2 Core",
+	"folder": "gm82",
+	"version": "1.4.1",
+	"author": "renex && floogle",
+	"date": "23/03/2022",
+	"license": "Free to use, also for commercial games.",
+	"description": "Part of the standard Game Maker 8.2 distribution. This extension package contains a number of helper functions that are commonly used, and also geometry functions introduced in GM:Studio. This extension is also required for using the other GM 8.2 extensions, Sound and Joystick.",
+	"helpfile": "",
+	"hidden": false,
+	"dependencies": [],
+	"files": [
+		{
+			"filename": "gm82core.dll",
+			"origname": "gm82core.dll",
+			"kind": 1,
+			"init": "",
+			"final": "",
+			"functions": [
+				{
+					"name": "angle_difference",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "angle_difference(ang1,ang2)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "ceilto",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "ceilto(val,to)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "cosine",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "cosine(a,b,amount)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "darccos",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "darccos(angle)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "darcsin",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "darcsin(angle)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "darctan",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "darctan(angle)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "dcos",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "dcos(angle)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "dsin",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "dsin(angle)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "dtan",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "dtan(angle)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "esign",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "esign(val,default)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "file_size",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "file_size(filename)",
+					"hidden": false,
+					"argtypes": [
+						1
+					],
+					"returntype": 2
+				},
+				{
+					"name": "floorto",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "floorto(val,to)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "get_delta",
+					"extname": "hrt_delta",
+					"calltype": 12,
+					"helpline": "get_delta()",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
+					"name": "get_timer",
+					"extname": "hrt_now",
+					"calltype": 12,
+					"helpline": "get_timer()",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
+					"name": "hrt_time_delta",
+					"extname": "hrt_delta",
+					"calltype": 12,
+					"helpline": "",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
+					"name": "hrt_time_now",
+					"extname": "hrt_now",
+					"calltype": 12,
+					"helpline": "",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
+					"name": "inch",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "inch(val,goto,stepsize)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "inch_angle",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "inch_angle(ang1,ang2,step)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "in_range",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "in_range(val,min,max)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "lengthdir_zx",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "lengthdir_zx(len,dir,dirz)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "lengthdir_zy",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "lengthdir_zy(len,dir,dirz)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "lengthdir_zz",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "lengthdir_zz(len,dir,dirz)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "modwrap",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "modwrap(val,min,max)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "point_direction_pitch",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "point_direction_pitch(x1,y1,z1,x2,y2,z2)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2,
+						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "point_in_circle",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "point_in_circle(px,py,cx,cy,radius)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "point_in_rectangle",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "point_in_rectangle(px,py,x1,y1,x2,y2)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2,
+						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "point_in_triangle",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "point_in_triangle(px,py,x1,y1,x2,y2,x3,y3)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2,
+						2,
+						2,
+						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "real_hex",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "real_hex(string)",
+					"hidden": false,
+					"argtypes": [
+						1
+					],
+					"returntype": 2
+				},
+				{
+					"name": "color_reverse",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "color_reverse(color)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "roundto",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "roundto(val,to)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "set_working_directory",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "set_working_directory(directory)",
+					"hidden": false,
+					"argtypes": [
+						1
+					],
+					"returntype": 2
+				},
+				{
+					"name": "sleep_ext",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "sleep_ext(ms)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "string_hex",
+					"extname": "string_hex",
+					"calltype": 12,
+					"helpline": "string_hex(val)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 1
+				},
+				{
+					"name": "string_token_next",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "string_token_next()",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 1
+				},
+				{
+					"name": "string_token_start",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "string_token_start(string,sep)",
+					"hidden": false,
+					"argtypes": [
+						1,
+						1
+					],
+					"returntype": 2
+				},
+				{
+					"name": "triangle_is_clockwise",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "triangle_is_clockwise(x1,y1,x2,y2,x3,y3)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2,
+						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "window_get_caption_color",
+					"extname": "get_window_col",
+					"calltype": 12,
+					"helpline": "window_get_caption_color()",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
+					"name": "__gm82core_checkstart",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "",
+					"hidden": true,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
+					"name": "__gm82core_getfore",
+					"extname": "get_foreground_window",
+					"calltype": 12,
+					"helpline": "",
+					"hidden": true,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
+					"name": "__gm82core_hrt_init",
+					"extname": "hrt_init",
+					"calltype": 12,
+					"helpline": "",
+					"hidden": true,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
+					"name": "__gm82core_min",
+					"extname": "window_minimize",
+					"calltype": 12,
+					"helpline": "",
+					"hidden": true,
+					"argtypes": [
+						1
+					],
+					"returntype": 2
+				},
+				{
+					"name": "__gm82core_setdir",
+					"extname": "set_dll_loaddir",
+					"calltype": 12,
+					"helpline": "",
+					"hidden": true,
+					"argtypes": [
+						1
+					],
+					"returntype": 2
+				},
+				{
+					"name": "__gm82core_winver",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "",
+					"hidden": true,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
+					"name": "__registry_read_dword",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "",
+					"hidden": true,
+					"argtypes": [
+						1,
+						1
+					],
+					"returntype": 2
+				},
+				{
+					"name": "__registry_write_dword",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "",
+					"hidden": true,
+					"argtypes": [
+						1,
+						1,
+						2
+					],
+					"returntype": 2
+				}
+			],
+			"constants": []
+		},
+		{
+			"filename": "gm82core.gml",
+			"origname": "gm82core.gml",
+			"kind": 2,
+			"init": "__gm82core_init",
+			"final": "",
+			"functions": [
+				{
+					"name": "alarm_get",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "alarm_get(index)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "alarm_set",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "alarm_set(index,value)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "angle_difference_3d",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "angle_difference_3d(x1,y1,z1,x2,y2,z2)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2,
+						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "base64_decode",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "base64_decode(str)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "base64_encode",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "base64_encode(str)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "color_blend",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "color_blend(col1,col2)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "color_get_luminance",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "color_get_luminance(color)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "date_get_timestamp",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "date_get_timestamp([date])",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
+					"name": "direction_to_object",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "direction_to_object(obj)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "directory_previous",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "directory_previous(dir)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "distance_to_instance",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "distance_to_instance(obj)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "dot_product_3d_normalised",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "dot_product_3d_normalised(x1,y1,z1,x2,y2,z2)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2,
+						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "dot_product_normalised",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "dot_product_normalised(x1,y1,x2,y2)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "draw_self_floored",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "draw_self_floored()",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
+					"name": "draw_sprite_ext_fixed",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "draw_sprite_ext_fixed(sprite,image,x,y,xscale,yscale,angle,color,alpha)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2,
+						2,
+						2,
+						2,
+						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "ds_list_equal",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "ds_list_equal(list1,list2)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "ds_map",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "ds_map(map,value,[write value]) -> value",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
+					"name": "ds_map_get",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "ds_map_get(map,key)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "ds_map_read_ini",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "ds_map_read_ini(map,filename)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "ds_map_set",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "ds_map_set(map,key,value)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "event_draw",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "event_draw()",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
+					"name": "event_step",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "event_step()",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
+					"name": "filename_remove_ext",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "filename_remove_ext(filename)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "file_text_read_all",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "file_text_read_all(fname,[separator])",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
+					"name": "gauss",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "gauss(range)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "instance_create_moving",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "instance_create_moving(x,y,object,speed,direction)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "instance_destroy_id",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "instance_destroy_id(index)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "instance_some",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "instance_some(object)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "irandom_fresh",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "irandom_fresh(oldval,min,max)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "is_undefined",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "is_undefined(value)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "merge_color_corrected",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "merge_color_corrected(col1,col2,factor)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "mouse_back_button",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "mouse_back_button()",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
+					"name": "mouse_check_direct",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "mouse_check_direct(button)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "mouse_forward_button",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "mouse_forward_button()",
+					"hidden": true,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
+					"name": "mouse_in_window",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "mouse_in_window()",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
+					"name": "move_towards_gravity",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "move_towards_gravity(xto,yto,gravity)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "outside_room",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "outside_room()",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
+					"name": "pick",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "pick(which,opt1,opt2,...)",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
+					"name": "registry_read_dword",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "registry_read_dword(key,[default])",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
+					"name": "registry_write_dword",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "registry_write_dword(key,value)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "string_better",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "string_better(val)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "string_number",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "string_number(string)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "string_ord_at",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "string_ord_at(str,pos)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "string_pad",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "string_pad(number,digits)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "strong",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "strong(val1,val2,val3...)",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
+					"name": "url_open",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "url_open(url)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "variable_instance_exists",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "variable_instance_exists(instance_id,name)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "variable_instance_get",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "variable_instance_get(instance_id,name)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "variable_instance_set",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "variable_instance_set(instance_id,name,value)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "window_has_focus",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "window_has_focus()",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
+					"name": "window_minimize",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "window_minimize()",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
+					"name": "__gm82core_init",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "",
+					"hidden": true,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
+					"name": "__gm82core_update",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "",
+					"hidden": true,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
+					"name": "event_beginstep",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "event_beginstep()",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
+					"name": "event_endstep",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "event_endstep()",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 2
+				}
+			],
+			"constants": [
+				{
+					"name": "__gm82core_object",
+					"value": "object_add()",
+					"hidden": true
+				},
+				{
+					"name": "path_action_stop",
+					"value": "0",
+					"hidden": false
+				},
+				{
+					"name": "path_action_restart",
+					"value": "1",
+					"hidden": false
+				},
+				{
+					"name": "path_action_continue",
+					"value": "2",
+					"hidden": false
+				},
+				{
+					"name": "path_action_reverse",
+					"value": "3",
+					"hidden": false
+				},
+				{
+					"name": "minus_infinity",
+					"value": "-2305843009213693952",
+					"hidden": false
+				},
+				{
+					"name": "infinity",
+					"value": "2305843009213693952",
+					"hidden": false
+				},
+				{
+					"name": "vk_minus",
+					"value": "189",
+					"hidden": false
+				},
+				{
+					"name": "vk_equals",
+					"value": "187",
+					"hidden": false
+				},
+				{
+					"name": "undefined",
+					"value": "\"<undefined>\"",
+					"hidden": false
+				},
+				{
+					"name": "core",
+					"value": "__gm82core_object",
+					"hidden": false
+				}
+			]
+		}
+	]
+}
