@@ -355,16 +355,18 @@
 
 #define ds_map
     ///ds_map(map,key,[write value]) -> value
-    if (argument_count==1) {
-        if (ds_map_exists(argument0,argument1)) 
-            return ds_map_find_value(argument0,argument1)
-        return undefined
+    if (argument_count==3) {
+        if (ds_map_exists(argument0,argument1))
+            ds_map_replace(argument0,argument1,argument2)
+        else
+            ds_map_add(argument0,argument1,argument2)        
+        return argument2
     }
-    if (ds_map_exists(argument0,argument1))
-        ds_map_replace(argument0,argument1,argument2)
-    else
-        ds_map_add(argument0,argument1,argument2)        
-    return argument2
+
+    //floogle found out this is faster if the key exists
+    var v;v=ds_map_find_value(argument0,argument1)
+    if (v==0) if (!ds_map_exists(argument0,argument1)) return undefined
+    return v
     
 
 #define pick
