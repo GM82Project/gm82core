@@ -83,6 +83,14 @@ GMREAL modwrap(double val, double minv, double maxv) {
     return f-floor(f/w)*w+minv;
 }
 
+GMREAL project(double fromA, double fromB, double toA, double toB, double value) {
+    return ((value-fromA)/(fromB-fromA))*(toB-toA)+toA;
+}
+
+GMREAL unlerp(double a, double b, double val) {
+    return (val-a)/(b-a);
+}
+
 double pointdir(double x1,double y1,double x2,double y2) {
     return modwrap(atan2(y1-y2,x1-x2)*180/M_PI,0,360);
 }

@@ -3,7 +3,7 @@
 	"folder": "gm82",
 	"version": "1.4.1",
 	"author": "renex && floogle",
-	"date": "23/03/2022",
+	"date": "31/03/2022",
 	"license": "Free to use, also for commercial games.",
 	"description": "Part of the standard Game Maker 8.2 distribution. This extension package contains a number of helper functions that are commonly used, and also geometry functions introduced in GM:Studio. This extension is also required for using the other GM 8.2 extensions, Sound and Joystick.",
 	"helpfile": "",
@@ -37,6 +37,17 @@
 					"hidden": false,
 					"argtypes": [
 						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "color_reverse",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "color_reverse(color)",
+					"hidden": false,
+					"argtypes": [
 						2
 					],
 					"returntype": 2
@@ -348,6 +359,21 @@
 					"returntype": 2
 				},
 				{
+					"name": "project",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "project(fromA,fromB,toA,toB,value)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
 					"name": "real_hex",
 					"extname": "",
 					"calltype": 12,
@@ -355,17 +381,6 @@
 					"hidden": false,
 					"argtypes": [
 						1
-					],
-					"returntype": 2
-				},
-				{
-					"name": "color_reverse",
-					"extname": "",
-					"calltype": 12,
-					"helpline": "color_reverse(color)",
-					"hidden": false,
-					"argtypes": [
-						2
 					],
 					"returntype": 2
 				},
@@ -445,6 +460,19 @@
 						2,
 						2,
 						2,
+						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "unlerp",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "unlerp(a,b,value)",
+					"hidden": false,
+					"argtypes": [
 						2,
 						2,
 						2
@@ -796,10 +824,28 @@
 					"returntype": 2
 				},
 				{
+					"name": "event_beginstep",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "event_beginstep()",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
 					"name": "event_draw",
 					"extname": "",
 					"calltype": 2,
 					"helpline": "event_draw()",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
+					"name": "event_endstep",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "event_endstep()",
 					"hidden": false,
 					"argtypes": [],
 					"returntype": 2
@@ -901,6 +947,19 @@
 					"helpline": "is_undefined(value)",
 					"hidden": false,
 					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "make_color_hsv_standard",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "make_color_hsv_standard(hue 0-360,sat 0-100,val 0-100)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
 						2
 					],
 					"returntype": 2
@@ -1145,24 +1204,6 @@
 					"helpline": "",
 					"hidden": true,
 					"argtypes": null,
-					"returntype": 2
-				},
-				{
-					"name": "event_beginstep",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "event_beginstep()",
-					"hidden": false,
-					"argtypes": [],
-					"returntype": 2
-				},
-				{
-					"name": "event_endstep",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "event_endstep()",
-					"hidden": false,
-					"argtypes": [],
 					"returntype": 2
 				}
 			],

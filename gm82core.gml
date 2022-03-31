@@ -369,6 +369,11 @@
     return v
     
 
+#define make_color_hsv_standard
+    ///make_color_hsv_standard(hue 0-360,sat 0-100,val 0-100):color
+    return make_color_hsv(argument0/360*255,argument1*2.55,argument2*2.55)
+
+
 #define pick
     ///pick(which,opt1,opt2,...)
     return argument[(argument[0] mod (argument_count-1))+1]
