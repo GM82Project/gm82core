@@ -17,9 +17,9 @@
 
 ## Features
 
-- Adds commonly used helper functions
+- Adds commonly used helper functions.
 
-- Adds geometry functions introduced in **GM:Studio**
+- Adds geometry functions introduced in **GM:Studio** .
 
 <br>
 
