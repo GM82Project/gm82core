@@ -365,7 +365,7 @@
 
     //floogle found out this is faster if the key exists
     var v;v=ds_map_find_value(argument0,argument1)
-    if (v==0) if (!ds_map_exists(argument0,argument1)) return undefined
+    if (is_real(v)) if (v==0) if (!ds_map_exists(argument0,argument1)) return undefined
     return v
     
 
