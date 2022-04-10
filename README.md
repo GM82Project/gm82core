@@ -15,11 +15,18 @@
 
 <br>
 
+## Features
 
-This is a quality of life improvement extension for Game Maker 8.1. It adds a
-number of helper functions that are commonly used, and also geometry functions
-introduced in GM:Studio. This extension is also required for using the other
-GM 8.2 extensions, Sound and Joystick.
+- Adds commonly used helper functions
+
+- Adds geometry functions introduced in **GM:Studio**
+
+<br>
+
+## Required
+
+*This extension is required for both of the <br>
+**[Joystick]** & **[Sound]** `GM 8.2` extensions.*
 
 
 <!----------------------------------------------------------------------------->
@@ -27,3 +34,6 @@ GM 8.2 extensions, Sound and Joystick.
 [Badge GameMaker]: https://img.shields.io/badge/GameMaker-8.1-23e000
 
 [Build]: Documentation/Build.md
+
+[Joystick]: https://github.com/omicronrex/gm82joy
+[Sound]: https://github.com/omicronrex/gm82snd
