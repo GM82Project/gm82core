@@ -38,7 +38,7 @@
 
 Content | License
 :------:|:------:
-[`hrt.c`][Heart.c] | [![Badge MIT]][License Kyle]
+[`hrt.c`][HRT2] | [![Badge MIT]][License Kyle]
 
 
 <!----------------------------------------------------------------------------->
@@ -56,9 +56,9 @@ Content | License
 <!--------------------------------{ Licensing }-------------------------------->
 
 [License]: LICENSE
-[License Kyle]: Documentation/Licenses/Kyle
+[License Kyle]: Documentation/Licenses/High%20Resolution%20Timer%202
 
-[Heart.c]: Source/hrt.c
+[HRT2]: Source/hrt.c
 
 <!--------------------------------{ References }------------------------------->
 
