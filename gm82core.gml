@@ -628,5 +628,12 @@
         argument3+lengthdir_y(0.5,argument6)+lengthdir_y(0.5,argument6-90),
         argument4,argument5,argument6,argument7,argument8
     )
+
+
+#define tile_find_anywhere
+    var t;
+    t=tile_find(argument0,argument1,0)
+    if (t) return t
+    return tile_find(argument0,argument1,1)
 //
 //
