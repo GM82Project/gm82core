@@ -3,7 +3,7 @@
 	"folder": "gm82",
 	"version": "1.4.1",
 	"author": "renex && floogle",
-	"date": "12/04/2022",
+	"date": "18/04/2022",
 	"license": "Free to use, also for commercial games.",
 	"description": "Part of the standard Game Maker 8.2 distribution. This extension package contains a number of helper functions that are commonly used, and also geometry functions introduced in GM:Studio. This extension is also required for using the other GM 8.2 extensions, Sound and Joystick.",
 	"helpfile": "",
@@ -781,7 +781,7 @@
 					"name": "ds_map",
 					"extname": "",
 					"calltype": 2,
-					"helpline": "ds_map(map,value,[write value]) -> value",
+					"helpline": "ds_map(map,key,[write value]) -> value",
 					"hidden": false,
 					"argtypes": null,
 					"returntype": 2
