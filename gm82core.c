@@ -83,7 +83,7 @@ GMREAL modwrap(double val, double minv, double maxv) {
     return f-floor(f/w)*w+minv;
 }
 
-GMREAL project(double fromA, double fromB, double toA, double toB, double value) {
+GMREAL lerp2(double fromA, double fromB, double toA, double toB, double value) {
     return ((value-fromA)/(fromB-fromA))*(toB-toA)+toA;
 }
 

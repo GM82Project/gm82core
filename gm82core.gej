@@ -3,7 +3,7 @@
 	"folder": "gm82",
 	"version": "1.4.1",
 	"author": "renex && floogle",
-	"date": "18/04/2022",
+	"date": "22/04/2022",
 	"license": "Free to use, also for commercial games.",
 	"description": "Part of the standard Game Maker 8.2 distribution. This extension package contains a number of helper functions that are commonly used, and also geometry functions introduced in GM:Studio. This extension is also required for using the other GM 8.2 extensions, Sound and Joystick.",
 	"helpfile": "",
@@ -359,10 +359,10 @@
 					"returntype": 2
 				},
 				{
-					"name": "project",
+					"name": "lerp2",
 					"extname": "",
 					"calltype": 12,
-					"helpline": "project(fromA,fromB,toA,toB,value)",
+					"helpline": "lerp2(fromA,fromB,toA,toB,value)",
 					"hidden": false,
 					"argtypes": [
 						2,
@@ -778,10 +778,10 @@
 					"returntype": 2
 				},
 				{
-					"name": "ds_map",
+					"name": "dsmap",
 					"extname": "",
 					"calltype": 2,
-					"helpline": "ds_map(map,key,[write value]) -> value",
+					"helpline": "dsmap(map,key,[write value]) -> value",
 					"hidden": false,
 					"argtypes": null,
 					"returntype": 2

@@ -353,8 +353,8 @@
     return 0
 
 
-#define ds_map
-    ///ds_map(map,key,[write value]) -> value
+#define dsmap
+    ///dsmap(map,key,[write value]) -> value
     if (argument_count==3) {
         if (ds_map_exists(argument0,argument1))
             ds_map_replace(argument0,argument1,argument2)
