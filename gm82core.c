@@ -200,6 +200,10 @@ GMREAL color_reverse(double color) {
     return ((col & 0xff)<<16) + (col & 0xff00) + ((col & 0xff0000)>>16);
 }
 
+GMREAL color_inverse(double color) {
+    return 0xffffff-(int)round(color);
+}
+
 GMREAL lengthdir_zx(double len,double dir,double dirz) {
     return len*dcos(dirz)*dcos(dir);
 }
