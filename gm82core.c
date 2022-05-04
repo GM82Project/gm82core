@@ -13,6 +13,19 @@ GMREAL __gm82core_checkstart() {
     return 1;
 }
 
+GMREAL get_ram_usage() {
+    DWORD dwProcessId;
+    HANDLE Process;
+    PROCESS_MEMORY_COUNTERS pmc;
+    
+    dwProcessId = GetCurrentProcessId();
+    Process = OpenProcess(PROCESS_QUERY_INFORMATION | PROCESS_VM_READ,FALSE,dwProcessId);
+    GetProcessMemoryInfo(Process,&pmc,sizeof(pmc));
+    CloseHandle(Process);
+    
+    return pmc.WorkingSetSize;
+}
+
 GMREAL set_working_directory(char* dir) {
     SetCurrentDirectory(dir);
     return 0;

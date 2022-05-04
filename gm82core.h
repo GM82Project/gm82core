@@ -4,6 +4,8 @@
 #include <windows.h>
 #include <versionhelpers.h>
 #include <math.h>
+#include <psapi.h>
 
 #pragma comment(lib, "advapi32.lib")
 #pragma comment(lib, "user32.lib")
+#pragma comment(lib, "Psapi.lib")
