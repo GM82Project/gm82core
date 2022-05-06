@@ -80,7 +80,7 @@
 					"name": "darccos",
 					"extname": "",
 					"calltype": 12,
-					"helpline": "darccos(angle)",
+					"helpline": "darccos(x)",
 					"hidden": false,
 					"argtypes": [
 						2
@@ -91,7 +91,7 @@
 					"name": "darcsin",
 					"extname": "",
 					"calltype": 12,
-					"helpline": "darcsin(angle)",
+					"helpline": "darcsin(x)",
 					"hidden": false,
 					"argtypes": [
 						2
@@ -102,9 +102,21 @@
 					"name": "darctan",
 					"extname": "",
 					"calltype": 12,
-					"helpline": "darctan(angle)",
+					"helpline": "darctan(x)",
 					"hidden": false,
 					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "darctan2",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "darctan(y,x)",
+					"hidden": false,
+					"argtypes": [
+						2,
 						2
 					],
 					"returntype": 2

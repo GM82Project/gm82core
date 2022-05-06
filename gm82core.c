@@ -168,15 +168,19 @@ GMREAL inch_angle(double ang1, double ang2, double step) {
 }
 
 GMREAL darccos(double ang) {
-    return acos(ang/180*M_PI);    
+    return acos(ang)*180/M_PI;    
 }
 
-GMREAL darcsin(double ang) {
-    return asin(ang/180*M_PI);    
+GMREAL darcsin(double x) {
+    return asin(x)*180/M_PI;    
 }
 
-GMREAL darctan(double ang) {
-    return atan(ang/180*M_PI);    
+GMREAL darctan(double x) {
+    return atan(x)*180/M_PI;    
+}
+
+GMREAL darctan2(double y, double x) {
+    return atan2(y, x)*180/M_PI;    
 }
 
 GMREAL dcos(double ang) {
