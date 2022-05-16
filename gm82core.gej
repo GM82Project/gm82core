@@ -675,6 +675,17 @@
 					"returntype": 2
 				},
 				{
+					"name": "collision_check_fast",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "collision_check_fast(obj)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
 					"name": "color_blend",
 					"extname": "",
 					"calltype": 2,

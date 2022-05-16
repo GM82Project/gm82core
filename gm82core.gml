@@ -50,6 +50,11 @@
     fps_fast=round(__gm82core_fpsmem)
 
 
+#define collision_check_fast
+    ///collision_check_fast(obj)
+    return (distance_to_object(instance_nearest(x,y,argument0)) <= 0);
+
+
 #define direction_to_object
     ///direction_to_object(obj)
     var __n;__n=instance_nearest(x,y,argument0)
