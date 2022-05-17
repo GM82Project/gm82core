@@ -317,6 +317,32 @@
 					"returntype": 2
 				},
 				{
+					"name": "pivot_pos_x",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "pivot_pos_x(px,py,dir)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "pivot_pos_y",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "pivot_pos_y(px,py,dir)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
 					"name": "point_direction_pitch",
 					"extname": "",
 					"calltype": 12,
@@ -348,12 +374,63 @@
 					"returntype": 2
 				},
 				{
+					"name": "circle_in_circle",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "circle_in_circle(ax,ay,radiusa,bx,by,radiusb)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2,
+						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "rectangle_in_circle",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "circle_in_circle(x1,y1,x2,y2,cx,cy,radius)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2,
+						2,
+						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
 					"name": "point_in_rectangle",
 					"extname": "",
 					"calltype": 12,
 					"helpline": "point_in_rectangle(px,py,x1,y1,x2,y2)",
 					"hidden": false,
 					"argtypes": [
+						2,
+						2,
+						2,
+						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "rectangle_in_rectangle",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "rectangle_in_rectangle(ax1,ay1,ax2,ay2,bx1,by1,bx2,by2)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
 						2,
 						2,
 						2,

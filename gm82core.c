@@ -111,6 +111,13 @@ double pointdis(double x1,double y1,double x2,double y2) {
     return hypot(x2-x1,y2-y1);
 }
 
+GMREAL lendirx(double len,double dir) {
+    return len*dcos(dir);
+}
+GMREAL lendiry(double len,double dir) {
+    return -len*dsin(dir);
+}
+
 GMREAL set_dll_loaddir(const char* name) {
     int len = MultiByteToWideChar(CP_UTF8, 0, name, -1, NULL, 0);
     wchar_t *wname = malloc(len*2);
@@ -233,12 +240,44 @@ GMREAL lengthdir_zz(double len,double dir,double dirz) {
     return -len*dsin(dirz);
 }
 
+GMREAL pivot_pos_x(double px,double py,double dir) {
+    return lendirx(px,dir)+lendirx(py,dir-90);
+}
+
+GMREAL pivot_pos_y(double px,double py,double dir) {
+    return lendiry(px,dir)+lendiry(py,dir-90);
+}
+
 GMREAL point_in_circle(double px, double py, double x1, double y1, double r) {
     return (pointdis(px,py,x1,y1)<r);
 }
 
+GMREAL circle_in_circle(double ax, double ay, double ar, double bx, double by, double br) {
+    return (pointdis(ax,ay,bx,by)<(ar+br));
+}
+
+GMREAL rectangle_in_circle(double x1, double y1, double x2, double y2, double cx, double cy, double cr) {
+    double tx = cx;
+    double ty = cy;
+    if (tx < x1)
+        tx = x1;
+    else if (tx > x2)
+        tx = x2;
+
+    if (ty < y1)
+        ty = y1;
+    else if (ty > y2)
+        ty = y2;
+
+    return (pointdis(tx,ty,cx,cy)<cr);
+}
+
 GMREAL point_in_rectangle(double px, double py, double x1, double y1, double x2, double y2) {
     return (px>=x1 && px<x2 && py>=y1 && py<y2);
+}
+
+GMREAL rectangle_in_rectangle(double ax1, double ay1, double ax2, double ay2, double bx1, double by1, double bx2, double by2) {
+    return (ax1>=bx1 && ax2<=bx2 && ay1>=by1 && ay2<=by2);
 }
 
 GMREAL point_in_triangle(double x0, double y0, double x1, double y1, double x2, double y2, double x3, double y3) {
