@@ -1,6 +1,6 @@
 Game Maker 8.2 Project
 
-(c) 2021 renex
+(c) 2021-2022 renex
 
     This software is provided 'as-is', without any express or implied
     warranty.  In no event will the authors be held liable for any damages
@@ -39,3 +39,7 @@ High Resolution Timer 2
 
     The above copyright notice and this permission notice shall be included in
     all copies or substantial portions of the Software.
+
+--------------------------------------------------------------------------------
+
+Forked and Modified by cam900
