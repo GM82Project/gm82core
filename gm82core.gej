@@ -3,7 +3,7 @@
 	"folder": "gm82",
 	"version": "1.4.1",
 	"author": "renex && floogle",
-	"date": "04/05/2022",
+	"date": "20/05/2022",
 	"license": "Free to use, also for commercial games.",
 	"description": "Part of the standard Game Maker 8.2 distribution. This extension package contains a number of helper functions that are commonly used, and also geometry functions introduced in GM:Studio. This extension is also required for using the other GM 8.2 extensions, Sound and Joystick.",
 	"helpfile": "",
@@ -601,6 +601,28 @@
 					"helpline": "get_ram_usage()",
 					"hidden": false,
 					"argtypes": [],
+					"returntype": 2
+				},
+				{
+					"name": "secant",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "secant(rad)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "dsecant",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "dsecant(angle)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
 					"returntype": 2
 				}
 			],

@@ -195,6 +195,14 @@ GMREAL dtan(double ang) {
     return tan(ang/180*M_PI);    
 }
 
+GMREAL secant(double ang) {
+    return 1/cos(ang);
+}
+
+GMREAL dsecant(double ang) {
+    return 1/cos(ang/180*M_PI);
+}
+
 GMREAL point_direction_pitch(double x1, double y1, double z1, double x2, double y2, double z2) {
     return pointdir(0.0,z1,pointdis(x1,y1,x2,y2),z2);
 }
