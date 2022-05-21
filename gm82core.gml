@@ -359,7 +359,16 @@
 
 
 #define dsmap
-    ///dsmap(map,key,[write value]) -> value
+    ///dsmap(map,key,value) -> value
+    ///dsmap(map,key) -> value
+    ///dsmap(map) -> string
+    ///dsmap() -> map
+    var __key,__str,__val;
+    
+    if (argument_count==0) {
+        return ds_map_create()
+    }
+        
     if (argument_count==3) {
         if (ds_map_exists(argument0,argument1))
             ds_map_replace(argument0,argument1,argument2)
@@ -367,11 +376,63 @@
             ds_map_add(argument0,argument1,argument2)        
         return argument2
     }
+    
+    if (argument_count==2) {
+        //floogle found out this is faster if the key exists
+        __key=ds_map_find_value(argument0,argument1)
+        if (is_real(__key)) if (__key==0) if (!ds_map_exists(argument0,argument1)) return undefined
+        return __key
+    }
+    
+    if (argument_count==1) {
+        __str=""
+        __key=ds_map_find_first(argument0)
+        repeat (ds_map_size(argument0)) {
+            __val=ds_map_find_value(argument0,__key)
+            if (is_string(__val)) __str+=string_better(__key)+": "+chr(34)+__val+chr(34)+chr(13)+chr(10)
+            else __str+=string_better(__key)+": "+string_better(__val)+chr(13)+chr(10)
+            __key=ds_map_find_next(argument0,__key)
+        }
+        return __str
+    }
 
-    //floogle found out this is faster if the key exists
-    var v;v=ds_map_find_value(argument0,argument1)
-    if (is_real(v)) if (v==0) if (!ds_map_exists(argument0,argument1)) return undefined
-    return v
+
+#define dslist
+    ///dslist(list,pos,val) -> value
+    ///dslist(list,pos) -> value
+    ///dslist(list) -> string
+    ///dslist() -> list
+    var i,s,str;
+    
+    if (argument_count==0) {
+        return ds_list_create()
+    }
+    
+    s=ds_list_size(argument0)
+        
+    if (argument_count==3) {
+        if (argument1>=0) {             
+            if (argument1-s) {
+                repeat (argument1-s) ds_list_add(argument0,undefined)
+                ds_list_add(argument0,argument2)             
+            } else ds_list_replace(argument0,argument1,argument2)             
+        } else ds_list_add(argument0,argument2)        
+        return argument2
+    }
+    
+    if (argument_count==2) {
+        if (argument1>=s) return undefined
+        return ds_list_find_value(argument0,argument1)
+    }
+    
+    if (argument_count==1) {
+        i=0 str=""
+        repeat (s) {
+            str+=string(ds_list_find_value(list,i))+chr(13)+chr(10)
+            i+=1
+        }
+        return str
+    }
     
 
 #define make_color_hsv_standard

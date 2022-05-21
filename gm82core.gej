@@ -3,7 +3,7 @@
 	"folder": "gm82",
 	"version": "1.4.1",
 	"author": "renex && floogle",
-	"date": "20/05/2022",
+	"date": "21/05/2022",
 	"license": "Free to use, also for commercial games.",
 	"description": "Part of the standard Game Maker 8.2 distribution. This extension package contains a number of helper functions that are commonly used, and also geometry functions introduced in GM:Studio. This extension is also required for using the other GM 8.2 extensions, Sound and Joystick.",
 	"helpfile": "",
@@ -880,6 +880,26 @@
 					"returntype": 2
 				},
 				{
+					"name": "draw_background_tiled_extra",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "draw_background_tiled_extra(back,x,y,xscale,yscale,angle,color,alpha,hrepeats,vrepeats)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2,
+						2,
+						2,
+						2,
+						2,
+						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
 					"name": "draw_self_floored",
 					"extname": "",
 					"calltype": 2,
@@ -908,6 +928,24 @@
 					"returntype": 2
 				},
 				{
+					"name": "dslist",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "dslist([list,pos,value])",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
+					"name": "dsmap",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "dsmap([map,key,value])",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
 					"name": "ds_list_equal",
 					"extname": "",
 					"calltype": 2,
@@ -917,15 +955,6 @@
 						2,
 						2
 					],
-					"returntype": 2
-				},
-				{
-					"name": "dsmap",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "dsmap(map,key,[write value]) -> value",
-					"hidden": false,
-					"argtypes": null,
 					"returntype": 2
 				},
 				{
@@ -1358,26 +1387,6 @@
 					"helpline": "",
 					"hidden": true,
 					"argtypes": null,
-					"returntype": 2
-				},
-				{
-					"name": "draw_background_tiled_extra",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "draw_background_tiled_extra(back,x,y,xscale,yscale,angle,color,alpha,hrepeats,vrepeats)",
-					"hidden": false,
-					"argtypes": [
-						2,
-						2,
-						2,
-						2,
-						2,
-						2,
-						2,
-						2,
-						2,
-						2
-					],
 					"returntype": 2
 				}
 			],
