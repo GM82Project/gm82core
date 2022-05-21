@@ -1359,6 +1359,26 @@
 					"hidden": true,
 					"argtypes": null,
 					"returntype": 2
+				},
+				{
+					"name": "draw_background_tiled_extra",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "draw_background_tiled_extra(back,x,y,xscale,yscale,angle,color,alpha,hrepeats,vrepeats)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2,
+						2,
+						2,
+						2,
+						2,
+						2,
+						2,
+						2
+					],
+					"returntype": 2
 				}
 			],
 			"constants": [
