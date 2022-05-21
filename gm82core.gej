@@ -393,7 +393,7 @@
 					"name": "rectangle_in_circle",
 					"extname": "",
 					"calltype": 12,
-					"helpline": "circle_in_circle(x1,y1,x2,y2,cx,cy,radius)",
+					"helpline": "rectangle_in_circle(x1,y1,x2,y2,cx,cy,radius)",
 					"hidden": false,
 					"argtypes": [
 						2,
