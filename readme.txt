@@ -1,0 +1,134 @@
+
+      Game Maker 8.2 Core
+      ===================
+      version 1.4.1
+  
+--------------------------------------------------------------------------------
+
+  Core, also known as gm82core, is a quality of life improvement extension for
+  Game Maker 8.1. It adds a number of helper functions, precise timing,
+  globalvars and utility constants, geometry and math, input, registry, and
+  also some functions imported from studio. 
+  
+  Core is also required for running most of
+  the other extensions in the GM 8.2 family. 
+  
+  Created by renex and Floogle. Contains contributions by Lovey01, cam900,
+  includes parts of High Resolution Timer 2 by Kyle Smith, and contains code
+  from GMLScripts.com - check the License for usage. 
+  
+  More detailed usage information is included in the GM 8.2 manual.
+
+
+--------------------------------------------------------------------------------
+
+    Quick function reference
+    ------------------------    
+    
+  alarm_get(index)
+  alarm_set(index,value)
+  angle_difference(ang1,ang2)
+  angle_difference_3d(x1,y1,z1,x2,y2,z2)
+  base64_decode(str)
+  base64_encode(str)
+  ceilto(val,to)
+  circle_in_circle(ax,ay,radiusa,bx,by,radiusb)
+  circle_in_circle(x1,y1,x2,y2,cx,cy,radius)
+  collision_check_fast(obj)
+  color_blend(col1,col2)
+  color_get_luminance(color)
+  color_inverse(color)
+  color_reverse(color)
+  cosine(a,b,amount)
+  darccos(x)
+  darcsin(x)
+  darctan(x)
+  darctan2(y,x)
+  date_get_timestamp([date])
+  dcos(angle)
+  direction_to_object(obj)
+  directory_previous(dir)
+  distance_to_instance(obj)
+  dot_product_3d_normalised(x1,y1,z1,x2,y2,z2)
+  dot_product_normalised(x1,y1,x2,y2)
+  draw_background_tiled_extra(back,x,y,xscale,yscale,angle,color,alpha,hrepeats,vrepeats)
+  draw_self_floored()
+  draw_sprite_ext_fixed(sprite,image,x,y,xscale,yscale,angle,color,alpha)
+  ds_list_equal(list1,list2)
+  ds_map_get(map,key)
+  ds_map_read_ini(map,filename)
+  ds_map_set(map,key,value)
+  dsecant(angle)
+  dsin(angle)
+  dslist([list,pos,value])
+  dsmap([map,key,value])
+  dtan(angle)
+  esign(val,default)
+  event_beginstep()
+  event_draw()
+  event_endstep()
+  event_step()
+  file_size(filename)
+  file_text_read_all(fname,[separator])
+  filename_remove_ext(filename)
+  floorto(val,to)
+  gauss(range)
+  get_delta()
+  get_ram_usage()
+  get_timer()
+  in_range(val,min,max)
+  inch(val,goto,stepsize)
+  inch_angle(ang1,ang2,step)
+  instance_create_moving(x,y,object,speed,direction)
+  instance_destroy_id(index)
+  instance_some(object)
+  irandom_fresh(oldval,min,max)
+  is_undefined(value)
+  lengthdir_zx(len,dir,dirz)
+  lengthdir_zy(len,dir,dirz)
+  lengthdir_zz(len,dir,dirz)
+  lerp2(fromA,fromB,toA,toB,value)
+  make_color_hsv_standard(hue 0-360,sat 0-100,val 0-100)
+  merge_color_corrected(col1,col2,factor)
+  modwrap(val,min,max)
+  mouse_back_button()
+  mouse_check_direct(button)
+  mouse_forward_button()
+  mouse_in_window()
+  move_towards_gravity(xto,yto,gravity)
+  outside_room()
+  pick(which,opt1,opt2,...)
+  pivot_pos_x(px,py,dir)
+  pivot_pos_y(px,py,dir)
+  point_direction_pitch(x1,y1,z1,x2,y2,z2)
+  point_in_circle(px,py,cx,cy,radius)
+  point_in_rectangle(px,py,x1,y1,x2,y2)
+  point_in_triangle(px,py,x1,y1,x2,y2,x3,y3)
+  real_hex(string)
+  rectangle_in_rectangle(ax1,ay1,ax2,ay2,bx1,by1,bx2,by2)
+  registry_read_dword(key,[default])
+  registry_write_dword(key,value)
+  roundto(val,to)
+  secant(rad)
+  set_working_directory(directory)
+  sleep_ext(ms)
+  string_better(val)
+  string_hex(val)
+  string_number(string)
+  string_ord_at(str,pos)
+  string_pad(number,digits)
+  string_token_next()
+  string_token_start(string,sep)
+  strong(val1,val2,val3...)
+  tile_find_anywhere(x,y)
+  triangle_is_clockwise(x1,y1,x2,y2,x3,y3)
+  unlerp(a,b,value)
+  url_open(url)
+  variable_instance_exists(instance_id,name)
+  variable_instance_get(instance_id,name)
+  variable_instance_set(instance_id,name,value)
+  window_get_caption_color()
+  window_has_focus()
+  window_minimize()
+  
+--------------------------------------------------------------------------------
