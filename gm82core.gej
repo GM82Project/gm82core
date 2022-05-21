@@ -113,7 +113,7 @@
 					"name": "darctan2",
 					"extname": "",
 					"calltype": 12,
-					"helpline": "darctan(y,x)",
+					"helpline": "darctan2(y,x)",
 					"hidden": false,
 					"argtypes": [
 						2,
