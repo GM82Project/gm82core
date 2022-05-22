@@ -3,7 +3,7 @@
 	"folder": "gm82",
 	"version": "1.4.1",
 	"author": "renex && floogle",
-	"date": "04/05/2022",
+	"date": "21/05/2022",
 	"license": "Free to use, also for commercial games.",
 	"description": "Part of the standard Game Maker 8.2 distribution. This extension package contains a number of helper functions that are commonly used, and also geometry functions introduced in GM:Studio. This extension is also required for using the other GM 8.2 extensions, Sound and Joystick.",
 	"helpfile": "",
@@ -113,7 +113,7 @@
 					"name": "darctan2",
 					"extname": "",
 					"calltype": 12,
-					"helpline": "darctan(y,x)",
+					"helpline": "darctan2(y,x)",
 					"hidden": false,
 					"argtypes": [
 						2,
@@ -393,7 +393,7 @@
 					"name": "rectangle_in_circle",
 					"extname": "",
 					"calltype": 12,
-					"helpline": "circle_in_circle(x1,y1,x2,y2,cx,cy,radius)",
+					"helpline": "rectangle_in_circle(x1,y1,x2,y2,cx,cy,radius)",
 					"hidden": false,
 					"argtypes": [
 						2,
@@ -679,6 +679,28 @@
 					"hidden": false,
 					"argtypes": [],
 					"returntype": 2
+				},
+				{
+					"name": "secant",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "secant(rad)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "dsecant",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "dsecant(angle)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
 				}
 			],
 			"constants": []
@@ -858,6 +880,26 @@
 					"returntype": 2
 				},
 				{
+					"name": "draw_background_tiled_extra",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "draw_background_tiled_extra(back,x,y,xscale,yscale,angle,color,alpha,hrepeats,vrepeats)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2,
+						2,
+						2,
+						2,
+						2,
+						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
 					"name": "draw_self_floored",
 					"extname": "",
 					"calltype": 2,
@@ -886,6 +928,24 @@
 					"returntype": 2
 				},
 				{
+					"name": "dslist",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "dslist([list,pos,value])",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
+					"name": "dsmap",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "dsmap([map,key,value])",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
 					"name": "ds_list_equal",
 					"extname": "",
 					"calltype": 2,
@@ -895,15 +955,6 @@
 						2,
 						2
 					],
-					"returntype": 2
-				},
-				{
-					"name": "dsmap",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "dsmap(map,key,[write value]) -> value",
-					"hidden": false,
-					"argtypes": null,
 					"returntype": 2
 				},
 				{

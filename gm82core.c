@@ -104,20 +104,6 @@ GMREAL unlerp(double a, double b, double val) {
     return (val-a)/(b-a);
 }
 
-double pointdir(double x1,double y1,double x2,double y2) {
-    return modwrap(atan2(y1-y2,x1-x2)*180/M_PI,0,360);
-}
-double pointdis(double x1,double y1,double x2,double y2) {
-    return hypot(x2-x1,y2-y1);
-}
-
-GMREAL lendirx(double len,double dir) {
-    return len*dcos(dir);
-}
-GMREAL lendiry(double len,double dir) {
-    return -len*dsin(dir);
-}
-
 GMREAL set_dll_loaddir(const char* name) {
     int len = MultiByteToWideChar(CP_UTF8, 0, name, -1, NULL, 0);
     wchar_t *wname = malloc(len*2);
@@ -202,8 +188,12 @@ GMREAL dtan(double ang) {
     return tan(ang/180*M_PI);    
 }
 
-GMREAL point_direction_pitch(double x1, double y1, double z1, double x2, double y2, double z2) {
-    return pointdir(0.0,z1,pointdis(x1,y1,x2,y2),z2);
+GMREAL secant(double ang) {
+    return 1/cos(ang);
+}
+
+GMREAL dsecant(double ang) {
+    return 1/cos(ang/180*M_PI);
 }
 
 GMREAL triangle_is_clockwise(double x0, double y0, double x1, double y1, double x2, double y2) {
@@ -238,6 +228,24 @@ GMREAL lengthdir_zy(double len,double dir,double dirz) {
 
 GMREAL lengthdir_zz(double len,double dir,double dirz) {
     return -len*dsin(dirz);
+}
+
+double pointdir(double x1,double y1,double x2,double y2) {
+    return modwrap(atan2(y1-y2,x1-x2)*180/M_PI,0,360);
+}
+double pointdis(double x1,double y1,double x2,double y2) {
+    return hypot(x2-x1,y2-y1);
+}
+
+GMREAL lendirx(double len,double dir) {
+    return len*dcos(dir);
+}
+GMREAL lendiry(double len,double dir) {
+    return -len*dsin(dir);
+}
+
+GMREAL point_direction_pitch(double x1, double y1, double z1, double x2, double y2, double z2) {
+    return pointdir(0.0,z1,pointdis(x1,y1,x2,y2),z2);
 }
 
 GMREAL pivot_pos_x(double px,double py,double dir) {
@@ -280,12 +288,18 @@ GMREAL rectangle_in_rectangle(double ax1, double ay1, double ax2, double ay2, do
     return (ax1>=bx1 && ax2<=bx2 && ay1>=by1 && ay2<=by2);
 }
 
+double signnum_c(double x) {
+    if (x > 0.0) return 1.0;
+    if (x < 0.0) return -1.0;
+    return x;
+}
+
 GMREAL point_in_triangle(double x0, double y0, double x1, double y1, double x2, double y2, double x3, double y3) {
-    return (
-        !triangle_is_clockwise(x0,y0,x1,y1,x3,y3) &&
-        !triangle_is_clockwise(x1,y1,x2,y2,x3,y3) &&
-        !triangle_is_clockwise(x2,y2,x0,y0,x3,y3)
-    );
+    double a, b, c;
+    a = (x1-x0)*(y2-y0)-(x2-x0)*(y1-y0);
+    b = (x2-x0)*(y3-y0)-(x3-x0)*(y2-y0);
+    c = (x3-x0)*(y1-y0)-(x1-x0)*(y3-y0);
+    return (signnum_c(a) == signnum_c(b) && signnum_c(b) == signnum_c(c))?1.0:0.0;
 }
 
 GMREAL in_range(double val, double vmin, double vmax) {
