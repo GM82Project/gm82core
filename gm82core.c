@@ -113,6 +113,10 @@ GMREAL set_dll_loaddir(const char* name) {
     return 0;    
 }
 
+GMREAL __gm82core_set_foreground(double handle) {
+    return SetForegroundWindow((HWND)(int)handle);
+}
+
 GMREAL get_foreground_window() {
     return (double)(int)GetForegroundWindow();
 }

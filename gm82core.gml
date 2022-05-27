@@ -761,5 +761,10 @@
     }
 
     draw_primitive_end()
+
+
+#define window_set_foreground()
+    __gm82core_set_foreground(window_handle())
+
 //
 //

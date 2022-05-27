@@ -3,7 +3,7 @@
 	"folder": "gm82",
 	"version": "1.4.1",
 	"author": "renex && floogle",
-	"date": "21/05/2022",
+	"date": "26/05/2022",
 	"license": "Free to use, also for commercial games.",
 	"description": "Part of the standard Game Maker 8.2 distribution. This extension package contains a number of helper functions that are commonly used, and also geometry functions introduced in GM:Studio. This extension is also required for using the other GM 8.2 extensions, Sound and Joystick.",
 	"helpfile": "",
@@ -36,6 +36,22 @@
 					"helpline": "ceilto(val,to)",
 					"hidden": false,
 					"argtypes": [
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "circle_in_circle",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "circle_in_circle(ax,ay,radiusa,bx,by,radiusb)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2,
+						2,
 						2,
 						2
 					],
@@ -133,6 +149,17 @@
 					"returntype": 2
 				},
 				{
+					"name": "dsecant",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "dsecant(angle)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
 					"name": "dsin",
 					"extname": "",
 					"calltype": 12,
@@ -194,6 +221,15 @@
 					"extname": "hrt_delta",
 					"calltype": 12,
 					"helpline": "get_delta()",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
+					"name": "get_ram_usage",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "get_ram_usage()",
 					"hidden": false,
 					"argtypes": [],
 					"returntype": 2
@@ -304,6 +340,21 @@
 					"returntype": 2
 				},
 				{
+					"name": "lerp2",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "lerp2(fromA,fromB,toA,toB,value)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
 					"name": "modwrap",
 					"extname": "",
 					"calltype": 12,
@@ -374,63 +425,12 @@
 					"returntype": 2
 				},
 				{
-					"name": "circle_in_circle",
-					"extname": "",
-					"calltype": 12,
-					"helpline": "circle_in_circle(ax,ay,radiusa,bx,by,radiusb)",
-					"hidden": false,
-					"argtypes": [
-						2,
-						2,
-						2,
-						2,
-						2,
-						2
-					],
-					"returntype": 2
-				},
-				{
-					"name": "rectangle_in_circle",
-					"extname": "",
-					"calltype": 12,
-					"helpline": "rectangle_in_circle(x1,y1,x2,y2,cx,cy,radius)",
-					"hidden": false,
-					"argtypes": [
-						2,
-						2,
-						2,
-						2,
-						2,
-						2,
-						2
-					],
-					"returntype": 2
-				},
-				{
 					"name": "point_in_rectangle",
 					"extname": "",
 					"calltype": 12,
 					"helpline": "point_in_rectangle(px,py,x1,y1,x2,y2)",
 					"hidden": false,
 					"argtypes": [
-						2,
-						2,
-						2,
-						2,
-						2,
-						2
-					],
-					"returntype": 2
-				},
-				{
-					"name": "rectangle_in_rectangle",
-					"extname": "",
-					"calltype": 12,
-					"helpline": "rectangle_in_rectangle(ax1,ay1,ax2,ay2,bx1,by1,bx2,by2)",
-					"hidden": false,
-					"argtypes": [
-						2,
-						2,
 						2,
 						2,
 						2,
@@ -459,21 +459,6 @@
 					"returntype": 2
 				},
 				{
-					"name": "lerp2",
-					"extname": "",
-					"calltype": 12,
-					"helpline": "lerp2(fromA,fromB,toA,toB,value)",
-					"hidden": false,
-					"argtypes": [
-						2,
-						2,
-						2,
-						2,
-						2
-					],
-					"returntype": 2
-				},
-				{
 					"name": "real_hex",
 					"extname": "",
 					"calltype": 12,
@@ -485,6 +470,41 @@
 					"returntype": 2
 				},
 				{
+					"name": "rectangle_in_circle",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "rectangle_in_circle(x1,y1,x2,y2,cx,cy,radius)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2,
+						2,
+						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "rectangle_in_rectangle",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "rectangle_in_rectangle(ax1,ay1,ax2,ay2,bx1,by1,bx2,by2)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2,
+						2,
+						2,
+						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
 					"name": "roundto",
 					"extname": "",
 					"calltype": 12,
@@ -492,6 +512,17 @@
 					"hidden": false,
 					"argtypes": [
 						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "secant",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "secant(rad)",
+					"hidden": false,
+					"argtypes": [
 						2
 					],
 					"returntype": 2
@@ -638,6 +669,17 @@
 					"returntype": 2
 				},
 				{
+					"name": "__gm82core_set_foreground",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "",
+					"hidden": true,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
 					"name": "__gm82core_winver",
 					"extname": "",
 					"calltype": 12,
@@ -667,37 +709,6 @@
 					"argtypes": [
 						1,
 						1,
-						2
-					],
-					"returntype": 2
-				},
-				{
-					"name": "get_ram_usage",
-					"extname": "",
-					"calltype": 12,
-					"helpline": "get_ram_usage()",
-					"hidden": false,
-					"argtypes": [],
-					"returntype": 2
-				},
-				{
-					"name": "secant",
-					"extname": "",
-					"calltype": 12,
-					"helpline": "secant(rad)",
-					"hidden": false,
-					"argtypes": [
-						2
-					],
-					"returntype": 2
-				},
-				{
-					"name": "dsecant",
-					"extname": "",
-					"calltype": 12,
-					"helpline": "dsecant(angle)",
-					"hidden": false,
-					"argtypes": [
 						2
 					],
 					"returntype": 2
@@ -1367,6 +1378,15 @@
 					"extname": "",
 					"calltype": 2,
 					"helpline": "window_minimize()",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
+					"name": "window_set_foreground",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "window_set_foreground()",
 					"hidden": false,
 					"argtypes": [],
 					"returntype": 2
