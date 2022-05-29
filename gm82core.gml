@@ -690,13 +690,14 @@
     ///draw_sprite_ext_fixed(sprite,image,x,y,xscale,yscale,angle,color,alpha)
     draw_sprite_ext(
         argument0,floor(argument1),
-        argument2+lengthdir_x(0.5,argument6)+lengthdir_x(0.5,argument6-90),
-        argument3+lengthdir_y(0.5,argument6)+lengthdir_y(0.5,argument6-90),
+        argument2+lengthdir_x(0.5*argument4,argument6)+lengthdir_x(0.5*argument5,argument6-90),
+        argument3+lengthdir_y(0.5*argument4,argument6)+lengthdir_y(0.5*argument5,argument6-90),
         argument4,argument5,argument6,argument7,argument8
     )
 
 
 #define tile_find_anywhere
+    ///tile_find_anywhere(x,y)
     var t;
     t=tile_find(argument0,argument1,0)
     if (t) return t
