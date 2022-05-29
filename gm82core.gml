@@ -195,6 +195,11 @@
     event_perform(ev_draw,0)
 
 
+#define event_alarm
+    ///event_alarm(numb)
+    event_perform(ev_alarm,argument0)
+
+
 #define draw_self_floored
     ///draw_self_floored
     draw_sprite_ext(sprite_index,floor(image_index),floor(x),floor(y),image_xscale,image_yscale,image_angle,image_blend,image_alpha)

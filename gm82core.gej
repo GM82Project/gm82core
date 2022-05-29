@@ -3,7 +3,7 @@
 	"folder": "gm82",
 	"version": "1.4.1",
 	"author": "renex && floogle",
-	"date": "26/05/2022",
+	"date": "29/05/2022",
 	"license": "Free to use, also for commercial games.",
 	"description": "Part of the standard Game Maker 8.2 distribution. This extension package contains a number of helper functions that are commonly used, and also geometry functions introduced in GM:Studio. This extension is also required for using the other GM 8.2 extensions, Sound and Joystick.",
 	"helpfile": "",
@@ -1001,6 +1001,17 @@
 					"argtypes": [
 						2,
 						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "event_alarm",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "event_alarm(numb)",
+					"hidden": false,
+					"argtypes": [
 						2
 					],
 					"returntype": 2
