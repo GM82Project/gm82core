@@ -200,6 +200,12 @@
     event_perform(ev_alarm,argument0)
 
 
+#define animation_stop
+    ///animation_stop()
+    image_speed=0
+    image_index=image_number-1
+
+
 #define draw_self_floored
     ///draw_self_floored
     draw_sprite_ext(sprite_index,floor(image_index),floor(x),floor(y),image_xscale,image_yscale,image_angle,image_blend,image_alpha)
