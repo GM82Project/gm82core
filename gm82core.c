@@ -335,3 +335,11 @@ GMREAL sleep_ext(double ms) {
     SleepEx((DWORD)ms,TRUE);
     return 0;
 }
+
+GMREAL __gm82core_addfonttemp(const char* fname) {
+    return (double)AddFontResource(fname);
+}
+
+GMREAL __gm82core_remfonttemp(const char* fname) {
+    return (double)RemoveFontResource(fname);
+}

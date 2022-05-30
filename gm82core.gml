@@ -778,5 +778,14 @@
 #define window_set_foreground()
     __gm82core_set_foreground(window_handle())
 
+
+#define font_add_file
+    ///font_add_file(filename,fontname,size,bold,italic,first,last)
+    var font;
+    __gm82core_addfonttemp(argument0)
+    font=font_add(argument1,argument2,argument3,argument4,argument5,argument6)
+    __gm82core_remfonttemp(argument0)
+    return font
+
 //
 //
