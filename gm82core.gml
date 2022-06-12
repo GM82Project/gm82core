@@ -736,7 +736,17 @@
     texture_set_repeat(1)
     draw_primitive_begin_texture(pr_trianglestrip,tex)    
             
-    if (hrep>0 || vrep>0) {
+    if (hrep>0 && vrep>0) {
+        if (xs=0 || ys=0) exit
+        u=dx v=dy
+        draw_vertex_texture_color(u-0.5,v-0.5,0,0,color,alpha)
+        u=dx+dcos(angle)*w*hrep v=dy-dsin(angle)*w*hrep
+        draw_vertex_texture_color(u-0.5,v-0.5,hrep,0,color,alpha)
+        u=dx+dcos(angle-90)*h*vrep v=dy-dsin(angle-90)*h*vrep
+        draw_vertex_texture_color(u-0.5,v-0.5,0,vrep,color,alpha)
+        u=dx+pivot_pos_x(w*hrep,h*vrep,angle) v=dy+pivot_pos_y(w*hrep,h*vrep,angle)
+        draw_vertex_texture_color(u-0.5,v-0.5,hrep,vrep,color,alpha)        
+    } else if (hrep>0 || vrep>0) {
         if (xs=0 || ys=0) exit //zero scale would produce a degenerate quad anyway
         angadd=-angle
         if (hrep>0) {
