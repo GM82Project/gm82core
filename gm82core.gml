@@ -168,8 +168,14 @@
     gravity=argument2
     __dX=argument0-x
     __dY=argument1-y
-    __ang=(arctan2(-__dY,__dX)+degtorad(90))/2
-    if (__ang!=pi/2) {
+    
+    if (__dX==0) {
+        if (__dY<0) {
+            //straight up (we don't do anything for straight down)
+            vspeed=-sqrt(__dY*-2/gravity)*gravity-gravity/2
+        }
+    } else {
+        __ang=(arctan2(-__dY,__dX)+degtorad(90))/2
         speed=__dX/(cos(__ang)*sqrt(2*(__dY+tan(__ang)*__dX)/gravity))
         direction=radtodeg(__ang)
     }
