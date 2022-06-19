@@ -803,5 +803,20 @@
     __gm82core_remfonttemp(argument0)
     return font
 
+
+#define event_trigger
+    ///event_trigger(trig)
+    event_perform(ev_trigger,argument0)
+
+
+#define object_is_child_of
+    ///object_is_child_of(object)
+    return object_index==argument0 || object_is_ancestor(object_index,argument0)
+
+
+#define object_other_is_child_of
+    ///object_other_is_child_of(object)
+    return other.object_index==argument0 || object_is_ancestor(other.object_index,argument0)
+
 //
 //
