@@ -1,4 +1,5 @@
 .vscode/*
+build
 *.gex
 *.dll
 *.obj

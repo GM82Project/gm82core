@@ -12,7 +12,7 @@
 	"files": [
 		{
 			"filename": "gm82core.dll",
-			"origname": "gm82core.dll",
+			"origname": "build/Release/gm82core.dll",
 			"kind": 1,
 			"init": "",
 			"final": "",
