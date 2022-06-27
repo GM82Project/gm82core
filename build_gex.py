@@ -213,7 +213,6 @@ def build_gex(ged_path, gex_path):
         # show warning if needed
         if must_restart_gm and gm_running():
             print('GameMaker must be restarted!')
-            input()
 
 
 def decrypt_gex(gex_path, out_path):
