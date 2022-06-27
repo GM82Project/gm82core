@@ -1,3 +1,3 @@
-cmake -B build -A Win32 && cmake --build build --config Release
+cmake -B build -A Win32 -DINSTALL_GEX=ON && cmake --build build --config Release
 
 pause

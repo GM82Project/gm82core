@@ -9,10 +9,22 @@ endif()
 
 add_library(gm82core SHARED gm82core.c hrt.c lovey01.c terrible_gm8_hacking.c)
 
-add_custom_command(
+option(INSTALL_GEX "Install the generated .gex" OFF)
+
+if (INSTALL_GEX)
+	add_custom_command(
 		TARGET gm82core
 		POST_BUILD
-	COMMAND py build_gex.py gm82core.gej
-	WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-	COMMENT "Building .gex"
-)
+		COMMAND py build_gex.py gm82core.gej
+		WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+		COMMENT "Building .gex"
+	)
+else()
+	add_custom_command(
+		TARGET gm82core
+		POST_BUILD
+		COMMAND py build_gex.py gm82core.gej --noinstall
+		WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+		COMMENT "Building .gex"
+	)
+endif()
