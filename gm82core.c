@@ -161,7 +161,7 @@ GMREAL angle_difference(double ang1, double ang2) {
 GMREAL inch_angle(double ang1, double ang2, double step) {
     double d=fmod(ang2-ang1+540.0,360.0)-180.0;
     if (d>0.0) return fmod(ang1+min(d,step),360.0);
-    return 360.0-fmod(360.0-(ang1+max(-step,d)),360.0);
+    return fmod(360.0-fmod(360.0-(ang1+max(-step,d)),360.0),360.0);
 }
 
 GMREAL darccos(double ang) {
