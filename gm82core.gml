@@ -680,6 +680,15 @@
     return instance_id[lastinst]
 
 
+#define instance_create_moving2
+    ///instance_create_moving2(x,y,object,hspeed,vspeed,[gravity])
+    var lastinst,__i;lastinst=instance_count
+    action_create_object_motion(argument2,argument0,argument1,point_distance(0,0,argument3,argument4),point_direction(0,0,argument3,argument4))
+    __i=instance_id[lastinst]
+    if (argument_count>5) __i.gravity=argument5
+    return __i
+
+
 #define ds_list_equal
     ///ds_list_equal(list1,list2)
     var __i,__s;
@@ -818,5 +827,8 @@
     ///object_other_is_child_of(object)
     return other.object_index==argument0 || object_is_ancestor(other.object_index,argument0)
 
+#define instance_destroy_other
+    ///instance_destroy_other()
+    with (other) instance_destroy()
 //
 //

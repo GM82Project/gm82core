@@ -1,9 +1,9 @@
 {
 	"name": "Game Maker 8.2 Core",
 	"folder": "gm82",
-	"version": "1.4.2",
+	"version": "1.4.3",
 	"author": "renex && floogle",
-	"date": "19/06/2022",
+	"date": "01/07/2022",
 	"license": "Free to use, also for commercial games.",
 	"description": "Part of the standard Game Maker 8.2 distribution. This extension package contains a number of helper functions that are commonly used, and also geometry functions introduced in GM:Studio. This extension is also required for using the other GM 8.2 extensions, Sound and Joystick.",
 	"helpfile": "",
@@ -1499,6 +1499,24 @@
 					"argtypes": [
 						2
 					],
+					"returntype": 2
+				},
+				{
+					"name": "instance_create_moving2",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "instance_create_moving2(x,y,object,hspeed,vspeed,[gravity])",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
+					"name": "instance_destroy_other",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "instance_destroy_other()",
+					"hidden": false,
+					"argtypes": [],
 					"returntype": 2
 				}
 			],
