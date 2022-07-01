@@ -1502,10 +1502,10 @@
 					"returntype": 2
 				},
 				{
-					"name": "instance_create_moving2",
+					"name": "instance_create_moving_ext",
 					"extname": "",
 					"calltype": 2,
-					"helpline": "instance_create_moving2(x,y,object,hspeed,vspeed,[gravity])",
+					"helpline": "instance_create_moving_ext(x,y,object,speed,direction,[addhspeed,addvspeed,[gravity,[gravdir]]])",
 					"hidden": false,
 					"argtypes": null,
 					"returntype": 2

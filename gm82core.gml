@@ -674,19 +674,49 @@
 
 
 #define instance_create_moving
-    ///instance_create_moving(x,y,object,speed,direction)
+    ///instance_create_moving(x,y,object,speed,direction,[gravity,[gravdir]])
     var lastinst;lastinst=instance_count
     action_create_object_motion(argument2,argument0,argument1,argument3,argument4)
-    return instance_id[lastinst]
-
-
-#define instance_create_moving2
-    ///instance_create_moving2(x,y,object,hspeed,vspeed,[gravity])
-    var lastinst,__i;lastinst=instance_count
-    action_create_object_motion(argument2,argument0,argument1,point_distance(0,0,argument3,argument4),point_direction(0,0,argument3,argument4))
     __i=instance_id[lastinst]
-    if (argument_count>5) __i.gravity=argument5
-    return __i
+    if (instance_exists(__i)) {
+        if (argument_count>5)
+            __i.gravity=argument5
+        if (argument_count>6)
+            __i.gravity_direction=argument6
+        return __i
+    }
+    return noone
+
+
+#define instance_create_moving_ext
+    ///instance_create_moving_ext(x,y,object,speed,direction,[addhspeed,addvspeed,[gravity,[gravdir]]])
+    var lastinst,__i,__h,__v;
+    
+    if (argument_count<5 || argument_count==6 || argument_count>9) {
+        show_error("Incorrect set of arguments for function instance_create_moving_ext().",0)
+        return noone
+    }
+    
+    lastinst=instance_count
+    if (argument_count>6) {
+        __h=lengthdir_x(argument3,argument4)+argument5
+        __v=lengthdir_y(argument3,argument4)+argument6        
+        action_create_object_motion(
+            argument2, //obj
+            argument0,argument1, //x,y
+            point_distance(0,0,__h,__v),point_direction(0,0,__h,__v) //speed,direction
+        )
+    } else action_create_object_motion(argument2,argument0,argument1,argument3,argument4)
+    
+    __i=instance_id[lastinst]
+    if (instance_exists(__i)) {
+        if (argument_count>7)
+            __i.gravity=argument7
+        if (argument_count>8)
+            __i.gravity_direction=argument8
+        return __i
+    }
+    return noone
 
 
 #define ds_list_equal
