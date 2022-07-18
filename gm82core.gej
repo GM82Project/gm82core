@@ -942,6 +942,15 @@
 					"returntype": 2
 				},
 				{
+					"name": "draw_self_as",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "draw_self_as(sprite,[image])",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
 					"name": "draw_self_floored",
 					"extname": "",
 					"calltype": 2,

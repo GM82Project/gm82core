@@ -752,6 +752,13 @@
     )
 
 
+#define draw_self_as
+    ///draw_self_as(sprite,[image])
+    var __img;__img=-1
+    if (argument_count>1) __img=floor(argument1)
+    draw_sprite_ext(argument0,__img,x,y,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+
+
 #define tile_find_anywhere
     ///tile_find_anywhere(x,y)
     var t;
