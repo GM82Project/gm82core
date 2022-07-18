@@ -3,7 +3,7 @@
 	"folder": "gm82",
 	"version": "1.4.3",
 	"author": "renex && floogle",
-	"date": "01/07/2022",
+	"date": "18/07/2022",
 	"license": "Free to use, also for commercial games.",
 	"description": "Part of the standard Game Maker 8.2 distribution. This extension package contains a number of helper functions that are commonly used, and also geometry functions introduced in GM:Studio. This extension is also required for using the other GM 8.2 extensions, Sound and Joystick.",
 	"helpfile": "",
@@ -1093,6 +1093,17 @@
 					"returntype": 2
 				},
 				{
+					"name": "event_trigger",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "event_trigger(trig)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
 					"name": "filename_remove_ext",
 					"extname": "",
 					"calltype": 2,
@@ -1156,6 +1167,15 @@
 					"returntype": 2
 				},
 				{
+					"name": "instance_create_moving_ext",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "instance_create_moving_ext(x,y,object,speed,direction,[addhspeed,addvspeed,[gravity,[gravdir]]])",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
 					"name": "instance_destroy_id",
 					"extname": "",
 					"calltype": 2,
@@ -1164,6 +1184,15 @@
 					"argtypes": [
 						2
 					],
+					"returntype": 2
+				},
+				{
+					"name": "instance_destroy_other",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "instance_destroy_other()",
+					"hidden": false,
+					"argtypes": [],
 					"returntype": 2
 				},
 				{
@@ -1274,6 +1303,28 @@
 					"argtypes": [
 						2,
 						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "object_is_child_of",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "object_is_child_of(object)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "object_other_is_child_of",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "object_other_is_child_of(object)",
+					"hidden": false,
+					"argtypes": [
 						2
 					],
 					"returntype": 2
@@ -1475,57 +1526,6 @@
 					"helpline": "",
 					"hidden": true,
 					"argtypes": null,
-					"returntype": 2
-				},
-				{
-					"name": "event_trigger",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "event_trigger(trig)",
-					"hidden": false,
-					"argtypes": [
-						2
-					],
-					"returntype": 2
-				},
-				{
-					"name": "object_is_child_of",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "object_is_child_of(object)",
-					"hidden": false,
-					"argtypes": [
-						2
-					],
-					"returntype": 2
-				},
-				{
-					"name": "object_other_is_child_of",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "object_other_is_child_of(object)",
-					"hidden": false,
-					"argtypes": [
-						2
-					],
-					"returntype": 2
-				},
-				{
-					"name": "instance_create_moving_ext",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "instance_create_moving_ext(x,y,object,speed,direction,[addhspeed,addvspeed,[gravity,[gravdir]]])",
-					"hidden": false,
-					"argtypes": null,
-					"returntype": 2
-				},
-				{
-					"name": "instance_destroy_other",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "instance_destroy_other()",
-					"hidden": false,
-					"argtypes": [],
 					"returntype": 2
 				}
 			],
