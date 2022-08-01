@@ -155,7 +155,7 @@ GMREAL cosine(double a, double b, double amount) {
 }
 
 GMREAL angle_difference(double ang1, double ang2) {
-    return fmod(ang2-ang1+540.0,360.0)-180.0;
+    return modwrap(ang2-ang1+540.0,0.0,360.0)-180.0;
 }
 
 GMREAL inch_angle(double ang1, double ang2, double step) {
