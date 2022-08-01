@@ -7,6 +7,10 @@ static char* tokenpos = NULL;
 static char tokensep[256] = {0};
 static size_t tokenseplen = 0;
 
+GMREAL __gm82core_dllcheck() {
+    return 820;
+}
+
 GMREAL __gm82core_checkstart() {
     if (has_started) return 0;
     has_started = 1;
