@@ -789,6 +789,9 @@
     tex=background_get_texture(bg)
     w=background_get_width(bg)*xs
     h=background_get_height(bg)*ys
+    
+    //       ????????
+    if (w==0 || h==0) exit
 
     texture_set_repeat(1)
     draw_primitive_begin_texture(pr_trianglestrip,tex)    
