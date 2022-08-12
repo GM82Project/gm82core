@@ -3,7 +3,7 @@
 	"folder": "gm82",
 	"version": "1.4.4",
 	"author": "renex && floogle",
-	"date": "01/08/2022",
+	"date": "12/08/2022",
 	"license": "Free to use, also for commercial games.",
 	"description": "Part of the standard Game Maker 8.2 distribution. This extension package contains a number of helper functions that are commonly used, and also geometry functions introduced in GM:Studio. This extension is also required for using the other GM 8.2 extensions, Sound and Joystick.",
 	"helpfile": "",
@@ -296,6 +296,17 @@
 					"argtypes": [
 						2,
 						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "io_set_roomend_clear",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "io_set_roomend_clear(enabled)",
+					"hidden": false,
+					"argtypes": [
 						2
 					],
 					"returntype": 2
