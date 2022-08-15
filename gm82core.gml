@@ -434,7 +434,7 @@
         
     if (argument_count==3) {
         if (argument1>=0) {             
-            if (argument1-s) {
+            if (argument1-s>=0) {
                 repeat (argument1-s) ds_list_add(argument0,undefined)
                 ds_list_add(argument0,argument2)             
             } else ds_list_replace(argument0,argument1,argument2)             
@@ -450,7 +450,7 @@
     if (argument_count==1) {
         i=0 str=""
         repeat (s) {
-            str+=string(ds_list_find_value(list,i))+chr(13)+chr(10)
+            str+=string(ds_list_find_value(argument0,i))+chr(13)+chr(10)
             i+=1
         }
         return str
