@@ -315,7 +315,7 @@
 					"name": "keyboard_get_capslock",
 					"extname": "get_capslock",
 					"calltype": 12,
-					"helpline": "",
+					"helpline": "keyboard_get_capslock()",
 					"hidden": false,
 					"argtypes": [],
 					"returntype": 2
@@ -324,7 +324,7 @@
 					"name": "keyboard_get_scrolllock",
 					"extname": "get_scrolllock",
 					"calltype": 12,
-					"helpline": "",
+					"helpline": "keyboard_get_scrolllock()",
 					"hidden": false,
 					"argtypes": [],
 					"returntype": 2
