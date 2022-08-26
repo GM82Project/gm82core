@@ -17,6 +17,14 @@ GMREAL __gm82core_checkstart() {
     return 1;
 }
 
+GMREAL get_capslock() {
+    return (double)(GetKeyState(VK_CAPITAL) & 1);
+}
+
+GMREAL get_scrolllock() {
+    return (double)(GetKeyState(VK_SCROLL) & 1);
+}
+
 GMREAL get_ram_usage() {
     DWORD dwProcessId;
     HANDLE Process;
