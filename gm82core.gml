@@ -211,6 +211,11 @@
     event_perform(ev_alarm,argument0)
 
 
+#define event_inherit_object
+    ///event_inherit_object(object)
+    event_perform_object(argument0,event_type,event_number)
+
+
 #define animation_stop
     ///animation_stop()
     image_speed=0
