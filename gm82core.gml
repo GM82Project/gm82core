@@ -62,7 +62,9 @@
 
 #define direction_to_object
     ///direction_to_object(obj)
-    var __n;__n=instance_nearest(x,y,argument0)
+    var __n;
+    if (argument0>=100000) __n=argument0
+    else __n=instance_nearest(x,y,argument0)
     if (__n==noone) return -1
     return point_direction(x,y,__n.x,__n.y)
 
