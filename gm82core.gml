@@ -685,6 +685,16 @@
         || bbox_bottom < 0
 
 
+#define instance_create_depth
+    ///instance_create_depth(x,y,depth,object)
+    var lastinst;lastinst=instance_create(argument0,argument1,argument3)
+    if (instance_exists(lastinst)) {
+        lastinst.depth=argument2;
+        return lastinst
+    }
+    return noone
+
+
 #define instance_create_moving
     ///instance_create_moving(x,y,object,speed,direction,[gravity,[gravdir]])
     var lastinst;lastinst=instance_count
@@ -696,6 +706,16 @@
         if (argument_count>6)
             __i.gravity_direction=argument6
         return __i
+    }
+    return noone
+
+
+#define instance_create_depth_moving
+    ///instance_create_depth_moving(x,y,depth,object,speed,direction,[gravity,[gravdir]])
+    var lastinst;lastinst=instance_create_moving(argument0,argument1,argument3,argument4,argument5,argument6,argument7)
+    if (instance_exists(lastinst)) {
+        lastinst.depth=argument2
+        return lastinst
     }
     return noone
 
@@ -727,6 +747,16 @@
         if (argument_count>8)
             __i.gravity_direction=argument8
         return __i
+    }
+    return noone
+
+
+#define instance_create_depth_moving_ext
+    ///instance_create_depth_moving_ext(x,y,depth,object,speed,direction,[addhspeed,addvspeed,[gravity,[gravdir]]])
+    var lastinst;lastinst=instance_create_moving_ext(argument0,argument1,argument3,argument4,argument5,argument6,argument7,argument8,argument9)
+    if (instance_exists(lastinst)) {
+        lastinst.depth=argument2
+        return lastinst
     }
     return noone
 

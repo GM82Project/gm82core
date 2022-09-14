@@ -1201,13 +1201,12 @@
 					"returntype": 2
 				},
 				{
-					"name": "instance_create_moving",
+					"name": "instance_create_depth",
 					"extname": "",
 					"calltype": 2,
-					"helpline": "instance_create_moving(x,y,object,speed,direction)",
+					"helpline": "instance_create_depth(x,y,depth,object)",
 					"hidden": false,
 					"argtypes": [
-						2,
 						2,
 						2,
 						2,
@@ -1216,10 +1215,37 @@
 					"returntype": 2
 				},
 				{
+					"name": "instance_create_moving",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "instance_create_moving(x,y,object,speed,direction,[gravity,[gravdir]])",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
+					"name": "instance_create_depth_moving",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "instance_create_depth_moving(x,y,depth,object,speed,direction,[gravity,[gravdir]])",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
 					"name": "instance_create_moving_ext",
 					"extname": "",
 					"calltype": 2,
 					"helpline": "instance_create_moving_ext(x,y,object,speed,direction,[addhspeed,addvspeed,[gravity,[gravdir]]])",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
+					"name": "instance_create_depth_moving_ext",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "instance_create_depth_moving_ext(x,y,depth,object,speed,direction,[addhspeed,addvspeed,[gravity,[gravdir]]])",
 					"hidden": false,
 					"argtypes": null,
 					"returntype": 2
