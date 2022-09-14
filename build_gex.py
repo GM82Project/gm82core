@@ -133,7 +133,6 @@ def generate_swap_table(seed):
 
 
 def build_gex(ged_path, gex_path):
-    must_restart_gm = False
     if os.path.dirname(ged_path) != '':
         os.chdir(os.path.dirname(ged_path))
     # load ged
@@ -178,41 +177,42 @@ def build_gex(ged_path, gex_path):
         # write to file
         with open(gex_path, 'wb') as f:
             f.write(out.getvalue())
-    # install newly generated extension
-    extensions_path = os.path.join(
-        os.getenv('LOCALAPPDATA'), 'GameMaker8.2', 'extensions/')
-    new_ged_path = os.path.join(extensions_path, name + '.ged')
-    # check if ged will be updated
-    if os.path.isfile(new_ged_path):
-        with open(new_ged_path, 'rb') as f:
-            if f.read() != ged:
-                must_restart_gm = True
-    # update ged
-    with open(new_ged_path, 'wb') as f:
-        f.write(ged)
-    # update help file, if applicable
-    if help_file != '':
-        shutil.copy(help_file, os.path.join(extensions_path,
-                    name + os.path.splitext(help_file)[1]))
-    # update .dat file
-    with io.BytesIO() as out:
-        seed = 0
-        out.write(seed.to_bytes(4, 'little'))
-        # write every file
-        for f in files:
-            if f[1] != 3:
-                copy_file(out, f[0])
-        # encrypt
-        with out.getbuffer() as view:
-            for i in range(5, len(view)):
-                view[i] = table[0][view[i]]
-        # write to file
-        with open(os.path.join(extensions_path, name + '.dat'), 'wb') as f:
-            f.write(out.getvalue())
-    # show warning if needed
-    if must_restart_gm and gm_running():
-        print('GameMaker must be restarted!')
-        input()
+    if "--noinstall" not in sys.argv:
+        must_restart_gm = False
+        # install newly generated extension
+        extensions_path = os.path.join(
+            os.getenv('LOCALAPPDATA'), 'GameMaker8.2', 'extensions/')
+        new_ged_path = os.path.join(extensions_path, name + '.ged')
+        # check if ged will be updated
+        if os.path.isfile(new_ged_path):
+            with open(new_ged_path, 'rb') as f:
+                if f.read() != ged:
+                    must_restart_gm = True
+        # update ged
+        with open(new_ged_path, 'wb') as f:
+            f.write(ged)
+        # update help file, if applicable
+        if help_file != '':
+            shutil.copy(help_file, os.path.join(extensions_path,
+                        name + os.path.splitext(help_file)[1]))
+        # update .dat file
+        with io.BytesIO() as out:
+            seed = 0
+            out.write(seed.to_bytes(4, 'little'))
+            # write every file
+            for f in files:
+                if f[1] != 3:
+                    copy_file(out, f[0])
+            # encrypt
+            with out.getbuffer() as view:
+                for i in range(5, len(view)):
+                    view[i] = table[0][view[i]]
+            # write to file
+            with open(os.path.join(extensions_path, name + '.dat'), 'wb') as f:
+                f.write(out.getvalue())
+        # show warning if needed
+        if must_restart_gm and gm_running():
+            print('GameMaker must be restarted!')
 
 
 def decrypt_gex(gex_path, out_path):

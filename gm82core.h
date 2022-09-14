@@ -5,7 +5,9 @@
 #include <versionhelpers.h>
 #include <math.h>
 #include <psapi.h>
+#include <wingdi.h>
 
 #pragma comment(lib, "advapi32.lib")
 #pragma comment(lib, "user32.lib")
 #pragma comment(lib, "Psapi.lib")
+#pragma comment(lib, "GDI32.lib")

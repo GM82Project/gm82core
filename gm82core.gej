@@ -1,9 +1,9 @@
 {
 	"name": "Game Maker 8.2 Core",
 	"folder": "gm82",
-	"version": "1.4.1",
+	"version": "1.4.5",
 	"author": "renex && floogle",
-	"date": "21/05/2022",
+	"date": "10/09/2022",
 	"license": "Free to use, also for commercial games.",
 	"description": "Part of the standard Game Maker 8.2 distribution. This extension package contains a number of helper functions that are commonly used, and also geometry functions introduced in GM:Studio. This extension is also required for using the other GM 8.2 extensions, Sound and Joystick.",
 	"helpfile": "",
@@ -12,7 +12,7 @@
 	"files": [
 		{
 			"filename": "gm82core.dll",
-			"origname": "gm82core.dll",
+			"origname": "build/Release/gm82core.dll",
 			"kind": 1,
 			"init": "",
 			"final": "",
@@ -36,6 +36,22 @@
 					"helpline": "ceilto(val,to)",
 					"hidden": false,
 					"argtypes": [
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "circle_in_circle",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "circle_in_circle(ax,ay,radiusa,bx,by,radiusb)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2,
+						2,
 						2,
 						2
 					],
@@ -133,6 +149,17 @@
 					"returntype": 2
 				},
 				{
+					"name": "dsecant",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "dsecant(angle)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
 					"name": "dsin",
 					"extname": "",
 					"calltype": 12,
@@ -194,6 +221,15 @@
 					"extname": "hrt_delta",
 					"calltype": 12,
 					"helpline": "get_delta()",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
+					"name": "get_ram_usage",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "get_ram_usage()",
 					"hidden": false,
 					"argtypes": [],
 					"returntype": 2
@@ -265,6 +301,35 @@
 					"returntype": 2
 				},
 				{
+					"name": "io_set_roomend_clear",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "io_set_roomend_clear(enabled)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "keyboard_get_capslock",
+					"extname": "get_capslock",
+					"calltype": 12,
+					"helpline": "keyboard_get_capslock()",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
+					"name": "keyboard_get_scrolllock",
+					"extname": "get_scrolllock",
+					"calltype": 12,
+					"helpline": "keyboard_get_scrolllock()",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
 					"name": "lengthdir_zx",
 					"extname": "",
 					"calltype": 12,
@@ -297,6 +362,21 @@
 					"helpline": "lengthdir_zz(len,dir,dirz)",
 					"hidden": false,
 					"argtypes": [
+						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "lerp2",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "lerp2(fromA,fromB,toA,toB,value)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
 						2,
 						2,
 						2
@@ -374,63 +454,12 @@
 					"returntype": 2
 				},
 				{
-					"name": "circle_in_circle",
-					"extname": "",
-					"calltype": 12,
-					"helpline": "circle_in_circle(ax,ay,radiusa,bx,by,radiusb)",
-					"hidden": false,
-					"argtypes": [
-						2,
-						2,
-						2,
-						2,
-						2,
-						2
-					],
-					"returntype": 2
-				},
-				{
-					"name": "rectangle_in_circle",
-					"extname": "",
-					"calltype": 12,
-					"helpline": "rectangle_in_circle(x1,y1,x2,y2,cx,cy,radius)",
-					"hidden": false,
-					"argtypes": [
-						2,
-						2,
-						2,
-						2,
-						2,
-						2,
-						2
-					],
-					"returntype": 2
-				},
-				{
 					"name": "point_in_rectangle",
 					"extname": "",
 					"calltype": 12,
 					"helpline": "point_in_rectangle(px,py,x1,y1,x2,y2)",
 					"hidden": false,
 					"argtypes": [
-						2,
-						2,
-						2,
-						2,
-						2,
-						2
-					],
-					"returntype": 2
-				},
-				{
-					"name": "rectangle_in_rectangle",
-					"extname": "",
-					"calltype": 12,
-					"helpline": "rectangle_in_rectangle(ax1,ay1,ax2,ay2,bx1,by1,bx2,by2)",
-					"hidden": false,
-					"argtypes": [
-						2,
-						2,
 						2,
 						2,
 						2,
@@ -459,21 +488,6 @@
 					"returntype": 2
 				},
 				{
-					"name": "lerp2",
-					"extname": "",
-					"calltype": 12,
-					"helpline": "lerp2(fromA,fromB,toA,toB,value)",
-					"hidden": false,
-					"argtypes": [
-						2,
-						2,
-						2,
-						2,
-						2
-					],
-					"returntype": 2
-				},
-				{
 					"name": "real_hex",
 					"extname": "",
 					"calltype": 12,
@@ -485,6 +499,41 @@
 					"returntype": 2
 				},
 				{
+					"name": "rectangle_in_circle",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "rectangle_in_circle(x1,y1,x2,y2,cx,cy,radius)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2,
+						2,
+						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "rectangle_in_rectangle",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "rectangle_in_rectangle(ax1,ay1,ax2,ay2,bx1,by1,bx2,by2)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2,
+						2,
+						2,
+						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
 					"name": "roundto",
 					"extname": "",
 					"calltype": 12,
@@ -492,6 +541,17 @@
 					"hidden": false,
 					"argtypes": [
 						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "secant",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "secant(rad)",
+					"hidden": false,
+					"argtypes": [
 						2
 					],
 					"returntype": 2
@@ -589,7 +649,27 @@
 					"returntype": 2
 				},
 				{
+					"name": "__gm82core_addfonttemp",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "",
+					"hidden": true,
+					"argtypes": [
+						1
+					],
+					"returntype": 2
+				},
+				{
 					"name": "__gm82core_checkstart",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "",
+					"hidden": true,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
+					"name": "__gm82core_dllcheck",
 					"extname": "",
 					"calltype": 12,
 					"helpline": "",
@@ -627,6 +707,17 @@
 					"returntype": 2
 				},
 				{
+					"name": "__gm82core_remfonttemp",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "",
+					"hidden": true,
+					"argtypes": [
+						1
+					],
+					"returntype": 2
+				},
+				{
 					"name": "__gm82core_setdir",
 					"extname": "set_dll_loaddir",
 					"calltype": 12,
@@ -634,6 +725,17 @@
 					"hidden": true,
 					"argtypes": [
 						1
+					],
+					"returntype": 2
+				},
+				{
+					"name": "__gm82core_set_foreground",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "",
+					"hidden": true,
+					"argtypes": [
+						2
 					],
 					"returntype": 2
 				},
@@ -667,37 +769,6 @@
 					"argtypes": [
 						1,
 						1,
-						2
-					],
-					"returntype": 2
-				},
-				{
-					"name": "get_ram_usage",
-					"extname": "",
-					"calltype": 12,
-					"helpline": "get_ram_usage()",
-					"hidden": false,
-					"argtypes": [],
-					"returntype": 2
-				},
-				{
-					"name": "secant",
-					"extname": "",
-					"calltype": 12,
-					"helpline": "secant(rad)",
-					"hidden": false,
-					"argtypes": [
-						2
-					],
-					"returntype": 2
-				},
-				{
-					"name": "dsecant",
-					"extname": "",
-					"calltype": 12,
-					"helpline": "dsecant(angle)",
-					"hidden": false,
-					"argtypes": [
 						2
 					],
 					"returntype": 2
@@ -749,6 +820,15 @@
 						2,
 						2
 					],
+					"returntype": 2
+				},
+				{
+					"name": "animation_stop",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "animation_stop()",
+					"hidden": false,
+					"argtypes": [],
 					"returntype": 2
 				},
 				{
@@ -900,6 +980,15 @@
 					"returntype": 2
 				},
 				{
+					"name": "draw_self_as",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "draw_self_as(sprite,[image])",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
 					"name": "draw_self_floored",
 					"extname": "",
 					"calltype": 2,
@@ -995,6 +1084,17 @@
 					"returntype": 2
 				},
 				{
+					"name": "event_alarm",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "event_alarm(numb)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
 					"name": "event_beginstep",
 					"extname": "",
 					"calltype": 2,
@@ -1022,12 +1122,34 @@
 					"returntype": 2
 				},
 				{
+					"name": "event_inherit_object",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "event_inherit_object(object)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
 					"name": "event_step",
 					"extname": "",
 					"calltype": 2,
 					"helpline": "event_step()",
 					"hidden": false,
 					"argtypes": [],
+					"returntype": 2
+				},
+				{
+					"name": "event_trigger",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "event_trigger(trig)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
 					"returntype": 2
 				},
 				{
@@ -1048,6 +1170,23 @@
 					"helpline": "file_text_read_all(fname,[separator])",
 					"hidden": false,
 					"argtypes": null,
+					"returntype": 2
+				},
+				{
+					"name": "font_add_file",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "font_add_file(filename,fontname,size,bold,italic,first,last)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2,
+						2,
+						2,
+						2,
+						2
+					],
 					"returntype": 2
 				},
 				{
@@ -1077,6 +1216,15 @@
 					"returntype": 2
 				},
 				{
+					"name": "instance_create_moving_ext",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "instance_create_moving_ext(x,y,object,speed,direction,[addhspeed,addvspeed,[gravity,[gravdir]]])",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
 					"name": "instance_destroy_id",
 					"extname": "",
 					"calltype": 2,
@@ -1085,6 +1233,15 @@
 					"argtypes": [
 						2
 					],
+					"returntype": 2
+				},
+				{
+					"name": "instance_destroy_other",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "instance_destroy_other()",
+					"hidden": false,
+					"argtypes": [],
 					"returntype": 2
 				},
 				{
@@ -1195,6 +1352,28 @@
 					"argtypes": [
 						2,
 						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "object_is_child_of",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "object_is_child_of(object)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "object_other_is_child_of",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "object_other_is_child_of(object)",
+					"hidden": false,
+					"argtypes": [
 						2
 					],
 					"returntype": 2
@@ -1367,6 +1546,15 @@
 					"extname": "",
 					"calltype": 2,
 					"helpline": "window_minimize()",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
+					"name": "window_set_foreground",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "window_set_foreground()",
 					"hidden": false,
 					"argtypes": [],
 					"returntype": 2

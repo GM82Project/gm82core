@@ -1,5 +1,21 @@
 #include "gm82core.h"
 
+void* io_clear_addr = (void*)0x606865;
+const char io_clear_code[] = {0xfb, 0x00};
+const char io_not_clear_code[] = {0x0b, 0x01};
+
+GMREAL io_set_roomend_clear(double enabled) {
+    if (enabled>=0.5) {
+        //re-add io clear at room end
+        WriteProcessMemory(GetCurrentProcess(), io_clear_addr, io_clear_code, 2, NULL);
+    } else {
+        //patch out io clear at room end
+        WriteProcessMemory(GetCurrentProcess(), io_clear_addr, io_not_clear_code, 2, NULL);
+    }
+    
+    return 0;
+}
+
 /*
 const void* delphi_clear = (void*)0x4072d8;
 static char* retstr = NULL;

@@ -1,4 +1,9 @@
 #define __gm82core_init
+    if (__gm82core_dllcheck()!=820) {
+        show_error('GM8.2 Core Extension failed to link DLL.',1)
+        exit
+    }
+    
     object_event_add(__gm82core_object,ev_create,0,"__dead=0 if (instance_number(__gm82core_object)>1) {__dead=1 instance_destroy()} else if (!__gm82core_checkstart()) show_error('game_restart() is currently not supported by the GM 8.2 extensions due to potential memory leaks.',1)")
     object_event_add(__gm82core_object,ev_step,ev_step_begin,"__gm82core_update()")
     object_event_add(__gm82core_object,ev_destroy,0,"if (!__dead) instance_copy(0)")
@@ -21,7 +26,7 @@
     __gm82core_fps_queue=ds_queue_create()
     __gm82core_fpsmem=1
     __gm82core_timer=get_timer()
-    __gm82core_version=140
+    __gm82core_version=144
     
     surface_free(surface_create(8,8))
     draw_set_color($ffffff)
@@ -57,7 +62,9 @@
 
 #define direction_to_object
     ///direction_to_object(obj)
-    var __n;__n=instance_nearest(x,y,argument0)
+    var __n;
+    if (argument0>=100000) __n=argument0
+    else __n=instance_nearest(x,y,argument0)
     if (__n==noone) return -1
     return point_direction(x,y,__n.x,__n.y)
 
@@ -168,8 +175,14 @@
     gravity=argument2
     __dX=argument0-x
     __dY=argument1-y
-    __ang=(arctan2(-__dY,__dX)+degtorad(90))/2
-    if (__ang!=pi/2) {
+    
+    if (__dX==0) {
+        if (__dY<0) {
+            //straight up (we don't do anything for straight down)
+            vspeed=-sqrt(__dY*-2/gravity)*gravity-gravity/2
+        }
+    } else {
+        __ang=(arctan2(-__dY,__dX)+degtorad(90))/2
         speed=__dX/(cos(__ang)*sqrt(2*(__dY+tan(__ang)*__dX)/gravity))
         direction=radtodeg(__ang)
     }
@@ -193,6 +206,22 @@
 #define event_draw
     ///event_draw()
     event_perform(ev_draw,0)
+
+
+#define event_alarm
+    ///event_alarm(numb)
+    event_perform(ev_alarm,argument0)
+
+
+#define event_inherit_object
+    ///event_inherit_object(object)
+    event_perform_object(argument0,event_type,event_number)
+
+
+#define animation_stop
+    ///animation_stop()
+    image_speed=0
+    image_index=image_number-1
 
 
 #define draw_self_floored
@@ -412,7 +441,7 @@
         
     if (argument_count==3) {
         if (argument1>=0) {             
-            if (argument1-s) {
+            if (argument1-s>=0) {
                 repeat (argument1-s) ds_list_add(argument0,undefined)
                 ds_list_add(argument0,argument2)             
             } else ds_list_replace(argument0,argument1,argument2)             
@@ -428,7 +457,7 @@
     if (argument_count==1) {
         i=0 str=""
         repeat (s) {
-            str+=string(ds_list_find_value(list,i))+chr(13)+chr(10)
+            str+=string(ds_list_find_value(argument0,i))+chr(13)+chr(10)
             i+=1
         }
         return str
@@ -657,10 +686,49 @@
 
 
 #define instance_create_moving
-    ///instance_create_moving(x,y,object,speed,direction)
+    ///instance_create_moving(x,y,object,speed,direction,[gravity,[gravdir]])
     var lastinst;lastinst=instance_count
     action_create_object_motion(argument2,argument0,argument1,argument3,argument4)
-    return instance_id[lastinst]
+    __i=instance_id[lastinst]
+    if (instance_exists(__i)) {
+        if (argument_count>5)
+            __i.gravity=argument5
+        if (argument_count>6)
+            __i.gravity_direction=argument6
+        return __i
+    }
+    return noone
+
+
+#define instance_create_moving_ext
+    ///instance_create_moving_ext(x,y,object,speed,direction,[addhspeed,addvspeed,[gravity,[gravdir]]])
+    var lastinst,__i,__h,__v;
+    
+    if (argument_count<5 || argument_count==6 || argument_count>9) {
+        show_error("Incorrect set of arguments for function instance_create_moving_ext().",0)
+        return noone
+    }
+    
+    lastinst=instance_count
+    if (argument_count>6) {
+        __h=lengthdir_x(argument3,argument4)+argument5
+        __v=lengthdir_y(argument3,argument4)+argument6        
+        action_create_object_motion(
+            argument2, //obj
+            argument0,argument1, //x,y
+            point_distance(0,0,__h,__v),point_direction(0,0,__h,__v) //speed,direction
+        )
+    } else action_create_object_motion(argument2,argument0,argument1,argument3,argument4)
+    
+    __i=instance_id[lastinst]
+    if (instance_exists(__i)) {
+        if (argument_count>7)
+            __i.gravity=argument7
+        if (argument_count>8)
+            __i.gravity_direction=argument8
+        return __i
+    }
+    return noone
 
 
 #define ds_list_equal
@@ -696,7 +764,15 @@
     )
 
 
+#define draw_self_as
+    ///draw_self_as(sprite,[image])
+    var __img;__img=-1
+    if (argument_count>1) __img=floor(argument1)
+    draw_sprite_ext(argument0,__img,x,y,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+
+
 #define tile_find_anywhere
+    ///tile_find_anywhere(x,y)
     var t;
     t=tile_find(argument0,argument1,0)
     if (t) return t
@@ -720,11 +796,24 @@
     tex=background_get_texture(bg)
     w=background_get_width(bg)*xs
     h=background_get_height(bg)*ys
+    
+    //       ????????
+    if (w==0 || h==0) exit
 
     texture_set_repeat(1)
     draw_primitive_begin_texture(pr_trianglestrip,tex)    
             
-    if (hrep>0 || vrep>0) {
+    if (hrep>0 && vrep>0) {
+        if (xs=0 || ys=0) exit
+        u=dx v=dy
+        draw_vertex_texture_color(u-0.5,v-0.5,0,0,color,alpha)
+        u=dx+dcos(angle)*w*hrep v=dy-dsin(angle)*w*hrep
+        draw_vertex_texture_color(u-0.5,v-0.5,hrep,0,color,alpha)
+        u=dx+dcos(angle-90)*h*vrep v=dy-dsin(angle-90)*h*vrep
+        draw_vertex_texture_color(u-0.5,v-0.5,0,vrep,color,alpha)
+        u=dx+pivot_pos_x(w*hrep,h*vrep,angle) v=dy+pivot_pos_y(w*hrep,h*vrep,angle)
+        draw_vertex_texture_color(u-0.5,v-0.5,hrep,vrep,color,alpha)        
+    } else if (hrep>0 || vrep>0) {
         if (xs=0 || ys=0) exit //zero scale would produce a degenerate quad anyway
         angadd=-angle
         if (hrep>0) {
@@ -761,5 +850,37 @@
     }
 
     draw_primitive_end()
+
+
+#define window_set_foreground()
+    __gm82core_set_foreground(window_handle())
+
+
+#define font_add_file
+    ///font_add_file(filename,fontname,size,bold,italic,first,last)
+    var font;
+    __gm82core_addfonttemp(argument0)
+    font=font_add(argument1,argument2,argument3,argument4,argument5,argument6)
+    __gm82core_remfonttemp(argument0)
+    return font
+
+
+#define event_trigger
+    ///event_trigger(trig)
+    event_perform(ev_trigger,argument0)
+
+
+#define object_is_child_of
+    ///object_is_child_of(object)
+    return object_index==argument0 || object_is_ancestor(object_index,argument0)
+
+
+#define object_other_is_child_of
+    ///object_other_is_child_of(object)
+    return other.object_index==argument0 || object_is_ancestor(other.object_index,argument0)
+
+#define instance_destroy_other
+    ///instance_destroy_other()
+    with (other) instance_destroy()
 //
 //
