@@ -26,7 +26,7 @@
     __gm82core_fps_queue=ds_queue_create()
     __gm82core_fpsmem=1
     __gm82core_timer=get_timer()
-    __gm82core_version=144
+    __gm82core_version=146
     
     surface_free(surface_create(8,8))
     draw_set_color($ffffff)
