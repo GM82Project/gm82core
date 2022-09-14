@@ -3,7 +3,7 @@
 	"folder": "gm82",
 	"version": "1.4.5",
 	"author": "renex && floogle",
-	"date": "10/09/2022",
+	"date": "14/09/2022",
 	"license": "Free to use, also for commercial games.",
 	"description": "Part of the standard Game Maker 8.2 distribution. This extension package contains a number of helper functions that are commonly used, and also geometry functions introduced in GM:Studio. This extension is also required for using the other GM 8.2 extensions, Sound and Joystick.",
 	"helpfile": "",
@@ -1215,15 +1215,6 @@
 					"returntype": 2
 				},
 				{
-					"name": "instance_create_moving",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "instance_create_moving(x,y,object,speed,direction,[gravity,[gravdir]])",
-					"hidden": false,
-					"argtypes": null,
-					"returntype": 2
-				},
-				{
 					"name": "instance_create_depth_moving",
 					"extname": "",
 					"calltype": 2,
@@ -1233,19 +1224,28 @@
 					"returntype": 2
 				},
 				{
-					"name": "instance_create_moving_ext",
+					"name": "instance_create_depth_moving_ext",
 					"extname": "",
 					"calltype": 2,
-					"helpline": "instance_create_moving_ext(x,y,object,speed,direction,[addhspeed,addvspeed,[gravity,[gravdir]]])",
+					"helpline": "instance_create_depth_moving_ext(x,y,depth,object,speed,direction,[addhspeed,addvspeed,[gravity,[gravdir]]])",
 					"hidden": false,
 					"argtypes": null,
 					"returntype": 2
 				},
 				{
-					"name": "instance_create_depth_moving_ext",
+					"name": "instance_create_moving",
 					"extname": "",
 					"calltype": 2,
-					"helpline": "instance_create_depth_moving_ext(x,y,depth,object,speed,direction,[addhspeed,addvspeed,[gravity,[gravdir]]])",
+					"helpline": "instance_create_moving(x,y,object,speed,direction,[gravity,[gravdir]])",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
+					"name": "instance_create_moving_ext",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "instance_create_moving_ext(x,y,object,speed,direction,[addhspeed,addvspeed,[gravity,[gravdir]]])",
 					"hidden": false,
 					"argtypes": null,
 					"returntype": 2
