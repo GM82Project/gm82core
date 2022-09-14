@@ -78,6 +78,7 @@
   in_range(val,min,max)
   inch(val,goto,stepsize)
   inch_angle(ang1,ang2,step)
+  instance_create_depth(x,y,depth,object)
   instance_create_moving(x,y,object,speed,direction)
   instance_destroy_id(index)
   instance_some(object)
