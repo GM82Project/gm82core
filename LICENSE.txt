@@ -68,5 +68,3 @@ GMLscripts.com License
     GMLscripts.com/license
 
 --------------------------------------------------------------------------------
-
-Forked and Modified by cam900
