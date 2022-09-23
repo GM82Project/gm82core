@@ -649,6 +649,15 @@
 					"returntype": 2
 				},
 				{
+					"name": "io_get_language",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "io_get_language()",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
 					"name": "__gm82core_addfonttemp",
 					"extname": "",
 					"calltype": 12,
