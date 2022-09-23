@@ -356,3 +356,7 @@ GMREAL __gm82core_addfonttemp(const char* fname) {
 GMREAL __gm82core_remfonttemp(const char* fname) {
     return (double)RemoveFontResource(fname);
 }
+
+GMREAL io_get_language() {
+    return (double)GetUserDefaultUILanguage();
+}
