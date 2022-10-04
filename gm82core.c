@@ -283,15 +283,11 @@ GMREAL circle_in_circle(double ax, double ay, double ar, double bx, double by, d
 GMREAL rectangle_in_circle(double x1, double y1, double x2, double y2, double cx, double cy, double cr) {
     double tx = cx;
     double ty = cy;
-    if (tx < x1)
-        tx = x1;
-    else if (tx > x2)
-        tx = x2;
+    if (tx < x1) tx = x1;
+    else if (tx > x2) tx = x2;
 
-    if (ty < y1)
-        ty = y1;
-    else if (ty > y2)
-        ty = y2;
+    if (ty < y1) ty = y1;
+    else if (ty > y2) ty = y2;
 
     return (pointdis(tx,ty,cx,cy)<cr);
 }
@@ -330,6 +326,49 @@ GMREAL string_token_start(const char* str, const char* sep) {
     strncpy(tokensep, sep, tokenseplen);
     tokenpos = tokenstore;
     return 0;
+}
+
+GMREAL power_next(double x) {
+    unsigned int v; // compute the next highest power of 2 of 32-bit v
+
+    v=(unsigned int)x;
+    
+    v--;
+    v |= v >> 1;
+    v |= v >> 2;
+    v |= v >> 4;
+    v |= v >> 8;
+    v |= v >> 16;
+    v++;
+    
+    return (double)v;
+}
+
+GMREAL point_line_distance(double px, double py, double x1, double y1, double x2, double y2, double segment) {
+    ///point_line_distance(px,py,x1,y1,x2,y2,segment)
+    //
+    //  Returns the distance from the given point to the given line.
+    //
+    //      px,py       point to measuring from
+    //      x1,y1       1st end point of line
+    //      x2,y2       2nd end point of line
+    //      segment     set to true to limit to the line segment
+    //
+    /// GMLscripts.com/license
+    double dx = x2-x1;
+    double dy = y2-y1;
+    double x0;
+    double y0;
+    if ((dx == 0) && (dy == 0)) {
+        x0 = x1;
+        y0 = y1;
+    } else {
+        double t = (dx*(px-x1) + dy*(py-y1)) / (dx*dx+dy*dy);
+        if (segment>0.5) t = min(max(t, 0), 1);
+        x0 = x1 + t * dx;
+        y0 = y1 + t * dy;
+    }
+    return pointdis(x0, y0, px, py);
 }
 
 GMSTR string_token_next() {

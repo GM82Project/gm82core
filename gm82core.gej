@@ -3,7 +3,7 @@
 	"folder": "gm82",
 	"version": "1.4.6",
 	"author": "renex, Floogle, Lovey01, cam900",
-	"date": "14/09/2022",
+	"date": "04/10/2022",
 	"license": "Free to use, also for commercial games.",
 	"description": "Part of the standard Game Maker 8.2 distribution. This extension package contains a number of helper functions that are commonly used, and also geometry functions introduced in GM:Studio. This extension is also required for using the other GM 8.2 extensions, Sound and Joystick.",
 	"helpfile": "",
@@ -301,6 +301,15 @@
 					"returntype": 2
 				},
 				{
+					"name": "io_get_language",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "io_get_language()",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
 					"name": "io_set_roomend_clear",
 					"extname": "",
 					"calltype": 12,
@@ -488,6 +497,34 @@
 					"returntype": 2
 				},
 				{
+					"name": "point_line_distance",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "point_line_distance(px,py,x1,y1,x2,y2,segment)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2,
+						2,
+						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "power_next",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "power_next(x)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
 					"name": "real_hex",
 					"extname": "",
 					"calltype": 12,
@@ -644,15 +681,6 @@
 					"extname": "get_window_col",
 					"calltype": 12,
 					"helpline": "window_get_caption_color()",
-					"hidden": false,
-					"argtypes": [],
-					"returntype": 2
-				},
-				{
-					"name": "io_get_language",
-					"extname": "",
-					"calltype": 12,
-					"helpline": "io_get_language()",
 					"hidden": false,
 					"argtypes": [],
 					"returntype": 2
