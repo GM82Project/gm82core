@@ -344,10 +344,10 @@ GMREAL power_next(double x) {
     return (double)v;
 }
 
-GMREAL point_line_distance(double px, double py, double x1, double y1, double x2, double y2, double segment) {
-    ///point_line_distance(px,py,x1,y1,x2,y2,segment)
+GMREAL point_line_lerp(double px, double py, double x1, double y1, double x2, double y2, double segment) {
+    ///point_line_lerp(px,py,x1,y1,x2,y2,segment)
     //
-    //  Returns the distance from the given point to the given line.
+    //  Returns the projected value from the given point to the given line.
     //
     //      px,py       point to measuring from
     //      x1,y1       1st end point of line
@@ -357,18 +357,21 @@ GMREAL point_line_distance(double px, double py, double x1, double y1, double x2
     /// GMLscripts.com/license
     double dx = x2-x1;
     double dy = y2-y1;
-    double x0;
-    double y0;
     if ((dx == 0) && (dy == 0)) {
-        x0 = x1;
-        y0 = y1;
+        return 0;
     } else {
         double t = (dx*(px-x1) + dy*(py-y1)) / (dx*dx+dy*dy);
         if (segment>0.5) t = min(max(t, 0), 1);
-        x0 = x1 + t * dx;
-        y0 = y1 + t * dy;
+        return t;
     }
-    return pointdis(x0, y0, px, py);
+}
+
+GMREAL point_line_distance(double px, double py, double x1, double y1, double x2, double y2, double segment) {
+    double t=point_line_lerp(px,py,x1,y1,x2,y2,segment);
+    double xs = x1 + t * (x2-x1);
+    double ys = y1 + t * (y2-y1);
+
+    return pointdis(xs, ys, px, py);
 }
 
 GMSTR string_token_next() {

@@ -909,8 +909,138 @@
     ///object_other_is_child_of(object)
     return other.object_index==argument0 || object_is_ancestor(other.object_index,argument0)
 
+
 #define instance_destroy_other
     ///instance_destroy_other()
     with (other) instance_destroy()
+
+
+#define path_get_approximate_pos
+    ///path_get_approximate_pos(x,y,path)
+    var px,py,path,closed,prec,len,pos,mind,d,close;
+
+    px=argument0
+    py=argument1
+    path=argument2
+
+    num=path_get_number(path)
+    len=path_get_length(path)
+    closed=path_get_closed(path)
+
+    if (path_get_kind(path)) {
+        //smooth path - brute force algorithm
+        prec=1
+        while (len/prec+prec>prec*2) prec*=2
+        prec/=2
+        
+        pos=0
+        close=0
+        mind=infinity
+        repeat (len/prec+1) {
+            d=point_distance(px,py,path_get_x(path,pos),path_get_y(path,pos))
+            if (d<mind) {
+                close=pos
+                mind=d
+            }
+            pos+=prec/len
+        }
+         
+        pos=close-(prec/2)/len
+        if (pos<0) pos+=1
+        repeat (prec) {
+            d=point_distance(px,py,path_get_x(path,pos),path_get_y(path,pos))
+            if (d<mind) {
+                close=pos
+                mind=d
+            }
+            pos=(pos+1/len) mod 1
+        }
+        
+        if (path_get_closed(path)) return modwrap(close,0,1)
+        return median(0,close,1)
+    } else {
+        //line path - optimized algorithm
+        
+        //find closest line segment
+        mind=infinity
+        i=0 repeat (num-!closed) {
+            d=point_line_distance(px,py,path_get_point_x(path,i),path_get_point_y(path,i),path_get_point_x(path,(i+1) mod num),path_get_point_y(path,(i+1) mod num),1)
+            if (d<mind) {
+                mind=d
+                closest=i
+            }
+        i+=1}
+        
+        //find length leading up to it
+        pos=0
+        i=0 repeat (closest) {
+            pos+=point_distance(path_get_point_x(path,i),path_get_point_y(path,i),path_get_point_x(path,(i+1) mod num),path_get_point_y(path,(i+1) mod num))
+        i+=1}
+        pos/=len
+        
+        //find length within last segment
+        len=point_distance(path_get_point_x(path,i),path_get_point_y(path,i),path_get_point_x(path,(i+1) mod num),path_get_point_y(path,(i+1) mod num))/len
+        pos+=point_line_lerp(px,py,path_get_point_x(path,closest),path_get_point_y(path,closest),path_get_point_x(path,(closest+1) mod num),path_get_point_y(path,(closest+1) mod num),1)*len
+        
+        return pos
+    }
+
+
+#define distance_to_path
+    ///distance_to_path(x,y,path)
+    var px,py,path,closed,prec,len,pos,mind,d,close;
+
+    px=argument0
+    py=argument1
+    path=argument2
+
+    num=path_get_number(path)
+    len=path_get_length(path)
+    closed=path_get_closed(path)
+
+    if (path_get_kind(path)) {
+        //smooth path - brute force algorithm
+        prec=1
+        while (len/prec+prec>prec*2) prec*=2
+        prec/=2
+        
+        pos=0
+        close=0
+        mind=infinity
+        repeat (len/prec+1) {
+            d=point_distance(px,py,path_get_x(path,pos),path_get_y(path,pos))
+            if (d<mind) {
+                close=pos
+                mind=d
+            }
+            pos+=prec/len
+        }
+         
+        pos=close-(prec/2)/len
+        if (pos<0) pos+=1
+        repeat (prec) {
+            d=point_distance(px,py,path_get_x(path,pos),path_get_y(path,pos))
+            if (d<mind) {
+                close=pos
+                mind=d
+            }
+            pos=(pos+1/len) mod 1
+        }
+        
+        return mind
+    } else {
+        //line path - optimized algorithm
+        
+        //find closest line segment
+        mind=infinity
+        i=0 repeat (num-!closed) {
+            d=point_line_distance(px,py,path_get_point_x(path,i),path_get_point_y(path,i),path_get_point_x(path,(i+1) mod num),path_get_point_y(path,(i+1) mod num),1)
+            if (d<mind) {
+                mind=d
+            }
+        i+=1}
+        
+        return mind
+    }
 //
 //
