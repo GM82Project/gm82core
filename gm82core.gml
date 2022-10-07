@@ -353,6 +353,15 @@
     return __str
 
 
+#define stringify
+    ///stringify(sep,val1,val2,...)
+    var __i,__str;
+    
+    if (argument_count>1) __str=string(argument[1])
+    for (__i=2;__i<argument_count;__i+=1) __str+=argument[0]+string(argument[__i])
+    return __str
+
+
 #define instance_some
     ///instance_some(obj)
     return instance_find(argument0,irandom(instance_number(argument0)-1))
