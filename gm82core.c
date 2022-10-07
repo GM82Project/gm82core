@@ -328,22 +328,6 @@ GMREAL string_token_start(const char* str, const char* sep) {
     return 0;
 }
 
-GMREAL power_next(double x) {
-    unsigned int v; // compute the next highest power of 2 of 32-bit v
-
-    v=(unsigned int)x;
-    
-    v--;
-    v |= v >> 1;
-    v |= v >> 2;
-    v |= v >> 4;
-    v |= v >> 8;
-    v |= v >> 16;
-    v++;
-    
-    return (double)v;
-}
-
 GMREAL point_line_lerp(double px, double py, double x1, double y1, double x2, double y2, double segment) {
     ///point_line_lerp(px,py,x1,y1,x2,y2,segment)
     //
