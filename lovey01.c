@@ -3,7 +3,7 @@
 #include "gm82core.h"
 
 GMREAL power_next(double x) {
-  // Type pune the double to manipulate it's floating-point bits
+  // Type pune the double to manipulate its floating-point bits
   unsigned __int64 *v = (unsigned __int64*)&x;
 
   // Bring the number up to the next power of 2, unless the number is already
