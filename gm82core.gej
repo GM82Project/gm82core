@@ -3,7 +3,7 @@
 	"folder": "gm82",
 	"version": "1.4.6",
 	"author": "renex, Floogle, Lovey01, cam900",
-	"date": "06/10/2022",
+	"date": "08/10/2022",
 	"license": "Free to use, also for commercial games.",
 	"description": "Part of the standard Game Maker 8.2 distribution. This extension package contains a number of helper functions that are commonly used, and also geometry functions introduced in GM:Studio. This extension is also required for using the other GM 8.2 extensions, Sound and Joystick.",
 	"helpfile": "",
@@ -1047,6 +1047,15 @@
 					"returntype": 2
 				},
 				{
+					"name": "draw_reset",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "draw_reset()",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
 					"name": "draw_self_as",
 					"extname": "",
 					"calltype": 2,
@@ -1062,6 +1071,30 @@
 					"helpline": "draw_self_floored()",
 					"hidden": false,
 					"argtypes": [],
+					"returntype": 2
+				},
+				{
+					"name": "draw_set1",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "draw_set1(color,alpha)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "draw_set2",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "draw_set2(halign,valign)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2
+					],
 					"returntype": 2
 				},
 				{

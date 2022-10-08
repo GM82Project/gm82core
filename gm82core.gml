@@ -1051,5 +1051,23 @@
         
         return mind
     }
+
+
+#define draw_set1
+    ///draw_set1(color,alpha)
+    draw_set_color(argument0)
+    draw_set_alpha(argument1)
+
+#define draw_set2
+    ///draw_set2(halign,valign)
+    draw_set_halign(argument0)
+    draw_set_valign(argument1)
+
+#define draw_reset
+    ///draw_reset()
+    draw_set_color($ffffff)
+    draw_set_alpha(1)
+    draw_set_halign(0)
+    draw_set_valign(0)
 //
 //
