@@ -995,6 +995,18 @@
     }
 
 
+#define instance_nearest_notme
+    ///instance_nearest_notme(x,y,obj)
+    var __oldx,__find;
+    
+    __oldx=x
+    x=-infinity
+    __find=instance_nearest(argument0,argument1,argument2)
+    x=__oldx
+    
+    return __ret
+
+
 #define distance_to_path
     ///distance_to_path(x,y,path)
     var px,py,path,closed,prec,len,pos,mind,d,close;
