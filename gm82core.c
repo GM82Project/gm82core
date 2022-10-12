@@ -7,6 +7,8 @@ static char* tokenpos = NULL;
 static char tokensep[256] = {0};
 static size_t tokenseplen = 0;
 
+static PROCESS_INFORMATION pi;
+
 GMREAL __gm82core_dllcheck() {
     return 820;
 }
@@ -385,4 +387,31 @@ GMREAL __gm82core_remfonttemp(const char* fname) {
 
 GMREAL io_get_language() {
     return (double)GetUserDefaultUILanguage();
+}
+
+GMREAL __gm82core_execute_program_silent(const char* command) {
+    STARTUPINFOW si = { sizeof(si) };
+    
+    int len = MultiByteToWideChar(CP_UTF8, 0, command, -1, NULL, 0);
+    wchar_t *wcommand = malloc(len*2);
+    MultiByteToWideChar(CP_UTF8, 0, command, -1, wcommand, len);
+    
+    int proc=CreateProcessW(0, wcommand, NULL, NULL, TRUE, 0x08000000, NULL, NULL, &si, &pi);
+    
+    free(wcommand);
+    
+    return (double)!!proc;
+}
+
+GMREAL __gm82core_execute_program_silent_exitcode() {
+    DWORD ret;
+
+    GetExitCodeProcess(pi.hProcess,&ret);    
+    
+    if (ret==259) return -4;
+    
+    CloseHandle(pi.hProcess);
+    CloseHandle(pi.hThread);
+    
+    return (double)ret;        
 }

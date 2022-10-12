@@ -1081,5 +1081,22 @@
     draw_set_alpha(1)
     draw_set_halign(0)
     draw_set_valign(0)
+
+
+#define execute_program_silent
+    var __ret;
+    
+    if (!__gm82core_execute_program_silent(argument0)) {
+        show_error("Unable to execute command:"+chr($0d)+chr($0a)+chr($0d)+chr($0a)+argument0,0)
+        return 1
+    }
+    
+    do {
+        io_handle()
+        sleep(10)
+        __ret=__gm82core_execute_program_silent_exitcode()
+    } until (__ret!=noone)
+    
+    return __ret
 //
 //

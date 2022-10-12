@@ -3,7 +3,7 @@
 	"folder": "gm82",
 	"version": "1.4.6",
 	"author": "renex, Floogle, Lovey01, cam900",
-	"date": "11/10/2022",
+	"date": "12/10/2022",
 	"license": "Free to use, also for commercial games.",
 	"description": "Part of the standard Game Maker 8.2 distribution. This extension package contains a number of helper functions that are commonly used, and also geometry functions introduced in GM:Studio. This extension is also required for using the other GM 8.2 extensions, Sound and Joystick.",
 	"helpfile": "",
@@ -724,6 +724,26 @@
 				},
 				{
 					"name": "__gm82core_dllcheck",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "",
+					"hidden": true,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
+					"name": "__gm82core_execute_program_silent",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "",
+					"hidden": false,
+					"argtypes": [
+						1
+					],
+					"returntype": 2
+				},
+				{
+					"name": "__gm82core_execute_program_silent_exitcode",
 					"extname": "",
 					"calltype": 12,
 					"helpline": "",
@@ -1734,6 +1754,17 @@
 					"argtypes": [
 						2,
 						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "execute_program_silent",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "execute_program_silent(command)",
+					"hidden": false,
+					"argtypes": [
 						2
 					],
 					"returntype": 2
