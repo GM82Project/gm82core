@@ -1,3 +1,6 @@
+#ifndef gm82core
+#define gm82core
+
 #define GMREAL __declspec(dllexport) double __cdecl
 #define GMSTR __declspec(dllexport) char* __cdecl
 #define _USE_MATH_DEFINES
@@ -11,3 +14,7 @@
 #pragma comment(lib, "user32.lib")
 #pragma comment(lib, "Psapi.lib")
 #pragma comment(lib, "GDI32.lib")
+
+#define wstr wchar_t*
+
+#endif
