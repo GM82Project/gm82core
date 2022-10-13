@@ -9,6 +9,15 @@ static size_t tokenseplen = 0;
 
 static PROCESS_INFORMATION pi;
 
+#define wstr wchar_t*
+
+wstr make_wstr(const char* input) {
+    int len = MultiByteToWideChar(CP_UTF8, 0, input, -1, NULL, 0);
+    wstr output = malloc(len*2);
+    MultiByteToWideChar(CP_UTF8, 0, input, -1, output, len);
+    return output;
+}
+
 GMREAL __gm82core_dllcheck() {
     return 820;
 }
@@ -119,9 +128,7 @@ GMREAL unlerp(double a, double b, double val) {
 }
 
 GMREAL set_dll_loaddir(const char* name) {
-    int len = MultiByteToWideChar(CP_UTF8, 0, name, -1, NULL, 0);
-    wchar_t *wname = malloc(len*2);
-    MultiByteToWideChar(CP_UTF8, 0, name, -1, wname, len);
+    wstr wname=make_wstr(name);
     SetDllDirectoryW(wname); 
     free(wname);
     return 0;    
@@ -392,9 +399,7 @@ GMREAL io_get_language() {
 GMREAL __gm82core_execute_program_silent(const char* command) {
     STARTUPINFOW si = { sizeof(si) };
     
-    int len = MultiByteToWideChar(CP_UTF8, 0, command, -1, NULL, 0);
-    wchar_t *wcommand = malloc(len*2);
-    MultiByteToWideChar(CP_UTF8, 0, command, -1, wcommand, len);
+    wstr wcommand=make_wstr(command);
     
     int proc=CreateProcessW(0, wcommand, NULL, NULL, TRUE, 0x08000000, NULL, NULL, &si, &pi);
     
