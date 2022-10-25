@@ -67,7 +67,7 @@ GMREAL get_ram_usage() {
     
     return pmc.WorkingSetSize;
 }
-GMREAL set_working_directory(char* dir) {
+GMREAL set_working_directory(const char* dir) {
     SetCurrentDirectory(dir);
     return 0;
 }

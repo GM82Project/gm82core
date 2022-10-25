@@ -3,7 +3,7 @@
 	"folder": "gm82",
 	"version": "1.4.6",
 	"author": "renex, Floogle, Lovey01, cam900",
-	"date": "12/10/2022",
+	"date": "24/10/2022",
 	"license": "Free to use, also for commercial games.",
 	"description": "Part of the standard Game Maker 8.2 distribution. This extension package contains a number of helper functions that are commonly used, and also geometry functions introduced in GM:Studio. This extension is also required for using the other GM 8.2 extensions, Sound and Joystick.",
 	"helpfile": "",
@@ -1167,6 +1167,18 @@
 					"returntype": 2
 				},
 				{
+					"name": "ds_map_add_copy",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "ds_map_add_copy(src,dest)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
 					"name": "ds_map_get",
 					"extname": "",
 					"calltype": 2,
@@ -1266,6 +1278,17 @@
 					"extname": "",
 					"calltype": 2,
 					"helpline": "event_trigger(trig)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "execute_program_silent",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "execute_program_silent(command)",
 					"hidden": false,
 					"argtypes": [
 						2
@@ -1388,6 +1411,19 @@
 					"helpline": "instance_destroy_other()",
 					"hidden": false,
 					"argtypes": [],
+					"returntype": 2
+				},
+				{
+					"name": "instance_nearest_notme",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "instance_nearest_notme(x,y,obj)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2
+					],
 					"returntype": 2
 				},
 				{
@@ -1743,30 +1779,6 @@
 					"helpline": "",
 					"hidden": true,
 					"argtypes": null,
-					"returntype": 2
-				},
-				{
-					"name": "instance_nearest_notme",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "instance_nearest_notme(x,y,obj)",
-					"hidden": false,
-					"argtypes": [
-						2,
-						2,
-						2
-					],
-					"returntype": 2
-				},
-				{
-					"name": "execute_program_silent",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "execute_program_silent(command)",
-					"hidden": false,
-					"argtypes": [
-						2
-					],
 					"returntype": 2
 				}
 			],
