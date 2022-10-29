@@ -20,10 +20,16 @@ GMREAL __gm82core_set_foreground(double handle) {
     return SetForegroundWindow((HWND)(int)handle);
 }
 GMREAL __gm82core_addfonttemp(const char* fname) {
-    return (double)AddFontResource(fname);
+	wstr wname=make_wstr(fname);
+	double out = (double)AddFontResourceW(wname);
+	free(wname);
+    return out;
 }
 GMREAL __gm82core_remfonttemp(const char* fname) {
-    return (double)RemoveFontResource(fname);
+	wstr wname=make_wstr(fname);
+	double out = (double)RemoveFontResourceW(wname);
+	free(wname);
+    return out;
 }
 GMREAL __gm82core_execute_program_silent(const char* command) {
     STARTUPINFOW si = { sizeof(si) };
@@ -68,7 +74,9 @@ GMREAL get_ram_usage() {
     return pmc.WorkingSetSize;
 }
 GMREAL set_working_directory(const char* dir) {
-    SetCurrentDirectory(dir);
+	wstr wdir=make_wstr(dir);
+    SetCurrentDirectoryW(wdir);
+	free(wdir);
     return 0;
 }
 GMREAL set_dll_loaddir(const char* name) {
@@ -107,7 +115,9 @@ GMREAL get_foreground_window() {
     return (double)(int)GetForegroundWindow();
 }
 GMREAL window_minimize(const char* winname) {
-    ShowWindow(FindWindowA(NULL, winname), 6);
+	wstr wname=make_wstr(winname);
+    ShowWindow(FindWindowW(NULL, wname), 6);
+	free(wname);
     return 0;
 }
 GMREAL sleep_ext(double ms) {
@@ -115,25 +125,33 @@ GMREAL sleep_ext(double ms) {
     return 0;
 }
 
-GMREAL __registry_read_dword(char* dir, char* keyname) {
+GMREAL __registry_read_dword(const char* dir, const char* keyname) {
     HKEY key;
-    HRESULT res = RegOpenKeyExA(HKEY_CURRENT_USER, dir, 0, KEY_READ, &key);
+	wstr wdir=make_wstr(dir);
+    HRESULT res = RegOpenKeyExW(HKEY_CURRENT_USER, wdir, 0, KEY_READ, &key);
+	free(wdir);
     if (res == 0) {
         int buffer;
         int size = 4;
-        res = RegQueryValueExA(key, keyname, NULL, NULL, (LPBYTE)&buffer, &size);
+		wstr wkeyname=make_wstr(keyname);
+        res = RegQueryValueExW(key, wkeyname, NULL, NULL, (LPBYTE)&buffer, &size);
+		free(wkeyname);
         RegCloseKey(key);
         if (res == 0) {
             return buffer;
         } else { return -4; }
     } else { return -4; }
 }
-GMREAL __registry_write_dword(char* dir, char* keyname, double dword) {
+GMREAL __registry_write_dword(const char* dir, const char* keyname, double dword) {
     HKEY key;
-    HRESULT res = RegOpenKeyExA(HKEY_CURRENT_USER, dir, 0, KEY_SET_VALUE, &key);
+	wstr wdir=make_wstr(dir);
+    HRESULT res = RegOpenKeyExW(HKEY_CURRENT_USER, wdir, 0, KEY_READ, &key);
+	free(wdir);
     if (res == 0) {
         int buffer=(int)dword;
-        res = RegSetValueExA(key, keyname, 0, REG_DWORD, (LPBYTE)&buffer, 4);
+		wstr wkeyname=make_wstr(keyname);
+        res = RegSetValueExW(key, wkeyname, 0, REG_DWORD, (LPBYTE)&buffer, 4);
+		free(wkeyname);
         RegCloseKey(key);
         if (res == 0) {
             return buffer;
