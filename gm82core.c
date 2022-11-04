@@ -25,13 +25,22 @@ GMREAL color_inverse(double color) {
 }
 
 GMREAL string_token_start(const char* str, const char* sep) {
-    tokenseplen = min(255,strlen(sep));
-    tokenstore = realloc(tokenstore, strlen(str)+1);
+    tokenseplen=min(255,strlen(sep));
+    int len=strlen(str);
+    tokenstore=realloc(tokenstore, len+1);
     strcpy(tokenstore, str);
     memset(tokensep, 0, 256);
     strncpy(tokensep, sep, tokenseplen);
-    tokenpos = tokenstore;
-    return 0;
+    tokenpos=tokenstore;
+    
+    int count=0;
+    char* pos=tokenstore;
+    while ((pos = strstr(pos, tokensep)) && pos<tokenstore+len-tokenseplen) {
+        count++;
+        pos+=tokenseplen;
+    }    
+    
+    return count+1;
 }
 GMSTR string_token_next() {
     char* startpos = tokenpos;
