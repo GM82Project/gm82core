@@ -603,14 +603,22 @@ repeat (ds_map_size(argument0)) {
     return __gm82core_object.__gm82core_hasfocus
 
 
+#define window_is_minimized
+    ///window_is_minimized()
+    return __gm82core_getminimized(window_handle())
+
+#define window_is_maximized
+    ///window_is_maximized()
+    return __gm82core_getmaximized(window_handle())
+
+
 #define window_minimize
     ///window_minimize()
-    var __owo;
-    __owo=string(game_id)+string(irandom(1000000))
-    set_application_title(__owo)
-    __gm82core_min(__owo)
-    set_application_title(room_caption)
+    __gm82core_setminimized(window_handle())
 
+#define window_maximize
+    ///window_maximize()
+    __gm82core_setmaximized(window_handle())
 
 #define mouse_check_direct
     ///mouse_check_direct()

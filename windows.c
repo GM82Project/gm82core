@@ -1,6 +1,8 @@
 #include "gm82core.h"
+#define window_handle(X) (HWND)(int)X
 
 static PROCESS_INFORMATION pi;
+static WINDOWPLACEMENT placement;
 
 wstr make_wstr(const char* input) {
     int len = MultiByteToWideChar(CP_UTF8, 0, input, -1, NULL, 0);
@@ -9,15 +11,37 @@ wstr make_wstr(const char* input) {
     return output;
 }
 
+GMREAL __gm82core_getmaximized(double gm_hwnd) {
+    placement.length=sizeof(WINDOWPLACEMENT);
+    GetWindowPlacement(window_handle(gm_hwnd),&placement);
+    return (double)(placement.showCmd==3);
+}
+GMREAL __gm82core_getminimized(double gm_hwnd) {
+    HWND outer_hwnd=GetWindow(window_handle(gm_hwnd),GW_OWNER);
+    placement.length=sizeof(WINDOWPLACEMENT);
+    GetWindowPlacement(outer_hwnd,&placement);
+    return (double)(placement.showCmd==2);
+}
+GMREAL __gm82core_setmaximized(double gm_hwnd) {
+    ShowWindow(window_handle(gm_hwnd),3);
+    return 0;
+}
+GMREAL __gm82core_setminimized(double gm_hwnd) {
+    HWND outer_hwnd=GetWindow(window_handle(gm_hwnd),GW_OWNER);
+    ShowWindow(outer_hwnd,2);
+    return 0;
+}
+GMREAL __gm82core_set_foreground(double gm_hwnd) {
+    SetForegroundWindow(window_handle(gm_hwnd));
+    return 0;
+}
+
 GMREAL __gm82core_winver() {
     if (IsWindows8OrGreater()) return 8;
     if (IsWindows7OrGreater()) return 7;
     if (IsWindowsVistaOrGreater()) return 6;
     if (IsWindowsXPOrGreater()) return 5;
     return 4;
-}
-GMREAL __gm82core_set_foreground(double handle) {
-    return SetForegroundWindow((HWND)(int)handle);
 }
 GMREAL __gm82core_addfonttemp(const char* fname) {
 	wstr wname=make_wstr(fname);
@@ -113,12 +137,6 @@ GMREAL get_window_col() {
 }
 GMREAL get_foreground_window() {
     return (double)(int)GetForegroundWindow();
-}
-GMREAL window_minimize(const char* winname) {
-	wstr wname=make_wstr(winname);
-    ShowWindow(FindWindowW(NULL, wname), 6);
-	free(wname);
-    return 0;
 }
 GMREAL sleep_ext(double ms) {
     SleepEx((DWORD)ms,TRUE);

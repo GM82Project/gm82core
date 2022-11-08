@@ -3,7 +3,7 @@
 	"folder": "gm82",
 	"version": "1.4.6",
 	"author": "renex, Floogle, Lovey01, cam900",
-	"date": "24/10/2022",
+	"date": "07/11/2022",
 	"license": "Free to use, also for commercial games.",
 	"description": "Part of the standard Game Maker 8.2 distribution. This extension package contains a number of helper functions that are commonly used, and also geometry functions introduced in GM:Studio. This extension is also required for using the other GM 8.2 extensions, Sound and Joystick.",
 	"helpfile": "",
@@ -761,23 +761,34 @@
 					"returntype": 2
 				},
 				{
+					"name": "__gm82core_getmaximized",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "",
+					"hidden": true,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "__gm82core_getminimized",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "",
+					"hidden": true,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
 					"name": "__gm82core_hrt_init",
 					"extname": "hrt_init",
 					"calltype": 12,
 					"helpline": "",
 					"hidden": true,
 					"argtypes": [],
-					"returntype": 2
-				},
-				{
-					"name": "__gm82core_min",
-					"extname": "window_minimize",
-					"calltype": 12,
-					"helpline": "",
-					"hidden": true,
-					"argtypes": [
-						1
-					],
 					"returntype": 2
 				},
 				{
@@ -799,6 +810,28 @@
 					"hidden": true,
 					"argtypes": [
 						1
+					],
+					"returntype": 2
+				},
+				{
+					"name": "__gm82core_setmaximized",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "",
+					"hidden": true,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "__gm82core_setminimized",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "",
+					"hidden": true,
+					"argtypes": [
+						2
 					],
 					"returntype": 2
 				},
@@ -1741,6 +1774,33 @@
 					"extname": "",
 					"calltype": 2,
 					"helpline": "window_has_focus()",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
+					"name": "window_is_maximized",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "window_is_maximized()",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
+					"name": "window_is_minimized",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "window_is_minimized()",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
+					"name": "window_maximize",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "window_maximize()",
 					"hidden": false,
 					"argtypes": [],
 					"returntype": 2
