@@ -1,8 +1,42 @@
 #include "gm82core.h"
 #define window_handle(X) (HWND)(int)X
 
+static int has_started;
+static HWND window_handle;
+static HWND outer_handle;
+
 static PROCESS_INFORMATION pi;
 static WINDOWPLACEMENT placement;
+
+//custom window procedure to ignore menu keys
+LRESULT CALLBACK RenexWndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam, UINT_PTR uIdSubclass, DWORD_PTR dwRefData) {
+    switch(uMsg) {
+        case WM_SYSCOMMAND:
+            //ignore f10 as menu
+            if (wParam==SC_KEYMENU) {
+                return 0;
+            }
+        break;
+        case WM_SYSKEYDOWN:
+            //ignore alt key as menu
+            DefSubclassProc(hWnd, WM_KEYDOWN, wParam, lParam);
+            return 0; 
+        case WM_SYSKEYUP:
+            //ignore alt key as menu
+            DefSubclassProc(hWnd, WM_KEYUP, wParam, lParam);
+            return 0;
+    }
+
+    return DefSubclassProc(hWnd, uMsg, wParam, lParam);
+}
+
+void prepare_window(double gm_hwnd) {
+    //get window handle of inner & outer windows
+    window_handle=(HWND)(int)gm_hwnd;
+    outer_handle=GetWindow(window_handle,GW_OWNER);
+    //patch game window procedure to ignore alt and f10 as a menu key
+    SetWindowSubclass(window_handle, &RenexWndProc, 1, 0);
+}
 
 wstr make_wstr(const char* input) {
     int len = MultiByteToWideChar(CP_UTF8, 0, input, -1, NULL, 0);
@@ -11,29 +45,37 @@ wstr make_wstr(const char* input) {
     return output;
 }
 
+GMREAL __gm82core_checkstart(double gm_hwnd) {
+    if (has_started) return 0;
+    has_started=1;
+    prepare_window(gm_hwnd);
+    return 1;
+}
+
 GMREAL __gm82core_getmaximized(double gm_hwnd) {
     placement.length=sizeof(WINDOWPLACEMENT);
-    GetWindowPlacement(window_handle(gm_hwnd),&placement);
+    GetWindowPlacement(window_handle,&placement);
     return (double)(placement.showCmd==3);
 }
 GMREAL __gm82core_getminimized(double gm_hwnd) {
-    HWND outer_hwnd=GetWindow(window_handle(gm_hwnd),GW_OWNER);
     placement.length=sizeof(WINDOWPLACEMENT);
-    GetWindowPlacement(outer_hwnd,&placement);
+    GetWindowPlacement(outer_handle,&placement);
     return (double)(placement.showCmd==2);
 }
 GMREAL __gm82core_setmaximized(double gm_hwnd) {
-    ShowWindow(window_handle(gm_hwnd),3);
+    ShowWindow(window_handle,3);
     return 0;
 }
 GMREAL __gm82core_setminimized(double gm_hwnd) {
-    HWND outer_hwnd=GetWindow(window_handle(gm_hwnd),GW_OWNER);
-    ShowWindow(outer_hwnd,2);
+    ShowWindow(outer_handle,2);
     return 0;
 }
 GMREAL __gm82core_set_foreground(double gm_hwnd) {
-    SetForegroundWindow(window_handle(gm_hwnd));
+    SetForegroundWindow(window_handle);
     return 0;
+}
+GMREAL get_foreground_window() {
+    return (double)(GetForegroundWindow()==window_handle);
 }
 
 GMREAL __gm82core_winver() {
@@ -134,9 +176,6 @@ GMREAL get_window_col() {
         }
     }
     return -1;
-}
-GMREAL get_foreground_window() {
-    return (double)(int)GetForegroundWindow();
 }
 GMREAL sleep_ext(double ms) {
     SleepEx((DWORD)ms,TRUE);

@@ -9,11 +9,13 @@
 #include <math.h>
 #include <psapi.h>
 #include <wingdi.h>
+#include <commctrl.h>
 
 #pragma comment(lib, "advapi32.lib")
 #pragma comment(lib, "user32.lib")
 #pragma comment(lib, "Psapi.lib")
 #pragma comment(lib, "GDI32.lib")
+#pragma comment(lib, "comctl32.lib")
 
 #define wstr wchar_t*
 

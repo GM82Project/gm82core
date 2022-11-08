@@ -4,7 +4,7 @@
         exit
     }
     
-    object_event_add(__gm82core_object,ev_create,0,"__dead=0 if (instance_number(__gm82core_object)>1) {__dead=1 instance_destroy()} else if (!__gm82core_checkstart()) show_error('game_restart() is currently not supported by the GM 8.2 extensions due to potential memory leaks.',1)")
+    object_event_add(__gm82core_object,ev_create,0,"__dead=0 if (instance_number(__gm82core_object)>1) {__dead=1 instance_destroy()} else if (!__gm82core_checkstart(window_handle())) show_error('game_restart() is currently not supported by the GM 8.2 extensions due to potential memory leaks.',1)")
     object_event_add(__gm82core_object,ev_step,ev_step_begin,"__gm82core_update()")
     object_event_add(__gm82core_object,ev_destroy,0,"if (!__dead) instance_copy(0)")
     object_event_add(__gm82core_object,ev_other,ev_room_end,"persistent=true")
@@ -26,7 +26,7 @@
     __gm82core_fps_queue=ds_queue_create()
     __gm82core_fpsmem=1
     __gm82core_timer=get_timer()
-    __gm82core_version=146
+    __gm82core_version=150
     
     surface_free(surface_create(8,8))
     draw_set_color($ffffff)

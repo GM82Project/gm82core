@@ -1,6 +1,6 @@
 #include "gm82core.h"
 
-static int has_started;
+
 
 static char* tokenstore = NULL;
 static char* tokenpos = NULL;
@@ -9,11 +9,6 @@ static size_t tokenseplen = 0;
 
 GMREAL __gm82core_dllcheck() {
     return 820;
-}
-GMREAL __gm82core_checkstart() {
-    if (has_started) return 0;
-    has_started = 1;
-    return 1;
 }
 
 GMREAL color_reverse(double color) {
