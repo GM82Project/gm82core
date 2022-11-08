@@ -35,7 +35,7 @@
 #define __gm82core_update
     var __tmp,__stamp;
     
-    __gm82core_hasfocus=(__gm82core_getfore()==window_handle())
+    __gm82core_hasfocus=__gm82core_getfore()
     __tmp=get_timer()
     delta_time=(__tmp-__gm82core_timer)/1000
     __gm82core_timer=__tmp
