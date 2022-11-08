@@ -1,5 +1,4 @@
 #include "gm82core.h"
-#define window_handle(X) (HWND)(int)X
 
 static int has_started;
 static HWND window_handle;
