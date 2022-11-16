@@ -201,7 +201,7 @@ GMREAL __registry_read_dword(const char* dir, const char* keyname) {
 GMREAL __registry_write_dword(const char* dir, const char* keyname, double dword) {
     HKEY key;
 	wstr wdir=make_wstr(dir);
-    HRESULT res = RegOpenKeyExW(HKEY_CURRENT_USER, wdir, 0, KEY_READ, &key);
+    HRESULT res = RegOpenKeyExW(HKEY_CURRENT_USER, wdir, 0, KEY_WRITE, &key);
 	free(wdir);
     if (res == 0) {
         int buffer=(int)dword;
