@@ -34,8 +34,14 @@ GMREAL inch(double val, double go, double step) {
     if (val<go) return min(go,val+step);
     return max(go,val-step);
 }
+GMREAL round_unbiased(double val) {
+    return floor(val+0.5);
+}
 GMREAL roundto(double val, double to) {
     return round(val/to)*to;
+}
+GMREAL roundto_unbiased(double val, double to) {
+    return floor(val/to+0.5)*to;
 }
 GMREAL floorto(double val, double to) {
     return floor(val/to)*to;
