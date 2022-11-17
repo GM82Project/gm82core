@@ -6,6 +6,10 @@ static HWND outer_handle;
 
 static PROCESS_INFORMATION pi;
 static WINDOWPLACEMENT placement;
+static double windows_version;
+
+//force msbuild to not mangle the "secret" windows api function definition
+extern VOID WINAPI RtlGetNtVersionNumbers(LPDWORD pMajor, LPDWORD pMinor, LPDWORD pBuild);
 
 //custom window procedure to ignore menu keys
 LRESULT CALLBACK RenexWndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam, UINT_PTR uIdSubclass, DWORD_PTR dwRefData) {
@@ -37,6 +41,23 @@ void prepare_window(double gm_hwnd) {
     SetWindowSubclass(window_handle, &RenexWndProc, 1, 0);
 }
 
+double __gm82core_winver() {
+    //THANKS VIRI
+    int major;
+    int minor;
+    int build;
+    
+    RtlGetNtVersionNumbers(&major,&minor,&build);
+    
+    if (major==6) {
+        if (minor==3) return 8.1;
+        if (minor==2) return 8;
+        if (minor==1) return 7;
+        if (minor==0) return 6;
+    }
+    return (double)major;
+}
+
 wstr make_wstr(const char* input) {
     int len = MultiByteToWideChar(CP_UTF8, 0, input, -1, NULL, 0);
     wstr output = malloc(len*2);
@@ -48,6 +69,7 @@ GMREAL __gm82core_checkstart(double gm_hwnd) {
     if (has_started) return 0;
     has_started=1;
     prepare_window(gm_hwnd);
+    windows_version=__gm82core_winver();
     return 1;
 }
 
@@ -77,13 +99,10 @@ GMREAL get_foreground_window() {
     return (double)(GetForegroundWindow()==window_handle);
 }
 
-GMREAL __gm82core_winver() {
-    if (IsWindows8OrGreater()) return 8;
-    if (IsWindows7OrGreater()) return 7;
-    if (IsWindowsVistaOrGreater()) return 6;
-    if (IsWindowsXPOrGreater()) return 5;
-    return 4;
+GMREAL get_windows_version() {
+    return windows_version;
 }
+
 GMREAL __gm82core_addfonttemp(const char* fname) {
 	wstr wname=make_wstr(fname);
 	double out = (double)AddFontResourceW(wname);

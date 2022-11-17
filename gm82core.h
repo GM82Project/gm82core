@@ -16,6 +16,7 @@
 #pragma comment(lib, "Psapi.lib")
 #pragma comment(lib, "GDI32.lib")
 #pragma comment(lib, "comctl32.lib")
+#pragma comment(lib, "ntdll.lib")
 
 #define wstr wchar_t*
 
