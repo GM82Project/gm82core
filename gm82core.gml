@@ -1087,10 +1087,12 @@ repeat (ds_map_size(argument0)) {
     draw_set_color(argument0)
     draw_set_alpha(argument1)
 
+
 #define draw_set2
     ///draw_set2(halign,valign)
     draw_set_halign(argument0)
     draw_set_valign(argument1)
+
 
 #define draw_reset
     ///draw_reset()
@@ -1098,6 +1100,12 @@ repeat (ds_map_size(argument0)) {
     draw_set_alpha(1)
     draw_set_halign(0)
     draw_set_valign(0)
+
+
+#define draw_set_rgba
+    ///draw_set_rgba(r,g,b,a)
+    draw_set_color(make_color_rgb(argument0,argument1,argument2))
+    draw_set_alpha(argument3)
 
 
 #define execute_program_silent
