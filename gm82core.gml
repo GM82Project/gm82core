@@ -363,14 +363,14 @@
 #define str_ins
     ///str_ins(str%ing,val1,val2...)
 
-    __str=argument[0]
+    __str=string_replace_all(argument[0],"\%","\"+ansi_char(0)+"percentile")
     __i=1
     repeat (string_count("%",__str)) {
         __str=string_replace(__str,"%",string(argument[__i]))
         __i+=1
     }
 
-    return __str
+    return string_replace_all(__str,"\"+ansi_char(0)+"percentile","%")
 
 
 #define instance_some
