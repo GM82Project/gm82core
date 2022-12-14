@@ -24,7 +24,7 @@
     __gm82core_fps_queue=ds_queue_create()
     __gm82core_fpsmem=1
     __gm82core_timer=get_timer()
-    __gm82core_version=151
+    __gm82core_version=152
     
     surface_free(surface_create(8,8))
     draw_set_color($ffffff)
@@ -342,8 +342,8 @@
     with (argument0) instance_destroy()
 
 
-#define strong
-    ///strong(val1,val2,...)
+#define str_cat
+    ///str_cat(val1,val2,...)
     var __i,__str;
     
     __str=""
@@ -351,12 +351,25 @@
     return __str
 
 
-#define stringify
-    ///stringify(sep,val1,val2,...)
+#define str_sep
+    ///str_sep(sep,val1,val2,...)
     var __i,__str;
     
     if (argument_count>1) __str=string(argument[1])
     for (__i=2;__i<argument_count;__i+=1) __str+=argument[0]+string(argument[__i])
+    return __str
+
+
+#define str_ins
+    ///str_ins(str%ing,val1,val2...)
+
+    __str=argument[0]
+    __i=1
+    repeat (string_count("%",__str)) {
+        __str=string_replace(__str,"%",string(argument[__i]))
+        __i+=1
+    }
+
     return __str
 
 

@@ -1,9 +1,9 @@
 {
 	"name": "Game Maker 8.2 Core",
 	"folder": "gm82",
-	"version": "1.5.1",
+	"version": "1.5.2",
 	"author": "renex, Floogle, Lovey01, cam900",
-	"date": "25/11/2022",
+	"date": "14/12/2022",
 	"license": "Free to use, also for commercial games.",
 	"description": "Part of the standard Game Maker 8.2 distribution. This extension package contains a number of helper functions that are commonly used, and also geometry functions introduced in GM:Studio. This extension is also required for using the other GM 8.2 extensions, Sound and Joystick.",
 	"helpfile": "",
@@ -1686,10 +1686,10 @@
 				},
 				{
 					"name": "stringify",
-					"extname": "",
+					"extname": "str_sep",
 					"calltype": 2,
-					"helpline": "stringify(sep,val1,val2,...)",
-					"hidden": false,
+					"helpline": "",
+					"hidden": true,
 					"argtypes": null,
 					"returntype": 2
 				},
@@ -1741,9 +1741,36 @@
 				},
 				{
 					"name": "strong",
+					"extname": "str_cat",
+					"calltype": 2,
+					"helpline": "",
+					"hidden": true,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
+					"name": "str_cat",
 					"extname": "",
 					"calltype": 2,
-					"helpline": "strong(val1,val2,val3...)",
+					"helpline": "str_cat(val1,val2,val3...)",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
+					"name": "str_ins",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "str_ins(str%ing,val1,val2...)",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
+					"name": "str_sep",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "str_sep(sep,val1,val2,...)",
 					"hidden": false,
 					"argtypes": null,
 					"returntype": 2
