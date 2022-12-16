@@ -233,3 +233,13 @@ GMREAL __registry_write_dword(const char* dir, const char* keyname, double dword
         } else { return res; }
     } else { return res; }
 }
+
+GMREAL window_set_chroma_key(double enable, double color) {  
+    if (enable>=0.5) {    
+        SetWindowLong(window_handle,GWL_EXSTYLE,GetWindowLong(window_handle,GWL_EXSTYLE) | WS_EX_LAYERED);    
+        SetLayeredWindowAttributes(window_handle,((DWORD)color)&0x00ffffff,0xff,LWA_COLORKEY);    
+    } else {
+        SetWindowLong(window_handle,GWL_EXSTYLE,GetWindowLong(window_handle,GWL_EXSTYLE) & ~WS_EX_LAYERED);    
+    }
+    return 0;
+}
