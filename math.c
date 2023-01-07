@@ -145,7 +145,9 @@ GMREAL point_in_rectangle(double px, double py, double x1, double y1, double x2,
     return (px>=x1 && px<x2 && py>=y1 && py<y2);
 }
 GMREAL rectangle_in_rectangle(double ax1, double ay1, double ax2, double ay2, double bx1, double by1, double bx2, double by2) {
-    return (ax1>=bx1 && ax2<=bx2 && ay1>=by1 && ay2<=by2);
+    if (ax1>=bx1 && ax2<=bx2 && ay1>=by1 && ay2<=by2) return 1;
+    if (ax1>bx2 || ax2<bx1 || ay1>by2 || ay2<by1) return 0;
+    return 2;
 }
 GMREAL point_in_triangle(double x0, double y0, double x1, double y1, double x2, double y2, double x3, double y3) {
     double a, b, c;
