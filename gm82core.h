@@ -4,6 +4,9 @@
 #define GMREAL __declspec(dllexport) double __cdecl
 #define GMSTR __declspec(dllexport) char* __cdecl
 #define _USE_MATH_DEFINES
+#define VC_EXTRALEAN
+#define WIN32_LEAN_AND_MEAN
+
 #include <windows.h>
 #include <versionhelpers.h>
 #include <math.h>

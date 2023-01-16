@@ -55,7 +55,7 @@
 
 #define collision_check_fast
     ///collision_check_fast(obj)
-    return (distance_to_object(instance_nearest(x,y,argument0)) <= 0);
+    return (distance_to_object(instance_nearest(x,y,argument0))<=0)
 
 
 #define direction_to_object
@@ -69,7 +69,7 @@
 
 #define distance_to_instance
     //you've heard of elf on the shelf, now get ready for 
-    ///distance_to_instance(obj)
+    ///distance_to_instance(inst)
     var __n;__n=instance_nearest(x,y,argument0)
     if (__n==noone) return -1
     return point_distance(x,y,__n.x,__n.y)
@@ -224,7 +224,7 @@
 
 #define draw_self_floored
     ///draw_self_floored
-    draw_sprite_ext(sprite_index,floor(image_index),floor(x),floor(y),image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+    draw_sprite_ext(sprite_index,-1,floor(x),floor(y),image_xscale,image_yscale,image_angle,image_blend,image_alpha)
 
 
 #define string_hex
@@ -280,11 +280,11 @@
 
 
 #define registry_read_dword
-    ///registry_read_dword(addr)
+    ///registry_read_dword(addr,default)
     var __ret;
     __ret=__registry_read_dword(string_replace_all(filename_dir(argument0),"/","\"),filename_name(argument0))
     if (argument_count==2) {
-        if (__ret==noone) return argument[1]        
+        if (__ret==noone) return argument1        
     }
     return __ret
 
@@ -500,7 +500,7 @@
 
 
 #define alarm_set
-    ///alarm_set(numb)
+    ///alarm_set(numb,steps)
     alarm[argument0]=argument1
 
 
@@ -568,14 +568,14 @@
 
 
 #define ds_map_add_copy
-///ds_map_add_copy(src,dest)
-//copies all keys from src to dest without clearing dest
-var __key;__key=ds_map_find_first(argument0)
-repeat (ds_map_size(argument0)) {
-    if (ds_map_exists(argument1,__key)) ds_map_replace(argument1,__key,ds_map_find_value(argument0,__key))
-    else ds_map_add(argument1,__key,ds_map_find_value(argument0,__key))
-    __key=ds_map_find_next(argument0,__key)
-}
+    ///ds_map_add_copy(src,dest)
+    //copies all keys from src to dest without clearing dest
+    var __key;__key=ds_map_find_first(argument0)
+    repeat (ds_map_size(argument0)) {
+        if (ds_map_exists(argument1,__key)) ds_map_replace(argument1,__key,ds_map_find_value(argument0,__key))
+        else ds_map_add(argument1,__key,ds_map_find_value(argument0,__key))
+        __key=ds_map_find_next(argument0,__key)
+    }
 
 
 #define string_pad
