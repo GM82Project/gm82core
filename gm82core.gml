@@ -101,7 +101,7 @@
 
 
 #define base64_encode
-    /// base64_encode(str)
+    ///base64_encode(str)
     //
     //  Returns a string of base64 digits (RFC 3548), 6 bits each.
     //
@@ -130,7 +130,7 @@
     }
 
 #define base64_decode
-    /// base64_decode(b64)
+    ///base64_decode(b64)
     //
     //  Returns a string of raw bytes, 8 bits each. b64 strings with 
     //  characters outside of the RFC 3548 standard or with excess
@@ -192,12 +192,12 @@
 
 
 #define event_endstep
-    ///event_step()
+    ///event_endstep()
     event_perform(ev_step,ev_step_end)
 
 
 #define event_beginstep
-    ///event_step()
+    ///event_beginstep()
     event_perform(ev_step,ev_step_begin)
 
 
@@ -223,7 +223,7 @@
 
 
 #define draw_self_floored
-    ///draw_self_floored
+    ///draw_self_floored()
     draw_sprite_ext(sprite_index,-1,floor(x),floor(y),image_xscale,image_yscale,image_angle,image_blend,image_alpha)
 
 
@@ -922,6 +922,7 @@
 
 
 #define window_set_foreground()
+    ///window_set_foreground()
     __gm82core_set_foreground(window_handle())
 
 
