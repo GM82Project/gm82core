@@ -5,6 +5,7 @@ static HWND window_handle;
 static HWND outer_handle;
 
 static PROCESS_INFORMATION pi;
+static int process_running=0;
 static WINDOWPLACEMENT placement;
 static double windows_version;
 
@@ -123,6 +124,8 @@ GMREAL __gm82core_remfonttemp(const char* fname) {
 }
 
 GMREAL __gm82core_execute_program_silent(const char* command) {
+    if (process_running) return 75;
+    
     STARTUPINFOW si = { sizeof(si) };
     
     wstr wcommand=make_wstr(command);
@@ -131,18 +134,23 @@ GMREAL __gm82core_execute_program_silent(const char* command) {
     
     free(wcommand);
     
+    process_running=1;
+    
     return (double)!!proc;
 }
 
 GMREAL __gm82core_execute_program_silent_exitcode() {
+    if (!process_running) return 75;
     DWORD ret;
 
     GetExitCodeProcess(pi.hProcess,&ret);    
     
-    if (ret==259) return -4;
+    if (ret==259) return 259;
     
     CloseHandle(pi.hProcess);
     CloseHandle(pi.hThread);
+    
+    process_running=0;
     
     return (double)ret;        
 }

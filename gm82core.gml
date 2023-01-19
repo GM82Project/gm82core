@@ -1122,19 +1122,35 @@
 
 
 #define execute_program_silent
+    ///execute_program_silent(cmdline)
     var __ret;
     
-    if (!__gm82core_execute_program_silent(argument0)) {
-        show_error("Unable to execute command:"+chr($0d)+chr($0a)+chr($0d)+chr($0a)+argument0,0)
-        return 1
-    }
+    execute_program_async(argument0)
     
     do {
         io_handle()
         sleep(10)
         __ret=__gm82core_execute_program_silent_exitcode()
-    } until (__ret!=noone)
+    } until (__ret!=259)
     
     return __ret
+
+
+#define execute_program_async
+    ///execute_program_async(cmdline)
+    __ret=__gm82core_execute_program_silent(argument0)
+    
+    if (__ret==0) {
+        show_error("Unable to execute command:"+chr($0d)+chr($0a)+chr($0d)+chr($0a)+argument0,0)
+        return 0
+    }
+    if (__ret==75) {
+        show_error("Unable to execute command:"+chr($0d)+chr($0a)+chr($0d)+chr($0a)+argument0+chr($0d)+chr($0a)+chr($0d)+chr($0a)+" Another command is already running.",0)
+        return 0
+    }
+
+#define execute_program_async_result
+    ///execute_program_async_result()
+    return __gm82core_execute_program_silent_exitcode()
 //
 //

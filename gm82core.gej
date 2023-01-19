@@ -3,7 +3,7 @@
 	"folder": "gm82",
 	"version": "1.5.2",
 	"author": "renex, Floogle, Lovey01, cam900",
-	"date": "15/12/2022",
+	"date": "19/01/2023",
 	"license": "Free to use, also for commercial games.",
 	"description": "Part of the standard Game Maker 8.2 distribution. This extension package contains a number of helper functions that are commonly used, and also geometry functions introduced in GM:Studio. This extension is also required for using the other GM 8.2 extensions, Sound and Joystick.",
 	"helpfile": "",
@@ -782,7 +782,7 @@
 					"extname": "",
 					"calltype": 12,
 					"helpline": "",
-					"hidden": false,
+					"hidden": true,
 					"argtypes": [
 						1
 					],
@@ -1369,6 +1369,26 @@
 					"returntype": 2
 				},
 				{
+					"name": "execute_program_async",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "execute_program_async(cmdline)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "execute_program_async_result",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "execute_program_async_result()",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
 					"name": "execute_program_silent",
 					"extname": "",
 					"calltype": 2,
@@ -1948,12 +1968,12 @@
 				},
 				{
 					"name": "minus_infinity",
-					"value": "-2305843009213693952",
+					"value": "-9218868437227405312",
 					"hidden": false
 				},
 				{
 					"name": "infinity",
-					"value": "2305843009213693952",
+					"value": "9218868437227405312",
 					"hidden": false
 				},
 				{
@@ -1974,6 +1994,11 @@
 				{
 					"name": "core",
 					"value": "__gm82core_object",
+					"hidden": false
+				},
+				{
+					"name": "execute_running",
+					"value": "259",
 					"hidden": false
 				}
 			]
