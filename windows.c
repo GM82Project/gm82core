@@ -60,7 +60,7 @@ double __gm82core_winver() {
 
 wstr make_wstr(const char* input) {
     int len = MultiByteToWideChar(CP_UTF8, 0, input, -1, NULL, 0);
-    wstr output = malloc(len*2);
+    wstr output = (wstr)malloc(len*2);
     MultiByteToWideChar(CP_UTF8, 0, input, -1, output, len);
     return output;
 }

@@ -1,9 +1,7 @@
 #include "gm82core.h"
 
-
-
-static char* tokenstore = NULL;
-static char* tokenpos = NULL;
+static char* tokenstore;
+static char* tokenpos;
 static char tokensep[256] = {0};
 static size_t tokenseplen = 0;
 
