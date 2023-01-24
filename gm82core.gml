@@ -414,6 +414,31 @@
     return 0
 
 
+#define ds_map_read_ini_string
+    ///ds_map_read_ini_string(map,string)
+    var __map,__lf,__section,__str,__p;
+    
+    __map=argument0
+    __str=argument1
+    if (string_pos(chr($0d)+chr($0a),__str)) __lf=chr($0d)+chr($0a)
+    else __lf=chr($0a)
+    
+    __section=""
+    repeat (string_token_start(__str,__lf)) {            
+        __str=string_token_next()
+        if (__str!="") {
+            __p=string_pos("=",__str)
+            if (string_pos("[",__str) && string_pos("]",__str) && !__p)
+                __section=string_replace(string_replace(__str,"[",""),"]","")+" "
+            else if (__p) {
+                ds_map_add(__map,__section+string_copy(__str,1,__p-1),string_delete(__str,1,__p))
+            }            
+        }
+    }   
+
+    return 0
+
+
 #define dsmap
     ///dsmap(map,key,value) -> value
     ///dsmap(map,key) -> value
