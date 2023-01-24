@@ -10,6 +10,13 @@
     object_event_add(__gm82core_object,ev_other,ev_room_end,"persistent=true")
     object_event_add(__gm82core_object,ev_other,ev_animation_end,"fps_real=1/max(0.00000001,(get_timer()-__gm82core_timer)/1000000)")
     
+    //notes about alarm events:
+    //any of my extensions might decide to install alarms onto the core object.
+    //for this end, here's a list of currently used alarm indices:
+    
+    //gm82alpha: alarm 0 used for window border toggle
+    
+    
     object_set_persistent(__gm82core_object,1)
     room_instance_add(room_first,0,0,__gm82core_object)
         

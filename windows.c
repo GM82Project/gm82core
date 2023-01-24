@@ -1,6 +1,6 @@
 #include "gm82core.h"
 
-static int has_started;
+static int has_started=0;
 static HWND window_handle;
 static HWND outer_handle;
 
@@ -8,9 +8,6 @@ static PROCESS_INFORMATION pi;
 static int process_running=0;
 static WINDOWPLACEMENT placement;
 static double windows_version;
-
-//force msbuild to not mangle the "secret" windows api function definition
-extern VOID WINAPI RtlGetNtVersionNumbers(LPDWORD pMajor, LPDWORD pMinor, LPDWORD pBuild);
 
 //custom window procedure to ignore menu keys
 LRESULT CALLBACK RenexWndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam, UINT_PTR uIdSubclass, DWORD_PTR dwRefData) {
@@ -36,13 +33,24 @@ LRESULT CALLBACK RenexWndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam
 
 void prepare_window(double gm_hwnd) {
     //get window handle of inner & outer windows
+    //(outer window is needed for minimize)
     window_handle=(HWND)(int)gm_hwnd;
     outer_handle=GetWindow(window_handle,GW_OWNER);
     //patch game window procedure to ignore alt and f10 as a menu key
     SetWindowSubclass(window_handle, &RenexWndProc, 1, 0);
 }
 
-double __gm82core_winver() {
+wstr make_wstr(const char* input) {
+    int len = MultiByteToWideChar(CP_UTF8, 0, input, -1, NULL, 0);
+    wstr output = (wstr)malloc(len*2);
+    MultiByteToWideChar(CP_UTF8, 0, input, -1, output, len);
+    return output;
+}
+
+//force msbuild to not mangle the "secret" windows api function definition
+extern VOID WINAPI RtlGetNtVersionNumbers(LPDWORD pMajor, LPDWORD pMinor, LPDWORD pBuild);
+
+GMREAL __gm82core_winver() {
     //THANKS VIRI
     int major;
     int minor;
@@ -57,13 +65,6 @@ double __gm82core_winver() {
         if (minor==0) return 6;
     }
     return (double)major;
-}
-
-wstr make_wstr(const char* input) {
-    int len = MultiByteToWideChar(CP_UTF8, 0, input, -1, NULL, 0);
-    wstr output = (wstr)malloc(len*2);
-    MultiByteToWideChar(CP_UTF8, 0, input, -1, output, len);
-    return output;
 }
 
 GMREAL __gm82core_checkstart(double gm_hwnd) {
@@ -256,14 +257,4 @@ GMREAL __registry_write_dword(const char* dir, const char* keyname, double dword
             return buffer;
         } else { return res; }
     } else { return res; }
-}
-
-GMREAL window_set_chroma_key(double enable, double color) {  
-    if (enable>=0.5) {    
-        SetWindowLong(window_handle,GWL_EXSTYLE,GetWindowLong(window_handle,GWL_EXSTYLE) | WS_EX_LAYERED);    
-        SetLayeredWindowAttributes(window_handle,((DWORD)color)&0x00ffffff,0xff,LWA_COLORKEY);    
-    } else {
-        SetWindowLong(window_handle,GWL_EXSTYLE,GetWindowLong(window_handle,GWL_EXSTYLE) & ~WS_EX_LAYERED);    
-    }
-    return 0;
 }

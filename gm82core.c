@@ -35,6 +35,7 @@ GMREAL string_token_start(const char* str, const char* sep) {
     
     return count+1;
 }
+
 GMSTR string_token_next() {
     char* startpos = tokenpos;
     if (startpos) {

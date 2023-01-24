@@ -3,7 +3,7 @@
 	"folder": "gm82",
 	"version": "1.5.2",
 	"author": "renex, Floogle, Lovey01, cam900",
-	"date": "19/01/2023",
+	"date": "24/01/2023",
 	"license": "Free to use, also for commercial games.",
 	"description": "Part of the standard Game Maker 8.2 distribution. This extension package contains a number of helper functions that are commonly used, and also geometry functions introduced in GM:Studio. This extension is also required for using the other GM 8.2 extensions, Sound and Joystick.",
 	"helpfile": "",
@@ -735,18 +735,6 @@
 					"returntype": 2
 				},
 				{
-					"name": "window_set_chroma_key",
-					"extname": "",
-					"calltype": 12,
-					"helpline": "window_set_chroma_key(enable,color)",
-					"hidden": false,
-					"argtypes": [
-						2,
-						2
-					],
-					"returntype": 2
-				},
-				{
 					"name": "__gm82core_addfonttemp",
 					"extname": "",
 					"calltype": 12,
@@ -849,6 +837,29 @@
 					"returntype": 2
 				},
 				{
+					"name": "__gm82core_setchromakey",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "",
+					"hidden": true,
+					"argtypes": [
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "__gm82core_setcomposite",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "",
+					"hidden": true,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
 					"name": "__gm82core_setdir",
 					"extname": "set_dll_loaddir",
 					"calltype": 12,
@@ -872,6 +883,17 @@
 				},
 				{
 					"name": "__gm82core_setminimized",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "",
+					"hidden": true,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "__gm82core_settransparent",
 					"extname": "",
 					"calltype": 12,
 					"helpline": "",
@@ -2002,6 +2024,15 @@
 					"hidden": false
 				}
 			]
+		},
+		{
+			"filename": "johnny.bin",
+			"origname": "johnny.bin",
+			"kind": 4,
+			"init": "",
+			"final": "",
+			"functions": [],
+			"constants": []
 		}
 	]
 }

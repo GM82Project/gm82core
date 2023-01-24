@@ -20,8 +20,6 @@ GMREAL io_set_roomend_clear(double enabled) {
 const void* delphi_clear = (void*)0x4072d8;
 static char* retstr = NULL;
 
-//GMREAL funny_test(double ptr, double value) {int a = (int)ptr;int* where = (int*)a;int what = (int)value;*where = what;return 0;
-
 typedef struct {
     int is_string;
     int padding;    
@@ -30,7 +28,7 @@ typedef struct {
     int padding2;    
 }GMVAL;
 
-double internal_call_real(double func,GMVAL* args,int argc) {
+GMREAL internal_call_real(double func,GMVAL* args,int argc) {
     int addr = (int)func;
     char* (*callptr)()=(void*)addr;
     
@@ -48,7 +46,7 @@ double internal_call_real(double func,GMVAL* args,int argc) {
     return ret.real;
 }
 
-char* internal_call_string(double func,GMVAL* args,int argc) {
+GMSTR internal_call_string(double func,GMVAL* args,int argc) {
     int addr = (int)func;
     char* (*callptr)()=(void*)addr;
     

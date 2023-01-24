@@ -13,6 +13,7 @@
 #include <psapi.h>
 #include <wingdi.h>
 #include <commctrl.h>
+//#include <dwmapi.h>
 
 #pragma comment(lib, "advapi32.lib")
 #pragma comment(lib, "user32.lib")
@@ -20,6 +21,7 @@
 #pragma comment(lib, "GDI32.lib")
 #pragma comment(lib, "comctl32.lib")
 #pragma comment(lib, "ntdll.lib")
+//#pragma comment(lib, "Dwmapi.lib")
 
 #define wstr wchar_t*
 
