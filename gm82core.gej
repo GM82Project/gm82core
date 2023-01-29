@@ -1243,6 +1243,21 @@
 					"returntype": 2
 				},
 				{
+					"name": "draw_text_1color",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "draw_text_1color(x,y,string,color,alpha)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
 					"name": "dslist",
 					"extname": "",
 					"calltype": 2,
