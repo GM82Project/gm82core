@@ -234,30 +234,6 @@
     draw_sprite_ext(sprite_index,-1,floor(x),floor(y),image_xscale,image_yscale,image_angle,image_blend,image_alpha)
 
 
-#define string_hex
-    ///string_hex(real)
-    var __n,__r;
-    __n=argument0
-    __r=""
-    
-    while (__n) {
-        __r=string_char_at("0123456789ABCDEF",__n mod 16+1)+__r
-        __n=__n div 16
-    }
-    return __r
-
-
-#define real_hex
-    ///real_hex(string)
-    var __d,__r,__l,__i;
-    __r=0
-    __d=string_upper(argument0)
-    __l=string_length(__d)
-    
-    for (__i=1;__i<=__l;__i+=1) __r=__r*16+(string_pos(string_char_at(__d,__i),"0123456789ABCDEF")-1)
-    return __r
-
-
 #define gauss
     ///gauss(range)
     var __i;
@@ -483,18 +459,18 @@
     ///dslist(list,pos) -> value
     ///dslist(list) -> string
     ///dslist() -> list
-    var i,s,str;
+    var __i,__s,__str;
     
     if (argument_count==0) {
         return ds_list_create()
     }
     
-    s=ds_list_size(argument0)
+    __s=ds_list_size(argument0)
         
     if (argument_count==3) {
         if (argument1>=0) {             
-            if (argument1-s>=0) {
-                repeat (argument1-s) ds_list_add(argument0,undefined)
+            if (argument1-__s>=0) {
+                repeat (argument1-__s) ds_list_add(argument0,undefined)
                 ds_list_add(argument0,argument2)             
             } else ds_list_replace(argument0,argument1,argument2)             
         } else ds_list_add(argument0,argument2)        
@@ -502,17 +478,17 @@
     }
     
     if (argument_count==2) {
-        if (argument1>=s) return undefined
+        if (argument1>=__s) return undefined
         return ds_list_find_value(argument0,argument1)
     }
     
     if (argument_count==1) {
-        i=0 str=""
-        repeat (s) {
-            str+=string(ds_list_find_value(argument0,i))+chr(13)+chr(10)
-            i+=1
+        __i=0 __str=""
+        repeat (__s) {
+            __str+=string(ds_list_find_value(argument0,__i))+chr(13)+chr(10)
+            __i+=1
         }
-        return str
+        return __str
     }
     
 
@@ -758,19 +734,19 @@
 
 #define instance_create_depth
     ///instance_create_depth(x,y,depth,object)
-    var lastinst;lastinst=instance_create(argument0,argument1,argument3)
-    if (instance_exists(lastinst)) {
-        lastinst.depth=argument2;
-        return lastinst
+    var __lastinst;__lastinst=instance_create(argument0,argument1,argument3)
+    if (instance_exists(__lastinst)) {
+        __lastinst.depth=argument2;
+        return __lastinst
     }
     return noone
 
 
 #define instance_create_moving
     ///instance_create_moving(x,y,object,speed,direction,[gravity,[gravdir]])
-    var lastinst;lastinst=instance_count
+    var __lastinst;__lastinst=instance_count
     action_create_object_motion(argument2,argument0,argument1,argument3,argument4)
-    __i=instance_id[lastinst]
+    __i=instance_id[__lastinst]
     if (instance_exists(__i)) {
         if (argument_count>5)
             __i.gravity=argument5
@@ -783,24 +759,24 @@
 
 #define instance_create_depth_moving
     ///instance_create_depth_moving(x,y,depth,object,speed,direction,[gravity,[gravdir]])
-    var lastinst;lastinst=instance_create_moving(argument0,argument1,argument3,argument4,argument5,argument6,argument7)
-    if (instance_exists(lastinst)) {
-        lastinst.depth=argument2
-        return lastinst
+    var __lastinst;__lastinst=instance_create_moving(argument0,argument1,argument3,argument4,argument5,argument6,argument7)
+    if (instance_exists(__lastinst)) {
+        __lastinst.depth=argument2
+        return __lastinst
     }
     return noone
 
 
 #define instance_create_moving_ext
     ///instance_create_moving_ext(x,y,object,speed,direction,[addhspeed,addvspeed,[gravity,[gravdir]]])
-    var lastinst,__i,__h,__v;
+    var __lastinst,__i,__h,__v;
     
     if (argument_count<5 || argument_count==6 || argument_count>9) {
         show_error("Incorrect set of arguments for function instance_create_moving_ext().",0)
         return noone
     }
     
-    lastinst=instance_count
+    __lastinst=instance_count
     if (argument_count>6) {
         __h=lengthdir_x(argument3,argument4)+argument5
         __v=lengthdir_y(argument3,argument4)+argument6        
@@ -811,7 +787,7 @@
         )
     } else action_create_object_motion(argument2,argument0,argument1,argument3,argument4)
     
-    __i=instance_id[lastinst]
+    __i=instance_id[__lastinst]
     if (instance_exists(__i)) {
         if (argument_count>7)
             __i.gravity=argument7
@@ -824,10 +800,10 @@
 
 #define instance_create_depth_moving_ext
     ///instance_create_depth_moving_ext(x,y,depth,object,speed,direction,[addhspeed,addvspeed,[gravity,[gravdir]]])
-    var lastinst;lastinst=instance_create_moving_ext(argument0,argument1,argument3,argument4,argument5,argument6,argument7,argument8,argument9)
-    if (instance_exists(lastinst)) {
-        lastinst.depth=argument2
-        return lastinst
+    var __lastinst;__lastinst=instance_create_moving_ext(argument0,argument1,argument3,argument4,argument5,argument6,argument7,argument8,argument9)
+    if (instance_exists(__lastinst)) {
+        __lastinst.depth=argument2
+        return __lastinst
     }
     return noone
 
@@ -874,79 +850,79 @@
 
 #define tile_find_anywhere
     ///tile_find_anywhere(x,y)
-    var t;
-    t=tile_find(argument0,argument1,0)
-    if (t) return t
+    var __t;
+    __t=tile_find(argument0,argument1,0)
+    if (__t) return __t
     return tile_find(argument0,argument1,1)
 
 
 #define draw_background_tiled_extra
     ///draw_background_tiled_extra(back,x,y,xscale,yscale,angle,color,alpha,hrepeats,vrepeats)
 
-    var bg,dx,dy,xs,ys,angle,color,alpha,hrep,vrep;
+    var __bg,__dx,__dy,__xs,__ys,__angle,__color,__alpha,__hrep,__vrep;
 
-    bg=argument0
-    dx=argument1 dy=argument2
-    xs=argument3 ys=argument4
-    angle=modwrap(argument5,0,360)
-    color=argument6 alpha=argument7
-    hrep=argument8 vrep=argument9
+    __bg=argument0
+    __dx=argument1 __dy=argument2
+    __xs=argument3 __ys=argument4
+    __angle=modwrap(argument5,0,360)
+    __color=argument6 __alpha=argument7
+    __hrep=argument8 __vrep=argument9
 
-    var tex,w,h,u,v,angadd,length;
+    var __tex,__w,__h,__u,__v,__angadd,__length;
 
-    tex=background_get_texture(bg)
-    w=background_get_width(bg)*xs
-    h=background_get_height(bg)*ys
+    __tex=background_get_texture(__bg)
+    __w=background_get_width(__bg)*__xs
+    __h=background_get_height(__bg)*__ys
     
     //       ????????
-    if (w==0 || h==0) exit
+    if (__w==0 || __h==0) exit
 
     texture_set_repeat(1)
-    draw_primitive_begin_texture(pr_trianglestrip,tex)    
+    draw_primitive_begin_texture(pr_trianglestrip,__tex)    
             
-    if (hrep>0 && vrep>0) {
-        if (xs=0 || ys=0) exit
-        u=dx v=dy
-        draw_vertex_texture_color(u-0.5,v-0.5,0,0,color,alpha)
-        u=dx+dcos(angle)*w*hrep v=dy-dsin(angle)*w*hrep
-        draw_vertex_texture_color(u-0.5,v-0.5,hrep,0,color,alpha)
-        u=dx+dcos(angle-90)*h*vrep v=dy-dsin(angle-90)*h*vrep
-        draw_vertex_texture_color(u-0.5,v-0.5,0,vrep,color,alpha)
-        u=dx+pivot_pos_x(w*hrep,h*vrep,angle) v=dy+pivot_pos_y(w*hrep,h*vrep,angle)
-        draw_vertex_texture_color(u-0.5,v-0.5,hrep,vrep,color,alpha)        
-    } else if (hrep>0 || vrep>0) {
-        if (xs=0 || ys=0) exit //zero scale would produce a degenerate quad anyway
-        angadd=-angle
-        if (hrep>0) {
+    if (__hrep>0 && __vrep>0) {
+        if (__xs=0 || __ys=0) exit
+        __u=__dx __v=__dy
+        draw_vertex_texture_color(__u-0.5,__v-0.5,0,0,__color,__alpha)
+        __u=__dx+dcos(__angle)*__w*__hrep __v=__dy-dsin(__angle)*__w*__hrep
+        draw_vertex_texture_color(__u-0.5,__v-0.5,__hrep,0,__color,__alpha)
+        __u=__dx+dcos(__angle-90)*__h*__vrep __v=__dy-dsin(__angle-90)*__h*__vrep
+        draw_vertex_texture_color(__u-0.5,__v-0.5,0,__vrep,__color,__alpha)
+        __u=__dx+pivot_pos_x(__w*__hrep,__h*__vrep,__angle) __v=__dy+pivot_pos_y(__w*__hrep,__h*__vrep,__angle)
+        draw_vertex_texture_color(__u-0.5,__v-0.5,__hrep,__vrep,__color,__alpha)        
+    } else if (__hrep>0 || __vrep>0) {
+        if (__xs=0 || __ys=0) exit //zero scale would produce a degenerate quad anyway
+        __angadd=-__angle
+        if (__hrep>0) {
             //vertical infinity; rotate uv logic 90 degrees
-            length=w*hrep angle+=90
+            __length=__w*__hrep __angle+=90
         } else {
             //horizontal infinity
-            length=h*vrep
+            __length=__h*__vrep
         }
         
-        if (angle<45 || angle>315 || (angle>135 && angle<225)) {
+        if (__angle<45 || __angle>315 || (__angle>135 && __angle<225)) {
             //horizontal infinite tiler
-            u=0 repeat (2) {v=dy+(dx-u)*dtan(angle) repeat (2) {
-                draw_vertex_texture_color(u-0.5,v-0.5,pivot_pos_x(u-dx,v-dy,angadd)/w,pivot_pos_y(u-dx,v-dy,angadd)/h,color,alpha)
-            v+=length*dsecant(angle)} u=room_width}
+            __u=0 repeat (2) {__v=__dy+(__dx-__u)*dtan(__angle) repeat (2) {
+                draw_vertex_texture_color(__u-0.5,__v-0.5,pivot_pos_x(__u-__dx,__v-__dy,__angadd)/__w,pivot_pos_y(__u-__dx,__v-__dy,__angadd)/__h,__color,__alpha)
+            __v+=__length*dsecant(__angle)} __u=room_width}
         } else {
             //vertical infinite tiler
-            v=0 repeat (2) {u=dx+(dy-v)*dtan(90-angle) repeat (2) {
-                draw_vertex_texture_color(u-0.5,v-0.5,pivot_pos_x(u-dx,v-dy,angadd)/w,pivot_pos_y(u-dx,v-dy,angadd)/h,color,alpha)
-            u+=length*dsecant(90-angle)} v=room_height}
+            __v=0 repeat (2) {__u=__dx+(__dy-__v)*dtan(90-__angle) repeat (2) {
+                draw_vertex_texture_color(__u-0.5,__v-0.5,pivot_pos_x(__u-__dx,__v-__dy,__angadd)/__w,pivot_pos_y(__u-__dx,__v-__dy,__angadd)/__h,__color,__alpha)
+            __u+=__length*dsecant(90-__angle)} __v=room_height}
         }    
     } else {
-        if (xs=0 || ys=0) {
+        if (__xs=0 || __ys=0) {
             //infinite scale mode
-            u=0 repeat (2) {v=0 repeat (2) {
-                draw_vertex_texture_color(u-0.5,v-0.5,0.5,0.5,color,alpha)
-            v=room_height} u=room_width}
+            __u=0 repeat (2) {__v=0 repeat (2) {
+                draw_vertex_texture_color(__u-0.5,__v-0.5,0.5,0.5,__color,__alpha)
+            __v=room_height} __u=room_width}
         } else {
             //cover room mode
-            u=0 repeat (2) {v=0 repeat (2) {
-                draw_vertex_texture_color(u-0.5,v-0.5,pivot_pos_x(u-dx,v-dy,angle)/w,pivot_pos_y(u-dx,v-dy,angle)/h,color,alpha)
-            v=room_height} u=room_width}
+            __u=0 repeat (2) {__v=0 repeat (2) {
+                draw_vertex_texture_color(__u-0.5,__v-0.5,pivot_pos_x(__u-__dx,__v-__dy,__angle)/__w,pivot_pos_y(__u-__dx,__v-__dy,__angle)/__h,__color,__alpha)
+            __v=room_height} __u=room_width}
         }
     }
 
@@ -989,72 +965,72 @@
 
 #define path_get_approximate_pos
     ///path_get_approximate_pos(x,y,path)
-    var px,py,path,closed,prec,len,pos,mind,d,close;
+    var __px,__py,__path,__closed,__prec,__len,__pos,__mind,__d,__close;
 
-    px=argument0
-    py=argument1
-    path=argument2
+    __px=argument0
+    __py=argument1
+    __path=argument2
 
-    num=path_get_number(path)
-    len=path_get_length(path)
-    closed=path_get_closed(path)
+    __num=path_get_number(__path)
+    __len=path_get_length(__path)
+    __closed=path_get_closed(__path)
 
-    if (path_get_kind(path)) {
+    if (path_get_kind(__path)) {
         //smooth path - brute force algorithm
-        prec=1
-        while (len/prec+prec>prec*2) prec*=2
-        prec/=2
+        __prec=1
+        while (__len/__prec+__prec>__prec*2) __prec*=2
+        __prec/=2
         
-        pos=0
-        close=0
-        mind=infinity
-        repeat (len/prec+1) {
-            d=point_distance(px,py,path_get_x(path,pos),path_get_y(path,pos))
-            if (d<mind) {
-                close=pos
-                mind=d
+        __pos=0
+        __close=0
+        __mind=__infinity
+        repeat (__len/__prec+1) {
+            __d=point_distance(__px,__py,path_get_x(__path,__pos),path_get_y(__path,__pos))
+            if (__d<__mind) {
+                __close=__pos
+                __mind=__d
             }
-            pos+=prec/len
+            __pos+=__prec/__len
         }
          
-        pos=close-(prec/2)/len
-        if (pos<0) pos+=1
-        repeat (prec) {
-            d=point_distance(px,py,path_get_x(path,pos),path_get_y(path,pos))
-            if (d<mind) {
-                close=pos
-                mind=d
+        __pos=__close-(__prec/2)/__len
+        if (__pos<0) __pos+=1
+        repeat (__prec) {
+            __d=point_distance(__px,__py,path_get_x(__path,__pos),path_get_y(__path,__pos))
+            if (__d<__mind) {
+                __close=__pos
+                __mind=__d
             }
-            pos=(pos+1/len) mod 1
+            __pos=(__pos+1/__len) mod 1
         }
         
-        if (path_get_closed(path)) return modwrap(close,0,1)
-        return median(0,close,1)
+        if (path_get_closed(__path)) return modwrap(__close,0,1)
+        return median(0,__close,1)
     } else {
         //line path - optimized algorithm
         
         //find closest line segment
-        mind=infinity
-        i=0 repeat (num-!closed) {
-            d=point_line_distance(px,py,path_get_point_x(path,i),path_get_point_y(path,i),path_get_point_x(path,(i+1) mod num),path_get_point_y(path,(i+1) mod num),1)
-            if (d<mind) {
-                mind=d
-                closest=i
+        __mind=infinity
+        __i=0 repeat (__num-!__closed) {
+            __d=point_line_distance(__px,__py,path_get_point_x(__path,__i),path_get_point_y(__path,__i),path_get_point_x(__path,(__i+1) mod __num),path_get_point_y(__path,(__i+1) mod __num),1)
+            if (__d<__mind) {
+                __mind=d
+                __closest=i
             }
-        i+=1}
+        __i+=1}
         
         //find length leading up to it
-        pos=0
-        i=0 repeat (closest) {
-            pos+=point_distance(path_get_point_x(path,i),path_get_point_y(path,i),path_get_point_x(path,(i+1) mod num),path_get_point_y(path,(i+1) mod num))
-        i+=1}
-        pos/=len
+        __pos=0
+        __i=0 repeat (__closest) {
+            __pos+=point_distance(path_get_point_x(__path,__i),path_get_point_y(__path,__i),path_get_point_x(__path,(__i+1) mod __num),path_get_point_y(__path,(__i+1) mod __num))
+        __i+=1}
+        __pos/=__len
         
         //find length within last segment
-        len=point_distance(path_get_point_x(path,i),path_get_point_y(path,i),path_get_point_x(path,(i+1) mod num),path_get_point_y(path,(i+1) mod num))/len
-        pos+=point_line_lerp(px,py,path_get_point_x(path,closest),path_get_point_y(path,closest),path_get_point_x(path,(closest+1) mod num),path_get_point_y(path,(closest+1) mod num),1)*len
+        __len=point_distance(path_get_point_x(__path,__i),path_get_point_y(__path,__i),path_get_point_x(__path,(__i+1) mod __num),path_get_point_y(__path,(__i+1) mod __num))/__len
+        __pos+=point_line_lerp(__px,__py,path_get_point_x(__path,__closest),path_get_point_y(__path,__closest),path_get_point_x(__path,(__closest+1) mod __num),path_get_point_y(__path,(__closest+1) mod __num),1)*__len
         
-        return pos
+        return __pos
     }
 
 
@@ -1072,59 +1048,59 @@
 
 #define distance_to_path
     ///distance_to_path(x,y,path)
-    var px,py,path,closed,prec,len,pos,mind,d,close;
+    var __px,__py,__path,__closed,__prec,__len,__pos,__mind,__d,__close;
 
-    px=argument0
-    py=argument1
-    path=argument2
+    __px=argument0
+    __py=argument1
+    __path=argument2
 
-    num=path_get_number(path)
-    len=path_get_length(path)
-    closed=path_get_closed(path)
+    __num=path_get_number(__path)
+    __len=path_get_length(__path)
+    __closed=path_get_closed(__path)
 
-    if (path_get_kind(path)) {
+    if (path_get_kind(__path)) {
         //smooth path - brute force algorithm
-        prec=1
-        while (len/prec+prec>prec*2) prec*=2
-        prec/=2
+        __prec=1
+        while (__len/__prec+__prec>__prec*2) __prec*=2
+        __prec/=2
         
-        pos=0
-        close=0
-        mind=infinity
-        repeat (len/prec+1) {
-            d=point_distance(px,py,path_get_x(path,pos),path_get_y(path,pos))
-            if (d<mind) {
-                close=pos
-                mind=d
+        __pos=0
+        __close=0
+        __mind=infinity
+        repeat (__len/__prec+1) {
+            __d=point_distance(__px,__py,path_get_x(__path,__pos),path_get_y(__path,__pos))
+            if (__d<__mind) {
+                __close=__pos
+                __mind=__d
             }
-            pos+=prec/len
+            __pos+=__prec/__len
         }
          
-        pos=close-(prec/2)/len
-        if (pos<0) pos+=1
-        repeat (prec) {
-            d=point_distance(px,py,path_get_x(path,pos),path_get_y(path,pos))
-            if (d<mind) {
-                close=pos
-                mind=d
+        __pos=__close-(__prec/2)/__len
+        if (__pos<0) __pos+=1
+        repeat (__prec) {
+            __d=point_distance(__px,__py,path_get_x(__path,__pos),path_get_y(__path,__pos))
+            if (__d<__mind) {
+                __close=__pos
+                __mind=__d
             }
-            pos=(pos+1/len) mod 1
+            __pos=(__pos+1/__len) mod 1
         }
         
-        return mind
+        return __mind
     } else {
         //line path - optimized algorithm
         
         //find closest line segment
-        mind=infinity
-        i=0 repeat (num-!closed) {
-            d=point_line_distance(px,py,path_get_point_x(path,i),path_get_point_y(path,i),path_get_point_x(path,(i+1) mod num),path_get_point_y(path,(i+1) mod num),1)
-            if (d<mind) {
-                mind=d
+        __mind=infinity
+        __i=0 repeat (__num-!__closed) {
+            __d=point_line_distance(__px,__py,path_get_point_x(__path,__i),path_get_point_y(__path,__i),path_get_point_x(__path,(__i+1) mod __num),path_get_point_y(__path,(__i+1) mod __num),1)
+            if (__d<__mind) {
+                __mind=__d
             }
-        i+=1}
+        __i+=1}
         
-        return mind
+        return __mind
     }
 
 
@@ -1185,5 +1161,10 @@
 #define execute_program_async_result
     ///execute_program_async_result()
     return __gm82core_execute_program_silent_exitcode()
+
+
+#define draw_text_1color
+    ///draw_text_1color(x,y,string,color,alpha)
+    draw_text_color(argument0,argument1,argument2,argument3,argument3,argument3,argument3,argument4)
 //
 //
