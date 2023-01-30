@@ -3,19 +3,27 @@
 #include "gm82core.h"
 
 GMREAL power_next(double x) {
-  // Type pune the double to manipulate its floating-point bits
-  unsigned __int64 *v = (unsigned __int64*)&x;
+    ///power_next(x)
+    //x: real - number
+    //returns the next power of two above x
+    
+    // Type pune the double to manipulate its floating-point bits
+    unsigned __int64 *v = (unsigned __int64*)&x;
 
-  // Bring the number up to the next power of 2, unless the number is already
-  // a power of 2
-  // If the number is negative, return 0
-  *v = (((*v + 0x000fffffffffffffui64) & 0x7ff0000000000000ui64) &
+    // Bring the number up to the next power of 2, unless the number is already
+    // a power of 2
+    // If the number is negative, return 0
+    *v = (((*v + 0x000fffffffffffffui64) & 0x7ff0000000000000ui64) &
         ~(unsigned __int64)((__int64)*v >> 63));
 
-  return x;
+    return x;
 }
 
 GMREAL file_size(const char *filename) {
+    ///file_size(filename)
+    //filename: string - name of file to check
+    //Returns the size of a file on disk.
+    
     // Get size of file
     // Returns -1 if file doesn't exist
     WIN32_FILE_ATTRIBUTE_DATA attr;
@@ -27,8 +35,12 @@ GMREAL file_size(const char *filename) {
 }
 
 GMREAL real_hex(const char *str) {
-  // Avoids subtraction at the cost of more memory
-  static const unsigned long long lookup[256] = {
+    ///real_hex(str)
+    //str: string - hex string to process
+    //Converts the hex string into an integer.
+    
+    // Avoids subtraction at the cost of more memory
+    static const unsigned long long lookup[256] = {
     // First 32 chars
     0, 0, 0, 0, 0, 0, 0, 0,
     0, 0, 0, 0, 0, 0, 0, 0,
@@ -109,44 +121,48 @@ GMREAL real_hex(const char *str) {
     15, // f
 
     // The rest are zeros
-  };
+    };
 
-  unsigned char c;
-  unsigned long long ret = 0;
+    unsigned char c;
+    unsigned long long ret = 0;
 
-  // Process 16 chars at a time
-#define LOOP                                                                   \
-  if (!(c = *(unsigned char*)str++)) return (double)ret;  \
-  ret = ret<<4 | lookup[c]
+    // Process 16 chars at a time
+#define LOOP                                                \
+    if (!(c = *(unsigned char*)str++)) return (double)ret;  \
+    ret = ret<<4 | lookup[c]
 
-  for (;;) {
+    for (;;) {
     LOOP;LOOP;LOOP;LOOP;
     LOOP;LOOP;LOOP;LOOP;
     LOOP;LOOP;LOOP;LOOP;
     LOOP;LOOP;LOOP;LOOP;
-  }
+    }
 
 #undef LOOP
 }
     
 GMSTR string_hex(double num) {
-  // Return buffer  
-  static char retbuf[17] = {0}; // Initialize to all 0's
+    ///string_hex(num)
+    //num: real - number to convert
+    //Converts a number into a hexadecimal representation.
+    
+    // Return buffer  
+    static char retbuf[17] = {0}; // Initialize to all 0's
 
-  static const char lookup[] = {
-    '0', '1', '2', '3',
-    '4', '5', '6', '7',
-    '8', '9', 'A', 'B',
-    'C', 'D', 'E', 'F'
-  };
+    static const char lookup[] = {
+        '0', '1', '2', '3',
+        '4', '5', '6', '7',
+        '8', '9', 'A', 'B',
+        'C', 'D', 'E', 'F'
+    };
 
-  unsigned long long i = (unsigned long long)num;
-  char *ret = retbuf+15; // Last character minus one, NULL terminator required
+    unsigned long long i = (unsigned long long)num;
+    char *ret = retbuf+15; // Last character minus one, NULL terminator required
 
-  *ret = lookup[i&0xf];
-  while ((i >>= 4) != 0) {
-    *--ret = lookup[i&0xf];
-  }
+    *ret = lookup[i&0xf];
+    while ((i >>= 4) != 0) {
+        *--ret = lookup[i&0xf];
+    }
 
-  return (char*)ret;
+    return (char*)ret;
 }

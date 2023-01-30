@@ -818,7 +818,7 @@
 				},
 				{
 					"name": "__gm82core_hrt_init",
-					"extname": "hrt_init",
+					"extname": "__hrt_init",
 					"calltype": 12,
 					"helpline": "",
 					"hidden": true,

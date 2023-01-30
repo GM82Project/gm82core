@@ -5,6 +5,11 @@ const char io_clear_code[] = {0xfb, 0x00};
 const char io_not_clear_code[] = {0x0b, 0x01};
 
 GMREAL io_set_roomend_clear(double enabled) {
+    ///io_set_roomend_clear(enabled)
+    //enabled: real - enable clearing
+    //Changes the behavior for clearing the keyboard state on Room End.
+    //Disable to prevent missing key presses between rooms.
+    
     if (enabled>=0.5) {
         //re-add io clear at room end
         WriteProcessMemory(GetCurrentProcess(), io_clear_addr, io_clear_code, 2, NULL);

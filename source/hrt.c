@@ -5,7 +5,7 @@
 
 ULONGLONG resolution = 1000000, lastTime = 0, frequency = 1;
 
-GMREAL hrt_init() {
+GMREAL __hrt_init() {
     if (QueryPerformanceFrequency((LARGE_INTEGER *)&frequency) && QueryPerformanceCounter((LARGE_INTEGER*)&lastTime)) {
         return 1;
     } else {
@@ -14,6 +14,8 @@ GMREAL hrt_init() {
 }
 
 GMREAL hrt_now() {
+    ///get_timer()
+    //returns the time since last system bootup in microseconds.
     ULONGLONG now;
     if (QueryPerformanceCounter((LARGE_INTEGER*)&now)) {
         return (double)(now*resolution/frequency);
@@ -23,6 +25,8 @@ GMREAL hrt_now() {
 }
 
 GMREAL hrt_delta() {
+    ///get_delta()
+    //returns the time since last call of this function in microseconds.
     ULONGLONG now, lt;
     if (QueryPerformanceCounter((LARGE_INTEGER*)&now)) {
         lt = lastTime;

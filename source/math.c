@@ -14,15 +14,37 @@ double pointdis(double x1,double y1,double x2,double y2) {
     return hypot(x2-x1,y2-y1);
 }
 
+//-//
+
 GMREAL modwrap(double val, double minv, double maxv) {
+    ///modwrap(val,min,max)
+    //val: real - value to bound
+    //min: real - minimum value
+    //max: real - maximum value
+    //Bounds the value between min and max - maximum exclusive.
+    
     double f=val-minv;
     double w=maxv-minv;
     return f-floor(f/w)*w+minv;
 }
 GMREAL lerp2(double fromA, double fromB, double toA, double toB, double value) {
+    ///lerp2(fromA,fromB,toA,toB,value)
+    //fromA: real - start value from
+    //fromB: real - end value from
+    //toA: real - start value to
+    //toB: real - end value to
+    //value: real - value to project
+    //Projects a value from line segment 'from' to segment 'to'.
+    
     return ((value-fromA)/(fromB-fromA))*(toB-toA)+toA;
 }
 GMREAL unlerp(double a, double b, double val) {
+    ///unlerp(a,b,val)
+    //a: real - start value
+    //b: real - end value
+    //val: real - value to convert
+    //Returns the reverse lerp of value between a and b.
+    
     return (val-a)/(b-a);
 }
 GMREAL esign(double x, double def) {
