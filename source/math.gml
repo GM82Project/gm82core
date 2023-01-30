@@ -42,6 +42,29 @@
     return (color_get_red(argument0)*0.2126+color_get_green(argument0)*0.7152+color_get_blue(argument0)*0.0722)
 
 
+#define choose_weighted
+    ///choose_weighted(val1,weight1,val2,weight2...)
+    //(c) YellowAfterlife
+    
+    var n,i;
+    
+    n=0
+    
+    for (i=1;i<argument_count;i+=2) {
+        if (argument[i]<=0) continue
+        n+=argument[i]
+    }
+
+    n=random(n)
+    for (i=1;i<argument_count;i+=2) {
+        if (argument[i]<=0) continue
+        n-=argument[i]
+        if (n<0) return argument[i-1]
+    }
+
+    return argument[0]
+
+
 #define distance_to_path
     ///distance_to_path(x,y,path)
     var __px,__py,__path,__closed,__prec,__len,__pos,__mind,__d,__close;

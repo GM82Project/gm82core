@@ -1676,6 +1676,15 @@
 					"returntype": 2
 				},
 				{
+					"name": "choose_weighted",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "choose_weighted(val1,weight1,val2,weight2...)",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
 					"name": "color_blend",
 					"extname": "",
 					"calltype": 2,
