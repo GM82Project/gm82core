@@ -1,8 +1,4 @@
-.vscode/*
 build
 *.gex
 *.dll
-*.obj
-todo.txt
-desktop.ini
 johnny.bin

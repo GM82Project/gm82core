@@ -9,7 +9,7 @@ Core is also required for running most of
 the other extensions in the GM 8.2 family. 
 
 Created by renex and Floogle. Contains contributions by Lovey01, cam900,
-includes parts of High Resolution Timer 2 by Kyle Smith, and contains code
-from GMLScripts.com - check the License for usage. 
+Adamcake, includes parts of High Resolution Timer 2 by Kyle Smith, and
+contains code from GMLScripts.com - check the License for usage. 
 
 More detailed usage information is included in the GM 8.2 manual.
