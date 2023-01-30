@@ -17,6 +17,29 @@
     return radtodeg(arccos(median(-1,dot_product_3d(__x1/__a,__y1/__a,__z1/__a,__x2/__b,__y2/__b,__z2/__b),1)))
 
 
+#define choose_weighted
+    ///choose_weighted(val1,weight1,val2,weight2...)
+    //(c) YellowAfterlife
+    
+    var __n,__i;
+    
+    __n=0
+    
+    for (__i=1;__i<argument_count;__i+=2) {
+        if (argument[__i]<=0) continue
+        __n+=argument[__i]
+    }
+
+    __n=random(__n)
+    for (__i=1;__i<argument_count;__i+=2) {
+        if (argument[__i]<=0) continue
+        __n-=argument[__i]
+        if (__n<0) return argument[__i-1]
+    }
+
+    return argument[0]
+
+
 #define color_blend
     ///color_blend(col1,col2)
     var __r1,__g1,__b1,__r2,__g2,__b2;
@@ -40,29 +63,6 @@
     
     //kodak human luminance perception factors
     return (color_get_red(argument0)*0.2126+color_get_green(argument0)*0.7152+color_get_blue(argument0)*0.0722)
-
-
-#define choose_weighted
-    ///choose_weighted(val1,weight1,val2,weight2...)
-    //(c) YellowAfterlife
-    
-    var n,i;
-    
-    n=0
-    
-    for (i=1;i<argument_count;i+=2) {
-        if (argument[i]<=0) continue
-        n+=argument[i]
-    }
-
-    n=random(n)
-    for (i=1;i<argument_count;i+=2) {
-        if (argument[i]<=0) continue
-        n-=argument[i]
-        if (n<0) return argument[i-1]
-    }
-
-    return argument[0]
 
 
 #define distance_to_path
