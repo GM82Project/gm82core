@@ -22,7 +22,6 @@
         
     globalvar delta_time,fps_real,fps_fast;
     globalvar __gm82core_timer,__gm82core_fpsmem,__gm82core_fps_queue;
-    globalvar __gm82core_version;
     
     __gm82core_hrt_init()
     
@@ -31,7 +30,6 @@
     __gm82core_fps_queue=ds_queue_create()
     __gm82core_fpsmem=1
     __gm82core_timer=get_timer()
-    __gm82core_version=152
     
     surface_free(surface_create(8,8))
     draw_set_color($ffffff)

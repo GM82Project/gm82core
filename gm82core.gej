@@ -3,7 +3,7 @@
 	"folder": "gm82",
 	"version": "1.5.2",
 	"author": "renex, Floogle, Lovey01, cam900, Adamcake",
-	"date": "29/01/2023",
+	"date": "30/01/2023",
 	"license": "Free to use, also for commercial games.",
 	"description": "Part of the standard Game Maker 8.2 distribution. This extension package contains a number of helper functions that are commonly used, and also geometry functions introduced in GM:Studio. This extension is also required for using the other GM 8.2 extensions, Sound and Joystick.",
 	"helpfile": "",
@@ -943,8 +943,8 @@
 			"constants": []
 		},
 		{
-			"filename": "acelerators.gml",
-			"origname": "acelerators.gml",
+			"filename": "accelerators.gml",
+			"origname": "source\\accelerators.gml",
 			"kind": 2,
 			"init": "",
 			"final": "",
@@ -1098,7 +1098,7 @@
 		},
 		{
 			"filename": "data_structures.gml",
-			"origname": "data_structures.gml",
+			"origname": "source\\data_structures.gml",
 			"kind": 2,
 			"init": "",
 			"final": "",
@@ -1210,7 +1210,7 @@
 		},
 		{
 			"filename": "drawing.gml",
-			"origname": "drawing.gml",
+			"origname": "source\\drawing.gml",
 			"kind": 2,
 			"init": "",
 			"final": "",
@@ -1339,7 +1339,7 @@
 		},
 		{
 			"filename": "gm82core.gml",
-			"origname": "gm82core.gml",
+			"origname": "source\\gm82core.gml",
 			"kind": 2,
 			"init": "__gm82core_init",
 			"final": "",
@@ -1458,7 +1458,7 @@
 		},
 		{
 			"filename": "instances.gml",
-			"origname": "instances.gml",
+			"origname": "source\\instances.gml",
 			"kind": 2,
 			"init": "",
 			"final": "",
@@ -1654,7 +1654,7 @@
 		},
 		{
 			"filename": "math.gml",
-			"origname": "math.gml",
+			"origname": "source\\math.gml",
 			"kind": 2,
 			"init": "",
 			"final": "",
@@ -1809,7 +1809,7 @@
 		},
 		{
 			"filename": "strings.gml",
-			"origname": "strings.gml",
+			"origname": "source\\strings.gml",
 			"kind": 2,
 			"init": "",
 			"final": "",
@@ -1963,7 +1963,7 @@
 		},
 		{
 			"filename": "system.gml",
-			"origname": "system.gml",
+			"origname": "source\\system.gml",
 			"kind": 2,
 			"init": "",
 			"final": "",

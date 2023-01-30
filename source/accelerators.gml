@@ -1,46 +1,59 @@
 #define alarm_get
     ///alarm_get(numb)
+    //numb - alarm index
+    //Similar to Studio function. Gets the value of an instance alarm.
     return alarm[argument0]
 
 
 #define alarm_set
     ///alarm_set(numb,steps)
+    //numb - alarm index
+    //Similar to Studio function. Sets the value of an instance alarm.
     alarm[argument0]=argument1
 
 
 #define animation_stop
     ///animation_stop()
+    //Stops the instance's animation on the last frame.
+    //Particularly useful for Animation end events.
     image_speed=0
     image_index=image_number-1
 
 
 #define event_alarm
     ///event_alarm(numb)
+    //numb - alarm index
+    //Shortcut function. Executes the actions in the Alarm event indicated.
     event_perform(ev_alarm,argument0)
 
 
 #define event_beginstep
     ///event_beginstep()
+    //Shortcut function. Executes the actions in the Begin Step event.
     event_perform(ev_step,ev_step_begin)
 
 
 #define event_draw
     ///event_draw()
+    //Shortcut function. Executes the actions in the Draw event.
     event_perform(ev_draw,0)
 
 
 #define event_endstep
     ///event_endstep()
+    //Shortcut function. Executes the actions in the End Step event.
     event_perform(ev_step,ev_step_end)
 
 
 #define event_inherit_object
     ///event_inherit_object(object)
+    
     event_perform_object(argument0,event_type,event_number)
 
 
 #define event_step
     ///event_step()
+    //Shortcut function. Executes the actions in the Step event.
     event_perform(ev_step,ev_step_normal)
 
 
