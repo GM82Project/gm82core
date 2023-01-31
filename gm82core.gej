@@ -1824,28 +1824,6 @@
 			"final": "",
 			"functions": [
 				{
-					"name": "base64_decode",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "base64_decode(str)",
-					"hidden": false,
-					"argtypes": [
-						2
-					],
-					"returntype": 2
-				},
-				{
-					"name": "base64_encode",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "base64_encode(str)",
-					"hidden": false,
-					"argtypes": [
-						2
-					],
-					"returntype": 2
-				},
-				{
 					"name": "date_get_timestamp",
 					"extname": "",
 					"calltype": 2,
