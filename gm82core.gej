@@ -1381,7 +1381,7 @@
 				},
 				{
 					"name": "core",
-					"value": "gm82core_object",
+					"value": "object_add()",
 					"hidden": true
 				},
 				{
@@ -1391,7 +1391,7 @@
 				},
 				{
 					"name": "gm82core_object",
-					"value": "object_add()",
+					"value": "core",
 					"hidden": false
 				},
 				{
