@@ -163,6 +163,17 @@
     return ((__i-6)/6+0.5)*argument0
 
 
+#define gauss_range
+    ///gauss_range(min,max)
+    //min,max: real - range to randomize
+    //Returns a gaussian distributed random number inside the range.
+    
+    var __i;
+    __i=0
+    repeat (12) __i+=random(1)
+    return ((__i-6)/6+0.5)*(argument1-argument0)+argument0
+
+
 #define irandom_fresh
     ///irandom_fresh(oldval,min,max):val
     //randomizes an integer within supplied range without repeating current value

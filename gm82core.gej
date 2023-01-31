@@ -1762,6 +1762,18 @@
 					"returntype": 2
 				},
 				{
+					"name": "gauss_range",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "gauss_range(min,max)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
 					"name": "irandom_fresh",
 					"extname": "",
 					"calltype": 2,
