@@ -34,7 +34,7 @@ GMREAL string_token_start(const char* str, const char* sep) {
     
     tokenseplen=min(255,strlen(sep));
     int len=strlen(str);
-    tokenstore=realloc(tokenstore, len+1);
+    tokenstore=(char*)realloc(tokenstore, len+1);
     strcpy(tokenstore, str);
     memset(tokensep, 0, 256);
     strncpy(tokensep, sep, tokenseplen);
