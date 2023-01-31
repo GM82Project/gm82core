@@ -3,7 +3,7 @@
 	"folder": "gm82",
 	"version": "1.5.2",
 	"author": "renex, Floogle, Lovey01, cam900, Adamcake",
-	"date": "30/01/2023",
+	"date": "31/01/2023",
 	"license": "Free to use, also for commercial games.",
 	"description": "Part of the standard Game Maker 8.2 distribution. This extension package contains a number of helper functions that are commonly used, and also geometry functions introduced in GM:Studio. This extension is also required for using the other GM 8.2 extensions, Sound and Joystick.",
 	"helpfile": "",
@@ -1365,6 +1365,26 @@
 			],
 			"constants": [
 				{
+					"name": "chr_cr",
+					"value": "chr($0d)",
+					"hidden": false
+				},
+				{
+					"name": "chr_crlf",
+					"value": "chr($0d)+chr($0a)",
+					"hidden": false
+				},
+				{
+					"name": "chr_lf",
+					"value": "chr($0a)",
+					"hidden": false
+				},
+				{
+					"name": "core",
+					"value": "gm82core_object",
+					"hidden": true
+				},
+				{
 					"name": "execute_running",
 					"value": "259",
 					"hidden": false
@@ -1430,29 +1450,14 @@
 					"hidden": false
 				},
 				{
-					"name": "core",
+					"name": "__gm82core_object",
 					"value": "gm82core_object",
 					"hidden": true
 				},
 				{
-					"name": "__gm82core_object",
-					"value": "gm82core_object",
-					"hidden": false
-				},
-				{
-					"name": "chr_cr",
-					"value": "chr($0d)",
-					"hidden": false
-				},
-				{
-					"name": "chr_lf",
-					"value": "chr($0a)",
-					"hidden": false
-				},
-				{
-					"name": "chr_crlf",
-					"value": "chr($0d)+chr($0a)",
-					"hidden": false
+					"name": "__gm82core_version",
+					"value": "gm82core_version",
+					"hidden": true
 				}
 			]
 		},
