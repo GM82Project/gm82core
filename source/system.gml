@@ -148,7 +148,7 @@
     __gm82core_setminimized(window_handle())
 
 
-#define window_set_foreground()
+#define window_set_foreground
     ///window_set_foreground()
     __gm82core_set_foreground(window_handle())
 //
