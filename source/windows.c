@@ -47,9 +47,6 @@ wstr make_wstr(const char* input) {
     return output;
 }
 
-//force msbuild to not mangle the "secret" windows api function definition
-extern VOID WINAPI RtlGetNtVersionNumbers(LPDWORD pMajor, LPDWORD pMinor, LPDWORD pBuild);
-
 GMREAL __gm82core_winver() {
     //THANKS VIRI
     int major;

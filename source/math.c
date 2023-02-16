@@ -48,6 +48,10 @@ GMREAL unlerp(double a, double b, double val) {
     return (val-a)/(b-a);
 }
 GMREAL esign(double x, double def) {
+    ///esign(x,default)
+    //x: real - value to get the sign of
+    //default: real - default value to return
+    //Returns the default value when x is zero, otherwise returns the sign of x.
     if (x==0.0) return def;
     if (x>0.0) return 1;
     return -1;

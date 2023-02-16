@@ -25,4 +25,7 @@
 
 #define wstr wchar_t*
 
+//force msbuild to not mangle the "secret" windows api function definition
+extern VOID WINAPI RtlGetNtVersionNumbers(LPDWORD pMajor, LPDWORD pMinor, LPDWORD pBuild);
+
 #endif

@@ -152,18 +152,16 @@
 #define outside_room
     ///outside_room()
     //workaround for instances without a sprite
-    if (bbox_right-bbox_left+bbox_bottom-bbox_top == 0)
-    return x >= room_width
-        || x < 0
-        || y >= room_height
-        || y < 0
+    if (bbox_right-bbox_left+bbox_bottom-bbox_top==0)
+    return x>=room_width
+        || x<0
+        || y>=room_height
+        || y<0
 
-    return bbox_left >= room_width
-        || bbox_right < 0
-        || bbox_top >= room_height
-        || bbox_bottom < 0
-
-
+    return bbox_left>=room_width
+        || bbox_right<0
+        || bbox_top>=room_height
+        || bbox_bottom<0
 
 
 #define variable_instance_exists

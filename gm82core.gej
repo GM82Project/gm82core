@@ -1,9 +1,9 @@
 {
 	"name": "Game Maker 8.2 Core",
 	"folder": "gm82",
-	"version": "1.5.2",
+	"version": "1.6",
 	"author": "renex, Floogle, Lovey01, cam900, Adamcake",
-	"date": "31/01/2023",
+	"date": "16/02/2023",
 	"license": "Free to use, also for commercial games.",
 	"description": "Part of the standard Game Maker 8.2 distribution. This extension package contains a number of helper functions that are commonly used, and also geometry functions introduced in GM:Studio. This extension is also required for using the other GM 8.2 extensions, Sound and Joystick.",
 	"helpfile": "",
@@ -1383,6 +1383,11 @@
 					"name": "core",
 					"value": "object_add()",
 					"hidden": true
+				},
+				{
+					"name": "directory_appdata",
+					"value": "string_copy(temp_directory,1,string_pos(\"\\AppData\\\",temp_directory)+8)",
+					"hidden": false
 				},
 				{
 					"name": "execute_running",
