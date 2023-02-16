@@ -194,6 +194,17 @@
 					"returntype": 2
 				},
 				{
+					"name": "file_get_timestamp",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "file_get_timestamp(filename)",
+					"hidden": false,
+					"argtypes": [
+						1
+					],
+					"returntype": 2
+				},
+				{
 					"name": "file_size",
 					"extname": "",
 					"calltype": 12,
@@ -735,6 +746,60 @@
 					"returntype": 2
 				},
 				{
+					"name": "window_is_maximized",
+					"extname": "__gm82core_getmaximized",
+					"calltype": 12,
+					"helpline": "",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
+					"name": "window_is_minimized",
+					"extname": "__gm82core_getminimized",
+					"calltype": 12,
+					"helpline": "",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
+					"name": "window_maximize",
+					"extname": "__gm82core_setmaximized",
+					"calltype": 12,
+					"helpline": "",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
+					"name": "window_minimize",
+					"extname": "__gm82core_setminimized",
+					"calltype": 12,
+					"helpline": "",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
+					"name": "window_restore",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "window_restore()",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
+					"name": "window_set_foreground",
+					"extname": "__gm82core_set_foreground",
+					"calltype": 12,
+					"helpline": "",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
 					"name": "__gm82core_addfonttemp",
 					"extname": "",
 					"calltype": 12,
@@ -800,9 +865,7 @@
 					"calltype": 12,
 					"helpline": "",
 					"hidden": true,
-					"argtypes": [
-						2
-					],
+					"argtypes": [],
 					"returntype": 2
 				},
 				{
@@ -811,9 +874,7 @@
 					"calltype": 12,
 					"helpline": "",
 					"hidden": true,
-					"argtypes": [
-						2
-					],
+					"argtypes": [],
 					"returntype": 2
 				},
 				{
@@ -876,9 +937,7 @@
 					"calltype": 12,
 					"helpline": "",
 					"hidden": true,
-					"argtypes": [
-						2
-					],
+					"argtypes": [],
 					"returntype": 2
 				},
 				{
@@ -887,9 +946,7 @@
 					"calltype": 12,
 					"helpline": "",
 					"hidden": true,
-					"argtypes": [
-						2
-					],
+					"argtypes": [],
 					"returntype": 2
 				},
 				{
@@ -936,17 +993,6 @@
 						1,
 						1,
 						2
-					],
-					"returntype": 2
-				},
-				{
-					"name": "file_get_timestamp",
-					"extname": "",
-					"calltype": 12,
-					"helpline": "file_get_timestamp(filename)",
-					"hidden": false,
-					"argtypes": [
-						1
 					],
 					"returntype": 2
 				}
@@ -2120,51 +2166,6 @@
 					"extname": "",
 					"calltype": 2,
 					"helpline": "window_has_focus()",
-					"hidden": false,
-					"argtypes": [],
-					"returntype": 2
-				},
-				{
-					"name": "window_is_maximized",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "window_is_maximized()",
-					"hidden": false,
-					"argtypes": [],
-					"returntype": 2
-				},
-				{
-					"name": "window_is_minimized",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "window_is_minimized()",
-					"hidden": false,
-					"argtypes": [],
-					"returntype": 2
-				},
-				{
-					"name": "window_maximize",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "window_maximize()",
-					"hidden": false,
-					"argtypes": [],
-					"returntype": 2
-				},
-				{
-					"name": "window_minimize",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "window_minimize()",
-					"hidden": false,
-					"argtypes": [],
-					"returntype": 2
-				},
-				{
-					"name": "window_set_foreground",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "window_set_foreground()",
 					"hidden": false,
 					"argtypes": [],
 					"returntype": 2

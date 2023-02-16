@@ -121,35 +121,5 @@
     ///url_open(url)
     if (!string_pos("http://",argument0) && !string_pos("https://",argument0)) execute_shell("http://"+argument0,"")
     else execute_shell(argument0,"")
-
-
-#define window_has_focus
-    ///window_has_focus()
-    return __gm82core_object.__gm82core_hasfocus
-
-
-#define window_is_maximized
-    ///window_is_maximized()
-    return __gm82core_getmaximized(window_handle())
-
-
-#define window_is_minimized
-    ///window_is_minimized()
-    return __gm82core_getminimized(window_handle())
-
-
-#define window_maximize
-    ///window_maximize()
-    __gm82core_setmaximized(window_handle())
-
-
-#define window_minimize
-    ///window_minimize()
-    __gm82core_setminimized(window_handle())
-
-
-#define window_set_foreground
-    ///window_set_foreground()
-    __gm82core_set_foreground(window_handle())
 //
 //

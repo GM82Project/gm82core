@@ -72,26 +72,39 @@ GMREAL __gm82core_checkstart(double gm_hwnd) {
     return 1;
 }
 
-GMREAL __gm82core_getmaximized(double gm_hwnd) {
+GMREAL __gm82core_getmaximized() {
     placement.length=sizeof(WINDOWPLACEMENT);
     GetWindowPlacement(window_handle,&placement);
     return (double)(placement.showCmd==3);
 }
 
-GMREAL __gm82core_getminimized(double gm_hwnd) {
+GMREAL __gm82core_getminimized() {
     placement.length=sizeof(WINDOWPLACEMENT);
     GetWindowPlacement(outer_handle,&placement);
     return (double)(placement.showCmd==2);
 }
 
-GMREAL __gm82core_setmaximized(double gm_hwnd) {
+GMREAL __gm82core_setmaximized() {
     ShowWindow(window_handle,3);
     return 0;
 }
 
-GMREAL __gm82core_setminimized(double gm_hwnd) {
+GMREAL __gm82core_setminimized() {
     ShowWindow(outer_handle,2);
     return 0;
+}
+
+GMREAL window_restore() {
+   placement.length=sizeof(WINDOWPLACEMENT);
+   GetWindowPlacement(outer_handle,&placement);
+
+   BOOL minimized=(placement.showCmd & SW_SHOWMINIMIZED) != 0;
+   if (!minimized) return 0;
+
+   placement.showCmd = SW_SHOWNORMAL;
+   SetWindowPlacement(outer_handle,&placement);
+   
+   return 0;
 }
 
 GMREAL __gm82core_set_foreground(double gm_hwnd) {
