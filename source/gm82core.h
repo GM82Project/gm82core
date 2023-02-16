@@ -25,6 +25,8 @@
 
 #define wstr wchar_t*
 
+typedef unsigned long long int uint64;
+
 //force msbuild to not mangle the "secret" windows api function definition
 extern VOID WINAPI RtlGetNtVersionNumbers(LPDWORD pMajor, LPDWORD pMinor, LPDWORD pBuild);
 

@@ -938,6 +938,17 @@
 						2
 					],
 					"returntype": 2
+				},
+				{
+					"name": "file_get_timestamp",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "file_get_timestamp(filename)",
+					"hidden": false,
+					"argtypes": [
+						1
+					],
+					"returntype": 2
 				}
 			],
 			"constants": []

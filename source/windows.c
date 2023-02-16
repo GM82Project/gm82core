@@ -255,3 +255,27 @@ GMREAL __registry_write_dword(const char* dir, const char* keyname, double dword
         } else { return res; }
     } else { return res; }
 }
+
+GMREAL file_get_timestamp(const char *filename) {
+    ///file_get_timestamp(filename)
+    //filename: string - name of file to check
+    //Returns the last modified date of a file on disk.
+    
+    WIN32_FILE_ATTRIBUTE_DATA attr;
+
+    if (!GetFileAttributesExA(filename, GetFileExInfoStandard, &attr))
+        return -1.0;
+    
+    DYNAMIC_TIME_ZONE_INFORMATION TimeZoneInformation;
+    GetDynamicTimeZoneInformation(&TimeZoneInformation);
+    uint64 timezone=(TimeZoneInformation.Bias) * 60.0 * 1000.0 * 1000.0 * 10.0;
+    
+    FILETIME time=attr.ftLastWriteTime;
+    
+    uint64 wintime=(uint64)time.dwLowDateTime | ((uint64)time.dwHighDateTime << 32);
+    
+    double base = -109205.0;
+    double step = 24.0 * 60.0 * 60.0 * 1000.0 * 1000.0 * 10.0;
+    
+    return (wintime-timezone)/step+base;
+}
