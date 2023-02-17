@@ -64,6 +64,18 @@
     return string_repeat("-",argument0<0)+string_replace_all(string_format(abs(argument0),argument1,0)," ","0")
 
 
+#define string_starts_with
+    ///string_starts_with(string,substr)
+    return string_copy(argument0,1,string_length(argument1))==argument1
+
+
+#define string_ends_with
+    ///string_ends_with(string,substr)
+    var __l;
+    __l=string_length(argument1)
+    return string_copy(argument0,string_length(argument0)-__l+1,__l)==argument1
+
+
 #define str_cat
     ///str_cat(val1,val2,...)
     var __i,__str;
