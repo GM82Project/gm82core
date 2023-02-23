@@ -3,7 +3,7 @@
 	"folder": "gm82",
 	"version": "1.6",
 	"author": "renex, Floogle, Lovey01, cam900, Adamcake",
-	"date": "17/02/2023",
+	"date": "23/02/2023",
 	"license": "Free to use, also for commercial games.",
 	"description": "Part of the standard Game Maker 8.2 distribution. This extension package contains a number of helper functions that are commonly used, and also geometry functions introduced in GM:Studio. This extension is also required for using the other GM 8.2 extensions, Sound and Joystick.",
 	"helpfile": "",
@@ -749,7 +749,7 @@
 					"name": "window_is_maximized",
 					"extname": "__gm82core_getmaximized",
 					"calltype": 12,
-					"helpline": "",
+					"helpline": "window_is_maximized()",
 					"hidden": false,
 					"argtypes": [],
 					"returntype": 2
@@ -758,7 +758,7 @@
 					"name": "window_is_minimized",
 					"extname": "__gm82core_getminimized",
 					"calltype": 12,
-					"helpline": "",
+					"helpline": "window_is_minimized()",
 					"hidden": false,
 					"argtypes": [],
 					"returntype": 2
@@ -767,7 +767,7 @@
 					"name": "window_maximize",
 					"extname": "__gm82core_setmaximized",
 					"calltype": 12,
-					"helpline": "",
+					"helpline": "window_maximize()",
 					"hidden": false,
 					"argtypes": [],
 					"returntype": 2
@@ -776,7 +776,7 @@
 					"name": "window_minimize",
 					"extname": "__gm82core_setminimized",
 					"calltype": 12,
-					"helpline": "",
+					"helpline": "window_minimize()",
 					"hidden": false,
 					"argtypes": [],
 					"returntype": 2
@@ -794,7 +794,7 @@
 					"name": "window_set_foreground",
 					"extname": "__gm82core_set_foreground",
 					"calltype": 12,
-					"helpline": "",
+					"helpline": "window_set_foreground()",
 					"hidden": false,
 					"argtypes": [],
 					"returntype": 2

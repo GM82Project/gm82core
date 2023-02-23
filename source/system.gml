@@ -121,5 +121,10 @@
     ///url_open(url)
     if (!string_pos("http://",argument0) && !string_pos("https://",argument0)) execute_shell("http://"+argument0,"")
     else execute_shell(argument0,"")
+
+
+#define window_has_focus
+    ///window_has_focus()
+    return __gm82core_object.__gm82core_hasfocus
 //
 //
