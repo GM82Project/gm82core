@@ -7,7 +7,7 @@ if(${CMAKE_C_COMPILER_ID} STREQUAL "MSVC")
     set(CMAKE_C_FLAGS "/O2 /GS- /W2 /WX")
 endif()
 
-add_library(gm82core SHARED source/gm82core.c source/alpha.c source/hrt.c source/windows.c source/math.c source/lovey01.c source/terrible_gm8_hacking.c)
+add_library(gm82core SHARED source/gm82core.c source/hrt.c source/windows.c source/math.c source/lovey01.c source/terrible_gm8_hacking.c)
 
 target_compile_definitions(gm82core PRIVATE PSAPI_VERSION=1)
 
