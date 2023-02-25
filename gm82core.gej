@@ -907,29 +907,6 @@
 					"returntype": 2
 				},
 				{
-					"name": "__gm82core_setchromakey",
-					"extname": "",
-					"calltype": 12,
-					"helpline": "",
-					"hidden": true,
-					"argtypes": [
-						2,
-						2
-					],
-					"returntype": 2
-				},
-				{
-					"name": "__gm82core_setcomposite",
-					"extname": "",
-					"calltype": 12,
-					"helpline": "",
-					"hidden": true,
-					"argtypes": [
-						2
-					],
-					"returntype": 2
-				},
-				{
 					"name": "__gm82core_setdir",
 					"extname": "set_dll_loaddir",
 					"calltype": 12,
@@ -956,17 +933,6 @@
 					"helpline": "",
 					"hidden": true,
 					"argtypes": [],
-					"returntype": 2
-				},
-				{
-					"name": "__gm82core_settransparent",
-					"extname": "",
-					"calltype": 12,
-					"helpline": "",
-					"hidden": true,
-					"argtypes": [
-						2
-					],
 					"returntype": 2
 				},
 				{
