@@ -279,8 +279,8 @@ GMREAL file_get_timestamp(const char *filename) {
     if (!GetFileAttributesExA(filename, GetFileExInfoStandard, &attr))
         return -1.0;
     
-    DYNAMIC_TIME_ZONE_INFORMATION TimeZoneInformation;
-    GetDynamicTimeZoneInformation(&TimeZoneInformation);
+    TIME_ZONE_INFORMATION TimeZoneInformation;
+    GetTimeZoneInformation(&TimeZoneInformation);
     uint64 timezone=(TimeZoneInformation.Bias) * 60.0 * 1000.0 * 1000.0 * 10.0;
     
     FILETIME time=attr.ftLastWriteTime;
@@ -297,8 +297,8 @@ GMREAL date_get_current_timezone() {
     ///date_get_current_timezone()
     //Returns the current timezone correction based on GMT.
     
-    DYNAMIC_TIME_ZONE_INFORMATION TimeZoneInformation;
-    GetDynamicTimeZoneInformation(&TimeZoneInformation);
+    TIME_ZONE_INFORMATION TimeZoneInformation;
+    GetTimeZoneInformation(&TimeZoneInformation);
     double timezone=(TimeZoneInformation.Bias)/60;
    
     return -timezone;
