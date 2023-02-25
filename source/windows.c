@@ -292,3 +292,14 @@ GMREAL file_get_timestamp(const char *filename) {
     
     return (wintime-timezone)/step+base;
 }
+
+GMREAL date_get_current_timezone() {
+    ///date_get_current_timezone()
+    //Returns the current timezone correction based on GMT.
+    
+    DYNAMIC_TIME_ZONE_INFORMATION TimeZoneInformation;
+    GetDynamicTimeZoneInformation(&TimeZoneInformation);
+    double timezone=(TimeZoneInformation.Bias)/60;
+   
+    return -timezone;
+}
