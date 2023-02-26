@@ -1398,17 +1398,17 @@
 			"constants": [
 				{
 					"name": "chr_cr",
-					"value": "chr($0d)",
+					"value": "ansi_char($0d)",
 					"hidden": false
 				},
 				{
 					"name": "chr_crlf",
-					"value": "chr($0d)+chr($0a)",
+					"value": "ansi_char($0d)+ansi_char($0a)",
 					"hidden": false
 				},
 				{
 					"name": "chr_lf",
-					"value": "chr($0a)",
+					"value": "ansi_char($0a)",
 					"hidden": false
 				},
 				{
