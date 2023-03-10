@@ -126,5 +126,39 @@
 #define window_has_focus
     ///window_has_focus()
     return __gm82core_object.__gm82core_hasfocus
+
+
+#define file_find_list
+///file_find_list(directory,query,attr,recursive)
+    var __root,__mask,__attr,__recursive,__list,__folder,__folders,__fn;
+    
+    __root=argument0
+    __mask=argument1
+    __attr=argument2
+    __recursive=argument3
+
+    __list=ds_list_create()
+
+    if (__recursive) __attr=__attr|fa_directory
+
+    __folder[0]=__root
+    __folders=1
+
+    do {
+        __folders-=1
+        __root=__folder[__folders]+"\"
+        for (__file=file_find_first(__root+__mask,__attr);__file!="";__file=file_find_next()) {
+            if (__file!="." && __file!="..") {
+                __fn=__root+__file
+                ds_list_add(__list,__fn)
+                if (__recursive) if (file_attributes(__fn,fa_directory)) {
+                    __folder[__folders]=__fn
+                    __folders+=1
+                }                 
+            }
+        } file_find_close()
+    } until (__folders==0)
+
+    return __list
 //
 //
