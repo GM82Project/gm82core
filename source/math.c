@@ -8,7 +8,7 @@ double signnum_c(double x) {
     return x;
 }
 double pointdir(double x1,double y1,double x2,double y2) {
-    return modwrap(atan2(y1-y2,x1-x2)*180/M_PI,0,360);
+    return modwrap(atan2(-(y2-y1),x2-x1)*180/M_PI,0,360);
 }
 double pointdis(double x1,double y1,double x2,double y2) {
     return hypot(x2-x1,y2-y1);
