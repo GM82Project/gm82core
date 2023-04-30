@@ -299,8 +299,8 @@
         __i=0 repeat (__num-!__closed) {
             __d=point_line_distance(__px,__py,path_get_point_x(__path,__i),path_get_point_y(__path,__i),path_get_point_x(__path,(__i+1) mod __num),path_get_point_y(__path,(__i+1) mod __num),1)
             if (__d<__mind) {
-                __mind=d
-                __closest=i
+                __mind=__d
+                __closest=__i
             }
         __i+=1}
         
