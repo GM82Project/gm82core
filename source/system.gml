@@ -51,6 +51,19 @@
     return noone
 
 
+#define file_text_write_all
+    ///file_text_write_all(filename,string)
+    var __f;
+
+    __f=file_text_open_write(argument0)
+    if (__f) {
+        file_text_write_string(__f,argument1)
+        file_text_close(__f)
+        return true
+    }
+    return false
+
+
 #define font_add_file
     ///font_add_file(filename,fontname,size,bold,italic,first,last)
     var font;
