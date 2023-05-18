@@ -4,7 +4,7 @@
         exit
     }
     
-    object_event_add(__gm82core_object,ev_create,0,"__dead=0 if (instance_number(__gm82core_object)>1) {__dead=1 instance_destroy()} else if (!__gm82core_checkstart(window_handle())) show_error('game_restart() is currently not supported by the GM 8.2 extensions due to potential memory leaks.',1)")
+    object_event_add(__gm82core_object,ev_create,0,"__gm82core_create()")
     object_event_add(__gm82core_object,ev_step,ev_step_begin,"__gm82core_update()")
     object_event_add(__gm82core_object,ev_destroy,0,"if (!__dead) instance_copy(0)")
     object_event_add(__gm82core_object,ev_other,ev_room_end,"persistent=true")
@@ -13,8 +13,7 @@
     //notes about alarm events:
     //any of my extensions might decide to install alarms onto the core object.
     //for this end, here's a list of currently used alarm indices:
-    
-    //gm82alpha: alarm 0 used for window border toggle
+        //alarm 0: gm82alpha window border toggle
     
     
     object_set_persistent(__gm82core_object,1)
@@ -35,8 +34,21 @@
     draw_set_color($ffffff)
 
 
+#define __gm82core_create
+    __dead=0
+    if (instance_number(__gm82core_object)>1) {
+        __dead=1
+        instance_destroy()
+    } else if (!__gm82core_checkstart(window_handle()))
+        show_error('game_restart() is currently not supported by the GM 8.2 extensions due to potential memory leaks.',1)
+
+
 #define __gm82core_update
     var __tmp,__stamp;
+    
+    //this is to avoid getting deactivated by game logic
+    x=view_xview[0]+view_wview[0]/2
+    y=view_yview[0]+view_hview[0]/2
     
     __gm82core_hasfocus=__gm82core_getfore()
     __tmp=get_timer()
@@ -49,8 +61,7 @@
             //why is the correction value half a frame?
             //no clue! i just don't question it at this point.
             ds_queue_dequeue(__gm82core_fps_queue)
-        }
-        else break
+        } else break
     }
     ds_queue_enqueue(__gm82core_fps_queue,__tmp)
 
