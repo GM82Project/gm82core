@@ -17,7 +17,7 @@
 
     if (__a*__b==0) return 180
 
-    return radtodeg(arccos(median(-1,dot_product_3d(__x1/__a,__y1/__a,__z1/__a,__x2/__b,__y2/__b,__z2/__b),1)))
+    return darccos(median(-1,dot_product_3d(__x1/__a,__y1/__a,__z1/__a,__x2/__b,__y2/__b,__z2/__b),1))
 
 
 #define choose_weighted
