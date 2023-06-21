@@ -1,25 +1,3 @@
-#define angle_difference_3d
-    ///angle_difference_3d(x1,y1,z1,x2,y2,z2)
-    //x1, y1, z1: vector - angle 1
-    //x2, y2, z2: vector - angle 2
-    //Returns the angle difference between two 3d vectors (0-180)
-    var __x1,__y1,__z1,__x2,__y2,__z2,__a,__b;
-                
-    __x1=argument0
-    __y1=argument1
-    __z1=argument2
-    __x2=argument3
-    __y2=argument4
-    __z2=argument5
-
-    __a=point_distance_3d(0,0,0,__x1,__y1,__z1)
-    __b=point_distance_3d(0,0,0,__x2,__y2,__z2)
-
-    if (__a*__b==0) return 180
-
-    return darccos(median(-1,dot_product_3d(__x1/__a,__y1/__a,__z1/__a,__x2/__b,__y2/__b,__z2/__b),1))
-
-
 #define choose_weighted
     ///choose_weighted(val1,weight1,val2,weight2...)
     //Returns a weighted choice between each pair of arguments.
@@ -137,46 +115,6 @@
         
         return __mind
     }
-
-
-#define dot_product_3d_normalised
-    ///dot_product_3d_normalised(x1,y1,z1,x2,y2,z2)
-    //x1, y1, z1: vector - angle 1
-    //x2, y2, z2: vector - angle 2
-    //Returns the normalized dot product between two 3d vectors.
-    
-    var __x1,__y1,__z1,__x2,__y2,__z2,__a,__b;
-                
-    __x1=argument0
-    __y1=argument1
-    __z1=argument2
-    __x2=argument3
-    __y2=argument4
-    __z2=argument5
-
-    __a=point_distance_3d(0,0,0,__x1,__y1,__z1)
-    __b=point_distance_3d(0,0,0,__x2,__y2,__z2)
-
-    return dot_product_3d(__x1/__a,__y1/__a,__z1/__a,__x2/__b,__y2/__b,__z2/__b)
-
-
-#define dot_product_normalised
-    ///dot_product_normalised(x1,y1,x2,y2)
-    //x1, y1: vector - angle 1
-    //x2, y2: vector - angle 2
-    //Returns the normalized dot product between two vectors.
-    
-    var __x1,__y1,__x2,__y2,__a,__b;
-                
-    __x1=argument0
-    __y1=argument1
-    __x2=argument2
-    __y2=argument3
-
-    __a=point_distance(0,0,__x1,__y1)
-    __b=point_distance(0,0,__x2,__y2)
-
-    return dot_product(__x1/__a,__y1/__a,__x2/__b,__y2/__b)
 
 
 #define gauss

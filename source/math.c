@@ -13,6 +13,15 @@ double pointdir(double x1,double y1,double x2,double y2) {
 double pointdis(double x1,double y1,double x2,double y2) {
     return hypot(x2-x1,y2-y1);
 }
+double pointdis3d(double x1,double y1,double z1,double x2,double y2,double z2) {
+    return sqrt((x2-x1)*(x2-x1)+(y2-y1)*(y2-y1)+(z2-z1)*(z2-z1));
+}
+double dot(double x1,double y1,double x2,double y2) {
+    return (x1*x2+y1*y2);
+}
+double dot3d(double x1,double y1,double z1,double x2,double y2,double z2) {
+    return (x1*x2+y1*y2+z1*z2);
+}
 
 //-//
 
@@ -212,4 +221,23 @@ GMREAL point_line_distance(double px, double py, double x1, double y1, double x2
     double ys = y1 + t * (y2-y1);
 
     return pointdis(xs, ys, px, py);
+}
+GMREAL dot_product_3d_normalised(double x1, double y1, double z1, double x2, double y2, double z2) {
+    double a=pointdis3d(0,0,0,x1,y1,z1);
+    double b=pointdis3d(0,0,0,x2,y2,z2);
+    
+    if (a*b==0) return 1;
+
+    return dot3d(x1/a,y1/a,z1/a,x2/b,y2/b,z2/b);
+}
+GMREAL dot_product_normalised(double x1, double y1, double x2, double y2) {
+    double a=pointdis(0,0,x1,y1);
+    double b=pointdis(0,0,x2,y2);
+    
+    if (a*b==0) return 1;
+
+    return dot(x1/a,y1/a,x2/b,y2/b);
+}
+GMREAL angle_difference_3d(double x1, double y1, double z1, double x2, double y2, double z2) {
+    return darccos(dot_product_3d_normalised(x1,y1,z1,x2,y2,z2));
 }

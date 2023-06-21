@@ -2,8 +2,8 @@
 	"name": "Game Maker 8.2 Core",
 	"folder": "gm82",
 	"version": "1.6",
-	"author": "renex, Floogle, Lovey01, cam900, Adamcake",
-	"date": "18/05/2023",
+	"author": "renex, Floogle, Lovey01, cam900, Adamcake, YellowAfterlife",
+	"date": "21/06/2023",
 	"license": "Free to use, also for commercial games.",
 	"description": "Part of the standard Game Maker 8.2 distribution. This extension package contains a number of helper functions that are commonly used, and also geometry functions introduced in GM:Studio. This extension is also required for using the other GM 8.2 extensions, Sound and Joystick.",
 	"helpfile": "",
@@ -24,6 +24,22 @@
 					"helpline": "angle_difference(ang1,ang2)",
 					"hidden": false,
 					"argtypes": [
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "angle_difference_3d",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "angle_difference_3d(x1,y1,z1,x2,y2,z2)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2,
+						2,
 						2,
 						2
 					],
@@ -153,6 +169,36 @@
 					"helpline": "dcos(angle)",
 					"hidden": false,
 					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "dot_product_3d_normalised",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "dot_product_3d_normalised(x1,y1,z1,x2,y2,z2)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2,
+						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "dot_product_normalised",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "dot_product_normalised(x1,y1,x2,y2)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2,
 						2
 					],
 					"returntype": 2
@@ -1711,22 +1757,6 @@
 			"final": "",
 			"functions": [
 				{
-					"name": "angle_difference_3d",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "angle_difference_3d(x1,y1,z1,x2,y2,z2)",
-					"hidden": false,
-					"argtypes": [
-						2,
-						2,
-						2,
-						2,
-						2,
-						2
-					],
-					"returntype": 2
-				},
-				{
 					"name": "choose_weighted",
 					"extname": "",
 					"calltype": 2,
@@ -1765,36 +1795,6 @@
 					"helpline": "distance_to_path(x,y,path)",
 					"hidden": false,
 					"argtypes": [
-						2,
-						2,
-						2
-					],
-					"returntype": 2
-				},
-				{
-					"name": "dot_product_3d_normalised",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "dot_product_3d_normalised(x1,y1,z1,x2,y2,z2)",
-					"hidden": false,
-					"argtypes": [
-						2,
-						2,
-						2,
-						2,
-						2,
-						2
-					],
-					"returntype": 2
-				},
-				{
-					"name": "dot_product_normalised",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "dot_product_normalised(x1,y1,x2,y2)",
-					"hidden": false,
-					"argtypes": [
-						2,
 						2,
 						2,
 						2
