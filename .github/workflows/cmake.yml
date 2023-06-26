@@ -14,6 +14,19 @@ jobs:
     runs-on: windows-2019
 
     steps:
+    
+    - uses: robinraju/release-downloader@v1.8
+      with:
+      repository: "upx/upx"
+      latest: true
+      fileName: "*-win64.zip"
+      tarBall: false
+      zipBall: false
+      extract: true
+      
+    - name: test step please ignure
+      run: tree
+      
     - uses: actions/checkout@v3
 
     - name: Configure CMake
