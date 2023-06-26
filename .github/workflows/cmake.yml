@@ -26,7 +26,7 @@ jobs:
         out-file-path: "upx"
         
     - name: asdjlksgjndf
-      run: dir $GITHUB_WORKSPACE/upx
+      run: tree /A /F
       
     - name: test step please ignore
       run: $GITHUB_WORKSPACE/upx/upx.exe
