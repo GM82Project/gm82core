@@ -24,9 +24,12 @@ jobs:
         zipBall: false
         extract: true
         out-file-path: "upx"
+        
+    - name: asdjlksgjndf
+      run: dir $GITHUB_WORKSPACE/upx
       
     - name: test step please ignore
-      run: upx/upx.exe
+      run: $GITHUB_WORKSPACE/upx/upx.exe
       
     - uses: actions/checkout@v3
 
