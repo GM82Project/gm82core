@@ -17,12 +17,12 @@ jobs:
     
     - uses: robinraju/release-downloader@v1.8
       with:
-      repository: "upx/upx"
-      latest: true
-      fileName: "*-win64.zip"
-      tarBall: false
-      zipBall: false
-      extract: true
+        repository: "upx/upx"
+        latest: true
+        fileName: "*-win64.zip"
+        tarBall: false
+        zipBall: false
+        extract: true
       
     - name: test step please ignure
       run: tree
