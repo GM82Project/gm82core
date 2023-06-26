@@ -23,13 +23,12 @@ jobs:
         tarBall: false
         zipBall: false
         extract: true
-        out-file-path: "upx"
         
-    - name: asdjlksgjndf
-      run: tree /A /F
+    - name: Move UPX
+      run: mv upx-*-win64 upx
       
     - name: test step please ignore
-      run: $GITHUB_WORKSPACE/upx/upx.exe
+      run: upx/upx.exe
       
     - uses: actions/checkout@v3
 
