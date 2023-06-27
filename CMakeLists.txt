@@ -11,9 +11,7 @@ add_library(gm82core SHARED source/gm82core.c source/hrt.c source/windows.c sour
 
 target_compile_definitions(gm82core PRIVATE PSAPI_VERSION=1)
 
-option(INSTALL_GEX "Install the generated .gex" OFF)
 set(UPX_PATH "" CACHE STRING "Path to upx.exe if applicable")
-
 if(NOT UPX_PATH STREQUAL "")
 	add_custom_command(
 		TARGET gm82core
@@ -21,6 +19,8 @@ if(NOT UPX_PATH STREQUAL "")
 		COMMAND ${UPX_PATH} --lzma ${CMAKE_BINARY_DIR}/$<CONFIG>/gm82core.dll
 	)
 endif()
+
+option(INSTALL_GEX "Install the generated .gex" OFF)
 
 set(GEX_URL https://raw.githubusercontent.com/GM82Project/gm82gex/main/gm82gex.py)
 set(GEX_PY ${CMAKE_SOURCE_DIR}/gm82gex.py)
