@@ -30,7 +30,7 @@ jobs:
 
     - name: Configure CMake
       # Configure CMake in a 'build' subdirectory.
-      run: cmake -B ${{github.workspace}}/build -A Win32 -DUPX_PATH:STRING="upx/upx.exe"
+      run: cmake -B ${{github.workspace}}/build -A Win32 -DUPX_PATH:STRING="$GITHUB_WORKSPACE/upx/upx.exe"
 
     - name: Build
       # Build your program with the given configuration
