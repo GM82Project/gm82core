@@ -18,7 +18,7 @@ if(NOT UPX_PATH STREQUAL "")
 	add_custom_command(
 		TARGET gm82core
 		POST_BUILD	
-		COMMAND ${UPX_PATH} -9 ${CMAKE_BINARY_DIR}/$<CONFIG>/gm82core.dll
+		COMMAND ${UPX_PATH} --lzma ${CMAKE_BINARY_DIR}/$<CONFIG>/gm82core.dll
 	)
 endif()
 
