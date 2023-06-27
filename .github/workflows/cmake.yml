@@ -14,7 +14,6 @@ jobs:
     runs-on: windows-2019
 
     steps:
-    
     - uses: robinraju/release-downloader@v1.8
       with:
         repository: "upx/upx"
