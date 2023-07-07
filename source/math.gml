@@ -206,7 +206,7 @@
         
         __pos=0
         __close=0
-        __mind=__infinity
+        __mind=infinity
         repeat (__len/__prec+1) {
             __d=point_distance(__px,__py,path_get_x(__path,__pos),path_get_y(__path,__pos))
             if (__d<__mind) {
