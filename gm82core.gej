@@ -2,8 +2,8 @@
 	"name": "Game Maker 8.2 Core",
 	"folder": "gm82",
 	"version": "1.6",
-	"author": "renex, Floogle, Lovey01, cam900, Adamcake, YellowAfterlife",
-	"date": "21/06/2023",
+	"author": "renex, Floogle, Lovey01, cam900, Adamcake, YellowAfterlife, Verve",
+	"date": "18/07/2023",
 	"license": "Free to use, also for commercial games.",
 	"description": "Part of the standard Game Maker 8.2 distribution. This extension package contains a number of helper functions that are commonly used, and also geometry functions introduced in GM:Studio. This extension is also required for using the other GM 8.2 extensions, Sound and Joystick.",
 	"helpfile": "",
@@ -1742,6 +1742,28 @@
 					"argtypes": [
 						2,
 						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "move_contact_solid_h",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "move_contact_solid_h(maxdist)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "move_contact_solid_v",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "move_contact_solid_v(maxdist)",
+					"hidden": false,
+					"argtypes": [
 						2
 					],
 					"returntype": 2
