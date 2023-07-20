@@ -187,5 +187,29 @@
 #define move_contact_solid_v
     ///move_contact_solid_v(maxdist)
     move_contact_solid(-90*sign(argument0),abs(argument0))
+
+
+#define position_free
+    ///position_free(x,y)
+    var __mask,__check;
+
+    __mask=mask_index
+    __xsc=image_xscale
+    __ysc=image_yscale
+    __ang=image_angle
+    
+    mask_index=__gm82core_pixel
+    image_xscale=1
+    image_yscale=1
+    image_angle=0
+    
+    __check=place_free(argument0,argument1)
+    
+    mask_index=__mask
+    image_xscale=__xsc
+    image_yscale=__ysc
+    image_angle=__ang
+
+    return __check
 //
 //

@@ -1325,6 +1325,15 @@
 					"returntype": 2
 				},
 				{
+					"name": "draw_rect",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "draw_rect(x,y,w,h,[color,alpha,angle])",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
 					"name": "draw_reset",
 					"extname": "",
 					"calltype": 2,
@@ -1699,6 +1708,28 @@
 					"returntype": 2
 				},
 				{
+					"name": "move_contact_solid_h",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "move_contact_solid_h(maxdist)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "move_contact_solid_v",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "move_contact_solid_v(maxdist)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
 					"name": "move_towards_gravity",
 					"extname": "",
 					"calltype": 2,
@@ -1718,6 +1749,18 @@
 					"helpline": "outside_room()",
 					"hidden": false,
 					"argtypes": [],
+					"returntype": 2
+				},
+				{
+					"name": "position_free",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "position_free(x,y)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2
+					],
 					"returntype": 2
 				},
 				{
@@ -1753,28 +1796,6 @@
 					"argtypes": [
 						2,
 						2,
-						2
-					],
-					"returntype": 2
-				},
-				{
-					"name": "move_contact_solid_h",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "move_contact_solid_h(maxdist)",
-					"hidden": false,
-					"argtypes": [
-						2
-					],
-					"returntype": 2
-				},
-				{
-					"name": "move_contact_solid_v",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "move_contact_solid_v(maxdist)",
-					"hidden": false,
-					"argtypes": [
 						2
 					],
 					"returntype": 2

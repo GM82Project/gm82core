@@ -122,5 +122,21 @@
 #define draw_text_1color
     ///draw_text_1color(x,y,string,color,alpha)
     draw_text_color(argument0,argument1,argument2,argument3,argument3,argument3,argument3,argument4)
+
+
+#define draw_rect
+    ///draw_rect(x,y,w,h,[color,alpha,angle])
+    var __color,__alpha,__rot;
+    
+    __color=$ffffff
+    __alpha=1
+    __rot=0
+    
+    if (argument_count<4) {show_error("Incorrect number of arguments for draw_rect().",0) exit}
+    if (argument_count>4) __color=argument[4]
+    if (argument_count>5) __alpha=argument[5]
+    if (argument_count>6) __rot=argument[6]
+    
+    draw_sprite_ext_fixed(__gm82core_pixel,0,argument[0],argument[1],argument[2],argument[3],__rot,__color,__alpha)
 //
 //

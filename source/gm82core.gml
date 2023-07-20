@@ -21,11 +21,19 @@
         
     globalvar delta_time,fps_real,fps_fast;
     globalvar __gm82core_timer,__gm82core_fpsmem,__gm82core_fps_queue;
+    globalvar __gm82core_pixel;
     
     __gm82core_hrt_init()
     
-    delta_time=1000/30
-    fps_real=1
+    __s=surface_create(1,1)
+    surface_set_target(__s)
+    draw_clear($ffffff)
+    surface_reset_target()
+    __gm82core_pixel=sprite_create_from_surface(__s,0,0,1,1,0,0,0,0)
+    surface_free(__s)
+    
+    delta_time=1000/60
+    fps_real=60
     __gm82core_fps_queue=ds_queue_create()
     __gm82core_fpsmem=1
     __gm82core_timer=get_timer()
@@ -39,9 +47,9 @@
     if (instance_number(__gm82core_object)>1) {
         __dead=1
         instance_destroy()
-    } else if (!__gm82core_checkstart(window_handle()))
-        show_error('game_restart() is currently not supported by the GM 8.2 extensions due to potential memory leaks.',1)
-
+    } else if (!__gm82core_checkstart(window_handle())) {
+        show_error("game_restart() is currently not supported by the GM 8.2 extensions due to potential memory leaks.",1)
+    }
 
 #define __gm82core_update
     var __tmp,__stamp;
