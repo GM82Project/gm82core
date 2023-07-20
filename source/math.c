@@ -65,6 +65,9 @@ GMREAL esign(double x, double def) {
     if (x>0.0) return 1;
     return -1;
 }
+GMREAL saturate(double val) {
+    return max(0,min(val,1));
+}
 GMREAL inch(double val, double go, double step) {
     if (val<go) return min(go,val+step);
     return max(go,val-step);
