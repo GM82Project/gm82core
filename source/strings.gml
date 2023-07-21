@@ -54,6 +54,20 @@
     return __m+__str
 
 
+#define string_hexdigits
+    ///string_hexdigits(string)
+    var __i,__output,__str;
+    
+    __output=""
+    __str=string_upper(argument0)
+    __i=1 repeat (string_length(__str)) {
+        __c=string_char_at(__str,__i)
+        if (string_pos(__c,"0123456789ABCDEF")) __output+=__c
+    __i+=1}
+    
+    return __output
+
+
 #define string_ord_at
     ///string_ord_at(str,pos)
     return ord(string_char_at(argument0,argument1))
