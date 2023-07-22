@@ -260,19 +260,6 @@
     return ret
 
 
-#define move_and_slide
-    ///move_and_slide(object)
-    var __ox,__oy;
-    __ox=x
-    __oy=y
-
-    move_and_collide(hspeed,vspeed,argument0)
-
-    hspeed=x-__ox
-    vspeed=y-__oy
-    x=__ox y=__oy
-
-
 #define move_towards_gravity
     ///move_towards_gravity(xto,yto,gravity)
     var __dX, __dY, __ang;

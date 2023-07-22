@@ -1717,17 +1717,6 @@
 					"returntype": 2
 				},
 				{
-					"name": "move_and_slide",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "move_and_slide(object)",
-					"hidden": false,
-					"argtypes": [
-						2
-					],
-					"returntype": 2
-				},
-				{
 					"name": "move_contact_solid_h",
 					"extname": "",
 					"calltype": 2,
