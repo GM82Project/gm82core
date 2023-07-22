@@ -123,6 +123,156 @@
     return instance_find(argument0,irandom(instance_number(argument0)-1))
 
 
+#define move_and_collide
+    ///move_and_collide(dx,dy,ind,[_iterations,xoff,yoff,_x_constraint,_y_constraint])
+    var ret,dx,dy,ind,num_steps,xoff,yoff,x_constraint,y_constraint;
+    var apply_x_constraints,apply_y_constraints;
+    var clamp_minx,clamp_miny,clamp_maxx,clamp_maxy;
+    var check_perp,delta_length,lxoff,lyoff;
+    var steps,ndx,ndy,root2over2,step_dist,dist_to_travel;
+    var i,j,this_step_dist,tx,ty,has_moved;
+
+    dx=argument[0]
+    dy=argument[1]
+    ind=argument[2]
+
+    num_steps=4
+    if (argument_count>3) {
+        num_steps=argument[3]
+    }
+
+    xoff=0
+    yoff=0
+    if (argument_count>4) {
+        xoff=argument[4]
+        yoff=argument[5]
+    }
+
+    x_constraint=-1
+    y_constraint=-1
+    if (argument_count>6) {
+        x_constraint=argument[6]
+        y_constraint=argument[7]
+    }
+
+    ret=noone
+
+    if (ind==id || ind==noone || (dx==0 && dy==0)) return ret
+
+    res=instance_place(x,y,ind)
+    if (res) return res
+
+    root2over2=0.70710678118654
+    steps=sqrt(dx*dx+dy*dy)
+    ndx=dx/steps
+    ndy=dy/steps
+    dist_to_travel=steps
+    step_dist=steps/num_steps
+
+    apply_x_constraints=(x_constraint>=0)
+    apply_y_constraints=(y_constraint>=0)
+
+    clamp_minx=x-x_constraint
+    clamp_miny=y-y_constraint
+    clamp_maxx=x+x_constraint
+    clamp_maxy=y+y_constraint
+
+    if (xoff==0 && yoff==0) {
+        check_perp=true
+    } else {
+        check_perp=false
+        delta_length=sqrt(xoff*xoff+yoff*yoff)
+        lxoff=xoff/delta_length
+        lyoff=yoff/delta_length
+    }
+
+    for (i=0;i<num_steps;i+=1) {
+        this_step_dist=step_dist
+        if (dist_to_travel<this_step_dist) {
+            this_step_dist=dist_to_travel
+            if (this_step_dist<=0) break
+        }
+
+        tx=x+ndx*this_step_dist
+        ty=y+ndy*this_step_dist
+
+        if (apply_x_constraints) tx=clamp(tx,clamp_minx,clamp_maxx)
+        if (apply_y_constraints) ty=clamp(ty,clamp_miny,clamp_maxy)
+
+        res=instance_place(tx,ty,ind)
+        if (!res) {
+            x=tx y=ty
+            dist_to_travel-=this_step_dist
+        } else {
+            ret=res
+            has_moved=false
+            if (check_perp) {
+                for (j=1;j<num_steps-i+1;j+=1) {
+                    tx=x+root2over2*(ndx+j*ndy)*this_step_dist
+                    ty=y+root2over2*(ndy-j*ndx)*this_step_dist
+
+                    if (apply_x_constraints) tx=clamp(tx,clamp_minx,clamp_maxx)
+                    if (apply_y_constraints) ty=clamp(ty,clamp_miny,clamp_maxy)
+
+                    res=instance_place(tx,ty,ind)
+                    if (!res) {
+                        dist_to_travel-=this_step_dist*j
+                        has_moved=true
+                        x=tx y=ty
+                        break
+                    } else ret=res
+
+                    tx=x+root2over2*(ndx-j*ndy)*this_step_dist
+                    ty=y+root2over2*(ndy+j*ndx)*this_step_dist
+
+                    if (apply_x_constraints) tx=clamp(tx,clamp_minx,clamp_maxx)
+                    if (apply_y_constraints) ty=clamp(ty,clamp_miny,clamp_maxy)
+
+                    res=instance_place(tx,ty,ind)
+                    if (!res) {
+                        dist_to_travel-=this_step_dist*j
+                        has_moved=true
+                        x=tx y=ty
+                        break
+                    } else ret=res
+                }
+            } else {
+                for (j=1;j<num_steps-i+1;j+=1) {
+                    tx=x+root2over2*(ndx+j*lxoff)*this_step_dist
+                    ty=y+root2over2*(ndy+j*lyoff)*this_step_dist
+
+                    if (apply_x_constraints) tx=clamp(tx,clamp_minx,clamp_maxx)
+                    if (apply_y_constraints) ty=clamp(ty,clamp_miny,clamp_maxy)
+
+                    res=instance_place(tx,ty,ind)
+                    if (!res) {
+                        dist_to_travel-=this_step_dist*j
+                        has_moved=true
+                        x=tx y=ty
+                        break
+                    } else ret=res
+                }
+            }
+            if (!has_moved) return ret
+        }
+    }
+
+    return ret
+
+
+#define move_and_slide
+    ///move_and_slide(object)
+    var __ox,__oy;
+    __ox=x
+    __oy=y
+
+    move_and_collide(hspeed,vspeed,argument0)
+
+    hspeed=x-__ox
+    vspeed=y-__oy
+    x=__ox y=__oy
+
+
 #define move_towards_gravity
     ///move_towards_gravity(xto,yto,gravity)
     var __dX, __dY, __ang;

@@ -3,7 +3,7 @@
 	"folder": "gm82",
 	"version": "1.6",
 	"author": "renex, Floogle, Lovey01, cam900, Adamcake, YellowAfterlife, Verve",
-	"date": "21/07/2023",
+	"date": "22/07/2023",
 	"license": "Free to use, also for commercial games.",
 	"description": "Part of the standard Game Maker 8.2 distribution. This extension package contains a number of helper functions that are commonly used, and also geometry functions introduced in GM:Studio. This extension is also required for using the other GM 8.2 extensions, Sound and Joystick.",
 	"helpfile": "",
@@ -1701,6 +1701,26 @@
 					"extname": "",
 					"calltype": 2,
 					"helpline": "instance_some(object)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "move_and_collide",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "move_and_collide(dx,dy,ind,[_iterations,xoff,yoff,_x_constraint,_y_constraint])",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
+					"name": "move_and_slide",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "move_and_slide(object)",
 					"hidden": false,
 					"argtypes": [
 						2
