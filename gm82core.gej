@@ -3,7 +3,7 @@
 	"folder": "gm82",
 	"version": "1.6",
 	"author": "renex, Floogle, Lovey01, cam900, Adamcake, YellowAfterlife, Verve",
-	"date": "22/07/2023",
+	"date": "23/07/2023",
 	"license": "Free to use, also for commercial games.",
 	"description": "Part of the standard Game Maker 8.2 distribution. This extension package contains a number of helper functions that are commonly used, and also geometry functions introduced in GM:Studio. This extension is also required for using the other GM 8.2 extensions, Sound and Joystick.",
 	"helpfile": "",
@@ -1717,23 +1717,13 @@
 					"returntype": 2
 				},
 				{
-					"name": "move_contact_solid_h",
+					"name": "move_contact_solid_hv",
 					"extname": "",
 					"calltype": 2,
-					"helpline": "move_contact_solid_h(maxdist)",
+					"helpline": "move_contact_solid_hv(hspeed,vspeed)",
 					"hidden": false,
 					"argtypes": [
-						2
-					],
-					"returntype": 2
-				},
-				{
-					"name": "move_contact_solid_v",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "move_contact_solid_v(maxdist)",
-					"hidden": false,
-					"argtypes": [
+						2,
 						2
 					],
 					"returntype": 2

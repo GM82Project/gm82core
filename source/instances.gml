@@ -316,14 +316,9 @@
     with (argument0) variable_local_set(argument1,argument2)
 
 
-#define move_contact_solid_h
-    ///move_contact_solid_h(maxdist)
-    move_contact_solid(90-90*sign(argument0),abs(argument0))
-
-   
-#define move_contact_solid_v
-    ///move_contact_solid_v(maxdist)
-    move_contact_solid(-90*sign(argument0),abs(argument0))
+#define move_contact_solid_hv
+    ///move_contact_solid_hv(hspeed,vspeed)
+    move_contact_solid(point_direction(0,0,argument0,argument1),ceil(point_distance(0,0,argument0,argument1)))
 
 
 #define position_free
