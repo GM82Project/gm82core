@@ -318,7 +318,8 @@
 
 #define move_contact_solid_hv
     ///move_contact_solid_hv(hspeed,vspeed)
-    move_contact_solid(point_direction(0,0,argument0,argument1),ceil(point_distance(0,0,argument0,argument1)))
+    if (argument0!=0 || argument1!=0)
+        move_contact_solid(point_direction(0,0,argument0,argument1),ceil(point_distance(0,0,argument0,argument1)))
 
 
 #define position_free
