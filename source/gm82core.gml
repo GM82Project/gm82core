@@ -4,11 +4,11 @@
         exit
     }
     
-    object_event_add(__gm82core_object,ev_create,0,"__gm82core_create()")
-    object_event_add(__gm82core_object,ev_step,ev_step_begin,"__gm82core_update()")
-    object_event_add(__gm82core_object,ev_destroy,0,"if (!__dead) instance_copy(0)")
-    object_event_add(__gm82core_object,ev_other,ev_room_end,"persistent=true")
-    object_event_add(__gm82core_object,ev_other,ev_animation_end,"fps_real=1/max(0.00000001,(get_timer()-__gm82core_timer)/1000000)")
+    object_event_add(gm82core_object,ev_create,0,"__gm82core_create()")
+    object_event_add(gm82core_object,ev_step,ev_step_begin,"__gm82core_update()")
+    object_event_add(gm82core_object,ev_destroy,0,"if (!__dead) instance_copy(0)")
+    object_event_add(gm82core_object,ev_other,ev_room_end,"persistent=true")
+    object_event_add(gm82core_object,ev_other,ev_animation_end,"fps_real=1/max(0.00000001,(get_timer()-__gm82core_timer)/1000000)")
     
     //notes about alarm events:
     //any of my extensions might decide to install alarms onto the core object.
@@ -16,8 +16,8 @@
         //alarm 0: gm82alpha window border toggle
     
     
-    object_set_persistent(__gm82core_object,1)
-    room_instance_add(room_first,0,0,__gm82core_object)
+    object_set_persistent(gm82core_object,1)
+    room_instance_add(room_first,0,0,gm82core_object)
         
     globalvar delta_time,fps_real,fps_fast;
     globalvar __gm82core_timer,__gm82core_fpsmem,__gm82core_fps_queue;
@@ -44,7 +44,7 @@
 
 #define __gm82core_create
     __dead=0
-    if (instance_number(__gm82core_object)>1) {
+    if (instance_number(gm82core_object)>1) {
         __dead=1
         instance_destroy()
     } else if (!__gm82core_checkstart(window_handle())) {
