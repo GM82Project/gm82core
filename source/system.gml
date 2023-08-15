@@ -75,7 +75,7 @@
 
 #define mouse_back_button
     ///mouse_back_button()
-    if (__gm82core_object.__gm82core_hasfocus) {
+    if (gm82core_object.__gm82core_hasfocus) {
         keyboard_check_direct(5)
         return keyboard_check_direct(5)
     }
@@ -94,7 +94,7 @@
 
 #define mouse_forward_button
     ///mouse_forward_button()
-    if (__gm82core_object.__gm82core_hasfocus) {
+    if (gm82core_object.__gm82core_hasfocus) {
         keyboard_check_direct(6)
         return keyboard_check_direct(6)
     }
@@ -138,7 +138,7 @@
 
 #define window_has_focus
     ///window_has_focus()
-    return __gm82core_object.__gm82core_hasfocus
+    return gm82core_object.__gm82core_hasfocus
 
 
 #define file_find_list
