@@ -177,14 +177,14 @@ GMREAL get_scrolllock() {
 GMREAL get_ram_usage() {
     DWORD dwProcessId;
     HANDLE Process;
-    PROCESS_MEMORY_COUNTERS pmc;
+    PROCESS_MEMORY_COUNTERS_EX pmc;
     
     dwProcessId = GetCurrentProcessId();
     Process = OpenProcess(PROCESS_QUERY_INFORMATION | PROCESS_VM_READ,FALSE,dwProcessId);
-    GetProcessMemoryInfo(Process,&pmc,sizeof(pmc));
+    GetProcessMemoryInfo(Process,(PROCESS_MEMORY_COUNTERS*)&pmc,sizeof(pmc));
     CloseHandle(Process);
     
-    return pmc.WorkingSetSize;
+    return pmc.PrivateUsage;
 }
 
 GMREAL set_working_directory(const char* dir) {
