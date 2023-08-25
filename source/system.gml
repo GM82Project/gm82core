@@ -145,7 +145,7 @@
 ///file_find_list(directory,query,attr,recursive)
     var __root,__mask,__attr,__recursive,__list,__folder,__folders,__fn;
     
-    __root=argument0
+    __root=string_replace_all(argument0,"/","\")
     __mask=argument1
     __attr=argument2
     __recursive=argument3
@@ -153,6 +153,8 @@
     __list=ds_list_create()
 
     if (__recursive) __attr=__attr|fa_directory
+
+    if (string_char_at(__root,string_length(__root))=="\") __root=string_copy(__root,1,string_length(__root)-1)
 
     __folder[0]=__root
     __folders=1
