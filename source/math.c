@@ -427,8 +427,8 @@ GMREAL point_line_distance(double px, double py, double x1, double y1, double x2
     return pointdis(xs, ys, px, py);
 }
 
-GMREAL dot_product_3d_normalised(double x1, double y1, double z1, double x2, double y2, double z2) {
-    ///dot_product_3d_normalised(x1,y1,z1,x2,y2,z2)
+GMREAL dot_product_3d_normalized(double x1, double y1, double z1, double x2, double y2, double z2) {
+    ///dot_product_3d_normalized(x1,y1,z1,x2,y2,z2)
     //x1,y1,z1: first vector
     //x2,y2,z2: second vector
     //returns: normalized dot product of two 3d vectors.
@@ -441,8 +441,8 @@ GMREAL dot_product_3d_normalised(double x1, double y1, double z1, double x2, dou
     return dot3d(x1/a,y1/a,z1/a,x2/b,y2/b,z2/b);
 }
 
-GMREAL dot_product_normalised(double x1, double y1, double x2, double y2) {
-    ///dot_product_normalised(x1,y1,x2,y2)
+GMREAL dot_product_normalized(double x1, double y1, double x2, double y2) {
+    ///dot_product_normalized(x1,y1,x2,y2)
     //x1,y1: first vector
     //x2,y2: second vector
     //returns: normalized dot product of two vectors.
