@@ -461,5 +461,5 @@ GMREAL angle_difference_3d(double x1, double y1, double z1, double x2, double y2
     //x2,y2,z2: second vector
     //returns: difference in degrees between the two vectors.
     
-    return darccos(dot_product_3d_normalised(x1,y1,z1,x2,y2,z2));
+    return darccos(dot_product_3d_normalized(x1,y1,z1,x2,y2,z2));
 }
