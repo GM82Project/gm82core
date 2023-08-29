@@ -1,5 +1,8 @@
 #define date_get_timestamp
     ///date_get_timestamp([date])
+    //date: datetime value
+    //returns: a human-readable timestamp
+    
     var __t;
     if (argument_count) __t=argument0 else __t=date_current_datetime()
     return
@@ -16,6 +19,9 @@
 
 #define directory_previous
     ///directory_previous(dir)
+    //dir: directory string
+    //returns: the previous directory
+    
     var __fn,__l;
 
     __fn=string_replace_all(argument0,"/","\")
@@ -26,13 +32,17 @@
 
 #define filename_remove_ext
     ///filename_remove_ext(fn)
+    //fn: filename string
+    //returns: filename without extension
+    
     return string_copy(argument0,1,string_pos(".",argument0)-1)
 
 
 #define string_better
     ///string_better(real)
-    // string(1.012562536) = "1.01"
-    // string_better(1.012562536) = "1.01256254"
+    //real: value to convert to string
+    //returns: string of value with 8 decimal digits.
+    
     var __s;
 
     __s=string_format(argument0,0,8)+";"
@@ -42,6 +52,8 @@
 
 #define string_number
     ///string_number(string)
+    //string: text to parse
+    //returns: removes any letters, and attempts to format a number.
     var __p,__m,__str;
     if (string_pos("-",argument0)) __m="-"
     else __m=""
@@ -56,6 +68,9 @@
 
 #define string_hexdigits
     ///string_hexdigits(string)
+    //string: string to parse
+    //returns: string with only valid hex digits
+    
     var __i,__output,__str;
     
     __output=""
@@ -70,21 +85,37 @@
 
 #define string_ord_at
     ///string_ord_at(str,pos)
+    //str: string
+    //pos: position
+    //returns: character value at position
+    
     return ord(string_char_at(argument0,argument1))
 
 
 #define string_pad
     ///string_pad(number,digits)
+    //number: value to format
+    //digits: number of spaces to occupy
+    //returns: string of value padded with zeroes to occupy specified dimensions
+    
     return string_repeat("-",argument0<0)+string_replace_all(string_format(abs(argument0),argument1,0)," ","0")
 
 
 #define string_starts_with
     ///string_starts_with(string,substr)
+    //string: text
+    //substr: string to search
+    //returns: whether string starts with substr
+    
     return string_copy(argument0,1,string_length(argument1))==argument1
 
 
 #define string_ends_with
     ///string_ends_with(string,substr)
+    //string: text
+    //substr: string to search
+    //returns: whether string ends with substr
+    
     var __l;
     __l=string_length(argument1)
     return string_copy(argument0,string_length(argument0)-__l+1,__l)==argument1
@@ -92,6 +123,9 @@
 
 #define str_cat
     ///str_cat(val1,val2,...)
+    //arguments: values to concatenate
+    //returns: string with all arguments concatenated
+    
     var __i,__str;
     
     __str=""
@@ -101,6 +135,9 @@
 
 #define str_ins
     ///str_ins(str%ing,val1,val2...)
+    //str%ing: format to parse
+    //arguments: values to insert
+    //returns: string, with each percentile character (%) being replaced with one of the arguments
 
     __str=string_replace_all(argument[0],"\%",ansi_char(26)+"percentile")
     __i=1
@@ -114,6 +151,10 @@
 
 #define str_sep
     ///str_sep(sep,val1,val2,...)
+    //sep: separator string
+    //arguments: values to concatenate
+    //returns: string with all arguments concatenated, separated by the 'sep' string.
+   
     var __i,__str;
     
     if (argument_count>1) __str=string(argument[1])

@@ -1,7 +1,9 @@
 #define choose_weighted
     ///choose_weighted(val1,weight1,val2,weight2...)
-    //Returns a weighted choice between each pair of arguments.
-    
+    //val1,weight1: first value and its weight
+    //val2,weight2: second value and its weight
+    //etc
+    //returns: a weighted choice between each pair of arguments.    
     //(c) YellowAfterlife
     
     var __n,__i;
@@ -25,9 +27,8 @@
 
 #define color_blend
     ///color_blend(col1,col2)
-    //col1: real - color 1
-    //col2: real - color 2
-    //Returns the multiplication result of the two color values.
+    //col1,col2: colors to blend
+    //returns: the multiplication result of the two color values.
     
     var __r1,__g1,__b1,__r2,__g2,__b2;
     
@@ -48,18 +49,18 @@
 
 #define color_get_luminance
     ///color_get_luminance(color)
-    //color: real - color value
-    //Returns the perceived luminance value for the color (0-255)
+    //color: color value
+    //returns: the perceived luminance value for the color (0-255)
     
-    //kodak human luminance perception factors:
+    //kodak's human luminance perception factors:
     return (color_get_red(argument0)*0.2126+color_get_green(argument0)*0.7152+color_get_blue(argument0)*0.0722)
 
 
 #define distance_to_path
     ///distance_to_path(x,y,path)
-    //x,y: vector - point to check
-    //path: path - path to check
-    //Returns the approximate distance to the nearest segment of a path.
+    //x,y: point to check
+    //path: path to check
+    //returns: approximate distance to the nearest segment of a path.
     
     var __px,__py,__path,__closed,__prec,__len,__pos,__mind,__d,__close;
 
@@ -119,8 +120,8 @@
 
 #define gauss
     ///gauss(range)
-    //range: real - range to randomize
-    //Returns a gaussian distributed random number between 0 and range.
+    //range: range to randomize
+    //returns: a gaussian (bell-curve) distribution of random numbers between 0 and range.
     
     var __i;
     __i=0
@@ -130,8 +131,8 @@
 
 #define gauss_range
     ///gauss_range(min,max)
-    //min,max: real - range to randomize
-    //Returns a gaussian distributed random number inside the range.
+    //min,max: range to randomize
+    //returns: a gaussian (bell-curve) distribution of random numbers inside the range.
     
     var __i;
     __i=0
@@ -140,30 +141,29 @@
 
 
 #define irandom_fresh
-    ///irandom_fresh(oldval,min,max):val
-    //oldval: integer - old value
-    //min, max: integer - range to randomize in
-    //Randomizes an integer within supplied range without repeating the old value.
+    ///irandom_fresh(oldval,min,max)
+    //oldval: last value
+    //min,max: range to randomize in
+    //returns: a random integer within the range that isn't the old value.
 
     return modwrap(argument0+1+irandom(argument2-argument1-1),argument1,argument2+1)
 
 
 #define make_color_hsv_standard
     ///make_color_hsv_standard(hue,sat,val)
-    //hue: angle - hue (0-360)
-    //sat: percent - saturation (0-100)
-    //val: percent - value (0-100)
-    //Returns a color based on standard HSV values.
+    //hue: standard hue angle (0-360)
+    //sat: standard saturation % (0-100)
+    //val: standard luminance value % (0-100)
+    //returns: a color built from standard HSV values.
     
     return make_color_hsv(argument0/360*255,argument1*2.55,argument2*2.55)
 
 
 #define merge_color_corrected
     ///merge_color_corrected(col1,col2,factor)
-    //col1: color - color 1
-    //col2: color - color 2
-    //factor: real - amount to merge
-    //Returns a more accurate color merge.
+    //col1,col2: colors to merge
+    //factor: amount
+    //returns: a more accurately merged color.
     
     var __r1,__g1,__b1,__r2,__g2,__b2;
     
@@ -184,9 +184,9 @@
 
 #define path_get_approximate_pos
     ///path_get_approximate_pos(x,y,path)
-    //x,y: vector - position to check
-    //path: path - path to check against
-    //Returns an approximate path position that's closest to the point.
+    //x,y: position to check
+    //path: path to check against
+    //returns: an approximate path position that's closest to the point.
     
     var __px,__py,__path,__closed,__prec,__len,__pos,__mind,__d,__close;
 

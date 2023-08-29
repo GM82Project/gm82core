@@ -4,8 +4,8 @@
 
 GMREAL power_next(double x) {
     ///power_next(x)
-    //x: real - number
-    //returns the next power of two above x
+    //x: real
+    //returns: the next power of two above x
     
     // Type pune the double to manipulate its floating-point bits
     unsigned __int64 *v = (unsigned __int64*)&x;
@@ -22,10 +22,7 @@ GMREAL power_next(double x) {
 GMREAL file_size(const char *filename) {
     ///file_size(filename)
     //filename: string - name of file to check
-    //Returns the size of a file on disk.
-    
-    // Get size of file
-    // Returns -1 if file doesn't exist
+    //returns: the size of a file on disk, or -1 if the file doesn't exist.
     WIN32_FILE_ATTRIBUTE_DATA attr;
 
     if (!GetFileAttributesExA(filename, GetFileExInfoStandard, &attr))
@@ -35,9 +32,9 @@ GMREAL file_size(const char *filename) {
 }
 
 GMREAL real_hex(const char *str) {
-    ///real_hex(str)
+    ///real_hex(str) -> real
     //str: string - hex string to process
-    //Converts the hex string into an integer.
+    //returns: integer from hex string
     
     // Avoids subtraction at the cost of more memory
     static const unsigned long long lookup[256] = {
@@ -142,8 +139,9 @@ GMREAL real_hex(const char *str) {
 }
     
 GMSTR string_hex(double num) {
-    ///string_hex(num)
-    //num: real - number to convert
+    ///string_hex(num) -> hex string
+    //num: integer to convert
+    //returns: hex string from integer value
     //Converts a number into a hexadecimal representation.
     
     // Return buffer  

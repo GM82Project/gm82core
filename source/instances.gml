@@ -1,10 +1,18 @@
 #define collision_check_fast
     ///collision_check_fast(obj)
+    //obj: object index to check
+    //returns: if there was collision
+    //performs fast but inaccurate collision checks. Best used with lots of tiny instances e.g. bullets. Avoid long or tall instances like walls.
+    
     return (distance_to_object(instance_nearest(x,y,argument0))<=0)
 
 
 #define direction_to_object
     ///direction_to_object(obj)
+    //obj: object or instance to check
+    //returns: direction from self to target in degrees
+    //If target is an object, the nearest instance is targeted.
+    
     var __n;
     if (argument0>=100000) __n=argument0
     else __n=instance_nearest(x,y,argument0)
@@ -13,8 +21,10 @@
 
 
 #define distance_to_instance
-    //you've heard of elf on the shelf, now get ready for 
     ///distance_to_instance(inst)
+    //inst: instance to get
+    //returns: distance from the centers of self and inst.
+    
     var __n;__n=instance_nearest(x,y,argument0)
     if (__n==noone) return -1
     return point_distance(x,y,__n.x,__n.y)
@@ -22,6 +32,10 @@
 
 #define instance_create_depth
     ///instance_create_depth(x,y,depth,object)
+    //x,y,depth: position
+    //object: object index
+    //returns: instance id
+    
     var __lastinst;__lastinst=instance_create(argument0,argument1,argument3)
     if (instance_exists(__lastinst)) {
         __lastinst.depth=argument2;
@@ -32,6 +46,12 @@
 
 #define instance_create_depth_moving
     ///instance_create_depth_moving(x,y,depth,object,speed,direction,[gravity,[gravdir]])
+    //x,y,depth: position
+    //object: object index
+    //speed,direction: initial velocity
+    //gravity, gravdir: gravity settings
+    //returns: instance id
+    
     var __lastinst;__lastinst=instance_create_moving(argument0,argument1,argument3,argument4,argument5,argument6,argument7)
     if (instance_exists(__lastinst)) {
         __lastinst.depth=argument2
@@ -42,6 +62,13 @@
 
 #define instance_create_depth_moving_ext
     ///instance_create_depth_moving_ext(x,y,depth,object,speed,direction,[addhspeed,addvspeed,[gravity,[gravdir]]])
+    //x,y,depth: position
+    //object: object index
+    //speed,direction: initial velocity
+    //addhspeed,addvspeed: component speed to add to initial velocity
+    //gravity, gravdir: gravity settings
+    //returns: instance id
+    
     var __lastinst;__lastinst=instance_create_moving_ext(argument0,argument1,argument3,argument4,argument5,argument6,argument7,argument8,argument9)
     if (instance_exists(__lastinst)) {
         __lastinst.depth=argument2
@@ -52,6 +79,12 @@
 
 #define instance_create_moving
     ///instance_create_moving(x,y,object,speed,direction,[gravity,[gravdir]])
+    //x,y: position
+    //object: object index
+    //speed,direction: initial velocity
+    //gravity, gravdir: gravity settings
+    //returns: instance id
+    
     var __lastinst;__lastinst=instance_count
     action_create_object_motion(argument2,argument0,argument1,argument3,argument4)
     __i=instance_id[__lastinst]
@@ -67,6 +100,13 @@
 
 #define instance_create_moving_ext
     ///instance_create_moving_ext(x,y,object,speed,direction,[addhspeed,addvspeed,[gravity,[gravdir]]])
+    //x,y: position
+    //object: object index
+    //speed,direction: initial velocity
+    //addhspeed,addvspeed: component speed to add to initial velocity
+    //gravity, gravdir: gravity settings
+    //returns: instance id
+    
     var __lastinst,__i,__h,__v;
     
     if (argument_count<5 || argument_count==6 || argument_count>9) {
@@ -98,16 +138,26 @@
 
 #define instance_destroy_id
     ///instance_destroy_id(obj)
+    //obj: instance or object to destroy
+    //returns: nothing
+    
     with (argument0) instance_destroy()
 
 
 #define instance_destroy_other
     ///instance_destroy_other()
+    //returns: nothing
+    //Destroys the other object involved in a collision or with() block.
+    
     with (other) instance_destroy()
 
 
 #define instance_nearest_notme
     ///instance_nearest_notme(x,y,obj)
+    //x,y: position to check
+    //obj: object to find
+    //returns: nearest instance of the object that isn't the same as self
+    
     var __oldx,__find;
     
     __oldx=x
@@ -120,11 +170,21 @@
 
 #define instance_some
     ///instance_some(obj)
+    //obj: object to find
+    //returns: a random instance of the object
+    
     return instance_find(argument0,irandom(instance_number(argument0)-1))
 
 
 #define move_and_collide
-    ///move_and_collide(dx,dy,ind,[_iterations,xoff,yoff,_x_constraint,_y_constraint])
+    ///move_and_collide(dx,dy,ind,[iterations,xoff,yoff,x_constraint,y_constraint])
+    //dx,dy: offset to move
+    //ind: object or instance to collide against
+    //iterations: number of collision checks (default 4)
+    //xoff,yoff: direction to shove when colliding (default: 0,0)
+    //x_constraint,y_constraint: maximum distance to move in each direction
+    //returns: if there was collision, the last instance that was hit
+    
     var ret,dx,dy,ind,num_steps,xoff,yoff,x_constraint,y_constraint;
     var apply_x_constraints,apply_y_constraints;
     var clamp_minx,clamp_miny,clamp_maxx,clamp_maxy;
@@ -262,6 +322,11 @@
 
 #define move_towards_gravity
     ///move_towards_gravity(xto,yto,gravity)
+    //xto,yto: position to hit
+    //gravity: gravity value to apply to arc
+    //returns: nothing
+    //throws self at an arc to hit a specific spot.
+    
     var __dX, __dY, __ang;
     
     if (argument2==0) {
@@ -288,6 +353,8 @@
 
 #define outside_room
     ///outside_room()
+    //returns: whether self is completely outside the room
+    
     //workaround for instances without a sprite
     if (bbox_right-bbox_left+bbox_bottom-bbox_top==0)
     return x>=room_width
@@ -303,27 +370,40 @@
 
 #define variable_instance_exists
     ///variable_instance_exists(inst,var)
+    //Studio shim.
+    
     with (argument0) return variable_local_exists(argument1)
 
 
 #define variable_instance_get
     ///variable_instance_get(inst,var)
+    //Studio shim.
+    
     with (argument0) return variable_local_get(argument1)
 
 
 #define variable_instance_set
     ///variable_instance_set(inst,var,val)
+    //Studio shim.
+    
     with (argument0) variable_local_set(argument1,argument2)
 
 
 #define move_contact_solid_hv
     ///move_contact_solid_hv(hspeed,vspeed)
+    //hspeed,vspeed: distance to move
+    //returns: nothing
+    //Allows using separate x and y distances for move_contact_solid.
+    
     if (argument0!=0 || argument1!=0)
         move_contact_solid(point_direction(0,0,argument0,argument1),ceil(point_distance(0,0,argument0,argument1)))
 
 
 #define position_free
     ///position_free(x,y)
+    //x,y: position to check
+    //returns: whether position at x,y is free of solids.
+    
     var __mask,__check;
 
     __mask=mask_index

@@ -1,8 +1,13 @@
 #define dslist
-    ///dslist(list,pos,val) -> value
-    ///dslist(list,pos) -> value
-    ///dslist(list) -> string
-    ///dslist() -> list
+    ///dslist(list,[pos,[val]])
+    //list: ds list index
+    //pos: list position to operate
+    //val: value to store
+    //call with 3 arguments: sets value, returns value
+    //call with 2 arguments: returns found value at pos
+    //call with 1 argument: returns string of list
+    //call with 0 arguments: returns new list
+    //List accelerator function. Performs different actions depending on arguments.
     var __i,__s,__str;
     
     if (argument_count==0) {
@@ -37,10 +42,15 @@
     
 
 #define dsmap
-    ///dsmap(map,key,value) -> value
-    ///dsmap(map,key) -> value
-    ///dsmap(map) -> string
-    ///dsmap() -> map
+    ///dsmap(map,[key,[value]])
+    //map: ds map index
+    //key: map key to operate on
+    //val: value to store
+    //call with 3 arguments: sets key to value, returns value
+    //call with 2 arguments: returns found value in key
+    //call with 1 argument: returns string of map
+    //call with 0 arguments: returns new map
+    //Map accelerator function. Performs different actions depending on arguments.
     var __key,__str,__val;
     
     if (argument_count==0) {
@@ -77,6 +87,9 @@
 
 #define ds_list_equal
     ///ds_list_equal(list1,list2)
+    //list1, list2: ds list indexes
+    //returns: bool
+    //Compares both lists item by item, and returns whether they're identical.
     var __i,__s;
 
     __s=ds_list_size(argument0)
@@ -93,7 +106,9 @@
 
 #define ds_map_add_copy
     ///ds_map_add_copy(src,dest)
-    //copies all keys from src to dest without clearing dest
+    //src, dest: ds map indexes
+    //returns: nothing
+    //Copies all keys from source map to dest map.
     var __key;__key=ds_map_find_first(argument0)
     repeat (ds_map_size(argument0)) {
         if (ds_map_exists(argument1,__key)) ds_map_replace(argument1,__key,ds_map_find_value(argument0,__key))
@@ -104,16 +119,26 @@
 
 #define ds_map_get
     ///ds_map_get(map,key)
+    //map: ds map index
+    //key: key to get
+    //returns: key value, or "<undefined>"
+    //Studio shim. Returns undefined when the key does not exist.
     if (ds_map_exists(argument0,argument1)) return ds_map_find_value(argument0,argument1)
     return undefined
 
 
 #define ds_map_read_ini
     ///ds_map_read_ini(map,filename)
+    //map: ds map index
+    //filename: string, file to load
+    //returns: number of keys loaded
+    //Reads an ini file into a dsmap. Section names are prepended to each key.
     var __map,__f,__section,__str,__p;
 
     if (file_exists(argument1)) {
         __map=argument0
+        
+        ds_map_clear(__map)
         
         __f=file_text_open_read(argument1)
         __section=""
@@ -131,7 +156,7 @@
         }   
         file_text_close(__f)
         
-        return 1
+        return ds_map_size(__map)
     }
 
     return 0
@@ -139,12 +164,18 @@
 
 #define ds_map_read_ini_string
     ///ds_map_read_ini_string(map,string)
+    //map: ds map index
+    //string: string containing ini-like data
+    //returns: number of keys loaded
+    //Reads an ini string into a dsmap. Section names are prepended to each key.
     var __map,__lf,__section,__str,__p;
     
     __map=argument0
     __str=argument1
     if (string_pos(chr($0d)+chr($0a),__str)) __lf=chr($0d)+chr($0a)
     else __lf=chr($0a)
+    
+    ds_map_clear(__map)
     
     __section=""
     repeat (string_token_start(__str,__lf)) {            
@@ -157,19 +188,28 @@
                 ds_map_add(__map,__section+string_copy(__str,1,__p-1),string_delete(__str,1,__p))
             }            
         }
-    }   
-
-    return 0
+    }
+    
+    return ds_map_size(__map)
 
 
 #define ds_map_set
     ///ds_map_set(map,key,value)
+    //map: ds map index
+    //key: key to operate on
+    //value: value to store
+    //returns: value stored
+    //Replaces or creates a key in a dsmap. Ensures no duplicate keys.
     if (ds_map_exists(argument0,argument1)) ds_map_replace(argument0,argument1,argument2)
     else ds_map_add(argument0,argument1,argument2)
+    return argument2
 
 
 #define is_undefined
     ///is_undefined(val)
+    //val - value to check
+    //returns: bool
+    //Studio shim. checks the value against the 'undefined' constant.
     return string(argument0)==undefined
 //
 //

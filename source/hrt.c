@@ -15,7 +15,7 @@ GMREAL __hrt_init() {
 
 GMREAL hrt_now() {
     ///get_timer()
-    //returns the time since last system bootup in microseconds.
+    //returns: the time since last system bootup in microseconds.
     ULONGLONG now;
     if (QueryPerformanceCounter((LARGE_INTEGER*)&now)) {
         return (double)(now*resolution/frequency);
@@ -26,7 +26,7 @@ GMREAL hrt_now() {
 
 GMREAL hrt_delta() {
     ///get_delta()
-    //returns the time since last call of this function in microseconds.
+    //returns: the time since last call of this function in microseconds.
     ULONGLONG now, lt;
     if (QueryPerformanceCounter((LARGE_INTEGER*)&now)) {
         lt = lastTime;
