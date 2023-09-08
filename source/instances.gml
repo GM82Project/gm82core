@@ -139,14 +139,12 @@
 #define instance_destroy_id
     ///instance_destroy_id(obj)
     //obj: instance or object to destroy
-    //returns: nothing
     
     with (argument0) instance_destroy()
 
 
 #define instance_destroy_other
     ///instance_destroy_other()
-    //returns: nothing
     //Destroys the other object involved in a collision or with() block.
     
     with (other) instance_destroy()
@@ -324,7 +322,6 @@
     ///move_towards_gravity(xto,yto,gravity)
     //xto,yto: position to hit
     //gravity: gravity value to apply to arc
-    //returns: nothing
     //throws self at an arc to hit a specific spot.
     
     var __dX, __dY, __ang;
@@ -392,7 +389,6 @@
 #define move_contact_solid_hv
     ///move_contact_solid_hv(hspeed,vspeed)
     //hspeed,vspeed: distance to move
-    //returns: nothing
     //Allows using separate x and y distances for move_contact_solid.
     
     if (argument0!=0 || argument1!=0)

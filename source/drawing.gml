@@ -5,7 +5,6 @@
     //xscale,yscale,angle: image transform
     //color,alpha: blend for drawing
     //hrepeats,vrepeats: number of repetitions. use 0 for infinite.
-    //returns: nothing
     //Faster version of draw_background_tiled with more options.
 
     var __bg,__dx,__dy,__xs,__ys,__angle,__color,__alpha,__hrep,__vrep;
@@ -80,7 +79,6 @@
 
 #define draw_reset
     ///draw_reset()
-    //returns: nothing
     //Resets the draw color to white, alpha to 1, and text align to left/top.
     draw_set_color($ffffff)
     draw_set_alpha(1)
@@ -92,7 +90,6 @@
     ///draw_self_as(sprite,[image])
     //sprite: sprite index
     //image: sprite frame
-    //returns: nothing
     //Draws the instance using a different sprite.
     var __img;__img=-1
     if (argument_count>1) __img=floor(argument1)
@@ -101,7 +98,6 @@
 
 #define draw_self_floored
     ///draw_self_floored()
-    //returns: nothing
     //Draws the instance at a floored coordinate.
     draw_sprite_ext(sprite_index,-1,floor(x),floor(y),image_xscale,image_yscale,image_angle,image_blend,image_alpha)
 
@@ -109,7 +105,6 @@
 #define draw_set1
     ///draw_set1(color,alpha)
     //color,alpha: blend to use
-    //returns: nothing
     //Sets color and alpha at once.
     draw_set_color(argument0)
     draw_set_alpha(argument1)
@@ -118,7 +113,6 @@
 #define draw_set2
     ///draw_set2(halign,valign)
     //halign,valign: font align constants (fa_)
-    //returns: nothing
     //Sets both text align options at once.
     draw_set_halign(argument0)
     draw_set_valign(argument1)
@@ -128,7 +122,6 @@
     ///draw_set_rgba(r,g,b,a)
     //r,g,b: integer color values 0-255
     //a: float alpha value 0-1
-    //returns: nothing
     //Sets the draw color using separate RGBA values.
     draw_set_color(make_color_rgb(argument0,argument1,argument2))
     draw_set_alpha(argument3)
@@ -137,7 +130,6 @@
 #define draw_sprite_ext_fixed
     ///draw_sprite_ext_fixed(sprite,image,x,y,xscale,yscale,angle,color,alpha)
     //arguments: same as draw_sprite_ext
-    //returns: nothing
     //Version of draw_sprite_ext that accounts for the half-pixel offset.
     //Good for drawing even-width sprites that rotate.
     draw_sprite_ext(
@@ -151,7 +143,6 @@
 #define draw_text_1color
     ///draw_text_1color(x,y,string,color,alpha)
     //arguments: same as draw_text_color but with 1 color.
-    //returns: nothing
     //Helper function that only takes 1 color argument.
     draw_text_color(argument0,argument1,argument2,argument3,argument3,argument3,argument3,argument4)
 
@@ -161,7 +152,6 @@
     //x,y,w,h: rectangle position and size
     //color,alpha: blend to use (filled only)
     //angle: rotation around x,y coordinate
-    //returns: nothing
     //draws a filled rectangle using a fast sprite method.
     var __color,__alpha,__rot;
     

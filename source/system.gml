@@ -1,23 +1,27 @@
 #define execute_program_async
     ///execute_program_async(cmdline)
+    //cmdline: command string with arguments
+    //returns: success
+    
     __ret=__gm82core_execute_program_silent(argument0)
     
-    if (__ret==0) {
-        show_error("Unable to execute command:"+chr($0d)+chr($0a)+chr($0d)+chr($0a)+argument0,0)
+    if (__ret==0 || __ret==75) {
         return 0
     }
-    if (__ret==75) {
-        show_error("Unable to execute command:"+chr($0d)+chr($0a)+chr($0d)+chr($0a)+argument0+chr($0d)+chr($0a)+chr($0d)+chr($0a)+" Another command is already running.",0)
-        return 0
-    }
+    
+    return 1
 
 #define execute_program_async_result
     ///execute_program_async_result()
+    //returns: 259 if still running, otherwise program exit code
+    
     return __gm82core_execute_program_silent_exitcode()
 
 
 #define execute_program_silent
     ///execute_program_silent(cmdline)
+    //cmdline: command string with arguments
+    //returns: program exit code
     var __ret;
     
     execute_program_async(argument0)
@@ -33,6 +37,10 @@
 
 #define file_text_read_all
     ///file_text_read_all(filename,[line separator])
+    //filename: string - file to read
+    //line separator: character to use for line breaks (if any)
+    //returns: file contents if successful, noone on failure
+    
     var __f,__str,__lf;
     
     if (argument_count==2) __lf=argument1
@@ -53,6 +61,10 @@
 
 #define file_text_write_all
     ///file_text_write_all(filename,string)
+    //filename: string - file to write
+    //string: text to write
+    //returns: success
+    
     var __f;
 
     __f=file_text_open_write(argument0)
@@ -66,6 +78,13 @@
 
 #define font_add_file
     ///font_add_file(filename,fontname,size,bold,italic,first,last)
+    //filename: string, path to font file
+    //fontname: font family to add (must match contents of file)
+    //size: in points
+    //bold,italics: style to add
+    //first,last: character range to render (1-255)
+    //Adds a font from a file on disk rather than system fonts.
+    
     var font;
     __gm82core_addfonttemp(argument0)
     font=font_add(argument1,argument2,argument3,argument4,argument5,argument6)
@@ -75,6 +94,7 @@
 
 #define mouse_back_button
     ///mouse_back_button()
+    //returns: whether the mouse's back nav button is currently pressed.
     if (gm82core_object.__gm82core_hasfocus) {
         keyboard_check_direct(5)
         return keyboard_check_direct(5)
@@ -83,7 +103,10 @@
 
 
 #define mouse_check_direct
-    ///mouse_check_direct()
+    ///mouse_check_direct(button)
+    //button: mouse button mb_ constant
+    //returns: whether the button is currently pressed
+    
     switch (argument0) {
         case mb_left  : {keyboard_check_direct(1) return keyboard_check_direct(1)}
         case mb_right : {keyboard_check_direct(2) return keyboard_check_direct(2)}
@@ -94,6 +117,8 @@
 
 #define mouse_forward_button
     ///mouse_forward_button()
+    //returns: whether the mouse's forward nav button is currently pressed.
+    
     if (gm82core_object.__gm82core_hasfocus) {
         keyboard_check_direct(6)
         return keyboard_check_direct(6)
@@ -103,6 +128,8 @@
 
 #define mouse_in_window
     ///mouse_in_window()
+    //returns: whether the mouse cursor is currently within the game window region on the screen.
+    //Note: this does not check if there are any windows in front of the game. Check that separately using window_is_focused().
     var __dx,__dy,__wx,__wy,__ww,__wh;
 
     __dx=display_mouse_get_x()
@@ -117,6 +144,10 @@
 
 #define registry_read_dword
     ///registry_read_dword(addr,default)
+    //addr: registry key to read
+    //default: value to return when the key doesn't exist
+    //returns: value of existing key, or default value
+    
     var __ret;
     __ret=__registry_read_dword(string_replace_all(filename_dir(argument0),"/","\"),filename_name(argument0))
     if (argument_count==2) {
@@ -127,22 +158,37 @@
 
 #define registry_write_dword
     ///registry_write_dword(addr,val)
+    //addr: registry key to read
+    //val: value to write
+    //returns: success
+    
     return __registry_write_dword(string_replace_all(filename_dir(argument0),"/","\"),filename_name(argument0),real(argument1)&$ffffffff)
 
 
 #define url_open
     ///url_open(url)
+    //url: website url
+    //Opens an URL in the system's default browser.
+    
     if (!string_pos("http://",argument0) && !string_pos("https://",argument0)) execute_shell("http://"+argument0,"")
     else execute_shell(argument0,"")
 
 
 #define window_has_focus
     ///window_has_focus()
+    //returns: whether the game window is currently in front and accepting input.
+    
     return gm82core_object.__gm82core_hasfocus
 
 
 #define file_find_list
-///file_find_list(directory,query,attr,recursive)
+    ///file_find_list(directory,query,attr,recursive)
+    //directory: path to search inside
+    //query: file mask to find
+    //attr: 0, or any additional file attributes you might have interest in
+    //recursive: if the search should go into directories
+    //returns: ds_list containing paths to all files found
+    
     var __root,__mask,__attr,__recursive,__list,__folder,__folders,__fn;
     
     __root=string_replace_all(argument0,"/","\")

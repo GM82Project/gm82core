@@ -107,7 +107,6 @@
 #define ds_map_add_copy
     ///ds_map_add_copy(src,dest)
     //src, dest: ds map indexes
-    //returns: nothing
     //Copies all keys from source map to dest map.
     var __key;__key=ds_map_find_first(argument0)
     repeat (ds_map_size(argument0)) {

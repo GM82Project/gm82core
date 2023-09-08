@@ -7,7 +7,6 @@ const char io_not_clear_code[] = {0x0b, 0x01};
 GMREAL io_set_roomend_clear(double enabled) {
     ///io_set_roomend_clear(enabled)
     //enabled: bool - enable clearing
-    //returns: nothing
     //Changes the behavior for clearing the keyboard state on Room End.
     //Disable to prevent missing key presses between rooms.
     
