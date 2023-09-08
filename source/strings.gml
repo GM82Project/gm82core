@@ -160,5 +160,23 @@
     if (argument_count>1) __str=string(argument[1])
     for (__i=2;__i<argument_count;__i+=1) __str+=argument[0]+string(argument[__i])
     return __str
+
+
+#define string_delete_end
+    ///string_delete_end(string,count)
+    //string: string to delete from
+    //count: amount of characters to remove
+    //returns: shortened copy of provided string
+
+    return string_delete(argument0, max(string_length(argument0) - argument1 + 1, 1), argument1);
+
+
+#define string_copy_end
+    ///string_copy_end(string,count)
+    //string: string to copy from
+    //count: amount of characters to copy
+    //returns: copy from provided string
+
+    return string_copy(argument0, max(string_length(argument0) - argument1 + 1, 1), argument1);
 //
 //
