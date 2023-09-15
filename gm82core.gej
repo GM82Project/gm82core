@@ -1032,9 +1032,10 @@
 					"name": "box_distance",
 					"extname": "",
 					"calltype": 12,
-					"helpline": "box_distance(angle)",
+					"helpline": "box_distance(length,dir)",
 					"hidden": false,
 					"argtypes": [
+						2,
 						2
 					],
 					"returntype": 2
