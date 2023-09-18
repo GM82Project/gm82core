@@ -88,8 +88,8 @@ GMREAL saturate(double val) {
     return max(0,min(val,1));
 }
 
-GMREAL inch(double val, double go, double step) {
-    ///inch(val,go,step)
+GMREAL approach(double val, double go, double step) {
+    ///approach(val,go,step)
     //val: value to increment
     //go: target value
     //step: size of step to take
@@ -161,8 +161,8 @@ GMREAL angle_difference(double ang1, double ang2) {
     return modwrap(ang2-ang1+540.0,0.0,360.0)-180.0;
 }
 
-GMREAL inch_angle(double ang1, double ang2, double step) {
-    ///inch_angle(ang1,ang2,step)
+GMREAL approach_angle(double ang1, double ang2, double step) {
+    ///approach_angle(ang1,ang2,step)
     //ang1: angle to increment
     //go: target angle
     //step: size of step to take

@@ -46,6 +46,44 @@
 					"returntype": 2
 				},
 				{
+					"name": "approach",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "approach(val,goto,stepsize)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "approach_angle",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "approach_angle(ang1,ang2,step)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "box_distance",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "box_distance(length,dir)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
 					"name": "ceilto",
 					"extname": "",
 					"calltype": 12,
@@ -334,32 +372,6 @@
 					"helpline": "",
 					"hidden": false,
 					"argtypes": [],
-					"returntype": 2
-				},
-				{
-					"name": "inch",
-					"extname": "",
-					"calltype": 12,
-					"helpline": "inch(val,goto,stepsize)",
-					"hidden": false,
-					"argtypes": [
-						2,
-						2,
-						2
-					],
-					"returntype": 2
-				},
-				{
-					"name": "inch_angle",
-					"extname": "",
-					"calltype": 12,
-					"helpline": "inch_angle(ang1,ang2,step)",
-					"hidden": false,
-					"argtypes": [
-						2,
-						2,
-						2
-					],
 					"returntype": 2
 				},
 				{
@@ -698,6 +710,17 @@
 					"returntype": 2
 				},
 				{
+					"name": "saturate",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "saturate(val)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
 					"name": "secant",
 					"extname": "",
 					"calltype": 12,
@@ -1013,29 +1036,6 @@
 					"argtypes": [
 						1,
 						1,
-						2
-					],
-					"returntype": 2
-				},
-				{
-					"name": "saturate",
-					"extname": "",
-					"calltype": 12,
-					"helpline": "saturate(val)",
-					"hidden": false,
-					"argtypes": [
-						2
-					],
-					"returntype": 2
-				},
-				{
-					"name": "box_distance",
-					"extname": "",
-					"calltype": 12,
-					"helpline": "box_distance(length,dir)",
-					"hidden": false,
-					"argtypes": [
-						2,
 						2
 					],
 					"returntype": 2
