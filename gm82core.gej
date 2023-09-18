@@ -1050,6 +1050,32 @@
 						2
 					],
 					"returntype": 2
+				},
+				{
+					"name": "inch",
+					"extname": "approach",
+					"calltype": 12,
+					"helpline": "",
+					"hidden": true,
+					"argtypes": [
+						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "inch_angle",
+					"extname": "approach_angle",
+					"calltype": 12,
+					"helpline": "",
+					"hidden": true,
+					"argtypes": [
+						2,
+						2,
+						2
+					],
+					"returntype": 2
 				}
 			],
 			"constants": []
