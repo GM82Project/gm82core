@@ -9,6 +9,8 @@ static int process_running=0;
 static WINDOWPLACEMENT placement;
 static double windows_version;
 
+static char regsz[4096];
+
 //custom window procedure to ignore menu keys
 LRESULT CALLBACK RenexWndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam, UINT_PTR uIdSubclass, DWORD_PTR dwRefData) {
     switch(uMsg) {
@@ -305,6 +307,23 @@ GMREAL __registry_read_dword(const char* dir, const char* keyname) {
             return buffer;
         } else { return -4; }
     } else { return -4; }
+}
+
+GMSTR __registry_read_sz(const char* dir, const char* keyname) {
+    HKEY key;
+	wstr wdir=make_wstr(dir);
+    HRESULT res = RegOpenKeyExW(HKEY_CURRENT_USER, wdir, 0, KEY_READ, &key);
+	free(wdir);
+    if (res == 0) {
+        int size = 8192;
+		res = RegQueryValueExA(key, keyname, NULL, NULL, (LPBYTE)&regsz, &size);
+		RegCloseKey(key);
+        if (res == 0) {
+            regsz[size]=0;                     
+        } else { strcpy(regsz,"<undefined>"); }
+    } else { strcpy(regsz,"<undefined>"); }
+    
+    return regsz;
 }
 
 GMREAL __registry_write_dword(const char* dir, const char* keyname, double dword) {

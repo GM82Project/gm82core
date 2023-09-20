@@ -3,7 +3,7 @@
 	"folder": "gm82",
 	"version": "1.6",
 	"author": "renex, Floogle, Lovey01, cam900, Adamcake, YellowAfterlife, Verve",
-	"date": "18/09/2023",
+	"date": "19/09/2023",
 	"license": "Free to use, also for commercial games.",
 	"description": "Part of the standard Game Maker 8.2 distribution. This extension package contains a number of helper functions that are commonly used, and also geometry functions introduced in GM:Studio. This extension is also required for using the other GM 8.2 extensions, Sound and Joystick.",
 	"helpfile": "",
@@ -1076,6 +1076,18 @@
 						2
 					],
 					"returntype": 2
+				},
+				{
+					"name": "__registry_read_sz",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "",
+					"hidden": false,
+					"argtypes": [
+						1,
+						1
+					],
+					"returntype": 1
 				}
 			],
 			"constants": []
@@ -2329,6 +2341,15 @@
 						2,
 						2
 					],
+					"returntype": 2
+				},
+				{
+					"name": "registry_read_sz",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "registry_read_sz(key,[default])",
+					"hidden": false,
+					"argtypes": null,
 					"returntype": 2
 				}
 			],

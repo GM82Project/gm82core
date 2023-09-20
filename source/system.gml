@@ -156,6 +156,20 @@
     return __ret
 
 
+#define registry_read_sz
+    ///registry_read_sz(addr,default)
+    //addr: registry key to read
+    //default: value to return when the key doesn't exist
+    //returns: value of existing key, or default value
+    
+    var __ret;
+    __ret=__registry_read_sz(string_replace_all(filename_dir(argument0),"/","\"),filename_name(argument0))
+    if (argument_count==2) {
+        if (__ret=="<undefined>") return argument1        
+    }
+    return __ret
+
+
 #define registry_write_dword
     ///registry_write_dword(addr,val)
     //addr: registry key to read
