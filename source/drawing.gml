@@ -79,11 +79,12 @@
 
 #define draw_reset
     ///draw_reset()
-    //Resets the draw color to white, alpha to 1, and text align to left/top.
+    //Resets the draw color to white, alpha to 1, text align to left/top, and the blend mode to bm_normal.
     draw_set_color($ffffff)
     draw_set_alpha(1)
     draw_set_halign(0)
     draw_set_valign(0)
+    draw_set_blend_mode(0)
 
 
 #define draw_self_as
