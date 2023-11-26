@@ -52,7 +52,16 @@
     //gravity, gravdir: gravity settings
     //returns: instance id
     
-    var __lastinst;__lastinst=instance_create_moving(argument0,argument1,argument3,argument4,argument5,argument6,argument7)
+    if (argument_count<6 || argument_count>8) {
+        show_error("can't call instance_create_depth_moving with "+string(argument_count)+" arguments",0)
+        return noone
+    }
+    
+    var __lastinst;
+    if (argument_count==6) __lastinst=instance_create_moving(argument0,argument1,argument3,argument4,argument5)
+    if (argument_count==7) __lastinst=instance_create_moving(argument0,argument1,argument3,argument4,argument5,argument6)
+    if (argument_count==8) __lastinst=instance_create_moving(argument0,argument1,argument3,argument4,argument5,argument6,argument7)
+    
     if (instance_exists(__lastinst)) {
         __lastinst.depth=argument2
         return __lastinst
@@ -69,7 +78,17 @@
     //gravity, gravdir: gravity settings
     //returns: instance id
     
-    var __lastinst;__lastinst=instance_create_moving_ext(argument0,argument1,argument3,argument4,argument5,argument6,argument7,argument8,argument9)
+    if (argument_count==7 || argument_count<6 || argument_count>10) {
+        show_error("can't call instance_create_depth_moving_ext with "+string(argument_count)+" arguments",0)
+        return noone
+    }
+    
+    var __lastinst;
+    if (argument_count==6) __lastinst=instance_create_moving_ext(argument0,argument1,argument3,argument4,argument5)
+    if (argument_count==8) __lastinst=instance_create_moving_ext(argument0,argument1,argument3,argument4,argument5,argument6,argument7)
+    if (argument_count==9) __lastinst=instance_create_moving_ext(argument0,argument1,argument3,argument4,argument5,argument6,argument7,argument8)
+    if (argument_count==10) __lastinst=instance_create_moving_ext(argument0,argument1,argument3,argument4,argument5,argument6,argument7,argument8,argument9)
+    
     if (instance_exists(__lastinst)) {
         __lastinst.depth=argument2
         return __lastinst
