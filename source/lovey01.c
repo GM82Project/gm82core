@@ -24,8 +24,15 @@ GMREAL file_size(const char *filename) {
     //filename: string - name of file to check
     //returns: the size of a file on disk, or -1 if the file doesn't exist.
     WIN32_FILE_ATTRIBUTE_DATA attr;
+	
+	// utf-8
+	int len = MultiByteToWideChar(CP_UTF8, 0, filename, -1, NULL, 0);
+	wchar_t *wname = (wchar_t*)malloc(len*2);
+	MultiByteToWideChar(CP_UTF8, 0, filename, -1, wname, len);
+	HRESULT res = GetFileAttributesExW(wname, GetFileExInfoStandard, &attr);
+	free(wname);
 
-    if (!GetFileAttributesExA(filename, GetFileExInfoStandard, &attr))
+    if (!res)
         return -1.0;
 
     return (double)((unsigned __int64)attr.nFileSizeLow | ((unsigned __int64)attr.nFileSizeHigh << 32));
