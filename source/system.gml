@@ -196,19 +196,20 @@
 
 
 #define file_find_list
-    ///file_find_list(directory,query,attr,recursive)
+    ///file_find_list(directory,query,attr,recursive,excludedirs)
     //directory: path to search inside
     //query: file mask to find
     //attr: 0, or any additional file attributes you might have interest in
     //recursive: if the search should go into directories
     //returns: ds_list containing paths to all files found
     
-    var __root,__mask,__attr,__recursive,__list,__folder,__folders,__fn;
+    var __root,__mask,__attr,__recursive,__excludedirs,__list,__folder,__folders,__fn;
     
     __root=string_replace_all(argument0,"/","\")
     __mask=argument1
     __attr=argument2
     __recursive=argument3
+    __excludedirs=argument4
 
     __list=ds_list_create()
 
@@ -225,7 +226,7 @@
         for (__file=file_find_first(__root+__mask,__attr);__file!="";__file=file_find_next()) {
             if (__file!="." && __file!="..") {
                 __fn=__root+__file
-                ds_list_add(__list,__fn)
+                if (!__excludedirs || !file_attributes(__fn,fa_directory)) ds_list_add(__list,__fn)
                 if (__recursive) if (file_attributes(__fn,fa_directory)) {
                     __folder[__folders]=__fn
                     __folders+=1
