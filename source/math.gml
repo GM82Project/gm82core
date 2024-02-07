@@ -255,5 +255,29 @@
         
         return __pos
     }
+
+
+#define path_ease
+    ///path_ease(path,x)
+    var path,posx,pos,amount,w,h;
+
+    path=argument0
+    posx=median(0,argument1,1)
+    if (posx==0 || posx==1) return posx
+
+    w=path_get_x(path,1)
+    h=path_get_y(path,1)
+
+    if (w==0 || h==0) return 0
+
+    amount=0.5
+    pos=posx
+    repeat (9) {
+        if (path_get_x(path,pos)/w<posx) amount=abs(amount/2)
+        else amount=-abs(amount/2)
+        pos+=amount
+    }
+
+    return path_get_y(path,pos)/h
 //
 //
