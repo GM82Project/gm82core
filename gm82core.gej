@@ -1284,6 +1284,15 @@
 					"returntype": 2
 				},
 				{
+					"name": "ds_list_add_many",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "ds_list_add_many(list,val...])",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
 					"name": "ds_map_add_copy",
 					"extname": "",
 					"calltype": 2,
@@ -1342,6 +1351,51 @@
 						2,
 						2
 					],
+					"returntype": 2
+				},
+				{
+					"name": "ds_map_set_many",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "ds_map_set_many(map,key1,value1,key2,value2...)",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
+					"name": "ds_stack_push_many",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "ds_stack_push_many(stack,val...)",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
+					"name": "ds_queue_enqueue_many",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "ds_queue_enqueue_many(queue,val...)",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
+					"name": "ds_priority_add_many",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "ds_priority_add_many(queue,val1,prio1,val2,prio2...)",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
+					"name": "ds_grid_set_many",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "ds_grid_set_many(grid,x1,y1,value1,x2,y2,value2...)",
+					"hidden": false,
+					"argtypes": null,
 					"returntype": 2
 				},
 				{
