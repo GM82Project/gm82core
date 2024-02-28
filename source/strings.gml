@@ -178,5 +178,43 @@
     //returns: copy from provided string
 
     return string_copy(argument0, max(string_length(argument0) - argument1 + 1, 1), argument1);
+
+
+#define string_trim
+    ///string_trim(string,[trim1,trim2...])
+    //string: string to process
+    //arguments: strings to trim out
+    //returns: trimmed string
+    //This function will remove occurrences of the trims from the edges of a string.
+    //If no extra arguments are specified, spaces are removed instead.
+    
+    var __i,__p1,__p2,__str,__trim,__trimlen;
+        
+    __str=argument[0]
+    __i=1
+        
+    if (argument_count==1) {     
+        __j=string_length(__str)
+        
+        while (string_char_at(__str,__i)==" " && __i<__j) __i+=1
+        while (string_char_at(__str,__j)==" " && __j>0) __j-=1
+        
+        return string_copy(__str,__i,__j-__i+1)
+    }
+
+    repeat (argument_count-1) {
+        __trim=argument[__i]
+        
+        __trimlen=string_length(__trim)
+        while (string_copy(__str,1,__trimlen)==__trim) {
+            __str=string_delete(__str,1,__trimlen)
+        }
+        
+        while (string_copy(__str,string_length(__str)+1-__trimlen,__trimlen)==__trim) {
+            __str=string_delete(__str,string_length(__str)+1-__trimlen,__trimlen)
+        }
+    __i+=1}
+
+    return __str
 //
 //

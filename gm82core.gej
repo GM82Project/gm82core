@@ -3,7 +3,7 @@
 	"folder": "gm82",
 	"version": "1.6",
 	"author": "renex, Floogle, Lovey01, cam900, Adamcake, YellowAfterlife, Verve",
-	"date": "07/02/2024",
+	"date": "28/02/2024",
 	"license": "Free to use, also for commercial games.",
 	"description": "Part of the standard Game Maker 8.2 distribution. This extension package contains a number of helper functions that are commonly used, and also geometry functions introduced in GM:Studio. This extension is also required for using the other GM 8.2 extensions, Sound and Joystick.",
 	"helpfile": "",
@@ -2054,6 +2054,30 @@
 					"returntype": 2
 				},
 				{
+					"name": "string_copy_end",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "string_copy_end(string,count)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "string_delete_end",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "string_delete_end(string,count)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
 					"name": "string_ends_with",
 					"extname": "",
 					"calltype": 2,
@@ -2124,6 +2148,15 @@
 					"returntype": 2
 				},
 				{
+					"name": "string_trim",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "string_trim(string,[trim1,trim2...])",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
 					"name": "strong",
 					"extname": "str_cat",
 					"calltype": 2,
@@ -2157,30 +2190,6 @@
 					"helpline": "str_sep(sep,val1,val2,...)",
 					"hidden": false,
 					"argtypes": null,
-					"returntype": 2
-				},
-				{
-					"name": "string_delete_end",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "string_delete_end(string,count)",
-					"hidden": false,
-					"argtypes": [
-						2,
-						2
-					],
-					"returntype": 2
-				},
-				{
-					"name": "string_copy_end",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "string_copy_end(string,count)",
-					"hidden": false,
-					"argtypes": [
-						2,
-						2
-					],
 					"returntype": 2
 				}
 			],
