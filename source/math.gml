@@ -259,25 +259,25 @@
 
 #define path_ease
     ///path_ease(path,x)
-    var path,posx,pos,amount,w,h;
+    var __path,__posx,__pos,__amount,__w,__h;
 
-    path=argument0
-    posx=median(0,argument1,1)
-    if (posx==0 || posx==1) return posx
+    __path=argument0
+    __posx=median(0,argument1,1)
+    if (__posx==0 || __posx==1) return __posx
 
-    w=path_get_x(path,1)
-    h=path_get_y(path,1)
+    __w=path_get_x(__path,1)
+    __h=path_get_y(__path,1)
 
-    if (w==0 || h==0) return 0
+    if (__w==0 || __h==0) return 0
 
-    amount=0.5
-    pos=posx
+    __amount=0.5
+    __pos=__posx
     repeat (9) {
-        if (path_get_x(path,pos)/w<posx) amount=abs(amount/2)
-        else amount=-abs(amount/2)
-        pos+=amount
+        if (path_get_x(__path,__pos)/__w<__posx) __amount=abs(__amount/2)
+        else __amount=-abs(__amount/2)
+        __pos+=__amount
     }
 
-    return path_get_y(path,pos)/h
+    return path_get_y(__path,__pos)/__h
 //
 //

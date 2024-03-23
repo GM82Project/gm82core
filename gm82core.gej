@@ -2108,6 +2108,30 @@
 					"returntype": 2
 				},
 				{
+					"name": "string_copy_end",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "string_copy_end(string,count)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "string_delete_end",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "string_delete_end(string,count)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
 					"name": "string_ends_with",
 					"extname": "",
 					"calltype": 2,
@@ -2178,6 +2202,15 @@
 					"returntype": 2
 				},
 				{
+					"name": "string_trim",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "string_trim(string,[trim1,trim2...])",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
 					"name": "strong",
 					"extname": "str_cat",
 					"calltype": 2,
@@ -2211,30 +2244,6 @@
 					"helpline": "str_sep(sep,val1,val2,...)",
 					"hidden": false,
 					"argtypes": null,
-					"returntype": 2
-				},
-				{
-					"name": "string_delete_end",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "string_delete_end(string,count)",
-					"hidden": false,
-					"argtypes": [
-						2,
-						2
-					],
-					"returntype": 2
-				},
-				{
-					"name": "string_copy_end",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "string_copy_end(string,count)",
-					"hidden": false,
-					"argtypes": [
-						2,
-						2
-					],
 					"returntype": 2
 				}
 			],
