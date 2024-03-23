@@ -202,139 +202,139 @@
     //x_constraint,y_constraint: maximum distance to move in each direction
     //returns: if there was collision, the last instance that was hit
     
-    var ret,dx,dy,ind,num_steps,xoff,yoff,x_constraint,y_constraint;
-    var apply_x_constraints,apply_y_constraints;
-    var clamp_minx,clamp_miny,clamp_maxx,clamp_maxy;
-    var check_perp,delta_length,lxoff,lyoff;
-    var steps,ndx,ndy,root2over2,step_dist,dist_to_travel;
-    var i,j,this_step_dist,tx,ty,has_moved;
+    var __ret,__dx,__dy,__ind,__num_steps,__xoff,__yoff,__x_constraint,__y_constraint;
+    var __apply_x_constraints,__apply_y_constraints;
+    var __clamp_minx,__clamp_miny,__clamp_maxx,__clamp_maxy;
+    var __check_perp,__delta_length,__lxoff,__lyoff;
+    var __steps,__ndx,__ndy,__root2over2,__step_dist,__dist_to_travel;
+    var __i,__j,__this_step_dist,__tx,__ty,__has_moved;
 
-    dx=argument[0]
-    dy=argument[1]
-    ind=argument[2]
+    __dx=argument[0]
+    __dy=argument[1]
+    __ind=argument[2]
 
-    num_steps=4
+    __num_steps=4
     if (argument_count>3) {
-        num_steps=argument[3]
+        __num_steps=argument[3]
     }
 
-    xoff=0
-    yoff=0
+    __xoff=0
+    __yoff=0
     if (argument_count>4) {
-        xoff=argument[4]
-        yoff=argument[5]
+        __xoff=argument[4]
+        __yoff=argument[5]
     }
 
-    x_constraint=-1
-    y_constraint=-1
+    __x_constraint=-1
+    __y_constraint=-1
     if (argument_count>6) {
-        x_constraint=argument[6]
-        y_constraint=argument[7]
+        __x_constraint=argument[6]
+        __y_constraint=argument[7]
     }
 
-    ret=noone
+    __ret=noone
 
-    if (ind==id || ind==noone || (dx==0 && dy==0)) return ret
+    if (__ind==id || __ind==noone || (__dx==0 && __dy==0)) return __ret
 
-    res=instance_place(x,y,ind)
-    if (res) return res
+    __res=instance_place(x,y,__ind)
+    if (__res) return __res
 
-    root2over2=0.70710678118654
-    steps=sqrt(dx*dx+dy*dy)
-    ndx=dx/steps
-    ndy=dy/steps
-    dist_to_travel=steps
-    step_dist=steps/num_steps
+    __root2over2=0.70710678118654
+    __steps=sqrt(__dx*__dx+__dy*__dy)
+    __ndx=__dx/__steps
+    __ndy=__dy/__steps
+    __dist_to_travel=__steps
+    __step_dist=__steps/__num_steps
 
-    apply_x_constraints=(x_constraint>=0)
-    apply_y_constraints=(y_constraint>=0)
+    __apply_x_constraints=(__x_constraint>=0)
+    __apply_y_constraints=(__y_constraint>=0)
 
-    clamp_minx=x-x_constraint
-    clamp_miny=y-y_constraint
-    clamp_maxx=x+x_constraint
-    clamp_maxy=y+y_constraint
+    __clamp_minx=x-__x_constraint
+    __clamp_miny=y-__y_constraint
+    __clamp_maxx=x+__x_constraint
+    __clamp_maxy=y+__y_constraint
 
-    if (xoff==0 && yoff==0) {
-        check_perp=true
+    if (__xoff==0 && __yoff==0) {
+        __check_perp=true
     } else {
-        check_perp=false
-        delta_length=sqrt(xoff*xoff+yoff*yoff)
-        lxoff=xoff/delta_length
-        lyoff=yoff/delta_length
+        __check_perp=false
+        __delta_length=sqrt(__xoff*__xoff+__yoff*__yoff)
+        __lxoff=__xoff/__delta_length
+        __lyoff=__yoff/__delta_length
     }
 
-    for (i=0;i<num_steps;i+=1) {
-        this_step_dist=step_dist
-        if (dist_to_travel<this_step_dist) {
-            this_step_dist=dist_to_travel
-            if (this_step_dist<=0) break
+    for (__i=0;__i<__num_steps;__i+=1) {
+        __this_step_dist=__step_dist
+        if (__dist_to_travel<__this_step_dist) {
+            __this_step_dist=__dist_to_travel
+            if (__this_step_dist<=0) break
         }
 
-        tx=x+ndx*this_step_dist
-        ty=y+ndy*this_step_dist
+        __tx=x+__ndx*__this_step_dist
+        __ty=y+__ndy*__this_step_dist
 
-        if (apply_x_constraints) tx=clamp(tx,clamp_minx,clamp_maxx)
-        if (apply_y_constraints) ty=clamp(ty,clamp_miny,clamp_maxy)
+        if (__apply_x_constraints) __tx=clamp(__tx,__clamp_minx,__clamp_maxx)
+        if (__apply_y_constraints) __ty=clamp(__ty,__clamp_miny,__clamp_maxy)
 
-        res=instance_place(tx,ty,ind)
-        if (!res) {
-            x=tx y=ty
-            dist_to_travel-=this_step_dist
+        __res=instance_place(__tx,__ty,__ind)
+        if (!__res) {
+            x=__tx y=__ty
+            __dist_to_travel-=__this_step_dist
         } else {
-            ret=res
-            has_moved=false
-            if (check_perp) {
-                for (j=1;j<num_steps-i+1;j+=1) {
-                    tx=x+root2over2*(ndx+j*ndy)*this_step_dist
-                    ty=y+root2over2*(ndy-j*ndx)*this_step_dist
+            __ret=__res
+            __has_moved=false
+            if (__check_perp) {
+                for (__j=1;__j<__num_steps-__i+1;__j+=1) {
+                    __tx=x+__root2over2*(__ndx+__j*__ndy)*__this_step_dist
+                    __ty=y+__root2over2*(__ndy-__j*__ndx)*__this_step_dist
 
-                    if (apply_x_constraints) tx=clamp(tx,clamp_minx,clamp_maxx)
-                    if (apply_y_constraints) ty=clamp(ty,clamp_miny,clamp_maxy)
+                    if (__apply_x_constraints) __tx=clamp(__tx,__clamp_minx,__clamp_maxx)
+                    if (__apply_y_constraints) __ty=clamp(__ty,__clamp_miny,__clamp_maxy)
 
-                    res=instance_place(tx,ty,ind)
-                    if (!res) {
-                        dist_to_travel-=this_step_dist*j
-                        has_moved=true
-                        x=tx y=ty
+                    __res=instance_place(__tx,__ty,__ind)
+                    if (!__res) {
+                        __dist_to_travel-=__this_step_dist*__j
+                        __has_moved=true
+                        x=__tx y=__ty
                         break
-                    } else ret=res
+                    } else __ret=__res
 
-                    tx=x+root2over2*(ndx-j*ndy)*this_step_dist
-                    ty=y+root2over2*(ndy+j*ndx)*this_step_dist
+                    __tx=x+__root2over2*(__ndx-__j*__ndy)*__this_step_dist
+                    __ty=y+__root2over2*(__ndy+__j*__ndx)*__this_step_dist
 
-                    if (apply_x_constraints) tx=clamp(tx,clamp_minx,clamp_maxx)
-                    if (apply_y_constraints) ty=clamp(ty,clamp_miny,clamp_maxy)
+                    if (__apply_x_constraints) __tx=clamp(__tx,__clamp_minx,__clamp_maxx)
+                    if (__apply_y_constraints) __ty=clamp(__ty,__clamp_miny,__clamp_maxy)
 
-                    res=instance_place(tx,ty,ind)
-                    if (!res) {
-                        dist_to_travel-=this_step_dist*j
-                        has_moved=true
-                        x=tx y=ty
+                    __res=instance_place(__tx,__ty,__ind)
+                    if (!__res) {
+                        __dist_to_travel-=__this_step_dist*__j
+                        __has_moved=true
+                        x=__tx y=__ty
                         break
-                    } else ret=res
+                    } else __ret=__res
                 }
             } else {
-                for (j=1;j<num_steps-i+1;j+=1) {
-                    tx=x+root2over2*(ndx+j*lxoff)*this_step_dist
-                    ty=y+root2over2*(ndy+j*lyoff)*this_step_dist
+                for (__j=1;__j<__num_steps-__i+1;__j+=1) {
+                    __tx=x+__root2over2*(__ndx+__j*__lxoff)*__this_step_dist
+                    __ty=y+__root2over2*(__ndy+__j*__lyoff)*__this_step_dist
 
-                    if (apply_x_constraints) tx=clamp(tx,clamp_minx,clamp_maxx)
-                    if (apply_y_constraints) ty=clamp(ty,clamp_miny,clamp_maxy)
+                    if (__apply_x_constraints) __tx=clamp(__tx,__clamp_minx,__clamp_maxx)
+                    if (__apply_y_constraints) __ty=clamp(__ty,__clamp_miny,__clamp_maxy)
 
-                    res=instance_place(tx,ty,ind)
-                    if (!res) {
-                        dist_to_travel-=this_step_dist*j
-                        has_moved=true
-                        x=tx y=ty
+                    __res=instance_place(__tx,__ty,__ind)
+                    if (!__res) {
+                        __dist_to_travel-=__this_step_dist*__j
+                        __has_moved=true
+                        x=__tx y=__ty
                         break
-                    } else ret=res
+                    } else __ret=__res
                 }
             }
-            if (!has_moved) return ret
+            if (!__has_moved) return __ret
         }
     }
 
-    return ret
+    return __ret
 
 
 #define move_towards_gravity

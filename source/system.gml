@@ -85,11 +85,11 @@
     //first,last: character range to render (1-255)
     //Adds a font from a file on disk rather than system fonts.
     
-    var font;
+    var __font;
     __gm82core_addfonttemp(argument0)
-    font=font_add(argument1,argument2,argument3,argument4,argument5,argument6)
+    __font=font_add(argument1,argument2,argument3,argument4,argument5,argument6)
     __gm82core_remfonttemp(argument0)
-    return font
+    return __font
 
 
 #define mouse_back_button
