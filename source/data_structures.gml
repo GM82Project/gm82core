@@ -104,6 +104,23 @@
     return true
 
 
+#define ds_list_add_many
+    ///ds_list_add_many(list,val...])
+    //list: ds list index
+    //val: value(s) to add
+    //returns: ds list index
+    //Adds any number of values to the provided list.
+    var __i;
+
+    __i=1;
+    repeat (argument_count-1) {
+        ds_list_add(argument[0],argument[__i]);
+        __i+=1;
+    }
+
+    return argument[0];
+
+
 #define ds_map_add_copy
     ///ds_map_add_copy(src,dest)
     //src, dest: ds map indexes
@@ -202,6 +219,100 @@
     if (ds_map_exists(argument0,argument1)) ds_map_replace(argument0,argument1,argument2)
     else ds_map_add(argument0,argument1,argument2)
     return argument2
+
+
+#define ds_map_set_many
+    ///ds_map_set_many(map,key1,value1,key2,value2...)
+    //map: ds map index
+    //key1,value1: first key-value pair
+    //key2,value2: second key-value pair
+    //etc
+    //returns: ds map index
+    //Sets any number of map keys at once.
+    var __i;
+
+    __i=1;
+    repeat (floor((argument_count-1)/2)) {
+        if (ds_map_exists(argument[0],argument[__i]))
+            ds_map_replace(argument[0],argument[__i],argument[__i+1]);
+        else
+            ds_map_add(argument[0],argument[__i],argument[__i+1]);
+        __i+=2;
+    }
+
+    return argument[0];
+
+
+#define ds_stack_push_many
+    ///ds_stack_push_many(stack,val...)
+    //stack: ds stack index
+    //val: value(s) to push
+    //returns: ds stack index
+    //Pushes any number of values onto the stack.
+    var __i;
+
+    __i=1;
+    repeat (argument_count-1) {
+        ds_stack_push(argument[0], argument[__i]);
+        __i+=1;
+    }
+
+    return argument[0];
+
+
+#define ds_queue_enqueue_many
+    ///ds_queue_enqueue_many(queue,val...)
+    //queue: ds queue index
+    //val: value(s) to enqueue
+    //returns: ds queue index
+    //Enqueues any number of values to the queue.
+    var __i;
+
+    __i=1;
+    repeat (argument_count-1) {
+        ds_queue_enqueue(argument[0],argument[__i]);
+        __i+=1;
+    }
+
+    return argument[0];
+
+
+#define ds_priority_add_many
+    ///ds_priority_add_many(queue,val1,prio1,val2,prio2...)
+    //queue: ds priority queue index
+    //val1,prio1: first value and its priority
+    //val2,prio2: second value and its priority
+    //etc
+    //returns: ds priority queue index
+    //Adds any number of values to the priority queue.
+    var __i;
+
+    __i=1;
+    repeat (floor((argument_count-1)/2)) {
+        ds_priority_add(argument[0],argument[__i],argument[__i+1]);
+        __i+=2;
+    }
+
+    return argument[0];
+
+
+#define ds_grid_set_many
+    ///ds_grid_set_many(grid,x1,y1,value1,x2,y2,value2...)
+    //grid: ds grid index
+    //x1,y1,value1: first position and value to set
+    //x2,y2,value2: second position and value to set
+    //etc
+    //returns: ds grid index
+    //Sets any number of values in the grid.
+    var __i;
+
+    __i=1;
+    repeat (floor((argument_count-1)/3)) {
+        ds_grid_set(argument[0],argument[__i],argument[__i+1],argument[__i+2]);
+        __i+=3;
+    }
+
+    return argument[0];
 
 
 #define is_undefined
