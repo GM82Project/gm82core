@@ -315,6 +315,29 @@
     return argument[0];
 
 
+#define ds_map_search
+    ///ds_map_search(map,value)
+    //map: map to search through
+    //value: key value to find
+    //returns: first occurrence of key containing the value, or "undefined"
+    var __map,__find,__key,__str;
+
+    __map=argument0
+    __find=argument1
+    __str=is_string(__find)
+
+    __key=ds_map_find_first(__map)        
+
+    repeat (ds_map_size(__map)) {
+        __cur=ds_map_find_value(__map,__key)
+        if (__str) {if (is_string(__cur)) if (__cur==__find) return __key}
+        else {if (is_real(__cur)) if (__cur==__find) return __key}
+        __key=ds_map_find_next(__map,__key)
+    }
+
+    return undefined
+
+
 #define is_undefined
     ///is_undefined(val)
     //val - value to check
