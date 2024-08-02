@@ -23,6 +23,15 @@
     globalvar __gm82core_timer,__gm82core_fpsmem,__gm82core_fps_queue;
     globalvar __gm82core_pixel;
     
+    globalvar __gm82core_index_sprites; __gm82core_index_sprites=noone
+    globalvar __gm82core_index_sounds; __gm82core_index_sounds=noone
+    globalvar __gm82core_index_backgrounds; __gm82core_index_backgrounds=noone
+    globalvar __gm82core_index_paths; __gm82core_index_paths=noone
+    globalvar __gm82core_index_fonts; __gm82core_index_fonts=noone
+    globalvar __gm82core_index_timelines; __gm82core_index_timelines=noone
+    globalvar __gm82core_index_objects; __gm82core_index_objects=noone
+    globalvar __gm82core_index_rooms; __gm82core_index_rooms=noone
+    
     __gm82core_hrt_init()
     
     __s=surface_create(1,1)
