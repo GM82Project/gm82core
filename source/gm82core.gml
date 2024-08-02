@@ -32,6 +32,12 @@
     globalvar __gm82core_index_objects; __gm82core_index_objects=noone
     globalvar __gm82core_index_rooms; __gm82core_index_rooms=noone
     
+    globalvar __gm82core_compiler; __gm82core_compiler=object_add()
+    globalvar __gm82core_compiler_index;
+    globalvar __gm82core_compiler_exists;
+    globalvar __gm82core_compiler_argc;
+    globalvar __gm82core_compiler_args;
+    
     __gm82core_hrt_init()
     
     __s=surface_create(1,1)

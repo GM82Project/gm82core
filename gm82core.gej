@@ -2540,6 +2540,58 @@
 				}
 			],
 			"constants": []
+		},
+		{
+			"filename": "compiler.gml",
+			"origname": "source\\compiler.gml",
+			"kind": 2,
+			"init": "",
+			"final": "",
+			"functions": [
+				{
+					"name": "code_compile",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "code_compile(string)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "code_execute",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "code_execute(code,[arg0,arg1...])",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
+					"name": "code_get_argcount",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "code_get_argcount(code)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "code_destroy",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "code_destroy(code)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				}
+			],
+			"constants": []
 		}
 	]
 }
