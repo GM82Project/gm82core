@@ -6,33 +6,33 @@
     //Compilation takes a while, but execution is very fast.
     //Note: use the function code_return() to set the return value for code_execute.
     //If code_return() is never called, the code will return 0 when executed.
-    var code,i,argc;
+    var __code,__i,__argc;
     
-    argc=0
+    __argc=0
     repeat (16) {
-        if (!string_pos("argument"+string(argc),argument0)) break
-    argc+=1}
+        if (!string_pos("argument"+string(__argc),argument0)) break
+    __argc+=1}
     
-    if (argc==0) {
-        if (string_pos("argument[",argument0)) argc=-1
+    if (__argc==0) {
+        if (string_pos("argument[",argument0)) __argc=-1
     }
     
-    __gm82core_compiler_argc[__gm82core_compiler_index]=argc
+    __gm82core_compiler_argc[__gm82core_compiler_index]=__argc
     
-    code=""
-    if (argc==-1) {
+    __code=""
+    if (__argc==-1) {
         //variable args
-        i=0 repeat (16) {
-            code+="argument["+string(i)+"]=__gm82core_compiler_args["+string(i)+"];"
-        i+=1}
+        __i=0 repeat (16) {
+            __code+="argument["+string(__i)+"]=__gm82core_compiler_args["+string(__i)+"];"
+        __i+=1}
     } else {
         //fixed args
-        i=0 repeat (argc) {
-            code+="argument"+string(i)+"=__gm82core_compiler_args["+string(i)+"];"
-        i+=1}
+        __i=0 repeat (__argc) {
+            __code+="argument"+string(__i)+"=__gm82core_compiler_args["+string(__i)+"];"
+        __i+=1}
     }
     
-    object_event_add(__gm82core_compiler,ev_other,__gm82core_compiler_index,code+argument0)
+    object_event_add(__gm82core_compiler,ev_other,__gm82core_compiler_index,__code+argument0)
     __gm82core_compiler_exists[__gm82core_compiler_index]=true  
     
     __gm82core_compiler_index+=1    
@@ -47,20 +47,20 @@
     ///code_destroy(code)
     //code: code index to destroy
     //Destroys a piece of compiled code and frees memory.    
-    var code;
+    var __code;
     
-    code=argument0
+    __code=argument0
     
-    if (code<0 || code>=__gm82core_compiler_index) {
-        show_error("In function code_destroy: Cannot destroy code point "+string(code)+", only "+string(__gm82core_compiler_index)+" total code points initialized.",0)
+    if (__code<0 || __code>=__gm82core_compiler_index) {
+        show_error("In function code_destroy: Cannot destroy code point "+string(__code)+", only "+string(__gm82core_compiler_index)+" total code points initialized.",0)
         exit
     }
     
-    if (__gm82core_compiler_exists[code]) {    
-        object_event_clear(__gm82core_compiler,ev_other,code)
-        __gm82core_compiler_exists[code]=false
+    if (__gm82core_compiler_exists[__code]) {    
+        object_event_clear(__gm82core_compiler,ev_other,__code)
+        __gm82core_compiler_exists[__code]=false
     } else {
-        show_error("In function code_destroy: Cannot destroy already deleted code point "+string(code)+".",0)
+        show_error("In function code_destroy: Cannot destroy already deleted code point "+string(__code)+".",0)
     }
 
 
@@ -70,42 +70,42 @@
     //args: script arguments to pass to the code
     //returns: return value from the code, or 0
     //Executes a precompiled code index and returns the value last given to code_return(), or 0 if the code does not return anything.
-    var i,code,argc;
+    var __i,__code,__argc;
     
-    code=argument0
+    __code=argument0
     
-    if (code<0 || code>=__gm82core_compiler_index) {
-        show_error("In function code_execute: Cannot execute code point "+string(code)+", only "+string(__gm82core_compiler_index)+" total code points initialized.",0)
+    if (__code<0 || __code>=__gm82core_compiler_index) {
+        show_error("In function code_execute: Cannot execute code point "+string(__code)+", only "+string(__gm82core_compiler_index)+" total code points initialized.",0)
         exit
     }
     
-    if (!__gm82core_compiler_exists[code]) {
-        show_error("In function code_execute: Cannot execute code point "+string(code)+", it has been deleted.",0)
+    if (!__gm82core_compiler_exists[__code]) {
+        show_error("In function code_execute: Cannot execute code point "+string(__code)+", it has been deleted.",0)
         exit
     }
     
-    argc=__gm82core_compiler_argc[code]
-    if (argc==-1) {
-        i=0 repeat (argument_count-1) {
-            __gm82core_compiler_args[i]=argument[i+1]
-        i+=1}
-        repeat (15-i) {
-            __gm82core_compiler_args[i]=0
-        i+=1}
+    __argc=__gm82core_compiler_argc[__code]
+    if (__argc==-1) {
+        __i=0 repeat (argument_count-1) {
+            __gm82core_compiler_args[__i]=argument[__i+1]
+        __i+=1}
+        repeat (15-__i) {
+            __gm82core_compiler_args[__i]=0
+        __i+=1}
     } else {
-        if (argument_count-1!=argc) {
-            show_error("In function code_execute: Wrong number of arguments for code point "+string(code)+", it requires "+string(argc)+" but "+string(argument_count-1)+" have been passed.",0)
+        if (argument_count-1!=__argc) {
+            show_error("In function code_execute: Wrong number of arguments for code point "+string(__code)+", it requires "+string(__argc)+" but "+string(argument_count-1)+" have been passed.",0)
             exit
         }
     }
     
-    i=0 repeat (argc) {
-        __gm82core_compiler_args[i]=argument[i+1]
-    i+=1}
+    __i=0 repeat (__argc) {
+        __gm82core_compiler_args[__i]=argument[__i+1]
+    __i+=1}
     
     __gm82core_compiler_return=0
     
-    event_perform_object(__gm82core_compiler,ev_other,code)
+    event_perform_object(__gm82core_compiler,ev_other,__code)
     
     return __gm82core_compiler_return
 
@@ -115,20 +115,20 @@
     //code: code index
     //returns: number of arguments, or -1
     //If the code index uses variable arguments, -1 is returned instead.    
-    var code;
+    var __code;
     
-    code=argument0
+    __code=argument0
     
-    if (code<0 || code>=__gm82core_compiler_index) {
-        show_error("In function code_get_argcount: Nonexisting code point "+string(code)+", only "+string(__gm82core_compiler_index)+" total code points initialized.",0)
+    if (__code<0 || __code>=__gm82core_compiler_index) {
+        show_error("In function code_get_argcount: Nonexisting code point "+string(__code)+", only "+string(__gm82core_compiler_index)+" total code points initialized.",0)
         exit
     }
     
-    if (!__gm82core_compiler_exists[code]) {
-        show_error("In function code_get_argcount: Nonexisting code point "+string(code)+", it has been deleted.",0)
+    if (!__gm82core_compiler_exists[__code]) {
+        show_error("In function code_get_argcount: Nonexisting code point "+string(__code)+", it has been deleted.",0)
         exit
     }
     
-    return __gm82core_compiler_argc[code]
+    return __gm82core_compiler_argc[__code]
 //
 //  
