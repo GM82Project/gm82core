@@ -3,7 +3,7 @@
 	"folder": "gm82",
 	"version": "1.6",
 	"author": "renex, Floogle, Lovey01, cam900, Adamcake, YellowAfterlife, Verve",
-	"date": "07/08/2024",
+	"date": "08/08/2024",
 	"license": "Free to use, also for commercial games.",
 	"description": "Part of the standard Game Maker 8.2 distribution. This extension package contains a number of helper functions that are commonly used, and also geometry functions introduced in GM:Studio. This extension is also required for using the other GM 8.2 extensions, Sound and Joystick.",
 	"helpfile": "",
@@ -2572,6 +2572,17 @@
 					"returntype": 2
 				},
 				{
+					"name": "code_destroy",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "code_destroy(code)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
 					"name": "code_execute",
 					"extname": "",
 					"calltype": 2,
@@ -2592,11 +2603,11 @@
 					"returntype": 2
 				},
 				{
-					"name": "code_destroy",
+					"name": "code_return",
 					"extname": "",
 					"calltype": 2,
-					"helpline": "code_destroy(code)",
-					"hidden": false,
+					"helpline": "",
+					"hidden": true,
 					"argtypes": [
 						2
 					],

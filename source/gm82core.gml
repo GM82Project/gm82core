@@ -37,6 +37,7 @@
     globalvar __gm82core_compiler_exists;
     globalvar __gm82core_compiler_argc;
     globalvar __gm82core_compiler_args;
+    globalvar __gm82core_compiler_return;
     
     __gm82core_hrt_init()
     

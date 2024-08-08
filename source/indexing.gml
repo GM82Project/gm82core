@@ -1,5 +1,10 @@
 #define sprite_find
     ///sprite_find(name)
+    //name: Name of the sprite to find.
+    //returns: sprite id, or noone
+    //Finds a sprite by its name.
+    //The first time this function is called, extra time is spent building an index, and subsequent calls are much faster.
+    
     var l,i;
     if (__gm82core_index_sprites==noone) {
         __gm82core_index_sprites=ds_map_create()
@@ -12,6 +17,12 @@
 
 #define sound_find
     ///sound_find(name)
+    //name: Name of the sound to find.
+    //returns: sound id, or noone
+    //Finds a sound by its name. if the sound doesn't exist, noone is returned.
+    //The first time this function is called, extra time is spent building an index, and subsequent calls are much faster.
+    //Note: if the 8.2 Sound extension is present, it is always fast and returns an empty string on failed search.
+
     var l,i;
     globalvar __gm82snd_version;
     if (__gm82snd_version>0) {
@@ -32,6 +43,11 @@
 
 #define background_find
     ///background_find(name)
+    //name: Name of the background to find.
+    //returns: background id, or noone
+    //Finds a background by its name. if the background doesn't exist, noone is returned.
+    //The first time this function is called, extra time is spent building an index, and subsequent calls are much faster.
+
     var l,i;
     if (__gm82core_index_backgrounds==noone) {
         __gm82core_index_backgrounds=ds_map_create()
@@ -44,6 +60,11 @@
 
 #define path_find
     ///path_find(name)
+    //name: Name of the path to find.
+    //returns: path id, or noone
+    //Finds a path by its name. if the path doesn't exist, noone is returned.
+    //The first time this function is called, extra time is spent building an index, and subsequent calls are much faster.
+
     var l,i;
     if (__gm82core_index_paths==noone) {
         __gm82core_index_paths=ds_map_create()
@@ -56,6 +77,11 @@
 
 #define font_find
     ///font_find(name)
+    //name: Name of the font to find.
+    //returns: font id, or noone
+    //Finds a font resource by its name. if the font doesn't exist, noone is returned.
+    //The first time this function is called, extra time is spent building an index, and subsequent calls are much faster.
+
     var l,i,spr;
     if (__gm82core_index_fonts==noone) {
         __gm82core_index_fonts=ds_map_create()
@@ -68,6 +94,11 @@
 
 #define timeline_find
     ///timeline_find(name)
+    //name: Name of the timeline to find.
+    //returns: timeline id, or noone
+    //Finds a timeline by its name. if the timeline doesn't exist, noone is returned.
+    //The first time this function is called, extra time is spent building an index, and subsequent calls are much faster.
+
     var l,i;
     if (__gm82core_index_timelines==noone) {
         __gm82core_index_timelines=ds_map_create()
@@ -80,6 +111,11 @@
 
 #define object_find
     ///object_find(name)
+    //name: Name of the object to find.
+    //returns: object id, or noone
+    //Finds a object by its name. if the object doesn't exist, noone is returned.
+    //The first time this function is called, extra time is spent building an index, and subsequent calls are much faster.
+
     var l,i;
     if (__gm82core_index_objects==noone) {
         __gm82core_index_objects=ds_map_create()
@@ -91,6 +127,11 @@
 
 #define room_find
     ///room_find(name)
+    //name: Name of the room to find.
+    //returns: room id, or noone
+    //Finds a room by its name. if the room doesn't exist, noone is returned.
+    //The first time this function is called, extra time is spent building an index, and subsequent calls are much faster.
+
     var l,i;
     if (__gm82core_index_rooms==noone) {
         __gm82core_index_rooms=ds_map_create()
