@@ -77,6 +77,16 @@
     event_perform(ev_trigger,argument0)
 
 
+#define is_equal
+    ///is_equal(a,b)
+
+    if (is_real(argument0)!=is_real(argument1)) {
+        return false
+    }
+    
+    return (argument0==argument1)
+
+
 #define object_is_child_of
     ///object_is_child_of(object)
     //object: object to check
