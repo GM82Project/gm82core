@@ -131,11 +131,13 @@
     //returns: room id, or noone
     //Finds a room by its name. if the room doesn't exist, noone is returned.
     //The first time this function is called, extra time is spent building an index, and subsequent calls are much faster.
+    var __l,__i;
 
-    var l,i;
     if (__gm82core_index_rooms==noone) {
         __gm82core_index_rooms=ds_map_create()
-        i=room_first while (i!=room_last) {ds_map_add(__gm82core_index_objects,object_get_name(i),i) i=room_next(i)}
+        __i=room_first while (__i!=room_last) {ds_map_add(__gm82core_index_rooms,room_get_name(__i),__i) __i=room_next(__i)}
+        //add last room
+        ds_map_add(__gm82core_index_rooms,room_get_name(__i),__i)
     }
     if (ds_map_exists(__gm82core_index_rooms,argument0)) return ds_map_find_value(__gm82core_index_rooms,argument0)
     return noone
