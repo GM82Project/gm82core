@@ -765,6 +765,19 @@
 					"returntype": 2
 				},
 				{
+					"name": "smoothstep",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "smoothstep(val,go,step)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
 					"name": "string_hex",
 					"extname": "string_hex",
 					"calltype": 12,

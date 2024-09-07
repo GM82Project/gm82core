@@ -88,6 +88,17 @@ GMREAL saturate(double val) {
     return max(0,min(val,1));
 }
 
+GMREAL smoothstep(double val, double go, double step) {
+    ///smoothstep(val,go,step)
+    //val: start value
+    //go: end value
+    //step: real - value to interpolate
+    //returns: interpolation from 0 to 1 based on 'step' compared to 'val' and 'go'.
+    
+    float t = saturate((step - val)/(go - val));
+    return t*t*(3.0 - (2.0*t));
+}
+
 GMREAL approach(double val, double go, double step) {
     ///approach(val,go,step)
     //val: value to increment
