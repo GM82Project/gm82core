@@ -95,7 +95,7 @@ GMREAL smoothstep(double min, double max, double value) {
     //value: real - value to interpolate
     //returns: interpolation from 0 to 1 based on 'value' compared to 'min' and 'max'.
     
-    float t = saturate((value - min)/(max - min));
+    double t = saturate((value - min)/(max - min));
     return t*t*(3.0 - 2.0*t);
 }
 
