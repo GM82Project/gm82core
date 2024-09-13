@@ -124,5 +124,11 @@
     __t=tile_find(argument0,argument1,0)
     if (__t) return __t
     return tile_find(argument0,argument1,1)
+
+
+#define random_color
+    ///random_color()
+    //returns: a random color from the ~16 mil options.
+    return irandom($ffffff)
 //
 //
