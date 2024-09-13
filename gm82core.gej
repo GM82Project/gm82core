@@ -754,6 +754,17 @@
 					"returntype": 2
 				},
 				{
+					"name": "set_dll_loaddir",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "set_dll_loaddir(directory)",
+					"hidden": false,
+					"argtypes": [
+						1
+					],
+					"returntype": 2
+				},
+				{
 					"name": "sleep_ext",
 					"extname": "",
 					"calltype": 12,
