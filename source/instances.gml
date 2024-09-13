@@ -439,5 +439,40 @@
     image_angle=__ang
 
     return __check
+
+
+#define instance_assign_groups
+    ///instance_assign_groups(object,[groupvarname])
+    //object: object to look for instances of
+    //groupvarname: optional name of the variable to set with the group ids in the instances of the 'object'; default name is "group"
+    //Assigns a group id variable to touching chunks of instances in the room. Calling the function again will correctly reapply groups.
+    var __name;
+    
+    __name="group"
+    if (argument_count==2) __name=argument[1]
+    else if (argument_count!=1) {
+        show_error("Error in function instance_assign_groups(): incorrect number of arguments.",0)
+        exit
+    }
+    
+    global.__gm82core_groupid=0
+    
+    with (argument[0]) __gm82core_recurse=true
+    with (argument[0]) if (__gm82core_recurse) {
+        __gm82core_recursive_group_assign(__name)
+        global.__gm82core_groupid+=1
+    }
+
+
+#define __gm82core_recursive_group_assign
+    //(groupvarname)
+    __gm82core_recurse=false
+
+    with (object_index) if (__gm82core_recurse) if (instance_place(x-1,y,other.id)) __gm82core_recursive_group_assign(argument0)
+    with (object_index) if (__gm82core_recurse) if (instance_place(x+1,y,other.id)) __gm82core_recursive_group_assign(argument0)
+    with (object_index) if (__gm82core_recurse) if (instance_place(x,y-1,other.id)) __gm82core_recursive_group_assign(argument0)
+    with (object_index) if (__gm82core_recurse) if (instance_place(x,y+1,other.id)) __gm82core_recursive_group_assign(argument0)
+
+    variable_local_set(argument0,global.__gm82core_groupid)    
 //
 //

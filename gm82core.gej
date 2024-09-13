@@ -1778,6 +1778,15 @@
 					"returntype": 2
 				},
 				{
+					"name": "instance_assign_groups",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "instance_assign_groups(object,[groupvarname])",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
 					"name": "instance_create_depth",
 					"extname": "",
 					"calltype": 2,
@@ -1961,6 +1970,15 @@
 						2,
 						2
 					],
+					"returntype": 2
+				},
+				{
+					"name": "__gm82core_recursive_group_assign",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "",
+					"hidden": true,
+					"argtypes": null,
 					"returntype": 2
 				}
 			],
