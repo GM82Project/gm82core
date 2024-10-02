@@ -18,7 +18,15 @@
     
     object_set_persistent(gm82core_object,1)
     room_instance_add(room_first,0,0,gm82core_object)
-        
+    
+    //make data structures start at 1
+    ds_grid_create(1,1)
+    ds_list_create()
+    ds_map_create()
+    ds_priority_create()
+    ds_queue_create()
+    ds_stack_create()    
+    
     globalvar delta_time,fps_real,fps_fast;
     globalvar __gm82core_timer,__gm82core_fpsmem,__gm82core_fps_queue;
     globalvar __gm82core_pixel;
@@ -32,7 +40,6 @@
     globalvar __gm82core_index_objects; __gm82core_index_objects=noone
     globalvar __gm82core_index_rooms; __gm82core_index_rooms=noone
     
-    globalvar __gm82core_compiler; __gm82core_compiler=object_add()
     globalvar __gm82core_compiler_index;
     globalvar __gm82core_compiler_exists;
     globalvar __gm82core_compiler_argc;
@@ -60,8 +67,7 @@
     __gm82core_fps_queue=ds_queue_create()
     __gm82core_fpsmem=1
     __gm82core_timer=get_timer()
-    
-    surface_free(surface_create(8,8))
+        
     draw_set_color($ffffff)
 
 

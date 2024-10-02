@@ -1467,6 +1467,100 @@
 						2
 					],
 					"returntype": 2
+				},
+				{
+					"name": "ds_bag_create",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "ds_bag_create()",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
+					"name": "ds_bag_clear",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "ds_bag_clear(bag)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "ds_bag_remove",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "ds_bag_remove(bag,item)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "ds_bag_destroy",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "ds_bag_destroy(bag)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "ds_bag_add",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "ds_bag_add(bag,item,[item...])",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
+					"name": "ds_bag_grab",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "ds_bag_grab(bag)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "ds_bag_size",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "ds_bag_size(bag)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "ds_bag_empty",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "ds_bag_empty(bag)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "__gm82core_bag_check",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "",
+					"hidden": true,
+					"argtypes": null,
+					"returntype": 2
 				}
 			],
 			"constants": []
@@ -1661,11 +1755,6 @@
 					"hidden": false
 				},
 				{
-					"name": "core",
-					"value": "object_add()",
-					"hidden": true
-				},
-				{
 					"name": "directory_appdata",
 					"value": "string_copy(temp_directory,1,string_pos(\"\\AppData\\\",temp_directory)+8)",
 					"hidden": false
@@ -1677,7 +1766,7 @@
 				},
 				{
 					"name": "gm82core_object",
-					"value": "core",
+					"value": "object_add()",
 					"hidden": false
 				},
 				{
@@ -1734,6 +1823,11 @@
 					"name": "vk_minus",
 					"value": "189",
 					"hidden": false
+				},
+				{
+					"name": "__gm82core_compiler",
+					"value": "object_add()",
+					"hidden": true
 				}
 			]
 		},

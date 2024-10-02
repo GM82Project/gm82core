@@ -344,5 +344,108 @@
     //returns: bool
     //Studio shim. checks the value against the 'undefined' constant.
     return string(argument0)==undefined
+
+
+#define __gm82core_bag_check
+    if (argument0>=0) if (ds_list_find_value(argument0,0)=="__gm82core_bag_marker") return 0
+    show_error("in function "+argument1+": structure "+string(argument0)+" is not a bag)",0)
+    return 1
+    
+
+#define ds_bag_create
+    ///ds_bag_create()
+    //returns: new bag
+    //creates and returns a bag for use.
+    
+    var __bag;__bag=ds_list_create()
+    ds_list_add(__bag,"__gm82core_bag_marker__")
+    return __bag
+
+
+#define ds_bag_clear
+    ///ds_bag_clear(bag)
+    //clears a bag out.
+    
+    if (__gm82core_bag_check(argument0,"ds_bag_clear")) exit
+    ds_list_clear(argument0)
+    ds_list_add(argument0,"__gm82core_bag_marker__")
+
+
+#define ds_bag_remove
+    ///ds_bag_remove(bag,item)
+    //returns: whether the item was in the bag.
+    
+    if (__gm82core_bag_check(argument0,"ds_bag_remove")) exit
+    if (string(argument1)=="__gm82core_bag_marker__") {
+        show_error("in function ds_bag_remove: forbidden value",0)
+        exit
+    }
+    var __pos;__pos=ds_list_find_index(argument0,argument1)
+    if (__pos) {
+        ds_list_delete(argument0,argument1)
+        return 1
+    }
+    return 0
+    
+    
+#define ds_bag_destroy
+    ///ds_bag_destroy(bag)
+    //destroys a bag and frees the associated memory.
+    
+    if (__gm82core_bag_check(argument0,"ds_bag_destroy")) exit
+    ds_list_destroy(argument0)
+
+
+#define ds_bag_add
+    ///ds_bag_add(bag,item,[item...])
+    //bag: bag to add the item to
+    //items: items to add to the bag
+    //adds items to the bag.
+    
+    if (__gm82core_bag_check(argument[0],"ds_bag_add")) exit
+    ds_list_delete(argument[0],0)
+    var __i;__i=1 repeat (argument_count-1) {
+        if (string(argument[1])=="__gm82core_bag_marker__") {
+            show_error("in function ds_bag_add: forbidden value in argument "+string(__i),0)
+        } else {
+            ds_list_add(argument[0],argument[__i])
+        }
+    i+=1}
+    ds_list_shuffle(argument[0],0)
+    ds_list_insert(argument[0],0,"__gm82core_bag_marker__")
+
+
+#define ds_bag_grab
+    ///ds_bag_grab(bag)
+    //returns: item
+    //grabs an item out of the bag. if the bag is empty, an error is thrown.
+    
+    if (__gm82core_bag_check(argument0,"ds_bag_grab")) exit
+    
+    var __size;__size=ds_list_size(argument0)-1
+    if (size<1) {
+        show_error("in function ds_bag_grab: trying to grab from empty bag",0)
+        return undefined
+    }
+    var __pos;__pos=irandom_range(1,__size)
+    var __val;__val=ds_list_find_value(argument0,__pos)
+    ds_list_delete(argument0,__pos)
+    return __val
+
+
+#define ds_bag_size
+    ///ds_bag_size(bag)
+    //returns: size of a bag
+    
+    if (__gm82core_bag_check(argument0,"ds_bag_size")) exit
+    return ds_list_size(argument0)-1
+
+
+#define ds_bag_empty
+    ///ds_bag_empty(bag)
+    //returns: whether the bag is empty.
+    
+    if (__gm82core_bag_check(argument0,"ds_bag_empty")) exit
+    return (ds_list_size(argument0)==1)
 //
 //
