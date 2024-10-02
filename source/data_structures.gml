@@ -347,7 +347,7 @@
 
 
 #define __gm82core_bag_check
-    if (argument0>=0) if (ds_list_find_value(argument0,0)=="__gm82core_bag_marker") return 0
+    if (argument0>=0) if (ds_list_find_value(argument0,0)=="__gm82core_bag_marker__") return 0
     show_error("in function "+argument1+": structure "+string(argument0)+" is not a bag)",0)
     return 1
     
@@ -382,7 +382,7 @@
     }
     var __pos;__pos=ds_list_find_index(argument0,argument1)
     if (__pos) {
-        ds_list_delete(argument0,argument1)
+        ds_list_delete(argument0,__pos)
         return 1
     }
     return 0
@@ -410,8 +410,8 @@
         } else {
             ds_list_add(argument[0],argument[__i])
         }
-    i+=1}
-    ds_list_shuffle(argument[0],0)
+    __i+=1}
+    ds_list_shuffle(argument[0])
     ds_list_insert(argument[0],0,"__gm82core_bag_marker__")
 
 
@@ -423,7 +423,7 @@
     if (__gm82core_bag_check(argument0,"ds_bag_grab")) exit
     
     var __size;__size=ds_list_size(argument0)-1
-    if (size<1) {
+    if (__size<1) {
         show_error("in function ds_bag_grab: trying to grab from empty bag",0)
         return undefined
     }
