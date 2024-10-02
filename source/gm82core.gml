@@ -39,6 +39,13 @@
     globalvar __gm82core_compiler_args;
     globalvar __gm82core_compiler_return;
     
+    globalvar __gm82core_bigchoose_options;
+    globalvar __gm82core_bigchoose_weights;
+    globalvar __gm82core_bigchoose_optioncount;
+    globalvar __gm82core_bigchoose_weightsum;
+    globalvar __gm82core_bigchoose_is_weighted;
+    globalvar __gm82core_bigchoose_is_stale;
+    
     __gm82core_hrt_init()
     
     __s=surface_create(1,1)

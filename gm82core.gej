@@ -3,7 +3,7 @@
 	"folder": "gm82",
 	"version": "1.6",
 	"author": "renex, Floogle, Lovey01, cam900, Adamcake, YellowAfterlife, Verve",
-	"date": "13/09/2024",
+	"date": "02/10/2024",
 	"license": "Free to use, also for commercial games.",
 	"description": "Part of the standard Game Maker 8.2 distribution. This extension package contains a number of helper functions that are commonly used, and also geometry functions introduced in GM:Studio. This extension is also required for using the other GM 8.2 extensions, Sound and Joystick.",
 	"helpfile": "",
@@ -2121,6 +2121,42 @@
 						2,
 						2
 					],
+					"returntype": 2
+				},
+				{
+					"name": "bigchoose",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "bigchoose([option,option,...])",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
+					"name": "bigchoose_get",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "bigchoose_get()",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
+					"name": "bigchoose_weighted",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "bigchoose_weighted([option,weight],[option,weight],...)",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
+					"name": "bigchoose_weighted_get",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "bigchoose_weighted_get()",
+					"hidden": false,
+					"argtypes": [],
 					"returntype": 2
 				}
 			],
