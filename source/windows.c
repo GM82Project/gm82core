@@ -10,6 +10,7 @@ static WINDOWPLACEMENT placement;
 static double windows_version;
 
 static char regsz[4096];
+static char shortfn[MAX_PATH];
 
 //custom window procedure to ignore menu keys
 LRESULT CALLBACK RenexWndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam, UINT_PTR uIdSubclass, DWORD_PTR dwRefData) {
@@ -164,6 +165,11 @@ GMREAL __gm82core_remfonttemp(const char* fname) {
 	double out = (double)RemoveFontResourceW(wname);
 	free(wname);
     return out;
+}
+
+GMSTR __gm82core_shortfn(const char* fname) {
+	GetShortPathNameA(fname,shortfn,MAX_PATH);
+    return shortfn;
 }
 
 GMREAL __gm82core_execute_program_silent(const char* command) {
