@@ -25,6 +25,93 @@
     return argument[0]
 
 
+#define bigchoose
+    ///bigchoose([option,option,...])
+    if (argument_count==0) {
+        show_error("in function bigchoose: incorrect number of arguments.",0)
+        exit
+    }
+    
+    if (__gm82core_bigchoose_is_weighted || __gm82core_bigchoose_is_stale) {
+        __gm82core_bigchoose_is_weighted=false
+        __gm82core_bigchoose_is_stale=false
+        __gm82core_bigchoose_optioncount=0
+    }
+    
+    var __i;__i=0; repeat (argument_count) {
+        __gm82core_bigchoose_options[__gm82core_bigchoose_optioncount]=argument[__i]
+        __gm82core_bigchoose_optioncount+=1
+    __i+=1}
+
+
+#define bigchoose_get
+    ///bigchoose_get()
+    //grabs a result from previously filled bigchoose() options.
+    
+    if (__gm82core_bigchoose_is_weighted) {
+        show_error("in function bigchoose_get: bigchoose_weighted() was used to initialize options, use bigchoose_weighted_get() instead.",0)
+        return 0
+    }
+    if (__gm82core_bigchoose_optioncount==0) {
+        show_error("in function bigchoose_get: bigchoose() was not used to initialize options first.",0)
+        return 0
+    }
+    
+    __gm82core_bigchoose_is_stale=true
+    
+    return __gm82core_bigchoose_options[irandom(__gm82core_bigchoose_optioncount-1)]
+
+
+#define bigchoose_weighted
+    ///bigchoose_weighted([option,weight],[option,weight],...)
+    if (argument_count mod 2 || argument_count==0) {
+        show_error("in function bigchoose_weighted: incorrect number of arguments.",0)
+        exit
+    }
+    
+    if (!__gm82core_bigchoose_is_weighted || __gm82core_bigchoose_is_stale) {
+        __gm82core_bigchoose_is_weighted=true
+        __gm82core_bigchoose_is_stale=false
+        __gm82core_bigchoose_optioncount=0
+        __gm82core_bigchoose_weightsum=0
+    }
+    
+    var __i;__i=0; repeat (argument_count/2) {
+        __gm82core_bigchoose_options[__gm82core_bigchoose_optioncount]=argument[__i]
+        __gm82core_bigchoose_weights[__gm82core_bigchoose_optioncount]=argument[__i+1]
+        __gm82core_bigchoose_weightsum+=argument[__i+1]
+        __gm82core_bigchoose_optioncount+=1
+    __i+=2}
+
+
+#define bigchoose_weighted_get
+    ///bigchoose_weighted_get()
+    //grabs a result from previously filled bigchoose_weighted() options.
+    
+    if (!__gm82core_bigchoose_is_weighted) {
+        show_error("in function bigchoose_weighted_get: bigchoose() was used to initialize options, use bigchoose_get() instead.",0)
+        return 0
+    }
+    if (__gm82core_bigchoose_optioncount==0) {
+        show_error("in function bigchoose_weighted_get: bigchoose_weighted() was not used to initialize options first.",0)
+        return 0
+    }
+    
+    __gm82core_bigchoose_is_stale=true
+
+    var __n,__i;
+
+    __n=random(__gm82core_bigchoose_weightsum)
+    
+    __i=0 repeat (__gm82core_bigchoose_optioncount) {
+        if (__gm82core_bigchoose_weights[__i]<=0) continue
+        __n-=__gm82core_bigchoose_weights[__i]
+        if (__n<0) return __gm82core_bigchoose_options[__i]
+    __i+=1}
+
+    return __gm82core_bigchoose_options[0]
+
+
 #define color_blend
     ///color_blend(col1,col2)
     //col1,col2: colors to blend

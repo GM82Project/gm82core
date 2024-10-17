@@ -210,6 +210,8 @@
     __attr=argument2
     __recursive=argument3
     __excludedirs=argument4
+    
+    if (!string_pos(":",__root)) __root=working_directory+"\"+__root
 
     __list=ds_list_create()
 
