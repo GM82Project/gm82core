@@ -95,7 +95,7 @@
 #define mouse_back_button
     ///mouse_back_button()
     //returns: whether the mouse's back nav button is currently pressed.
-    if (gm82core_object.__gm82core_hasfocus) {
+    if (__gm82core_hasfocus) {
         keyboard_check_direct(5)
         return keyboard_check_direct(5)
     }
@@ -119,7 +119,7 @@
     ///mouse_forward_button()
     //returns: whether the mouse's forward nav button is currently pressed.
     
-    if (gm82core_object.__gm82core_hasfocus) {
+    if (__gm82core_hasfocus) {
         keyboard_check_direct(6)
         return keyboard_check_direct(6)
     }
@@ -192,7 +192,7 @@
     ///window_has_focus()
     //returns: whether the game window is currently in front and accepting input.
     
-    return gm82core_object.__gm82core_hasfocus
+    return __gm82core_hasfocus
 
 
 #define file_find_list

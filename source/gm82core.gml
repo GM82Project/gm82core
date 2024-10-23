@@ -30,6 +30,7 @@
     globalvar delta_time,fps_real,fps_fast;
     globalvar __gm82core_timer,__gm82core_fpsmem,__gm82core_fps_queue;
     globalvar __gm82core_pixel;
+    globalvar __gm82core_hasfocus;
     
     globalvar __gm82core_index_sprites; __gm82core_index_sprites=noone
     globalvar __gm82core_index_sounds; __gm82core_index_sounds=noone
