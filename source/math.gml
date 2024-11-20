@@ -112,6 +112,12 @@
     return __gm82core_bigchoose_options[0]
 
 
+#define bigchoose_clear
+    ///bigchoose_clear()
+    //Clears the state of bigchoose functions.
+    __gm82core_bigchoose_is_stale=true
+
+
 #define color_blend
     ///color_blend(col1,col2)
     //col1,col2: colors to blend
