@@ -3,7 +3,7 @@
 	"folder": "gm82",
 	"version": "1.6",
 	"author": "renex, Floogle, Lovey01, cam900, Adamcake, YellowAfterlife, Verve",
-	"date": "20/11/2024",
+	"date": "26/11/2024",
 	"license": "Free to use, also for commercial games.",
 	"description": "Part of the standard Game Maker 8.2 distribution. This extension package contains a number of helper functions that are commonly used, and also geometry functions introduced in GM:Studio. This extension is also required for using the other GM 8.2 extensions, Sound and Joystick.",
 	"helpfile": "",
@@ -2818,6 +2818,143 @@
 				}
 			],
 			"constants": []
+		},
+		{
+			"filename": "match.gml",
+			"origname": "C:\\Users\\rene\\Desktop\\github\\gm82core\\source\\match.gml",
+			"kind": 2,
+			"init": "",
+			"final": "",
+			"functions": [
+				{
+					"name": "match_any",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "match_any(substr,str)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "match_exact",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "match_exact(pattern,str)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "match_found",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "match_found([...])",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
+					"name": "match_not_any",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "match_not_any(pattern,str)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "match_not_exact",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "match_not_exact(pattern,str)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "match_not_some",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "match_not_some(pattern,str)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "match_some",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "match_some(substr,str)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2
+					],
+					"returntype": 2
+				}
+			],
+			"constants": [
+				{
+					"name": "match_lower",
+					"value": "\"abcdefghijklmnopqrstuvwxyz\"",
+					"hidden": false
+				},
+				{
+					"name": "match_upper",
+					"value": "\"ABCDEFGHIJKLMNOPQRSTUVWXYZ\"",
+					"hidden": false
+				},
+				{
+					"name": "match_letters",
+					"value": "match_lower+match_upper",
+					"hidden": false
+				},
+				{
+					"name": "match_digits",
+					"value": "\"0123456789\"",
+					"hidden": false
+				},
+				{
+					"name": "match_alphanum",
+					"value": "match_letters+match_digits",
+					"hidden": false
+				},
+				{
+					"name": "match_identifier",
+					"value": "match_alphanum+\"_\"",
+					"hidden": false
+				},
+				{
+					"name": "match_identifier_start",
+					"value": "match_letters+\"_\"",
+					"hidden": false
+				},
+				{
+					"name": "match_whitespace",
+					"value": "chr(9)+chr(10)+chr(13)+\" \"",
+					"hidden": false
+				},
+				{
+					"name": "match_quotes",
+					"value": "\"'\"+'\"'",
+					"hidden": false
+				}
+			]
 		}
 	]
 }
