@@ -447,5 +447,25 @@
     
     if (__gm82core_bag_check(argument0,"ds_bag_empty")) exit
     return (ds_list_size(argument0)==1)
+
+
+#define ds_map_read_safe
+    ///ds_map_read_safe(map,str)
+    //map: empty ds_map
+    //str: string to read
+    //returns: success
+    //Cehcks if a string is supposedly a valid written dsmap before attempting to read it.
+    var str,i,l;
+
+    str=string(argument1)
+    l=string_length(str)
+    if (l mod 2) return 0
+
+    //check first and last 16 characters only for speed
+    for (i=1;i<=16;i+=1) if (!string_pos(string_char_at(str,i),"0123456789ABCDEF")) return 0
+    for (i=l;i>=l-16;i-=1) if (!string_pos(string_char_at(str,i),"0123456789ABCDEF")) return 0
+
+    ds_map_read(argument0,str)
+    return 1
 //
 //
