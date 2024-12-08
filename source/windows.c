@@ -75,8 +75,6 @@ GMREAL __gm82core_checkstart(double gm_hwnd) {
     return 1;
 }
 
-/*-*/
-
 
 GMREAL __gm82core_getmaximized() {
     ///window_is_maximized()
