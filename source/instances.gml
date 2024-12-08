@@ -474,5 +474,20 @@
     with (object_index) if (__gm82core_recurse) if (instance_place(x,y+1,other.id)) __gm82core_recursive_group_assign(argument0)
 
     variable_local_set(argument0,global.__gm82core_groupid)    
+
+
+#define move_wrap
+    ///move_wrap(hor,vert,margin)
+    var __margin;__margin=argument1
+    if (argument0) {
+        //horizontal
+        if (bbox_right+1<-__margin) x+=room_width+__margin-bbox_left
+        else if (bbox_left>room_width+__margin) x-=bbox_right+1+__margin
+    }
+    if (argument1) {
+        //vertical
+        if (bbox_bottom+1<-__margin) y+=room_height+__margin-bbox_top
+        else if (bbox_top>room_height+__margin) y-=bbox_bottom+1+__margin
+    }
 //
 //
