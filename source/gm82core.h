@@ -17,6 +17,7 @@
 #pragma comment(lib, "GDI32.lib")
 #pragma comment(lib, "comctl32.lib")
 #pragma comment(lib, "ntdll.lib")
+#pragma comment(lib, "Kernel32.lib")
 
 #define GMREAL __declspec(dllexport) double __cdecl
 #define GMSTR __declspec(dllexport) char* __cdecl

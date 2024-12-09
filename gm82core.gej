@@ -298,6 +298,17 @@
 					"returntype": 2
 				},
 				{
+					"name": "filename_short",
+					"extname": "__gm82core_shortfn",
+					"calltype": 12,
+					"helpline": "filename_short(fname)",
+					"hidden": false,
+					"argtypes": [
+						1
+					],
+					"returntype": 1
+				},
+				{
 					"name": "file_get_timestamp",
 					"extname": "",
 					"calltype": 12,
@@ -329,6 +340,24 @@
 						2,
 						2
 					],
+					"returntype": 2
+				},
+				{
+					"name": "get_battery_level",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "get_battery_level()",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
+					"name": "get_battery_status",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "get_battery_status()",
+					"hidden": false,
+					"argtypes": [],
 					"returntype": 2
 				},
 				{
@@ -383,6 +412,32 @@
 					"helpline": "",
 					"hidden": false,
 					"argtypes": [],
+					"returntype": 2
+				},
+				{
+					"name": "inch",
+					"extname": "approach",
+					"calltype": 12,
+					"helpline": "",
+					"hidden": true,
+					"argtypes": [
+						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "inch_angle",
+					"extname": "approach_angle",
+					"calltype": 12,
+					"helpline": "",
+					"hidden": true,
+					"argtypes": [
+						2,
+						2,
+						2
+					],
 					"returntype": 2
 				},
 				{
@@ -495,6 +550,19 @@
 					"extname": "",
 					"calltype": 12,
 					"helpline": "modwrap(val,min,max)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "perlin_noise",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "perlin_noise(x,y,z)",
 					"hidden": false,
 					"argtypes": [
 						2,
@@ -1052,45 +1120,6 @@
 					"returntype": 2
 				},
 				{
-					"name": "__registry_write_dword",
-					"extname": "",
-					"calltype": 12,
-					"helpline": "",
-					"hidden": true,
-					"argtypes": [
-						1,
-						1,
-						2
-					],
-					"returntype": 2
-				},
-				{
-					"name": "inch",
-					"extname": "approach",
-					"calltype": 12,
-					"helpline": "",
-					"hidden": true,
-					"argtypes": [
-						2,
-						2,
-						2
-					],
-					"returntype": 2
-				},
-				{
-					"name": "inch_angle",
-					"extname": "approach_angle",
-					"calltype": 12,
-					"helpline": "",
-					"hidden": true,
-					"argtypes": [
-						2,
-						2,
-						2
-					],
-					"returntype": 2
-				},
-				{
 					"name": "__registry_read_sz",
 					"extname": "",
 					"calltype": 12,
@@ -1103,28 +1132,17 @@
 					"returntype": 1
 				},
 				{
-					"name": "perlin_noise",
+					"name": "__registry_write_dword",
 					"extname": "",
 					"calltype": 12,
-					"helpline": "perlin_noise(x,y,z)",
-					"hidden": false,
+					"helpline": "",
+					"hidden": true,
 					"argtypes": [
-						2,
-						2,
+						1,
+						1,
 						2
 					],
 					"returntype": 2
-				},
-				{
-					"name": "filename_short",
-					"extname": "__gm82core_shortfn",
-					"calltype": 12,
-					"helpline": "filename_short(fname)",
-					"hidden": false,
-					"argtypes": [
-						1
-					],
-					"returntype": 1
 				}
 			],
 			"constants": []

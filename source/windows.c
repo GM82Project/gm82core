@@ -383,3 +383,17 @@ GMREAL date_get_current_timezone() {
    
     return -timezone;
 }
+
+GMREAL get_battery_level() {
+    SYSTEM_POWER_STATUS status;
+    GetSystemPowerStatus(&status);
+    return status.BatteryLifePercent;
+}
+
+GMREAL get_battery_status() {
+    SYSTEM_POWER_STATUS status;
+    GetSystemPowerStatus(&status);
+    if (status.BatteryFlag>=128) return 0;
+    if (status.ACLineStatus==1) return 2;
+    return 1;
+}
