@@ -385,12 +385,17 @@ GMREAL date_get_current_timezone() {
 }
 
 GMREAL get_battery_level() {
+    ///get_battery_level()
+    //returns: battery percentage, or 0 when using AC power.
     SYSTEM_POWER_STATUS status;
     GetSystemPowerStatus(&status);
+    if (status.BatteryFlag>=128) return 0;
     return status.BatteryLifePercent;
 }
 
 GMREAL get_battery_status() {
+    ///get_battery_status()
+    //returns: 0 for no battery, 1 for battery power, 2 for battery charging
     SYSTEM_POWER_STATUS status;
     GetSystemPowerStatus(&status);
     if (status.BatteryFlag>=128) return 0;
