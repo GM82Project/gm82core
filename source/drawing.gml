@@ -103,6 +103,12 @@
     draw_sprite_ext(sprite_index,-1,floor(x),floor(y),image_xscale,image_yscale,image_angle,image_blend,image_alpha)
 
 
+#define draw_self_blend
+    ///draw_self_blend(color,alpha)
+    //Draws the instance with a different blend.
+    draw_sprite_ext(sprite_index,-1,x,y,image_xscale,image_yscale,image_angle,argument0,argument1)
+
+
 #define draw_set1
     ///draw_set1(color,alpha)
     //color,alpha: blend to use

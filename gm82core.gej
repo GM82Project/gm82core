@@ -1697,6 +1697,18 @@
 					"returntype": 2
 				},
 				{
+					"name": "draw_self_blend",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "draw_self_blend(color,alpha)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
 					"name": "draw_self_floored",
 					"extname": "",
 					"calltype": 2,
