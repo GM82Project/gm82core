@@ -94,25 +94,25 @@
     //Draws the instance using a different sprite.
     var __img;__img=-1
     if (argument_count>1) __img=floor(argument1)
-    draw_sprite_ext(argument0,__img,x,y,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+    if (argument0>=0) draw_sprite_ext(argument0,__img,x,y,image_xscale,image_yscale,image_angle,image_blend,image_alpha)
 
 
 #define draw_self_floored
     ///draw_self_floored()
     //Draws the instance at a floored coordinate.
-    draw_sprite_ext(sprite_index,-1,floor(x),floor(y),image_xscale,image_yscale,image_angle,image_blend,image_alpha)
+    if (sprite_index>=0) draw_sprite_ext(sprite_index,-1,floor(x),floor(y),image_xscale,image_yscale,image_angle,image_blend,image_alpha)
 
 
 #define draw_self_blend
     ///draw_self_blend(color,alpha)
     //Draws the instance with a different blend.
-    draw_sprite_ext(sprite_index,-1,x,y,image_xscale,image_yscale,image_angle,argument0,argument1)
+    if (sprite_index>=0) draw_sprite_ext(sprite_index,-1,x,y,image_xscale,image_yscale,image_angle,argument0,argument1)
 
 
 #define draw_self_ext
-    ///draw_self_blend(xscale,yscale,angle,color,alpha)
+    ///draw_self_ext(xscale,yscale,angle,color,alpha)
     //Draws the instance with different properties.
-    draw_sprite_ext(sprite_index,-1,x,y,argument0,argument1,argument2,argument3,argument4)
+    if (sprite_index>=0) draw_sprite_ext(sprite_index,-1,x,y,argument0,argument1,argument2,argument3,argument4)
 
 
 #define draw_set1
