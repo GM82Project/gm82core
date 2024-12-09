@@ -109,6 +109,12 @@
     draw_sprite_ext(sprite_index,-1,x,y,image_xscale,image_yscale,image_angle,argument0,argument1)
 
 
+#define draw_self_ext
+    ///draw_self_blend(xscale,yscale,angle,color,alpha)
+    //Draws the instance with different properties.
+    draw_sprite_ext(sprite_index,-1,x,y,argument0,argument1,argument2,argument3,argument4)
+
+
 #define draw_set1
     ///draw_set1(color,alpha)
     //color,alpha: blend to use
