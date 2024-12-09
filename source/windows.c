@@ -397,3 +397,11 @@ GMREAL get_battery_status() {
     if (status.ACLineStatus==1) return 2;
     return 1;
 }
+
+GMREAL get_system_region() {
+    return (double)(int)GetUserDefaultLCID();    
+}
+
+GMREAL get_system_language() {
+    return (double)(int)GetUserDefaultUILanguage();    
+}

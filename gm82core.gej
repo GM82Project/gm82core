@@ -3,7 +3,7 @@
 	"folder": "gm82",
 	"version": "1.6",
 	"author": "renex, Floogle, Lovey01, cam900, Adamcake, YellowAfterlife, Verve",
-	"date": "08/12/2024",
+	"date": "09/12/2024",
 	"license": "Free to use, also for commercial games.",
 	"description": "Part of the standard Game Maker 8.2 distribution. This extension package contains a number of helper functions that are commonly used, and also geometry functions introduced in GM:Studio. This extension is also required for using the other GM 8.2 extensions, Sound and Joystick.",
 	"helpfile": "",
@@ -379,6 +379,24 @@
 					"returntype": 2
 				},
 				{
+					"name": "get_system_language",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "get_system_language()",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
+					"name": "get_system_region",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "get_system_region()",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
 					"name": "get_timer",
 					"extname": "hrt_now",
 					"calltype": 12,
@@ -556,6 +574,24 @@
 						2,
 						2
 					],
+					"returntype": 2
+				},
+				{
+					"name": "os_get_language",
+					"extname": "get_system_language",
+					"calltype": 12,
+					"helpline": "",
+					"hidden": true,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
+					"name": "os_get_region",
+					"extname": "get_system_region",
+					"calltype": 12,
+					"helpline": "",
+					"hidden": true,
+					"argtypes": [],
 					"returntype": 2
 				},
 				{
