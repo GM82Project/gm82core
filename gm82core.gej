@@ -123,6 +123,21 @@
 					"returntype": 2
 				},
 				{
+					"name": "clerp2",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "clerp2(fromA,fromB,toA,toB,value)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
 					"name": "color_inverse",
 					"extname": "",
 					"calltype": 12,
@@ -307,6 +322,17 @@
 						1
 					],
 					"returntype": 1
+				},
+				{
+					"name": "file_create",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "file_create(filename)",
+					"hidden": false,
+					"argtypes": [
+						1
+					],
+					"returntype": 2
 				},
 				{
 					"name": "file_get_timestamp",
@@ -1177,17 +1203,6 @@
 						1,
 						1,
 						2
-					],
-					"returntype": 2
-				},
-				{
-					"name": "file_create",
-					"extname": "",
-					"calltype": 12,
-					"helpline": "file_create(filename)",
-					"hidden": false,
-					"argtypes": [
-						1
 					],
 					"returntype": 2
 				}

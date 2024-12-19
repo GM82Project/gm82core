@@ -59,6 +59,19 @@ GMREAL lerp2(double fromA, double fromB, double toA, double toB, double value) {
     return ((value-fromA)/(fromB-fromA))*(toB-toA)+toA;
 }
 
+GMREAL clerp2(double fromA, double fromB, double toA, double toB, double value) {
+    ///clerp2(fromA,fromB,toA,toB,value)
+    //fromA: start value from
+    //fromB: end value from
+    //toA: start value to
+    //toB: end value to
+    //value: value to project
+    //returns: projected value, clamped to the 'to' values
+    //Projects 'value' from line segment 'from' to segment 'to'.
+    
+    return max(toA,min(toB,((value-fromA)/(fromB-fromA))*(toB-toA)+toA));
+}
+
 GMREAL unlerp(double a, double b, double val) {
     ///unlerp(a,b,val)
     //a: start value
