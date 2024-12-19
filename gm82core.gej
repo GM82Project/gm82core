@@ -3,7 +3,7 @@
 	"folder": "gm82",
 	"version": "1.6",
 	"author": "renex, Floogle, Lovey01, cam900, Adamcake, YellowAfterlife, Verve",
-	"date": "09/12/2024",
+	"date": "19/12/2024",
 	"license": "Free to use, also for commercial games.",
 	"description": "Part of the standard Game Maker 8.2 distribution. This extension package contains a number of helper functions that are commonly used, and also geometry functions introduced in GM:Studio. This extension is also required for using the other GM 8.2 extensions, Sound and Joystick.",
 	"helpfile": "",
@@ -1177,6 +1177,17 @@
 						1,
 						1,
 						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "file_create",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "file_create(filename)",
+					"hidden": false,
+					"argtypes": [
+						1
 					],
 					"returntype": 2
 				}
@@ -2645,6 +2656,18 @@
 					"returntype": 2
 				},
 				{
+					"name": "file_text_write_all",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "file_text_write_all(filename,string)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
 					"name": "font_add_file",
 					"extname": "",
 					"calltype": 2,
@@ -2709,6 +2732,15 @@
 					"returntype": 2
 				},
 				{
+					"name": "registry_read_sz",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "registry_read_sz(key,[default])",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
 					"name": "registry_write_dword",
 					"extname": "",
 					"calltype": 2,
@@ -2738,27 +2770,6 @@
 					"helpline": "window_has_focus()",
 					"hidden": false,
 					"argtypes": [],
-					"returntype": 2
-				},
-				{
-					"name": "file_text_write_all",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "file_text_write_all(filename,string)",
-					"hidden": false,
-					"argtypes": [
-						2,
-						2
-					],
-					"returntype": 2
-				},
-				{
-					"name": "registry_read_sz",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "registry_read_sz(key,[default])",
-					"hidden": false,
-					"argtypes": null,
 					"returntype": 2
 				}
 			],

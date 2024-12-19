@@ -410,3 +410,17 @@ GMREAL get_system_region() {
 GMREAL get_system_language() {
     return (double)(int)GetUserDefaultUILanguage();    
 }
+
+GMREAL file_create(const char *filename) {
+    ///file_create(filename)
+    //filename: the name of the file to create
+    //returns: whether creating the file was successful
+    FILE *file;
+    file=fopen(filename, "a, ccs=UTF-8");
+    if (file) {
+        fclose(file);
+        return 1;
+    } else {
+        return 0;
+    }
+}
