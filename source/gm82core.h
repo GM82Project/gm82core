@@ -11,6 +11,8 @@
 #include <psapi.h>
 #include <wingdi.h>
 #include <commctrl.h>
+#include <stdint.h>
+#include <stdlib.h>
 
 #pragma comment(lib, "advapi32.lib")
 #pragma comment(lib, "user32.lib")

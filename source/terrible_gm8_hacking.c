@@ -1,5 +1,8 @@
 #include "gm82core.h"
 
+
+//room end clear hack
+
 void* io_clear_addr = (void*)0x606865;
 const char io_clear_code[] = {0xfb, 0x00};
 const char io_not_clear_code[] = {0x0b, 0x01};
@@ -21,8 +24,141 @@ GMREAL io_set_roomend_clear(double enabled) {
     return 0;
 }
 
-/*
-const void* delphi_clear = (void*)0x4072d8;
+
+//included files hacking
+
+typedef struct TMemoryStream {
+    uint32_t vfp;
+    void* memory;
+    uint32_t size;
+    uint32_t position;
+    uint32_t capacity;
+} TMemoryStream;
+
+typedef struct IncludeFile {
+    uint32_t unknown0;
+    LPWSTR filename;
+    LPWSTR origname;
+    char has_data;
+    uint32_t size;
+    uint32_t store;
+    TMemoryStream* tmemstream;
+    uint32_t exportaction;
+    uint32_t export_to;
+    LPWSTR export_folder;
+    char overwrite_if_exists;
+    char free_after_export;
+    char delete_on_game_end;
+} IncludeFile;
+
+int* if_count_addr = (int*)0x6886fc;
+IncludeFile*** include_files = (IncludeFile***)0x6886f8;
+
+char if_filename_converted[1024];
+char* returned_string=NULL;
+
+int __gm82core_get_if_by_name(const char* filename) {
+    for (int i=0;i<*if_count_addr;i++) {
+        IncludeFile* file=(*include_files)[(int)i];
+
+        wcstombs(if_filename_converted, file->filename, 1024);
+        
+        if (strcmp(if_filename_converted,filename)==0) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+
+GMREAL include_file_count() {
+    ///include_file_count()
+    //returns the number of included files.
+    
+    return (double)*if_count_addr;
+}
+
+GMREAL include_file_exists(const char* filename) {
+    ///include_file_exists(filename)
+    //filename: name of the included file to check
+    //returns: whether the file exists
+    
+    return (__gm82core_get_if_by_name(filename)!=-1);
+}
+
+GMSTR include_file_name(double index) {
+    ///include_file_name(index)
+    //index: index of the included file to query
+    //returns: name of the included file, or an empty string if the file does not exist
+    
+    if ((int)index<*if_count_addr && (int)index>=0) {
+        IncludeFile* file=(*include_files)[(int)index];
+
+        wcstombs(if_filename_converted, file->filename, 1024);        
+        
+        return if_filename_converted;
+    }
+    return "";
+}
+
+GMREAL include_file_size(const char* filename) {
+    ///include_file_size(filename)
+    //filename: name of the included file to check
+    //returns: size of the included file, or 0 if the file does not exist
+    
+    int index=__gm82core_get_if_by_name(filename);
+    
+    if (index!=-1) {
+        IncludeFile* file=(*include_files)[(int)index];
+
+        return file->size;
+    }
+    return 0;
+}
+
+GMSTR include_file_get_string(const char* filename) {
+    ///include_file_get_string(filename)
+    //filename: name of the included file to check
+    //returns: complete contents of the included file as a string, or an empty string if the file does not exist
+    
+    int index=__gm82core_get_if_by_name(filename);
+    
+    if (index!=-1) {
+        IncludeFile* file=(*include_files)[(int)index];
+        
+        if (file->has_data==0) return "";
+        
+        if (returned_string) free(returned_string);
+        returned_string = (char*)malloc(file->size+1);
+        memcpy(returned_string,file->tmemstream->memory,file->size);
+        returned_string[file->size]=0;
+        
+        return returned_string;
+    }
+    return "";
+}
+
+GMREAL __gm82core_include_file_get_buffer(const char* filename,double buffer) {
+    int index=__gm82core_get_if_by_name(filename);
+    
+    if (index!=-1) {
+        IncludeFile* file=(*include_files)[(int)index];
+        
+        if (file->has_data==0) return 0;
+        char* dest=(char*)(int)buffer;
+
+        memcpy(dest,file->tmemstream->memory,file->size);
+        
+        return 1;
+
+    }
+    return 0;
+}
+
+
+//Nasty Ass Runner Shenanigans
+
+/*const void* delphi_clear = (void*)0x4072d8;
 static char* retstr = NULL;
 
 typedef struct {

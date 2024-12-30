@@ -3,7 +3,7 @@
 	"folder": "gm82",
 	"version": "1.6",
 	"author": "renex, Floogle, Lovey01, cam900, Adamcake, YellowAfterlife, Verve",
-	"date": "19/12/2024",
+	"date": "30/12/2024",
 	"license": "Free to use, also for commercial games.",
 	"description": "Part of the standard Game Maker 8.2 distribution. This extension package contains a number of helper functions that are commonly used, and also geometry functions introduced in GM:Studio. This extension is also required for using the other GM 8.2 extensions, such as Sound, Joystick, DX9 and many more.",
 	"helpfile": "",
@@ -481,6 +481,59 @@
 						2,
 						2,
 						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "include_file_count",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "include_file_count()",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
+					"name": "include_file_exists",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "include_file_exists(filename)",
+					"hidden": false,
+					"argtypes": [
+						1
+					],
+					"returntype": 2
+				},
+				{
+					"name": "include_file_get_string",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "include_file_get_string(filename)",
+					"hidden": false,
+					"argtypes": [
+						1
+					],
+					"returntype": 1
+				},
+				{
+					"name": "include_file_name",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "include_file_name(index)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 1
+				},
+				{
+					"name": "include_file_size",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "include_file_size(filename)",
+					"hidden": false,
+					"argtypes": [
+						1
 					],
 					"returntype": 2
 				},
@@ -1119,6 +1172,18 @@
 					"returntype": 2
 				},
 				{
+					"name": "__gm82core_include_file_get_buffer",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "",
+					"hidden": true,
+					"argtypes": [
+						1,
+						2
+					],
+					"returntype": 2
+				},
+				{
 					"name": "__gm82core_remfonttemp",
 					"extname": "",
 					"calltype": 12,
@@ -1377,6 +1442,69 @@
 					"hidden": false,
 					"argtypes": [
 						2,
+						2
+					],
+					"returntype": 2
+				}
+			],
+			"constants": []
+		},
+		{
+			"filename": "compiler.gml",
+			"origname": "source\\compiler.gml",
+			"kind": 2,
+			"init": "",
+			"final": "",
+			"functions": [
+				{
+					"name": "code_compile",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "code_compile(string)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "code_destroy",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "code_destroy(code)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "code_execute",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "code_execute(code,[arg0,arg1...])",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
+					"name": "code_get_argcount",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "code_get_argcount(code)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "code_return",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "",
+					"hidden": true,
+					"argtypes": [
 						2
 					],
 					"returntype": 2
@@ -1962,6 +2090,126 @@
 			]
 		},
 		{
+			"filename": "included.gml",
+			"origname": "C:\\Stuff\\github\\gm82core\\source\\included.gml",
+			"kind": 2,
+			"init": "",
+			"final": "",
+			"functions": [
+				{
+					"name": "include_file_get_buffer",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "include_file_get_buffer(filename,buffer)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2
+					],
+					"returntype": 2
+				}
+			],
+			"constants": []
+		},
+		{
+			"filename": "indexing.gml",
+			"origname": "source\\indexing.gml",
+			"kind": 2,
+			"init": "",
+			"final": "",
+			"functions": [
+				{
+					"name": "sprite_find",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "sprite_find(name)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "sound_find",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "sound_find(name)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "background_find",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "background_find(name)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "path_find",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "path_find(name)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "font_find",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "font_find(name)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "timeline_find",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "timeline_find(name)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "object_find",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "object_find(name)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "room_find",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "room_find(name)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				}
+			],
+			"constants": []
+		},
+		{
 			"filename": "instances.gml",
 			"origname": "source\\instances.gml",
 			"kind": 2,
@@ -2220,6 +2468,143 @@
 				}
 			],
 			"constants": []
+		},
+		{
+			"filename": "match.gml",
+			"origname": "source\\match.gml",
+			"kind": 2,
+			"init": "",
+			"final": "",
+			"functions": [
+				{
+					"name": "match_any",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "match_any(substr,str)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "match_exact",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "match_exact(pattern,str)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "match_found",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "match_found([...])",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
+					"name": "match_not_any",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "match_not_any(pattern,str)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "match_not_exact",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "match_not_exact(pattern,str)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "match_not_some",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "match_not_some(pattern,str)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "match_some",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "match_some(substr,str)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2
+					],
+					"returntype": 2
+				}
+			],
+			"constants": [
+				{
+					"name": "match_lower",
+					"value": "\"abcdefghijklmnopqrstuvwxyz\"",
+					"hidden": false
+				},
+				{
+					"name": "match_upper",
+					"value": "\"ABCDEFGHIJKLMNOPQRSTUVWXYZ\"",
+					"hidden": false
+				},
+				{
+					"name": "match_letters",
+					"value": "match_lower+match_upper",
+					"hidden": false
+				},
+				{
+					"name": "match_digits",
+					"value": "\"0123456789\"",
+					"hidden": false
+				},
+				{
+					"name": "match_alphanum",
+					"value": "match_letters+match_digits",
+					"hidden": false
+				},
+				{
+					"name": "match_identifier",
+					"value": "match_alphanum+\"_\"",
+					"hidden": false
+				},
+				{
+					"name": "match_identifier_start",
+					"value": "match_letters+\"_\"",
+					"hidden": false
+				},
+				{
+					"name": "match_whitespace",
+					"value": "chr(9)+chr(10)+chr(13)+\" \"",
+					"hidden": false
+				},
+				{
+					"name": "match_quotes",
+					"value": "\"'\"+'\"'",
+					"hidden": false
+				}
+			]
 		},
 		{
 			"filename": "math.gml",
@@ -2789,304 +3174,6 @@
 				}
 			],
 			"constants": []
-		},
-		{
-			"filename": "indexing.gml",
-			"origname": "source\\indexing.gml",
-			"kind": 2,
-			"init": "",
-			"final": "",
-			"functions": [
-				{
-					"name": "sprite_find",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "sprite_find(name)",
-					"hidden": false,
-					"argtypes": [
-						2
-					],
-					"returntype": 2
-				},
-				{
-					"name": "sound_find",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "sound_find(name)",
-					"hidden": false,
-					"argtypes": [
-						2
-					],
-					"returntype": 2
-				},
-				{
-					"name": "background_find",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "background_find(name)",
-					"hidden": false,
-					"argtypes": [
-						2
-					],
-					"returntype": 2
-				},
-				{
-					"name": "path_find",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "path_find(name)",
-					"hidden": false,
-					"argtypes": [
-						2
-					],
-					"returntype": 2
-				},
-				{
-					"name": "font_find",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "font_find(name)",
-					"hidden": false,
-					"argtypes": [
-						2
-					],
-					"returntype": 2
-				},
-				{
-					"name": "timeline_find",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "timeline_find(name)",
-					"hidden": false,
-					"argtypes": [
-						2
-					],
-					"returntype": 2
-				},
-				{
-					"name": "object_find",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "object_find(name)",
-					"hidden": false,
-					"argtypes": [
-						2
-					],
-					"returntype": 2
-				},
-				{
-					"name": "room_find",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "room_find(name)",
-					"hidden": false,
-					"argtypes": [
-						2
-					],
-					"returntype": 2
-				}
-			],
-			"constants": []
-		},
-		{
-			"filename": "compiler.gml",
-			"origname": "source\\compiler.gml",
-			"kind": 2,
-			"init": "",
-			"final": "",
-			"functions": [
-				{
-					"name": "code_compile",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "code_compile(string)",
-					"hidden": false,
-					"argtypes": [
-						2
-					],
-					"returntype": 2
-				},
-				{
-					"name": "code_destroy",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "code_destroy(code)",
-					"hidden": false,
-					"argtypes": [
-						2
-					],
-					"returntype": 2
-				},
-				{
-					"name": "code_execute",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "code_execute(code,[arg0,arg1...])",
-					"hidden": false,
-					"argtypes": null,
-					"returntype": 2
-				},
-				{
-					"name": "code_get_argcount",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "code_get_argcount(code)",
-					"hidden": false,
-					"argtypes": [
-						2
-					],
-					"returntype": 2
-				},
-				{
-					"name": "code_return",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "",
-					"hidden": true,
-					"argtypes": [
-						2
-					],
-					"returntype": 2
-				}
-			],
-			"constants": []
-		},
-		{
-			"filename": "match.gml",
-			"origname": "source\\match.gml",
-			"kind": 2,
-			"init": "",
-			"final": "",
-			"functions": [
-				{
-					"name": "match_any",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "match_any(substr,str)",
-					"hidden": false,
-					"argtypes": [
-						2,
-						2
-					],
-					"returntype": 2
-				},
-				{
-					"name": "match_exact",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "match_exact(pattern,str)",
-					"hidden": false,
-					"argtypes": [
-						2,
-						2
-					],
-					"returntype": 2
-				},
-				{
-					"name": "match_found",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "match_found([...])",
-					"hidden": false,
-					"argtypes": null,
-					"returntype": 2
-				},
-				{
-					"name": "match_not_any",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "match_not_any(pattern,str)",
-					"hidden": false,
-					"argtypes": [
-						2,
-						2
-					],
-					"returntype": 2
-				},
-				{
-					"name": "match_not_exact",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "match_not_exact(pattern,str)",
-					"hidden": false,
-					"argtypes": [
-						2,
-						2
-					],
-					"returntype": 2
-				},
-				{
-					"name": "match_not_some",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "match_not_some(pattern,str)",
-					"hidden": false,
-					"argtypes": [
-						2,
-						2
-					],
-					"returntype": 2
-				},
-				{
-					"name": "match_some",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "match_some(substr,str)",
-					"hidden": false,
-					"argtypes": [
-						2,
-						2
-					],
-					"returntype": 2
-				}
-			],
-			"constants": [
-				{
-					"name": "match_lower",
-					"value": "\"abcdefghijklmnopqrstuvwxyz\"",
-					"hidden": false
-				},
-				{
-					"name": "match_upper",
-					"value": "\"ABCDEFGHIJKLMNOPQRSTUVWXYZ\"",
-					"hidden": false
-				},
-				{
-					"name": "match_letters",
-					"value": "match_lower+match_upper",
-					"hidden": false
-				},
-				{
-					"name": "match_digits",
-					"value": "\"0123456789\"",
-					"hidden": false
-				},
-				{
-					"name": "match_alphanum",
-					"value": "match_letters+match_digits",
-					"hidden": false
-				},
-				{
-					"name": "match_identifier",
-					"value": "match_alphanum+\"_\"",
-					"hidden": false
-				},
-				{
-					"name": "match_identifier_start",
-					"value": "match_letters+\"_\"",
-					"hidden": false
-				},
-				{
-					"name": "match_whitespace",
-					"value": "chr(9)+chr(10)+chr(13)+\" \"",
-					"hidden": false
-				},
-				{
-					"name": "match_quotes",
-					"value": "\"'\"+'\"'",
-					"hidden": false
-				}
-			]
 		}
 	]
 }
