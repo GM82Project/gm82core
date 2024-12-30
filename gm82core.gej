@@ -2091,7 +2091,7 @@
 		},
 		{
 			"filename": "included.gml",
-			"origname": "C:\\Stuff\\github\\gm82core\\source\\included.gml",
+			"origname": "source\\included.gml",
 			"kind": 2,
 			"init": "",
 			"final": "",
