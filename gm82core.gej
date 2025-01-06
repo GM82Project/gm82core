@@ -3,7 +3,7 @@
 	"folder": "gm82",
 	"version": "1.6",
 	"author": "renex, Floogle, Lovey01, cam900, Adamcake, YellowAfterlife, Verve",
-	"date": "05/01/2025",
+	"date": "06/01/2025",
 	"license": "Free to use, also for commercial games.",
 	"description": "Part of the standard Game Maker 8.2 distribution. This extension package contains a number of helper functions that are commonly used, and also geometry functions introduced in GM:Studio. This extension is also required for using the other GM 8.2 extensions, such as Sound, Joystick, DX9 and many more.",
 	"helpfile": "",
@@ -3085,6 +3085,43 @@
 					"returntype": 2
 				},
 				{
+					"name": "font_add_winui",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "font_add_winui(filename)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "get_open_filename_ext",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "get_open_filename_ext(filter,filename,startdir)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "get_save_filename_ext",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "get_save_filename_ext(filter,filename,startdir)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
 					"name": "mouse_back_button",
 					"extname": "",
 					"calltype": 2,
@@ -3170,17 +3207,6 @@
 					"helpline": "window_has_focus()",
 					"hidden": false,
 					"argtypes": [],
-					"returntype": 2
-				},
-				{
-					"name": "font_add_winui",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "font_add_winui(filename)",
-					"hidden": false,
-					"argtypes": [
-						2
-					],
 					"returntype": 2
 				}
 			],

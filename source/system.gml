@@ -250,5 +250,21 @@
     
     if (file_exists(__fon)) __gm82core_addfonttemp(__fon)
     else show_error("In function font_add_winui: font file '"+__fon+"' does not exist.",0)
+
+
+#define get_open_filename_ext
+    ///get_open_filename_ext(filter,filename,startdir)
+    var __old_wdir;__old_wdir=working_directory
+    set_working_directory(argument2)
+    get_open_filename(argument0,argument1)
+    set_working_directory(__old_wdir)
+
+
+#define get_save_filename_ext
+    ///get_save_filename_ext(filter,filename,startdir)
+    var __old_wdir;__old_wdir=working_directory
+    set_working_directory(argument2)
+    get_save_filename(argument0,argument1)
+    set_working_directory(__old_wdir)
 //
 //
