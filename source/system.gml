@@ -238,5 +238,17 @@
     } until (__folders==0)
 
     return __list
+
+
+#define font_add_winui
+    ///font_add_winui(filename)
+    //filename: path to ttf or fon file
+    //Temporarily loads a font for use in Windows api stuff like in message boxes.
+    var __fon;__fon=string(argument0)
+    
+    if (!string_pos(":",__fon)) __fon=working_directory+"\"+__fon
+    
+    if (file_exists(__fon)) __gm82core_addfonttemp(__fon)
+    else show_error("In function font_add_winui: font file '"+__fon+"' does not exist.",0)
 //
 //
