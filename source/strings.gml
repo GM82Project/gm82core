@@ -216,5 +216,125 @@
     __i+=1}
 
     return __str
+
+
+#define string_justify
+    ///string_justify(string,width)
+    //string: text to process
+    //width: size in pixels to fit text
+    //returns: adjusted string
+    //Inserts spaces into a string to make it fit a certain width.
+    var __str,__w;
+
+    __str=string_trim(argument0)
+    __w=argument1
+
+    var __oldstr,__sc,__space,__i,__cursp,__par;
+    __oldstr=__str
+
+    __sc=0
+    __i=1 repeat (string_length(__str)) {
+        if (string_char_at(__str,__i)==" ") {
+            __space[__sc]=__i
+            __sc+=1
+            do {__i+=1} until (string_char_at(__str,__i)!=" ")
+        }
+    __i+=1}
+
+    if (__sc==0 or string_width(" ")<=0) return __str
+
+    __cursp=0 __par=0
+    while (string_width(__str)<__w) {
+        __oldstr=__str           
+        __str=string_insert(" ",__str,__space[__cursp])     
+        __i=__cursp repeat (__sc-__i) {__space[__i]+=1 __i+=1}     
+        __cursp+=2 if (__cursp>=__sc) {__par=!__par*(__sc>1) __cursp=__par}
+    }
+
+    return __oldstr
+
+
+#define string_wrap
+    ///string_wrap(string,width,[mode])
+    //string: text to process
+    //width: size in pixels to fit text
+    //mode 0/default: just like builtin text_ext
+    //mode 1: cut words at boundary
+    //mode 2: add spaces to justify
+    //returns: adjusted string
+    //Adjusts text to fit a specified maximum width.
+    var __in,__w,__out,__i,__p,__fail,__cur,__op,__lf,__c,__pc,__width;
+
+    __lf=""
+    __valid=chr_cr+chr(9)+" -.,;:?!/\@#$%&*+<>{}[]()='"+'"'
+
+    if (argument_count<2 or argument_count>3) {
+        show_error("error in function string_wrap: wrong number of arguments ("+string(argument_count)+")",false)
+        return "ERROR"
+    }
+     
+    __in=string_replace_all(argument[0],chr_lf,"")
+    __w=abs(argument[1])
+    if (argument_count==3) __mode=round(argument[2]) else __mode=0
+    if (__mode<0 or __mode>2) {
+        show_error("error in function string_wrap: wrong mode ("+string(argument[2])+")",false)
+        return "ERROR"
+    }
+    
+    __out="" __cur="" __c=""
+    __i=1 repeat (string_length(__in)) {
+        __pc=__c
+        __c=string_char_at(__in,__i)
+        __cur+=__c
+        __width=string_width(__cur)
+        if (__width>__w or __c==chr_cr or (__c=="#" and __pc!="\")) {
+            if (__width<=__w) {
+                //line already is short enough
+                if (__c==chr_cr) __cur=string_copy(__cur,1,string_length(__cur)-1)
+                if (__mode==2) __out+=__lf+string_justify(__cur,__w)
+                else __out+=__lf+__cur
+                __lf=chr_cr
+                __cur=""
+            } else {
+                //long line
+                __p=string_length(__cur)
+                __op=__p-2
+                __fail=true
+                if (__mode!=1) repeat (__p) {
+                    //find break point
+                    __p-=1
+                    if (__p==0) break
+                    if (string_pos(string_char_at(__cur,__p),__valid)) {
+                        if (__mode==2) __out+=__lf+string_justify(string_copy(__cur,1,__p),__w)
+                        else __out+=__lf+string_copy(__cur,1,__p)
+                        __lf=chr_cr
+                        __cur=string_delete(__cur,1,__p)
+                        if (string_pos(string_char_at(__cur,1),__valid)) __cur=string_delete(__cur,1,1)
+                        __fail=false
+                        break
+                    }
+                }
+                if (__fail) {
+                    //force a break in the middle of a word
+                    if (__mode==2) __out+=__lf+string_justify(string_copy(__cur,1,__op),__w)
+                    else __out+=__lf+string_copy(__cur,1,__op)
+                    __lf=chr_cr
+                    __cur=string_delete(__cur,1,__op)
+                    if (string_char_at(__cur,1)==" ") __cur=string_delete(__cur,1,1) else {
+                        if (!string_pos(string_char_at(__out,string_length(__out)),__valid)) __out+="-"
+                    }
+                }
+            }
+        }
+    __i+=1}
+
+    if (__cur!="") {
+        //last line
+        if (__c==chr_cr) __cur=string_copy(__cur,1,string_length(__cur)-1)
+        if (__mode==2) __out+=__lf+string_justify(__cur,__w)
+        else __out+=__lf+__cur
+    }
+
+    return __out
 //
 //
