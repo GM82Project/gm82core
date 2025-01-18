@@ -478,7 +478,7 @@
 
 #define move_wrap
     ///move_wrap(hor,vert,margin)
-    var __margin;__margin=argument1
+    var __margin;__margin=argument2
     if (argument0) {
         //horizontal
         if (bbox_right+1<-__margin) x+=room_width+__margin-bbox_left
