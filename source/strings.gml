@@ -281,12 +281,12 @@
         return "ERROR"
     }
     
-    __out="" __cur="" __c=""
+    __out="" __cur="" __c="" __width=0
     __i=1 repeat (string_length(__in)) {
         __pc=__c
         __c=string_char_at(__in,__i)
         __cur+=__c
-        __width=string_width(__cur)
+        __width+=string_width(__c)
         if (__width>__w or __c==chr_cr or (__c=="#" and __pc!="\")) {
             if (__width<=__w) {
                 //line already is short enough
@@ -295,6 +295,7 @@
                 else __out+=__lf+__cur
                 __lf=chr_cr
                 __cur=""
+                __width=0
             } else {
                 //long line
                 __p=string_length(__cur)
@@ -324,6 +325,7 @@
                         if (!string_pos(string_char_at(__out,string_length(__out)),__valid)) __out+="-"
                     }
                 }
+                __width=string_width(__cur)
             }
         }
     __i+=1}
