@@ -44,6 +44,8 @@
     //returns: string of value with 8 decimal digits.
     
     var __s;
+    
+    if (is_string(argument0)) return argument0
 
     __s=string_format(argument0,0,8)+";"
     repeat (8) __s=string_replace(__s,"0;",";")
