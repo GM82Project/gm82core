@@ -204,7 +204,7 @@
     sleep(1) //always sleep after file i/o!
     file_delete(argument1)
     sleep(1)
-    file_rename("temp.ini",argument1)
+    file_text_write_all(argument1,string_replace(file_text_read_all("temp.ini"),"[]"+chr_crlf,""))
     sleep(1)
     file_delete("temp.ini")
     
