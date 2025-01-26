@@ -48,7 +48,7 @@
     if (is_string(argument0)) return argument0
 
     __s=string_format(argument0,0,16)+";"
-    repeat (8) __s=string_replace(__s,"0;",";")
+    repeat (16) __s=string_replace(__s,"0;",";")
     return string_replace(string_replace(__s,".;",""),";","")
 
 
