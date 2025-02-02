@@ -4,7 +4,7 @@
     //pos: list position to operate
     //val: value to store
     //call with 3 arguments: sets value, returns value
-    //call with 2 arguments: returns found value at pos
+    //call with 2 arguments: returns found value at pos, or size if pos<=-1
     //call with 1 argument: returns string of list
     //call with 0 arguments: returns new list
     //List accelerator function. Performs different actions depending on arguments.
@@ -28,6 +28,7 @@
     
     if (argument_count==2) {
         if (argument1>=__s) return undefined
+        if(argument1<=-1) return __s
         return ds_list_find_value(argument0,argument1)
     }
     
