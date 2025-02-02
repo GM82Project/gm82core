@@ -28,7 +28,7 @@
     
     if (argument_count==2) {
         if (argument1>=__s) return undefined
-        if(argument1<=-1) return __s
+        if (argument1<=-1) return __s
         return ds_list_find_value(argument0,argument1)
     }
     
