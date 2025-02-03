@@ -391,6 +391,32 @@ GMREAL rectangle_in_rectangle(double ax1, double ay1, double ax2, double ay2, do
     //bx1,by1,bx2,by2: second rectangle to check
     //returns: 1 if the rectangles totally overlap, 2 if they partially overlap, 0 otherwise
     
+    double swap = 0;
+    
+    if (ax1 > ax2) {
+        swap = ax1;
+        ax1 = ax2;
+        ax2 = swap;
+    }
+    
+    if (ay1 > ay2) {
+        swap = ay1;
+        ay1 = ay2;
+        ay2 = swap;
+    }
+    
+    if (bx1 > bx2) {
+        swap = bx1;
+        bx1 = bx2;
+        bx2 = swap;
+    }
+    
+    if (by1 > by2) {
+        swap = by1;
+        by1 = by2;
+        by2 = swap;
+    }
+    
     if (ax1>=bx1 && ax2<=bx2 && ay1>=by1 && ay2<=by2) return 1;
     if (ax1>bx2 || ax2<bx1 || ay1>by2 || ay2<by1) return 0;
     return 2;

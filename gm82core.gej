@@ -1816,6 +1816,27 @@
 			"final": "",
 			"functions": [
 				{
+					"name": "draw_sprite_tiled_extra",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "draw_sprite_tiled_extra(sprite,image,x,y,xscale,yscale,angle,color,alpha,hrepeats,vrepeats)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2,
+						2,
+						2,
+						2,
+						2,
+						2,
+						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
 					"name": "draw_background_tiled_extra",
 					"extname": "",
 					"calltype": 2,
