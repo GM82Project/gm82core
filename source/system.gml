@@ -220,10 +220,10 @@
     if (string_char_at(__root,string_length(__root))=="\") __root=string_copy(__root,1,string_length(__root)-1)
 
     __folder[0]=__root
-    __folders=1
+    __folders=0
+    i=0
 
     do {
-        __folders-=1
         __root=__folder[__folders]+"\"
         for (__file=file_find_first(__root+__mask,__attr);__file!="";__file=file_find_next()) {
             if (__file!="." && __file!="..") {
@@ -234,8 +234,9 @@
                     __folders+=1
                 }                 
             }
+            i+=1
         } file_find_close()
-    } until (__folders==0)
+    } until (i>=__folders)
 
     return __list
 
