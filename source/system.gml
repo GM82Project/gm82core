@@ -201,9 +201,10 @@
     //query: file mask to find
     //attr: 0, or any additional file attributes you might have interest in
     //recursive: if the search should go into directories
+    //excludedirs: exclude directories from adding to ds_list
     //returns: ds_list containing paths to all files found
     
-    var __root,__mask,__attr,__recursive,__excludedirs,__list,__folder,__folders,__fn;
+    var __root,__mask,__attr,__recursive,__excludedirs,__list,__folder,__folders,__fn,__i;
     
     __root=string_replace_all(argument0,"/","\")
     __mask=argument1
@@ -221,10 +222,10 @@
 
     __folder[0]=__root
     __folders=1
+    __i=0
 
     do {
-        __folders-=1
-        __root=__folder[__folders]+"\"
+        __root=__folder[__i]+"\"
         for (__file=file_find_first(__root+__mask,__attr);__file!="";__file=file_find_next()) {
             if (__file!="." && __file!="..") {
                 __fn=__root+__file
@@ -235,7 +236,8 @@
                 }                 
             }
         } file_find_close()
-    } until (__folders==0)
+        __i+=1
+    } until (__i>=__folders)
 
     return __list
 
