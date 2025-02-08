@@ -201,6 +201,7 @@
     //query: file mask to find
     //attr: 0, or any additional file attributes you might have interest in
     //recursive: if the search should go into directories
+    //excludedirs: exclude directories from adding to ds_list
     //returns: ds_list containing paths to all files found
     
     var __root,__mask,__attr,__recursive,__excludedirs,__list,__folder,__folders,__fn,__i;
@@ -224,7 +225,7 @@
     __i=0
 
     do {
-        __root=__folder[__folders]+"\"
+        __root=__folder[__i]+"\"
         for (__file=file_find_first(__root+__mask,__attr);__file!="";__file=file_find_next()) {
             if (__file!="." && __file!="..") {
                 __fn=__root+__file
@@ -234,8 +235,8 @@
                     __folders+=1
                 }                 
             }
-            __i+=1
         } file_find_close()
+        __i+=1
     } until (__i>=__folders)
 
     return __list
