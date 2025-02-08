@@ -221,7 +221,7 @@
     if (string_char_at(__root,string_length(__root))=="\") __root=string_copy(__root,1,string_length(__root)-1)
 
     __folder[0]=__root
-    __folders=0
+    __folders=1
     __i=0
 
     do {
