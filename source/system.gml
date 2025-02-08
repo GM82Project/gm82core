@@ -203,7 +203,7 @@
     //recursive: if the search should go into directories
     //returns: ds_list containing paths to all files found
     
-    var __root,__mask,__attr,__recursive,__excludedirs,__list,__folder,__folders,__fn;
+    var __root,__mask,__attr,__recursive,__excludedirs,__list,__folder,__folders,__fn,__i;
     
     __root=string_replace_all(argument0,"/","\")
     __mask=argument1
@@ -221,7 +221,7 @@
 
     __folder[0]=__root
     __folders=0
-    i=0
+    __i=0
 
     do {
         __root=__folder[__folders]+"\"
@@ -234,9 +234,9 @@
                     __folders+=1
                 }                 
             }
-            i+=1
+            __i+=1
         } file_find_close()
-    } until (i>=__folders)
+    } until (__i>=__folders)
 
     return __list
 
