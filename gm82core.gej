@@ -3,7 +3,7 @@
 	"folder": "gm82",
 	"version": "1.6",
 	"author": "renex, Floogle, Lovey01, cam900, Adamcake, YellowAfterlife, Verve",
-	"date": "23/01/2025",
+	"date": "09/02/2025",
 	"license": "Free to use, also for commercial games.",
 	"description": "Part of the standard Game Maker 8.2 distribution. This extension package contains a number of helper functions that are commonly used, and also geometry functions introduced in GM:Studio. This extension is also required for using the other GM 8.2 extensions, such as Sound, Joystick, DX9 and many more.",
 	"helpfile": "",
@@ -2272,11 +2272,22 @@
 					"returntype": 2
 				},
 				{
-					"name": "distance_to_instance",
+					"name": "distance_to_center",
 					"extname": "",
 					"calltype": 2,
-					"helpline": "distance_to_instance(obj)",
+					"helpline": "distance_to_center(obj)",
 					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "distance_to_instance",
+					"extname": "distance_to_center",
+					"calltype": 2,
+					"helpline": "",
+					"hidden": true,
 					"argtypes": [
 						2
 					],

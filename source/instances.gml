@@ -20,10 +20,11 @@
     return point_direction(x,y,__n.x,__n.y)
 
 
-#define distance_to_instance
-    ///distance_to_instance(inst)
-    //inst: instance to get
+#define distance_to_center
+    ///distance_to_center(obj)
+    //inst: instance/object to get
     //returns: distance from the centers of self and inst.
+    //When given an object id, the nearest instance is used.
     
     var __n;
     if (argument0>=100000) __n=argument0
