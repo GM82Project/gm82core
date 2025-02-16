@@ -8,7 +8,7 @@
     //hrepeats,vrepeats: number of repetitions. use 0 for infinite.
     //draw_background_tiled but for sprites.
 
-    var __spr,__dx,__dy,__xs,__ys,__angle,__color,__alpha,__hrep,__vrep;
+    var __spr,__im,__dx,__dy,__xs,__ys,__angle,__color,__alpha,__hrep,__vrep;
     
     __spr=argument0
     __im=argument1
