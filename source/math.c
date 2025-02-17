@@ -202,7 +202,7 @@ GMREAL lerp_angle(double from, double to, double amount) {
     //to: destination angle
     //amount: amount of interpolation.
     //returns: interpolated angle
-    //Linearly interpolates between two angles (in radians).
+    //Linearly interpolates between two angles (in degrees).
 
     return from + angle_difference(from, to) * amount;
 }
