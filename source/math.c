@@ -197,6 +197,16 @@ GMREAL approach_angle(double ang1, double ang2, double step) {
     return fmod(360.0-fmod(360.0-(ang1+max(-step,d)),360.0),360.0);
 }
 
+GMREAL lerp_angle(double from, double to, double amount) {
+    //from: start angle
+    //to: destination angle
+    //amount: amount of interpolation.
+    //returns: interpolated angle
+    //Linearly interpolates between two angles (in radians).
+
+    return from + angle_difference(from, to) * amount;
+}
+
 GMREAL darccos(double ang) {
     ///darccos(ang)
     //ang: angle in degrees
