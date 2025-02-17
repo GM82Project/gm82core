@@ -83,6 +83,19 @@
 					"returntype": 2
 				},
 				{
+					"name": "lerp_angle",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "lerp_angle(from,to,amount)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
 					"name": "box_distance",
 					"extname": "",
 					"calltype": 12,
