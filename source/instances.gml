@@ -480,7 +480,7 @@
 
 
 #define move_wrap
-    ///move_wrap(hor,vert,margin)
+    //(hor,vert,margin)
     var __margin;__margin=argument2
     if (argument0) {
         //horizontal
