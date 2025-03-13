@@ -2558,6 +2558,42 @@
 					"hidden": false,
 					"argtypes": null,
 					"returntype": 2
+				},
+				{
+					"name": "instances_place",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "instances_place(x,y,obj1,[obj2...])",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
+					"name": "instances_position",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "instances_position(x,y,obj1,[obj2...])",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
+					"name": "instance_place_list",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "instance_place_list(x,y,obj1,[obj2...])",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
+					"name": "instance_position_list",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "instance_position_list(x,y,obj1,[obj2...])",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
 				}
 			],
 			"constants": []

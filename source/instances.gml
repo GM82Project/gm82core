@@ -546,5 +546,87 @@
     __i+=1}
     
     return noone
+
+
+#define instances_place
+    ///instances_place(x,y,obj1,[obj2...])
+    //Checks for multiple objects, returns all of them in an array. use instances_place[n] to get each value.
+    //returns: number of instances found.
+    
+    globalvar instances_place;
+    globalvar __gm82core_ip_size;
+    
+    repeat (__gm82core_ip_size) {
+        __gm82core_ip_size-=1
+        instances_place[__gm82core_ip_size]=0
+    }
+    
+    var __i,__coll;
+    __i=2 repeat (argument_count-2) {
+        __coll=instance_place(argument0,argument1,argument[__i])
+        if (__coll) {
+            instances_place[__gm82core_ip_size]=__coll
+            __gm82core_ip_size+=1
+        }
+    __i+=1}
+    
+    return __gm82core_ip_size
+
+
+#define instances_position
+    ///instances_position(x,y,obj1,[obj2...])
+    //Checks for multiple objects at a position, returns all of them in an array. use instances_position[n] to get each value.
+    //returns: number of instances found.
+    
+    globalvar instances_position;
+    globalvar __gm82core_ipp_size;
+    
+    repeat (__gm82core_ipp_size) {
+        __gm82core_ipp_size-=1
+        instances_position[__gm82core_ipp_size]=0
+    }
+    
+    var __i,__coll;
+    __i=2 repeat (argument_count-2) {
+        __coll=instance_position(argument0,argument1,argument[__i])
+        if (__coll) {
+            instances_position[__gm82core_ipp_size]=__coll
+            __gm82core_ipp_size+=1
+        }
+    __i+=1}
+    
+    return __gm82core_ipp_size
+
+
+#define instance_place_list
+    ///instance_place_list(x,y,obj1,[obj2...])
+    //Checks for multiple objects, returns all of them in a ds_list. Make sure to delete the list when you're done.
+    //returns: ds_list with found instances.
+    
+    var __list;__list=ds_list_create()
+    
+    var __i,__coll;
+    __i=2 repeat (argument_count-2) {
+        __coll=instance_place(argument0,argument1,argument[__i])
+        if (__coll) ds_list_add(__list,__coll)
+    __i+=1}
+    
+    return __list
+
+
+#define instance_position_list
+    ///instance_position_list(x,y,obj1,[obj2...])
+    //Checks for multiple objects at a position, returns all of them in a ds_list. Make sure to delete the list when you're done.
+    //returns: ds_list with found instances.
+    
+    var __list;__list=ds_list_create()
+    
+    var __i,__coll;
+    __i=2 repeat (argument_count-2) {
+        __coll=instance_position(argument0,argument1,argument[__i])
+        if (__coll) ds_list_add(__list,__coll)
+    __i+=1}
+    
+    return __list
 //
 //
