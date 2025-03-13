@@ -492,5 +492,59 @@
         if (bbox_bottom+1<-__margin) y+=room_height+__margin-bbox_top
         else if (bbox_top>room_height+__margin) y-=bbox_bottom+1+__margin
     }
+
+
+#define place_meetings
+    ///place_meetings(x,y,obj1,[obj2...])
+    //Checks for meeting multiple objects.
+    //returns: whether an object from the list was found to be meeting the current instance.
+    
+    var __i;
+    __i=2 repeat (argument_count-2) {
+        if (place_meeting(argument0,argument1,argument[__i])) return true
+    __i+=1}
+    
+    return false
+
+
+#define position_meetings
+    ///position_meetings(x,y,obj1,[obj2...])
+    //Checks for multiple objects at the position.
+    //returns: whether an object from the list was found to be meeting the position.
+    
+    var __i;
+    __i=2 repeat (argument_count-2) {
+        if (position_meeting(argument0,argument1,argument[__i])) return true
+    __i+=1}
+    
+    return false
+
+
+#define instance_places
+    ///instance_places(x,y,obj1,[obj2...])
+    //Checks for multiple objects.
+    //returns: the earliest found instance from the list to be meeting the current instance, or 'noone' when nothing is found.
+    
+    var __i,__coll;
+    __i=2 repeat (argument_count-2) {
+        __coll=instance_place(argument0,argument1,argument[__i])
+        if (__coll) return __coll
+    __i+=1}
+    
+    return noone
+
+
+#define instance_positions
+    ///instance_positions(x,y,obj1,[obj2...])
+    //Checks for multiple objects at the position.
+    //returns: the earliest found instance from the list to be meeting the position, or 'noone' when nothing is found.
+    
+    var __i,__coll;
+    __i=2 repeat (argument_count-2) {
+        __coll=instance_position(argument0,argument1,argument[__i])
+        if (__coll) return __coll
+    __i+=1}
+    
+    return noone
 //
 //

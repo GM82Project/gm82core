@@ -3,7 +3,7 @@
 	"folder": "gm82",
 	"version": "1.6",
 	"author": "renex, Floogle, Lovey01, cam900, Adamcake, YellowAfterlife, Verve",
-	"date": "09/02/2025",
+	"date": "13/03/2025",
 	"license": "Free to use, also for commercial games.",
 	"description": "Part of the standard Game Maker 8.2 distribution. This extension package contains a number of helper functions that are commonly used, and also geometry functions introduced in GM:Studio. This extension is also required for using the other GM 8.2 extensions, such as Sound, Joystick, DX9 and many more.",
 	"helpfile": "",
@@ -2520,6 +2520,42 @@
 					"calltype": 2,
 					"helpline": "",
 					"hidden": true,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
+					"name": "place_meetings",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "place_meetings(x,y,obj1,[obj2...])",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
+					"name": "position_meetings",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "position_meetings(x,y,obj1,[obj2...])",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
+					"name": "instance_places",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "instance_places(x,y,obj1,[obj2...])",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
+					"name": "instance_positions",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "instance_positions(x,y,obj1,[obj2...])",
+					"hidden": false,
 					"argtypes": null,
 					"returntype": 2
 				}
