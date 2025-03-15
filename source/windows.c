@@ -422,3 +422,11 @@ GMREAL file_create(const char *filename) {
         return 0;
     }
 }
+
+GMREAL window_set_dpiaware() {
+    ///window_set_dpiaware()
+    //Informs Windows to not perform post-scaling of the game window for high DPI monitors.
+    //Useful for when you are doing your own window scaling.    
+    SetProcessDPIAware();
+    return 0;
+}
