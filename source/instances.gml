@@ -109,7 +109,7 @@
     
     var __lastinst;__lastinst=instance_count
     action_create_object_motion(argument2,argument0,argument1,argument3,argument4)
-    __i=instance_id[__lastinst]
+    var __i;__i=instance_id[__lastinst]
     if (instance_exists(__i)) {
         if (argument_count>5)
             __i.gravity=argument5
