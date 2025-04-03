@@ -52,9 +52,9 @@ wstr make_wstr(const char* input) {
 
 double __gm82core_winver() {
     //THANKS VIRI
-    int major;
-    int minor;
-    int build;
+    DWORD major;
+    DWORD minor;
+    DWORD build;
     
     RtlGetNtVersionNumbers(&major,&minor,&build);
     
@@ -271,7 +271,7 @@ GMREAL get_window_col() {
     HRESULT res = RegOpenKeyExA(HKEY_CURRENT_USER, "SOFTWARE\\Microsoft\\Windows\\DWM", 0, KEY_READ, &key);
     if (res == 0) {
         int col;
-        int size=4;
+        DWORD size=4;
         res = RegQueryValueExA(key, "ColorPrevalence", NULL, NULL, (LPBYTE)&col, &size);
         if (res==0) {
             //if color prevalence is turned off, window titles are just colored white
@@ -302,7 +302,7 @@ GMREAL __registry_read_dword(const char* dir, const char* keyname) {
 	free(wdir);
     if (res == 0) {
         int buffer;
-        int size = 4;
+        DWORD size = 4;
 		wstr wkeyname=make_wstr(keyname);
         res = RegQueryValueExW(key, wkeyname, NULL, NULL, (LPBYTE)&buffer, &size);
 		free(wkeyname);
@@ -319,7 +319,7 @@ GMSTR __registry_read_sz(const char* dir, const char* keyname) {
     HRESULT res = RegOpenKeyExW(HKEY_CURRENT_USER, wdir, 0, KEY_READ, &key);
 	free(wdir);
     if (res == 0) {
-        int size = 8192;
+        DWORD size = 8192;
 		res = RegQueryValueExA(key, keyname, NULL, NULL, (LPBYTE)&regsz, &size);
 		RegCloseKey(key);
         if (res == 0) {

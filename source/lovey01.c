@@ -13,7 +13,7 @@ GMREAL power_next(double x) {
     // Bring the number up to the next power of 2, unless the number is already
     // a power of 2
     // If the number is negative, return 0
-    *v = (((*v + 0x000fffffffffffffui64) & 0x7ff0000000000000ui64) &
+    *v = (((*v + 0x000fffffffffffffLL) & 0x7ff0000000000000LL) &
         ~(unsigned __int64)((__int64)*v >> 63));
 
     return x;

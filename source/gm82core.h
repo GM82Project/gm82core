@@ -14,14 +14,6 @@
 #include <stdint.h>
 #include <stdlib.h>
 
-#pragma comment(lib, "advapi32.lib")
-#pragma comment(lib, "user32.lib")
-#pragma comment(lib, "Psapi.lib")
-#pragma comment(lib, "GDI32.lib")
-#pragma comment(lib, "comctl32.lib")
-#pragma comment(lib, "ntdll.lib")
-#pragma comment(lib, "Kernel32.lib")
-
 #define GMREAL __declspec(dllexport) double __cdecl
 #define GMSTR __declspec(dllexport) char* __cdecl
 
