@@ -4,7 +4,9 @@ project(gm82core C)
 set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
 
 if(${CMAKE_C_COMPILER_ID} STREQUAL "MSVC")
-    set(CMAKE_C_FLAGS "/O2 /GS- /W2 /WX")
+	set(CMAKE_C_FLAGS "/O2 /GS- /W2 /WX")
+else()
+	set(CMAKE_C_FLAGS "-static-libgcc")
 endif()
 
 set(CMAKE_SHARED_LIBRARY_PREFIX "")
