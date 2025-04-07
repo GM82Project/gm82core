@@ -158,6 +158,14 @@ GMREAL __gm82core_include_file_get_buffer(const char* filename,double buffer) {
 
 //Nasty Ass Runner Shenanigans
 
+const int** room_state = (int**)0x00688C4C;
+
+GMREAL game_get_state() {
+    ///game_get_state()
+    //returns the current state of the game, as gs_ constants.
+    return (double)**room_state;
+}
+
 /*const void* delphi_clear = (void*)0x4072d8;
 static char* retstr = NULL;
 

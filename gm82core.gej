@@ -3,7 +3,7 @@
 	"folder": "gm82",
 	"version": "1.6",
 	"author": "renex, Floogle, Lovey01, cam900, Adamcake, YellowAfterlife, Verve",
-	"date": "06/04/2025",
+	"date": "07/04/2025",
 	"license": "Free to use, also for commercial games.",
 	"description": "Part of the standard Game Maker 8.2 distribution. This extension package contains a number of helper functions that are commonly used, and also geometry functions introduced in GM:Studio. This extension is also required for using the other GM 8.2 extensions, such as Sound, Joystick, DX9 and many more.",
 	"helpfile": "",
@@ -366,6 +366,15 @@
 						2,
 						2
 					],
+					"returntype": 2
+				},
+				{
+					"name": "game_get_state",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "game_get_state()",
+					"hidden": false,
+					"argtypes": [],
 					"returntype": 2
 				},
 				{
@@ -1294,7 +1303,38 @@
 					"returntype": 2
 				}
 			],
-			"constants": []
+			"constants": [
+				{
+					"name": "gs_running",
+					"value": "-1",
+					"hidden": false
+				},
+				{
+					"name": "gs_room_restart",
+					"value": "1",
+					"hidden": false
+				},
+				{
+					"name": "gs_room_change",
+					"value": "-100",
+					"hidden": false
+				},
+				{
+					"name": "gs_game_restart",
+					"value": "-200",
+					"hidden": false
+				},
+				{
+					"name": "gs_game_load",
+					"value": "-300",
+					"hidden": false
+				},
+				{
+					"name": "gs_error_abort",
+					"value": "-400",
+					"hidden": false
+				}
+			]
 		},
 		{
 			"filename": "accelerators.gml",
