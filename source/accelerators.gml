@@ -106,16 +106,32 @@
 
 
 #define pick
-    ///pick(which,opt1,opt2,...) -> option
+    ///pick(which,opt1,opt2,...)
     //which: integer - which option to return
     //returns: option picked
     //Returns one of the arguments depending on the first argument.
     
-    return argument[(argument[0] mod (argument_count-1))+1]
+    return argument[(max(0,argument[0]) mod (argument_count-1))+1]
+
+
+#define unpick
+    ///unpick(option,opt1,opt2,...)
+    //option: which option to search
+    //returns: position of option, or noone if not found
+    //Returns the position of the first argument among the following arguments.
+    
+    var __i;
+    
+    __i=1 repeat (argument_count-1) {
+        if (argument[__i]==argument[0])
+            return __i-1
+    __i+=1}
+    
+    return noone
 
 
 #define tile_find_anywhere
-    ///tile_find_anywhere(x,y) -> tile
+    ///tile_find_anywhere(x,y)
     //x,y: vector - coordinate to check
     //returns: tile id
     //Finds a tile at the coordinate, regardless of layer depth.
