@@ -258,7 +258,7 @@
     //factor: amount
     //returns: a more accurately merged color.
     
-    var __r1,__g1,__b1,__r2,__g2,__b2;
+    var __r1,__g1,__b1,__r2,__g2,__b2,__sat;
     
     __r1=sqr(color_get_red  (argument0))
     __g1=sqr(color_get_green(argument0))
@@ -268,10 +268,12 @@
     __g2=sqr(color_get_green(argument1))
     __b2=sqr(color_get_blue (argument1))
 
+    __sat=saturate(argument2)
+    
     return make_color_rgb(
-        sqrt(lerp(__r1,__r2,argument2)),
-        sqrt(lerp(__g1,__g2,argument2)),
-        sqrt(lerp(__b1,__b2,argument2))
+        sqrt(lerp(__r1,__r2,__sat)),
+        sqrt(lerp(__g1,__g2,__sat)),
+        sqrt(lerp(__b1,__b2,__sat))
     )
 
 
