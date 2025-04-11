@@ -85,6 +85,24 @@
     }
 
 
+#define ds_list_find_first
+    ///ds_list_find_first(list)
+    //list: list index
+    //returns first item of list, or undefined otherwise
+    
+    if (ds_list_empty(argument0)) return undefined
+    return ds_list_find_value(argument0,0)
+
+
+#define ds_list_find_last
+    ///ds_list_find_last(list)
+    //list: list index
+    //returns last item of list, or undefined otherwise
+    
+    if (ds_list_empty(argument0)) return undefined
+    return ds_list_find_value(argument0,ds_list_size(argument0)-1)
+
+
 #define ds_list_equal
     ///ds_list_equal(list1,list2)
     //list1, list2: ds list indexes
