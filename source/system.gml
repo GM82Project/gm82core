@@ -268,5 +268,36 @@
     set_working_directory(argument2)
     get_save_filename(argument0,argument1)
     set_working_directory(__old_wdir)
+
+
+#define date_is_easter
+    ///date_is_easter([date])
+    //returns whether the supplied date (or today) is easter
+    var __C,__G,__H,__I,__J,__L,__month,__day;
+
+    var __in_year,__in_month,__in_day;
+
+    if (argument_count) {
+        __in_year=date_get_year(argument[0])
+        __in_month=date_get_month(argument[0])
+        __in_day=date_get_day(argument[0])
+    } else {
+        __in_year=current_year
+        __in_month=current_month
+        __in_day=current_day
+    }
+
+    //note: I have no idea what this is doing, but it was
+    //not written by AI so I trust it to be correct.
+    __C=floor(__in_year/100)
+    __G=__in_year mod 19
+    __H=(__C-floor(__C/4)-floor((8*__C+13)/25)+19*__G+15) mod 30
+    __I=__H-floor(__H/28)*(1-floor(29/(__H+1))*floor((21-__G)/11))
+    __J=(__in_year+floor(__in_year/4)+__I+2-__C+floor(__C/4)) mod 7
+    __L=__I-__J
+    __month=3+floor((__L+40)/44)
+    __day=__L+28-31*floor(__month/4)
+                                                                               
+    return (__day=__in_day && __month=__in_month) 
 //
 //
