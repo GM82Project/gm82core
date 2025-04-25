@@ -374,5 +374,43 @@
     }
 
     return path_get_y(__path,__pos)/__h
+
+
+#define envelerp
+    ///envelerp(val,func,[x1,y1,x2,y2,...up to 7 pairs])
+    //val: value to envelope
+    //func: script with the same arguments as lerp2(), or 'noone'
+    //x1,y1,etc: pairs of points defining the envelope
+    //Applies a multipoint envelope function to a value. If the value is within the point range,
+    //the specified easing function is applied, or linear by default. If the value is out of bounds,
+    //the first or last point is returned instead. Up to 7 points are supported due to 16 argument limits.
+    var __val,__i,__ul,__vl,__ur,__vr;
+
+    if (argument_count<6) {show_error("Error in function envelerp: too few arguments were passed",0) return 0}
+    if (argument_count mod 2) {show_error("Error in function envelerp: wrong argument count, points are passed as pairs",0) return 0}
+
+    __val=argument[0]
+
+    //base case; val is smaller than the first range, or larger than the last range
+    if (__val<=argument[2]) return argument[3]
+    if (__val>argument[argument_count-2]) return argument[argument_count-1]
+
+    //within range
+    __i=2 repeat ((argument_count-4)/2) {
+        __ul=argument[__i]
+        __vl=argument[__i+1]
+        __ur=argument[__i+2]
+        __vr=argument[__i+3]
+        
+        if (__ur<__ul) {show_error("Error in function envelerp: range list can't be backwards!",0) return 0}
+        
+        if (__val>__ul and __val<=__ur) {
+            if (script_exists(argument[1])) return script_execute(argument[1],__ul,__ur,__vl,__vr,__val)
+            return lerp2(__ul,__ur,__vl,__vr,__val)
+        }
+    __i+=2}
+
+    //should never happen
+    return __val
 //
 //
