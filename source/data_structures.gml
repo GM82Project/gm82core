@@ -330,7 +330,7 @@
 
 
 #define ds_priority_add_many
-    ///ds_priority_add_many(queue,val1,prio1,val2,prio2...)
+    ///ds_priority_add_many(prio,val1,prio1,val2,prio2...)
     //queue: ds priority queue index
     //val1,prio1: first value and its priority
     //val2,prio2: second value and its priority
