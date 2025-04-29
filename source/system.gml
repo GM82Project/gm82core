@@ -297,7 +297,7 @@
     __L=__I-__J
     __month=3+floor((__L+40)/44)
     __day=__L+28-31*floor(__month/4)
-                                                                               
+
     return (__day=__in_day && __month=__in_month) 
 //
 //

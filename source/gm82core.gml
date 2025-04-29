@@ -62,6 +62,15 @@
     surface_reset_target()
     __gm82core_pixel=sprite_create_from_surface(__s,0,0,1,1,0,0,0,0)
     surface_free(__s)
+
+    message_button(sprite_add_sprite(temp_directory+"\gm82\msgspr.gmspr"))
+    message_background(background_create_color(1,1,$404040))
+    message_text_font("Courier New",12,$ffffff,1)
+    message_button_font("Courier New",12,$ffffff,1)
+    message_input_font("Courier New",12,$ffffff,1)
+    message_mouse_color($ffffff)
+    message_caption(1,"Message")
+    message_size(500,-1)
     
     delta_time=1000/60
     fps_real=60
