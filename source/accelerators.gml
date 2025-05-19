@@ -146,5 +146,19 @@
     ///random_color()
     //returns: a random color from the ~16 mil options.
     return irandom($ffffff)
+
+
+#define array_from_string
+    ///array_from_string(name,string)
+    var __i;__i=0 repeat (string_token_start(argument1,",")) {
+        variable_local_array_set(argument0,__i,real(string_token_next()))
+    __i+=1}
+
+
+#define global_array_from_string
+    ///global_array_from_string(name,string)
+    var __i;__i=0 repeat (string_token_start(argument1,",")) {
+        variable_global_array_set(argument0,__i,real(string_token_next()))
+    __i+=1}
 //
 //
