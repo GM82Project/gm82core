@@ -3,7 +3,7 @@
 	"folder": "gm82",
 	"version": "1.6",
 	"author": "renex, Floogle, Lovey01, cam900, Adamcake, Yal, Verve",
-	"date": "18/05/2025",
+	"date": "29/05/2025",
 	"license": "Free to use, also for commercial games.",
 	"description": "Part of the standard Game Maker 8.2 distribution. This extension package contains a number of helper functions that are commonly used, and also geometry functions introduced in GM:Studio. This extension is also required for using the other GM 8.2 extensions, such as Sound, Joystick, DX9 and many more.",
 	"helpfile": "",
@@ -3479,6 +3479,15 @@
 					"helpline": "window_has_focus()",
 					"hidden": false,
 					"argtypes": [],
+					"returntype": 2
+				},
+				{
+					"name": "date_get_moon_phase",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "date_get_moon_phase([date])",
+					"hidden": false,
+					"argtypes": null,
 					"returntype": 2
 				}
 			],

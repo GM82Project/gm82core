@@ -299,5 +299,32 @@
     __day=__L+28-31*floor(__month/4)
 
     return (__day=__in_day && __month=__in_month) 
+
+
+#define date_get_moon_phase
+    ///date_get_moon_phase([date])
+    //returns the current moon phase as a unit where 0.0 = new and 0.5 = full.
+    var __date,__y,__m,__d,__phase;
+    
+    if (argument_count) __date=argument[0]
+    else __date=date_current_datetime()
+    
+    __y=date_get_year(__date)
+    __m=date_get_month(__date)
+    __d=date_get_day(__date)
+    
+    if (__m < 3) {
+        __y-=1;
+        __m += 12;
+    }
+    __m+=1;
+    
+    __d += 365.25*__y; //year length in days
+    __d += 30.6*__m; //month length in days
+    
+    __phase = __d-694039.09; //days since reference full moon
+    __phase /= 29.5305882; //length of moon cycle in days
+    
+    return frac(__phase)
 //
 //
