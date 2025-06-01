@@ -430,15 +430,12 @@ GMREAL window_set_dpiaware() {
     
     typedef int (__stdcall *dynfunc)();
     
-    HINSTANCE getproc = LoadLibrary("User32.dll");
+    HINSTANCE hlib = LoadLibrary("User32.dll");
     
-    dynfunc dpiaware = (dynfunc)GetProcAddress(getproc, "SetProcessDPIAware");
-    if (!dpiaware) {
-        //couldn't find it. weird
-        return 0;
-    }
+    dynfunc dpiaware = (dynfunc)GetProcAddress(hlib, "SetProcessDPIAware");
     
-    dpiaware();
+    if (dpiaware) dpiaware();    
     
+    FreeLibrary(hlib);
     return 0;
 }
