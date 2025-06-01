@@ -427,6 +427,18 @@ GMREAL window_set_dpiaware() {
     ///window_set_dpiaware()
     //Informs Windows to not perform post-scaling of the game window for high DPI monitors.
     //Useful for when you are doing your own window scaling.    
-    SetProcessDPIAware();
+    
+    typedef int (__stdcall *dynfunc)();
+    
+    HINSTANCE getproc = LoadLibrary("User32.dll");
+    
+    dynfunc dpiaware = (dynfunc)GetProcAddress(getproc, "SetProcessDPIAware");
+    if (!dpiaware) {
+        //couldn't find it. weird
+        return 0;
+    }
+    
+    dpiaware();
+    
     return 0;
 }
