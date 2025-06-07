@@ -197,6 +197,22 @@ GMREAL approach_angle(double ang1, double ang2, double step) {
     return fmod(360.0-fmod(360.0-(ang1+max(-step,d)),360.0),360.0);
 }
 
+GMREAL approach_angle_biased(double ang1, double ang2, double step, double bias) {
+    ///approach_angle(ang1,ang2,step,bias)
+    //ang1: angle to increment
+    //go: target angle
+    //step: size of step to take
+    //bias: direction to prefer turning towards
+    //returns: 'ang1' approximated to 'ang2' by 'step'.
+    //when the difference is close to 180 degrees, it prioritizes going towards 'bias'.
+    
+    double d=fmod(ang2-ang1+540.0,360.0)-180.0;
+    if (abs(abs(d)-180.0)<abs(bias)) return modwrap(ang1+min(abs(d),step)*signnum_c(bias),0.0,360.0);
+    
+    if (d>0.0) return fmod(ang1+min(d,step),360.0);
+    return fmod(360.0-fmod(360.0-(ang1+max(-step,d)),360.0),360.0);
+}
+
 GMREAL lerp_angle(double from, double to, double amount) {
     //from: start angle
     //to: destination angle

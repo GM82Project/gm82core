@@ -3,7 +3,7 @@
 	"folder": "gm82",
 	"version": "1.6",
 	"author": "renex, Floogle, Lovey01, cam900, Adamcake, Yal, Verve",
-	"date": "29/05/2025",
+	"date": "06/06/2025",
 	"license": "Free to use, also for commercial games.",
 	"description": "Part of the standard Game Maker 8.2 distribution. This extension package contains a number of helper functions that are commonly used, and also geometry functions introduced in GM:Studio. This extension is also required for using the other GM 8.2 extensions, such as Sound, Joystick, DX9 and many more.",
 	"helpfile": "",
@@ -1298,6 +1298,20 @@
 					"argtypes": [
 						1,
 						1,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "approach_angle_biased",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "approach_angle_biased(ang1,ang2,step,bias)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2,
 						2
 					],
 					"returntype": 2
