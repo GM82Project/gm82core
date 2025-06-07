@@ -541,9 +541,15 @@ GMREAL angle_difference_3d(double x1, double y1, double z1, double x2, double y2
 }
 
 GMREAL box_distance(double length, double angle) {
+    //length: radius of the box
+    //angle: angle to hit the box with
+    //returns the distance from the center to the edge of a box of radius 'length' at an 'angle'.
+    
     return dsecant(45-abs(45-fmod(angle,90)))*length;
 }
 
 GMREAL angle_abs(double angle) {
+    //returns the absolute distance of an angle to zero.
+    
     return abs(modwrap(angle+540.0,0.0,360.0)-180.0);
 }
