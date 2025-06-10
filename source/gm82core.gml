@@ -29,7 +29,7 @@
     
     globalvar delta_time,fps_real,fps_fast;
     globalvar __gm82core_timer,__gm82core_fpsmem,__gm82core_fps_queue;
-    globalvar __gm82core_pixel;
+    globalvar __gm82core_pixel,__gm82core_pixel_tex;
     globalvar __gm82core_hasfocus;
     
     globalvar __gm82core_index_sprites; __gm82core_index_sprites=noone
@@ -61,6 +61,7 @@
     draw_clear($ffffff)
     surface_reset_target()
     __gm82core_pixel=sprite_create_from_surface(__s,0,0,1,1,0,0,0,0)
+    __gm82core_pixel_tex=sprite_get_texture(__gm82core_pixel,0)
     surface_free(__s)
 
     message_button(sprite_add_sprite(temp_directory+"\gm82\msgspr.gmspr"))
