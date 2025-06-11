@@ -320,7 +320,10 @@
         argument0,floor(argument1),
         -argument2/argument4+sprite_get_xoffset(argument0),
         -argument3/argument5+sprite_get_yoffset(argument0),
-        (view_wview+2)/argument4,(view_hview+2)/argument5,view_xview-1,view_yview-1,
+        (max(view_xview+view_wview,room_width)+2)/argument4,
+        (max(view_yview+view_hview,room_height)+2)/argument5,
+        min(view_xview,0)-1,
+        min(view_yview,0)-1,
         argument4,argument5,
         argument6,argument7
     )
