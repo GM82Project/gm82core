@@ -83,6 +83,20 @@
 					"returntype": 2
 				},
 				{
+					"name": "approach_angle_biased",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "approach_angle_biased(ang1,ang2,step,bias)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
 					"name": "box_distance",
 					"extname": "",
 					"calltype": 12,
@@ -309,6 +323,17 @@
 					"argtypes": [
 						2,
 						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "execute_program_silent_async",
+					"extname": "__gm82core_execute_program_silent_async",
+					"calltype": 12,
+					"helpline": "execute_program_silent_async(command)",
+					"hidden": false,
+					"argtypes": [
+						1
 					],
 					"returntype": 2
 				},
@@ -1298,20 +1323,6 @@
 					"argtypes": [
 						1,
 						1,
-						2
-					],
-					"returntype": 2
-				},
-				{
-					"name": "approach_angle_biased",
-					"extname": "",
-					"calltype": 12,
-					"helpline": "approach_angle_biased(ang1,ang2,step,bias)",
-					"hidden": false,
-					"argtypes": [
-						2,
-						2,
-						2,
 						2
 					],
 					"returntype": 2

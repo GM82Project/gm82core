@@ -24,7 +24,7 @@
     //returns: program exit code
     var __ret;
     
-    execute_program_async(argument0)
+    __gm82core_execute_program_silent(argument0)
     
     do {
         io_handle()

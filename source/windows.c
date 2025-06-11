@@ -202,6 +202,21 @@ GMREAL __gm82core_execute_program_silent_exitcode() {
     return (double)ret;        
 }
 
+GMREAL __gm82core_execute_program_silent_async(const char* command) {
+    STARTUPINFOW si = { sizeof(si) };
+    
+    wstr wcommand=make_wstr(command);
+    
+    CreateProcessW(0, wcommand, NULL, NULL, TRUE, 0x08000000, NULL, NULL, &si, &pi);
+    
+    free(wcommand);
+    
+    CloseHandle(pi.hProcess);
+    CloseHandle(pi.hThread);
+    
+    return 0;
+}
+
 GMREAL get_capslock() {
     ///keyboard_get_capslock()
     //returns: if the keyboard caps led is on.
