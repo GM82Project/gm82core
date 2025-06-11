@@ -1947,10 +1947,19 @@
 			"final": "",
 			"functions": [
 				{
-					"name": "draw_sprite_tiled_extra",
+					"name": "animation_pingpong",
 					"extname": "",
 					"calltype": 2,
-					"helpline": "draw_sprite_tiled_extra(sprite,image,x,y,xscale,yscale,angle,color,alpha,hrepeats,vrepeats)",
+					"helpline": "animation_pingpong()",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
+					"name": "draw_background_pos",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "draw_background_pos(back,x1,y1,x2,y2,x3,y3,x4,y4,color,alpha)",
 					"hidden": false,
 					"argtypes": [
 						2,
@@ -2108,21 +2117,6 @@
 					"returntype": 2
 				},
 				{
-					"name": "draw_text_1color",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "draw_text_1color(x,y,string,color,alpha)",
-					"hidden": false,
-					"argtypes": [
-						2,
-						2,
-						2,
-						2,
-						2
-					],
-					"returntype": 2
-				},
-				{
 					"name": "draw_sprite_part_centered",
 					"extname": "",
 					"calltype": 2,
@@ -2164,10 +2158,10 @@
 					"returntype": 2
 				},
 				{
-					"name": "draw_background_pos",
+					"name": "draw_sprite_tiled_extra",
 					"extname": "",
 					"calltype": 2,
-					"helpline": "draw_background_pos(back,x1,y1,x2,y2,x3,y3,x4,y4,color,alpha)",
+					"helpline": "draw_sprite_tiled_extra(sprite,image,x,y,xscale,yscale,angle,color,alpha,hrepeats,vrepeats)",
 					"hidden": false,
 					"argtypes": [
 						2,
@@ -2176,6 +2170,21 @@
 						2,
 						2,
 						2,
+						2,
+						2,
+						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "draw_text_1color",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "draw_text_1color(x,y,string,color,alpha)",
+					"hidden": false,
+					"argtypes": [
 						2,
 						2,
 						2,

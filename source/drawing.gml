@@ -301,5 +301,12 @@
     draw_vertex_texture_color(argument7,argument8,0,1,argument9,argument10)
     draw_vertex_texture_color(argument5,argument6,1,1,argument9,argument10)
     draw_primitive_end()    
+
+
+#define animation_pingpong
+    ///animation_pingpong()
+    //Returns a ping-pong version of the image index at double speed.
+    
+    return max(0,floor(image_number-0.5-abs(image_number-0.5 - (image_index*2*(image_number-1)/image_number))))
 //
 //
