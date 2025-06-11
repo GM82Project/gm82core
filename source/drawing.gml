@@ -257,7 +257,49 @@
     if (argument_count>4) __color=argument[4]
     if (argument_count>5) __alpha=argument[5]
     if (argument_count>6) __rot=argument[6]
-    
+
     draw_sprite_ext_fixed(__gm82core_pixel,0,argument[0],argument[1],argument[2],argument[3],__rot,__color,__alpha)
+
+
+#define draw_sprite_part_centered
+    ///draw_sprite_part_centered(sprite,subimg,left,top,width,height,x,y)
+    //Draws part of a sprite, respecting the origin point.
+    
+    draw_sprite_part(
+        argument0,floor(argument1),
+        argument2,argument3,argument4,argument5,
+        argument6+argument2-sprite_get_xoffset(argument0),
+        argument7+argument3-sprite_get_yoffset(argument0)
+    )
+
+
+#define draw_sprite_part_extra
+    ///draw_sprite_part_extra(sprite,subimg,left,top,width,height,x,y,xscale,yscale,rotation,color,alpha)
+    //Draws a scaled and blended part of a sprite, respecting the origin point.
+    var offx,offy;
+    
+    offx=argument2-sprite_get_xoffset(argument0)
+    offy=argument3-sprite_get_yoffset(argument0)
+    
+    draw_sprite_general(
+        argument0,floor(argument1),
+        argument2,argument3,argument4,argument5,
+        argument6+pivot_pos_x(offx,offy,argument10),
+        argument7+pivot_pos_y(offx,offy,argument10),
+        argument8,argument9,argument10,
+        argument11,argument11,argument11,argument11,argument12
+    )    
+
+
+#define draw_background_pos
+    ///draw_background_pos(back,x1,y1,x2,y2,x3,y3,x4,y4,color,alpha)
+    //draws a background scaled to fit an arbitrary quad.
+    
+    draw_primitive_begin_texture(pr_trianglestrip,background_get_texture(argument0))
+    draw_vertex_texture_color(argument1,argument2,0,0,argument9,argument10)
+    draw_vertex_texture_color(argument3,argument4,1,0,argument9,argument10)
+    draw_vertex_texture_color(argument7,argument8,0,1,argument9,argument10)
+    draw_vertex_texture_color(argument5,argument6,1,1,argument9,argument10)
+    draw_primitive_end()    
 //
 //

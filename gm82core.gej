@@ -3,7 +3,7 @@
 	"folder": "gm82",
 	"version": "1.6",
 	"author": "renex, Floogle, Lovey01, cam900, Adamcake, Yal, Verve",
-	"date": "06/06/2025",
+	"date": "10/06/2025",
 	"license": "Free to use, also for commercial games.",
 	"description": "Part of the standard Game Maker 8.2 distribution. This extension package contains a number of helper functions that are commonly used, and also geometry functions introduced in GM:Studio. This extension is also required for using the other GM 8.2 extensions, such as Sound, Joystick, DX9 and many more.",
 	"helpfile": "",
@@ -2114,6 +2114,68 @@
 					"helpline": "draw_text_1color(x,y,string,color,alpha)",
 					"hidden": false,
 					"argtypes": [
+						2,
+						2,
+						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "draw_sprite_part_centered",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "draw_sprite_part_centered(sprite,subimg,left,top,width,height,x,y)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2,
+						2,
+						2,
+						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "draw_sprite_part_extra",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "draw_sprite_part_extra(sprite,subimg,left,top,width,height,x,y,xscale,yscale,rotation,color,alpha)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2,
+						2,
+						2,
+						2,
+						2,
+						2,
+						2,
+						2,
+						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "draw_background_pos",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "draw_background_pos(back,x1,y1,x2,y2,x3,y3,x4,y4,color,alpha)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2,
+						2,
+						2,
+						2,
 						2,
 						2,
 						2,
