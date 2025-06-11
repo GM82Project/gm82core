@@ -313,5 +313,16 @@
     return floor(argument[1]-0.5-abs(argument[1]-0.5 - modwrap(argument[0],0,argument[1])*2*(argument[1]-1)/argument[1]))
 
 
+#define draw_spotlight
+    ///draw_spotlight(sprite,image,x,y,xscale,yscale,color,alpha)
+    
+    draw_sprite_part_ext(
+        argument0,floor(argument1),
+        -argument2/argument4+sprite_get_xoffset(argument0),
+        -argument3/argument5+sprite_get_yoffset(argument0),
+        (view_wview+2)/argument4,(view_hview+2)/argument5,view_xview-1,view_yview-1,
+        argument4,argument5,
+        argument6,argument7
+    )
 //
 //
