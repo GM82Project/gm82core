@@ -1950,9 +1950,9 @@
 					"name": "animation_pingpong",
 					"extname": "",
 					"calltype": 2,
-					"helpline": "animation_pingpong()",
+					"helpline": "animation_pingpong([index,number])",
 					"hidden": false,
-					"argtypes": [],
+					"argtypes": null,
 					"returntype": 2
 				},
 				{

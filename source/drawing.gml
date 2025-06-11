@@ -304,9 +304,14 @@
 
 
 #define animation_pingpong
-    ///animation_pingpong()
-    //Returns a ping-pong version of the image index at double speed.
+    ///animation_pingpong([index,number])
+    //Returns a ping-pong version of the image_index at double speed.
     
-    return max(0,floor(image_number-0.5-abs(image_number-0.5 - (image_index*2*(image_number-1)/image_number))))
+    if (argument_count==0)
+        return floor(image_number-0.5-abs(image_number-0.5 - image_index*2*(image_number-1)/image_number))
+    
+    return floor(argument[1]-0.5-abs(argument[1]-0.5 - modwrap(argument[0],0,argument[1])*2*(argument[1]-1)/argument[1]))
+
+
 //
 //
