@@ -13,13 +13,45 @@ GMREAL io_set_roomend_clear(double enabled) {
     //Changes the behavior for clearing the keyboard state on Room End.
     //Disable to prevent missing key presses between rooms.
     
+    HANDLE hproc = GetCurrentProcess();
+    
     if (enabled>=0.5) {
         //re-add io clear at room end
-        WriteProcessMemory(GetCurrentProcess(), io_clear_addr, io_clear_code, 2, NULL);
+        WriteProcessMemory(hproc, io_clear_addr, io_clear_code, 2, NULL);
     } else {
         //patch out io clear at room end
-        WriteProcessMemory(GetCurrentProcess(), io_clear_addr, io_not_clear_code, 2, NULL);
+        WriteProcessMemory(hproc, io_clear_addr, io_not_clear_code, 2, NULL);
     }
+    
+    FlushInstructionCache(hproc,io_clear_addr,2);
+    
+    return 0;
+}
+
+
+//window fix hack
+
+void* winfix_addr = (void*)0x60690e;
+const char winfix_code[] = {0x90, 0x90, 0x90, 0x90, 0x90};
+const char winfix_not_code[] = {0xe8, 0x29, 0x90, 0xf8, 0xff};
+
+GMREAL window_set_fixed(double enabled) {
+    ///window_set_fixed(enabled)
+    //enabled: bool - enable window fix
+    //Changes the behavior for resizing the window on Room Start.
+    //Enable to prevent Game Maker resizing the window by itself.
+    
+    HANDLE hproc = GetCurrentProcess();
+    
+    if (enabled>=0.5) {
+        //patch out
+        WriteProcessMemory(hproc, winfix_addr, winfix_code, 5, NULL);
+    } else {
+        //patch back in
+        WriteProcessMemory(hproc, winfix_addr, winfix_not_code, 5, NULL);
+    }
+    
+    FlushInstructionCache(hproc,winfix_addr,5);
     
     return 0;
 }
