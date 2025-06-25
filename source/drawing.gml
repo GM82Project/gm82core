@@ -314,18 +314,40 @@
 
 
 #define draw_spotlight
-    ///draw_spotlight(sprite,image,x,y,xscale,yscale,color,alpha)
+    ///draw_spotlight(sprite,image,x,y,xscale,yscale,rotation,color,alpha)
+    //sprite, image: sprite to draw
+    //x, y: position to draw
+    //xscale, yscale, angle: transform to use
+    //color, alpha: blend to use
+    //Draws a sprite as a spotlight texture. Fills the whole room, or the current view, whatever is larger.
     
-    draw_sprite_part_ext(
-        argument0,floor(argument1),
-        -argument2/argument4+sprite_get_xoffset(argument0),
-        -argument3/argument5+sprite_get_yoffset(argument0),
-        (max(view_xview+view_wview,room_width)+2)/argument4,
-        (max(view_yview+view_hview,room_height)+2)/argument5,
-        min(view_xview,0)-1,
-        min(view_yview,0)-1,
-        argument4,argument5,
-        argument6,argument7
-    )
+    var __left,__top,__right,__bottom,__tex,__w,__h,__ux,__uy,__ww,__hh;
+    __left=min(view_xview,0)-1
+    __top=min(view_yview,0)-1     
+    __right=max(view_xview+view_wview,room_width)+1
+    __bottom=max(view_yview+view_hview,room_height)+1
+    
+    __tex=sprite_get_texture(argument0,argument1)
+    __w=sprite_get_width(argument0)/texture_get_width(__tex)
+    __h=sprite_get_height(argument0)/texture_get_height(__tex)   
+    __ux=sprite_get_xoffset(argument0)/__w
+    __uy=sprite_get_yoffset(argument0)/__h
+    __ww=__w*argument4
+    __hh=__h*argument5
+    
+    texture_set_repeat(0)
+    draw_primitive_begin_texture(pr_trianglestrip,__tex)
+        __dx=(argument2-__left)-0.5 __dy=(argument3-__top)-0.5
+        draw_vertex_texture_color(__left,__top,__ux-pivot_pos_x(__dx,__dy,-argument6)/__ww,__uy-pivot_pos_y(__dx,__dy,-argument6)/__hh,argument7,argument8)
+        
+        __dx=(argument2-__right)-0.5 __dy=(argument3-__top)-0.5 
+        draw_vertex_texture_color(__right,__top,__ux-pivot_pos_x(__dx,__dy,-argument6)/__ww,__uy-pivot_pos_y(__dx,__dy,-argument6)/__hh,argument7,argument8)
+        
+        __dx=(argument2-__left)-0.5 __dy=(argument3-__bottom)-0.5 
+        draw_vertex_texture_color(__left,__bottom,__ux-pivot_pos_x(__dx,__dy,-argument6)/__ww,__uy-pivot_pos_y(__dx,__dy,-argument6)/__hh,argument7,argument8)
+        
+        __dx=(argument2-__right)-0.5 __dy=(argument3-__bottom)-0.5
+        draw_vertex_texture_color(__right,__bottom,__ux-pivot_pos_x(__dx,__dy,-argument6)/__ww,__uy-pivot_pos_y(__dx,__dy,-argument6)/__hh,argument7,argument8)
+    draw_primitive_end()
 //
 //

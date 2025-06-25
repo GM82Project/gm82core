@@ -2142,9 +2142,10 @@
 					"name": "draw_spotlight",
 					"extname": "",
 					"calltype": 2,
-					"helpline": "draw_spotlight(sprite,image,x,y,xscale,yscale,color,alpha)",
+					"helpline": "draw_spotlight(sprite,image,x,y,xscale,yscale,rotation,color,alpha)",
 					"hidden": false,
 					"argtypes": [
+						2,
 						2,
 						2,
 						2,
