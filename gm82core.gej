@@ -3,7 +3,7 @@
 	"folder": "gm82",
 	"version": "1.6",
 	"author": "renex, Floogle, Lovey01, cam900, Adamcake, Yal, Verve",
-	"date": "24/06/2025",
+	"date": "30/06/2025",
 	"license": "Free to use, also for commercial games.",
 	"description": "Part of the standard Game Maker 8.2 distribution. This extension package contains a number of helper functions that are commonly used, and also geometry functions introduced in GM:Studio. This extension is also required for using the other GM 8.2 extensions, such as Sound, Joystick, DX9 and many more.",
 	"helpfile": "",
@@ -2264,6 +2264,24 @@
 			"final": "",
 			"functions": [
 				{
+					"name": "game_restart",
+					"extname": "__gm82core_restart",
+					"calltype": 2,
+					"helpline": "",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
+					"name": "__gm82core_create",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "",
+					"hidden": true,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
 					"name": "__gm82core_init",
 					"extname": "",
 					"calltype": 2,
@@ -2273,7 +2291,7 @@
 					"returntype": 2
 				},
 				{
-					"name": "__gm82core_update",
+					"name": "__gm82core_restart",
 					"extname": "",
 					"calltype": 2,
 					"helpline": "",
@@ -2282,7 +2300,7 @@
 					"returntype": 2
 				},
 				{
-					"name": "__gm82core_create",
+					"name": "__gm82core_update",
 					"extname": "",
 					"calltype": 2,
 					"helpline": "",

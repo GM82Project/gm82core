@@ -88,7 +88,7 @@
         __dead=1
         instance_destroy()
     } else if (!__gm82core_checkstart(window_handle())) {
-        show_error("game_restart() is currently not supported by the GM 8.2 extensions due to potential memory leaks.",1)
+        __gm82core_restart()
     }
 
 #define __gm82core_update
@@ -115,5 +115,9 @@
 
     __gm82core_fpsmem=mean(__gm82core_fpsmem,ds_queue_size(__gm82core_fps_queue))
     fps_fast=round(__gm82core_fpsmem)
+
+
+#define __gm82core_restart
+    show_error("game_restart() is currently not supported by the GM 8.2 extensions due to potential memory leaks.",1)
 //
 //
