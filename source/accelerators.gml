@@ -160,5 +160,9 @@
     var __i;__i=0 repeat (string_token_start(argument1,",")) {
         variable_global_array_set(argument0,__i,real(string_token_next()))
     __i+=1}
+
+
+#define file_text_writelf
+    file_text_write_string(argument0,chr_lf)
 //
 //

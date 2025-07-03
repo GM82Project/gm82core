@@ -3,7 +3,7 @@
 	"folder": "gm82",
 	"version": "1.6",
 	"author": "renex, Floogle, Lovey01, cam900, Adamcake, Yal, Verve",
-	"date": "30/06/2025",
+	"date": "03/07/2025",
 	"license": "Free to use, also for commercial games.",
 	"description": "Part of the standard Game Maker 8.2 distribution. This extension package contains a number of helper functions that are commonly used, and also geometry functions introduced in GM:Studio. This extension is also required for using the other GM 8.2 extensions, such as Sound, Joystick, DX9 and many more.",
 	"helpfile": "",
@@ -1431,6 +1431,18 @@
 					"returntype": 2
 				},
 				{
+					"name": "array_from_string",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "array_from_string(name,string)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
 					"name": "event_alarm",
 					"extname": "",
 					"calltype": 2,
@@ -1495,6 +1507,29 @@
 					"helpline": "event_trigger(trig)",
 					"hidden": false,
 					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "file_text_writelf",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "file_text_writelf(file)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "global_array_from_string",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "global_array_from_string(name,string)",
+					"hidden": false,
+					"argtypes": [
+						2,
 						2
 					],
 					"returntype": 2
@@ -1570,30 +1605,6 @@
 					"helpline": "unpick(option,opt1,opt2,...)",
 					"hidden": false,
 					"argtypes": null,
-					"returntype": 2
-				},
-				{
-					"name": "array_from_string",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "array_from_string(name,string)",
-					"hidden": false,
-					"argtypes": [
-						2,
-						2
-					],
-					"returntype": 2
-				},
-				{
-					"name": "global_array_from_string",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "global_array_from_string(name,string)",
-					"hidden": false,
-					"argtypes": [
-						2,
-						2
-					],
 					"returntype": 2
 				}
 			],
