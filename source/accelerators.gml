@@ -164,5 +164,19 @@
 
 #define file_text_writelf
     file_text_write_string(argument0,chr_lf)
+
+
+#define tile_add_ext
+    ///tile_add_ext(background,left,top,width,height,x,y,depth,xscale,yscale,color,alpha)
+    //Adds a tile with more options.
+
+    var __t;
+
+    __t=tile_add(argument0,argument1,argument2,argument3,argument4,argument5,argument6,argument7)
+    tile_set_scale(__t,argument8,argument9)
+    tile_set_blend(__t,argument10)
+    tile_set_alpha(__t,argument11)
+
+    return __t
 //
 //
