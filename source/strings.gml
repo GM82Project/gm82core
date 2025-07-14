@@ -74,18 +74,18 @@
     //magnitude: divisor
     //units: units to append to the number
     
-    var i,number;
+    var __i,__number;
     
-    number=argument0
-    magnitude=argument1
+    __number=argument0
+    __magnitude=argument1
     
-    i=2
-    while (abs(number)>=magnitude and i<argument_count-1) {
-        number/=magnitude
-        i+=1
+    __i=2
+    while (abs(__number)>=__magnitude and __i<argument_count-1) {
+        __number/=__magnitude
+        __i+=1
     }
     
-    return string(number)+argument[i]
+    return string(__number)+argument[__i]
 
 
 #define string_hexdigits
