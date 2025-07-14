@@ -68,6 +68,26 @@
     return __m+__str
 
 
+#define string_magnitude
+    ///string_magnitude(number,magnitude,unit1,unit2...)
+    //number: number to condense
+    //magnitude: divisor
+    //units: units to append to the number
+    
+    var i,number;
+    
+    number=argument0
+    magnitude=argument1
+    
+    i=2
+    while (abs(number)>=magnitude and i<argument_count-1) {
+        number/=magnitude
+        i+=1
+    }
+    
+    return string(number)+argument[i]
+
+
 #define string_hexdigits
     ///string_hexdigits(string)
     //string: string to parse
