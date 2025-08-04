@@ -4,7 +4,7 @@
     //returns: code index
     //This function will compile a string of code and return its id.
     //Compilation takes a while, but execution is very fast.
-    //Note: use the function code_return() to set the return value for code_execute.
+    //Note: use the function code_return(val) to set the return value for code_execute.
     //If code_return() is never called, the code will return 0 when executed.
     var __code,__i,__argc;
     
@@ -120,15 +120,25 @@
     __code=argument0
     
     if (__code<0 || __code>=__gm82core_compiler_index) {
-        show_error("In function code_get_argcount: Nonexisting code point "+string(__code)+", only "+string(__gm82core_compiler_index)+" total code points initialized.",0)
+        show_error("In function code_get_argcount: Using nonexisting code point "+string(__code)+", only "+string(__gm82core_compiler_index)+" total code points exist.",0)
         exit
     }
     
     if (!__gm82core_compiler_exists[__code]) {
-        show_error("In function code_get_argcount: Nonexisting code point "+string(__code)+", it has been deleted.",0)
+        show_error("In function code_get_argcount: Using deleted code point "+string(__code)+".",0)
         exit
     }
     
     return __gm82core_compiler_argc[__code]
+
+
+#define code_exists
+    ///code_exists(code)
+    //code: code index
+    //returns: whether the code with index exists and is available for use
+    
+    if (__code<0 || __code>=__gm82core_compiler_index) return false
+
+    return __gm82core_compiler_exists[__code]
 //
 //  
