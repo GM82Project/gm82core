@@ -576,3 +576,28 @@ GMREAL lines_intersect(double x1, double y1, double x2, double y2, double x3, do
     }
     return ua;
 }
+
+GMREAL pack_bools(double b7, double b6, double b5, double b4, double b3, double b2, double b1, double b0) {
+    ///pack_bools(b7,b6,b5,b4,b3,b2,b1,b0)
+    //Packs 8 boolean values into a byte.
+    
+    return (double)(
+        (b7>=0.5)?128:0
+    +   (b6>=0.5)?64:0
+    +   (b5>=0.5)?32:0
+    +   (b4>=0.5)?16:0
+    +   (b3>=0.5)?8:0
+    +   (b2>=0.5)?4:0
+    +   (b1>=0.5)?2:0
+    +   (b0>=0.5)?1:0
+    );
+}
+
+GMREAL unpack_bool(double pbool, double which) {
+    ///unpack_bool(byte,which)
+    //Unpacks a boolean out of a byte.
+    
+    return (double)(
+        ((uint8_t)pbool) & (1<<((uint8_t)which))
+    );
+}

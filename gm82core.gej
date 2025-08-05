@@ -3,7 +3,7 @@
 	"folder": "gm82",
 	"version": "1.6",
 	"author": "renex, Floogle, Lovey01, cam900, Adamcake, Yal, Verve",
-	"date": "04/08/2025",
+	"date": "05/08/2025",
 	"license": "Free to use, also for commercial games.",
 	"description": "Part of the standard Game Maker 8.2 distribution. This extension package contains a number of helper functions that are commonly used, and also geometry functions introduced in GM:Studio. This extension is also required for using the other GM 8.2 extensions, such as Sound, Joystick, DX9 and many more.",
 	"helpfile": "",
@@ -740,6 +740,24 @@
 					"returntype": 2
 				},
 				{
+					"name": "pack_bools",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "pack_bools(b7,b6,b5,b4,b3,b2,b1,b0)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2,
+						2,
+						2,
+						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
 					"name": "perlin_noise",
 					"extname": "",
 					"calltype": 12,
@@ -1082,6 +1100,18 @@
 					"hidden": false,
 					"argtypes": [
 						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "unpack_bool",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "unpack_bool(byte,which)",
+					"hidden": false,
+					"argtypes": [
 						2,
 						2
 					],
