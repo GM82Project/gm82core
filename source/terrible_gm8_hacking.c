@@ -1,6 +1,29 @@
 #include "gm82core.h"
 
 
+//error hack
+//if (about_to_crash) {dont();}
+char* error_flag_addr = (void*)0x686a20;
+const char error_yes_code[] = {0x01};
+const char error_no_code[] = {0x00};
+
+GMREAL error_is_enabled() {
+    return (double)*error_flag_addr;
+}
+
+GMREAL error_set_enabled(double enabled) {
+    ///error_set_enabled(enabled)
+    //Turns error messages on or off.
+    
+    HANDLE hproc = GetCurrentProcess();
+    if (enabled>0.5) WriteProcessMemory(hproc, error_flag_addr, error_yes_code, 1, NULL);
+    else             WriteProcessMemory(hproc, error_flag_addr, error_no_code , 1, NULL);
+    FlushInstructionCache(hproc,error_flag_addr,1);
+    
+    return 0;
+}
+
+
 //room end clear hack
 
 void* io_clear_addr = (void*)0x606865;

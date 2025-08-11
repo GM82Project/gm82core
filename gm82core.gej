@@ -315,6 +315,26 @@
 					"returntype": 2
 				},
 				{
+					"name": "error_is_enabled",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "error_is_enabled()",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
+					"name": "error_set_enabled",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "error_set_enabled(enabled)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
 					"name": "esign",
 					"extname": "",
 					"calltype": 12,
