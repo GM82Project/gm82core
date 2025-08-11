@@ -334,5 +334,42 @@
     //The precise calculation is how much of the allotted frame time is being spent not waiting for the next frame.
     if (fps_real>0) return ceil(min(1,room_speed/fps_real)*100)
     return 100
+
+
+#define extension_detect
+    ///extension_detect(name)
+    //Detects the presence of a gm82 extension by its name.
+    //Returns noone if the extension doesn't exist, or the version if it does.
+    
+    var __name,__prefix;
+    
+    __name=""
+    __prefix=""
+    
+    switch (string_lower(argument0)) {
+        case "alpha": __name="alpha" break
+        case "angle": __name="angle" break
+        case "audio": __name="audio" break
+        case "buffer":
+        case "buf": __name="buf" break
+        case "core": __name="core" break
+        case "directx9":
+        case "dx9": __name="dx9" break
+        case "drag": __name="drag" break
+        case "gltf": __name="gltf" break
+        case "joystick":
+        case "joy": __name="joy" break
+        case "networking":
+        case "network":
+        case "net": __name="net" __prefix="__" break
+        case "sound":
+        case "snd": __name="snd" __prefix="__" break
+        case "ui": __name="ui" break
+        case "video": __name="video" break
+        default: return noone
+    }
+    
+    if (!variable_global_exists("gm82"+__name+"_version")) return noone    
+    return variable_global_get("gm82"+__name+"_version")
 //
 //
