@@ -1,0 +1,16 @@
+//mock source file used to generate johnny documentation
+
+///delta_time(@)
+//The amount of time spent since last frame, in milliseconds.
+//Calculated the same way as GameMaker:Studio.
+
+///fps_real(@)
+//A measure of the theoretical max fps if the game's speed was unlocked.
+//Calculated the same way as GameMaker:Studio.
+
+///fps_fast(@)
+//A measure of frames per-second using the FRAPS rolling-window algorithm.
+//Updates more often than the builtin 'fps' variable.
+
+///current_frame(@)
+//The number of frames since the game was started.

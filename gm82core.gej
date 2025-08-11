@@ -2381,6 +2381,42 @@
 					"hidden": true,
 					"argtypes": null,
 					"returntype": 2
+				},
+				{
+					"name": "current_frame",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "current_frame (read-only)",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
+					"name": "delta_time",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "delta_time (read-only)",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
+					"name": "fps_real",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "fps_real (read-only)",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
+					"name": "fps_fast",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "fps_fast (read-only)",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
 				}
 			],
 			"constants": [

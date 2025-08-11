@@ -8,7 +8,7 @@
     object_event_add(gm82core_object,ev_step,ev_step_begin,"__gm82core_update()")
     object_event_add(gm82core_object,ev_destroy,0,"if (!__dead) instance_copy(0)")
     object_event_add(gm82core_object,ev_other,ev_room_end,"persistent=true")
-    object_event_add(gm82core_object,ev_other,ev_animation_end,"fps_real=1/max(0.00000001,(get_timer()-__gm82core_timer)/1000000)")
+    object_event_add(gm82core_object,ev_other,ev_animation_end,"fps_real=1/max(0.00000001,(get_timer()-__gm82core_timer)/1000000) __gm82core_framecount+=1 current_frame=__gm82core_framecount")
     
     //notes about alarm events:
     //any of my extensions might decide to install alarms onto the core object.
@@ -27,8 +27,8 @@
     ds_queue_create()
     ds_stack_create()    
     
-    globalvar delta_time,fps_real,fps_fast;
-    globalvar __gm82core_timer,__gm82core_fpsmem,__gm82core_fps_queue;
+    globalvar delta_time,fps_real,fps_fast,current_frame;
+    globalvar __gm82core_timer,__gm82core_fpsmem,__gm82core_fps_queue,__gm82core_framecount;
     globalvar __gm82core_pixel,__gm82core_pixel_tex;
     globalvar __gm82core_hasfocus;
     

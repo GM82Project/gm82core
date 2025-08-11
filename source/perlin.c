@@ -47,19 +47,23 @@ double grad(int hash, double x, double y, double z) {
 }
 
 GMREAL perlin_noise(double x, double y, double z) {
-  int X = (int)floor(x) & 255;                  // FIND UNIT CUBE THAT
-  int Y = (int)floor(y) & 255;                  // CONTAINS POINT.
-  int Z = (int)floor(z) & 255;
-  x -= floor(x);                                // FIND RELATIVE X,Y,Z
-  y -= floor(y);                                // OF POINT IN CUBE.
-  z -= floor(z);
-  double u = fade(x);                                // COMPUTE FADE CURVES
-  double v = fade(y);                                // FOR EACH OF X,Y,Z.
-  double w = fade(z);
-  int A = p[X  ]+Y, AA = p[A]+Z, AB = p[A+1]+Z;      // HASH COORDINATES OF
-  int B = p[X+1]+Y, BA = p[B]+Z, BB = p[B+1]+Z;      // THE 8 CUBE CORNERS,
+    ///perlin_noise(x,y,z)
+    //Returns the 3D perlin-noise at the xyz coordinates.
+    //Use fractionary values.
+    
+    int X = (int)floor(x) & 255;                  // FIND UNIT CUBE THAT
+    int Y = (int)floor(y) & 255;                  // CONTAINS POINT.
+    int Z = (int)floor(z) & 255;
+    x -= floor(x);                                // FIND RELATIVE X,Y,Z
+    y -= floor(y);                                // OF POINT IN CUBE.
+    z -= floor(z);
+    double u = fade(x);                                // COMPUTE FADE CURVES
+    double v = fade(y);                                // FOR EACH OF X,Y,Z.
+    double w = fade(z);
+    int A = p[X  ]+Y, AA = p[A]+Z, AB = p[A+1]+Z;      // HASH COORDINATES OF
+    int B = p[X+1]+Y, BA = p[B]+Z, BB = p[B+1]+Z;      // THE 8 CUBE CORNERS,
 
-  return 0.5+0.5*
+    return 0.5+0.5*
          lerp(w, lerp(v, lerp(u, grad(p[AA  ], x  , y  , z   ),  // AND ADD
                                  grad(p[BA  ], x-1, y  , z   )), // BLENDED
                          lerp(u, grad(p[AB  ], x  , y-1, z   ),  // RESULTS
