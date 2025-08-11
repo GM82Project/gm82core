@@ -1,11 +1,12 @@
 #define code_compile
     ///code_compile(string)
     //string: code to compile
-    //returns: code index
-    //This function will compile a string of code and return its id.
-    //Compilation takes a while, but execution is very fast.
+    //returns: code index, or noone if compilation failed
+    //This function will compile a string of code and return its id for use with code_execute().
+    //Compilation takes a while, but execution is as fast as native game code.
     //Note: use the function code_return(val) to set the return value for code_execute.
-    //If code_return() is never called, the code will return 0 when executed.
+    //If code_return() is never called in the code, code_execute() will return 0.
+    
     var __code,__i,__argc;
     
     __argc=0
@@ -32,7 +33,20 @@
         __i+=1}
     }
     
+    //try...
+    var __err,__ret;
+    
+    __err=error_is_enabled()
+    if (__err) error_set_enabled(false)
+    error_last=""
     object_event_add(__gm82core_compiler,ev_other,__gm82core_compiler_index,__code+argument0)
+    __ret=error_occurred
+    error_occurred=false
+    if (__err) error_set_enabled(true)
+    
+    //catch
+    if (__ret) return noone
+    
     __gm82core_compiler_exists[__gm82core_compiler_index]=true  
     
     __gm82core_compiler_index+=1    
