@@ -343,29 +343,34 @@
     
     var __name,__prefix;
     
-    __name=""
+    __name=string_lower(argument0)
     __prefix=""
     
-    switch (string_lower(argument0)) {
-        case "alpha": __name="alpha" break
-        case "angle": __name="angle" break
-        case "audio": __name="audio" break
+    switch (__name) {
+        case "alpha":
+        case "angle":
+        case "audio":
+        case "core":
+        case "drag":
+        case "gltf":
+        case "ui":
+        case "video": break
+        
         case "buffer":
         case "buf": __name="buf" break
-        case "core": __name="core" break
+        
         case "directx9":
         case "dx9": __name="dx9" break
-        case "drag": __name="drag" break
-        case "gltf": __name="gltf" break
+        
         case "joystick":
         case "joy": __name="joy" break
+        
         case "networking":
         case "network":
         case "net": __name="net" __prefix="__" break
+        
         case "sound":
         case "snd": __name="snd" __prefix="__" break
-        case "ui": __name="ui" break
-        case "video": __name="video" break
         default: return noone
     }
     
