@@ -369,7 +369,7 @@
         default: return noone
     }
     
-    if (!variable_global_exists("gm82"+__name+"_version")) return noone    
-    return variable_global_get("gm82"+__name+"_version")
+    if (!variable_global_exists(__prefix+"gm82"+__name+"_version")) return noone    
+    return variable_global_get(__prefix+"gm82"+__name+"_version")
 //
 //
