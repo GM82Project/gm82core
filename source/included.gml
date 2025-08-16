@@ -4,8 +4,8 @@
     //buffer: id of a Net/Buf buffer
     //requires the Network/Buffer extension!
     
-    globalvar __gm82net_version,__gm82buf_version;
-    if (__gm82buf_version>=100) {
+    globalvar __gm82net_version,gm82buf_version;
+    if (gm82buf_version>=100) {
         var __buf,__name;
     
         __name=argument0
