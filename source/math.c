@@ -185,6 +185,14 @@ GMREAL angle_difference(double ang1, double ang2) {
     return modwrap(ang2-ang1+540.0,0.0,360.0)-180.0;
 }
 
+GMREAL angle_mean(double ang1, double ang2) {
+    ///angle_mean(ang1,ang2)
+    //ang1,ang2: angles to compare
+    //returns: the middle-point between two angles.
+    
+    return ang1+0.5*(modwrap(ang2-ang1+540.0,0.0,360.0)-180.0);
+}
+
 GMREAL approach_angle(double ang1, double ang2, double step) {
     ///approach_angle(ang1,ang2,step)
     //ang1: angle to increment
