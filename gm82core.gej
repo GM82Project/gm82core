@@ -57,6 +57,18 @@
 					"returntype": 2
 				},
 				{
+					"name": "angle_mean",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "angle_mean(ang1,ang2)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
 					"name": "approach",
 					"extname": "",
 					"calltype": 12,
@@ -1406,18 +1418,6 @@
 						2
 					],
 					"returntype": 2
-				},
-				{
-					"name": "angle_mean",
-					"extname": "",
-					"calltype": 12,
-					"helpline": "angle_mean(ang1,ang2)",
-					"hidden": false,
-					"argtypes": [
-						2,
-						2
-					],
-					"returntype": 2
 				}
 			],
 			"constants": [
@@ -2370,6 +2370,42 @@
 			"final": "",
 			"functions": [
 				{
+					"name": "current_frame",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "current_frame (read-only)",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
+					"name": "delta_time",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "delta_time (read-only)",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
+					"name": "fps_fast",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "fps_fast (read-only)",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
+					"name": "fps_real",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "fps_real (read-only)",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
 					"name": "game_restart",
 					"extname": "__gm82core_restart",
 					"calltype": 2,
@@ -2411,42 +2447,6 @@
 					"calltype": 2,
 					"helpline": "",
 					"hidden": true,
-					"argtypes": null,
-					"returntype": 2
-				},
-				{
-					"name": "current_frame",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "current_frame (read-only)",
-					"hidden": false,
-					"argtypes": null,
-					"returntype": 2
-				},
-				{
-					"name": "delta_time",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "delta_time (read-only)",
-					"hidden": false,
-					"argtypes": null,
-					"returntype": 2
-				},
-				{
-					"name": "fps_real",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "fps_real (read-only)",
-					"hidden": false,
-					"argtypes": null,
-					"returntype": 2
-				},
-				{
-					"name": "fps_fast",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "fps_fast (read-only)",
-					"hidden": false,
 					"argtypes": null,
 					"returntype": 2
 				}
@@ -2574,43 +2574,10 @@
 			"final": "",
 			"functions": [
 				{
-					"name": "sprite_find",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "sprite_find(name)",
-					"hidden": false,
-					"argtypes": [
-						2
-					],
-					"returntype": 2
-				},
-				{
-					"name": "sound_find",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "sound_find(name)",
-					"hidden": false,
-					"argtypes": [
-						2
-					],
-					"returntype": 2
-				},
-				{
 					"name": "background_find",
 					"extname": "",
 					"calltype": 2,
 					"helpline": "background_find(name)",
-					"hidden": false,
-					"argtypes": [
-						2
-					],
-					"returntype": 2
-				},
-				{
-					"name": "path_find",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "path_find(name)",
 					"hidden": false,
 					"argtypes": [
 						2
@@ -2629,17 +2596,6 @@
 					"returntype": 2
 				},
 				{
-					"name": "timeline_find",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "timeline_find(name)",
-					"hidden": false,
-					"argtypes": [
-						2
-					],
-					"returntype": 2
-				},
-				{
 					"name": "object_find",
 					"extname": "",
 					"calltype": 2,
@@ -2651,10 +2607,54 @@
 					"returntype": 2
 				},
 				{
+					"name": "path_find",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "path_find(name)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
 					"name": "room_find",
 					"extname": "",
 					"calltype": 2,
 					"helpline": "room_find(name)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "sound_find",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "sound_find(name)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "sprite_find",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "sprite_find(name)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "timeline_find",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "timeline_find(name)",
 					"hidden": false,
 					"argtypes": [
 						2
@@ -2713,6 +2713,24 @@
 					"argtypes": [
 						2
 					],
+					"returntype": 2
+				},
+				{
+					"name": "instances_place",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "instances_place(x,y,obj1,[obj2...])",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
+					"name": "instances_position",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "instances_position(x,y,obj1,[obj2...])",
+					"hidden": false,
+					"argtypes": null,
 					"returntype": 2
 				},
 				{
@@ -2808,6 +2826,42 @@
 					"returntype": 2
 				},
 				{
+					"name": "instance_places",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "instance_places(x,y,obj1,[obj2...])",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
+					"name": "instance_place_list",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "instance_place_list(x,y,obj1,[obj2...])",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
+					"name": "instance_positions",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "instance_positions(x,y,obj1,[obj2...])",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
+					"name": "instance_position_list",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "instance_position_list(x,y,obj1,[obj2...])",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
 					"name": "instance_some",
 					"extname": "",
 					"calltype": 2,
@@ -2875,6 +2929,15 @@
 					"returntype": 2
 				},
 				{
+					"name": "place_meetings",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "place_meetings(x,y,obj1,[obj2...])",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
 					"name": "position_free",
 					"extname": "",
 					"calltype": 2,
@@ -2884,6 +2947,15 @@
 						2,
 						2
 					],
+					"returntype": 2
+				},
+				{
+					"name": "position_meetings",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "position_meetings(x,y,obj1,[obj2...])",
+					"hidden": false,
+					"argtypes": null,
 					"returntype": 2
 				},
 				{
@@ -2929,78 +3001,6 @@
 					"calltype": 2,
 					"helpline": "",
 					"hidden": true,
-					"argtypes": null,
-					"returntype": 2
-				},
-				{
-					"name": "place_meetings",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "place_meetings(x,y,obj1,[obj2...])",
-					"hidden": false,
-					"argtypes": null,
-					"returntype": 2
-				},
-				{
-					"name": "position_meetings",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "position_meetings(x,y,obj1,[obj2...])",
-					"hidden": false,
-					"argtypes": null,
-					"returntype": 2
-				},
-				{
-					"name": "instance_places",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "instance_places(x,y,obj1,[obj2...])",
-					"hidden": false,
-					"argtypes": null,
-					"returntype": 2
-				},
-				{
-					"name": "instance_positions",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "instance_positions(x,y,obj1,[obj2...])",
-					"hidden": false,
-					"argtypes": null,
-					"returntype": 2
-				},
-				{
-					"name": "instances_place",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "instances_place(x,y,obj1,[obj2...])",
-					"hidden": false,
-					"argtypes": null,
-					"returntype": 2
-				},
-				{
-					"name": "instances_position",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "instances_position(x,y,obj1,[obj2...])",
-					"hidden": false,
-					"argtypes": null,
-					"returntype": 2
-				},
-				{
-					"name": "instance_place_list",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "instance_place_list(x,y,obj1,[obj2...])",
-					"hidden": false,
-					"argtypes": null,
-					"returntype": 2
-				},
-				{
-					"name": "instance_position_list",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "instance_position_list(x,y,obj1,[obj2...])",
-					"hidden": false,
 					"argtypes": null,
 					"returntype": 2
 				}
@@ -3152,6 +3152,51 @@
 			"final": "",
 			"functions": [
 				{
+					"name": "bigchoose",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "bigchoose([option,option,...])",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
+					"name": "bigchoose_clear",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "bigchoose_clear()",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
+					"name": "bigchoose_get",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "bigchoose_get()",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
+					"name": "bigchoose_weighted",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "bigchoose_weighted([option,weight],[option,weight],...)",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
+					"name": "bigchoose_weighted_get",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "bigchoose_weighted_get()",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
 					"name": "choose_weighted",
 					"extname": "",
 					"calltype": 2,
@@ -3194,6 +3239,15 @@
 						2,
 						2
 					],
+					"returntype": 2
+				},
+				{
+					"name": "envelerp",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "envelerp(val,func,[x1,y1,x2,y2,...up to 7 pairs])",
+					"hidden": false,
+					"argtypes": null,
 					"returntype": 2
 				},
 				{
@@ -3284,64 +3338,10 @@
 					"returntype": 2
 				},
 				{
-					"name": "bigchoose",
+					"name": "path_get_height",
 					"extname": "",
 					"calltype": 2,
-					"helpline": "bigchoose([option,option,...])",
-					"hidden": false,
-					"argtypes": null,
-					"returntype": 2
-				},
-				{
-					"name": "bigchoose_get",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "bigchoose_get()",
-					"hidden": false,
-					"argtypes": [],
-					"returntype": 2
-				},
-				{
-					"name": "bigchoose_weighted",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "bigchoose_weighted([option,weight],[option,weight],...)",
-					"hidden": false,
-					"argtypes": null,
-					"returntype": 2
-				},
-				{
-					"name": "bigchoose_weighted_get",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "bigchoose_weighted_get()",
-					"hidden": false,
-					"argtypes": [],
-					"returntype": 2
-				},
-				{
-					"name": "bigchoose_clear",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "bigchoose_clear()",
-					"hidden": false,
-					"argtypes": [],
-					"returntype": 2
-				},
-				{
-					"name": "envelerp",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "envelerp(val,func,[x1,y1,x2,y2,...up to 7 pairs])",
-					"hidden": false,
-					"argtypes": null,
-					"returntype": 2
-				},
-				{
-					"name": "path_get_width",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "path_get_width(path)",
+					"helpline": "path_get_height(path)",
 					"hidden": false,
 					"argtypes": [
 						2
@@ -3349,10 +3349,10 @@
 					"returntype": 2
 				},
 				{
-					"name": "path_get_height",
+					"name": "path_get_width",
 					"extname": "",
 					"calltype": 2,
-					"helpline": "path_get_height(path)",
+					"helpline": "path_get_width(path)",
 					"hidden": false,
 					"argtypes": [
 						2
