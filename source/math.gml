@@ -412,5 +412,37 @@
 
     //should never happen
     return __val
+
+
+#define path_get_width
+    ///path_get_width(path)
+    //Returns the length between the leftmost and rightmost points of a path.
+    
+    var __i,__l,__r;
+    __l=path_get_point_x(argument0,0)
+    __r=__l
+    __i=0 repeat (path_get_number(argument0)) {
+        __u=path_get_point_x(argument0,__i)
+        __l=min(__l,__u)
+        __r=max(__r,__u)
+    __i+=1}
+    
+    return __r-__l
+
+
+#define path_get_height
+    ///path_get_height(path)
+    //Returns the length between the topmost and bottommost points of a path.
+    
+    var __i,__l,__r;
+    __l=path_get_point_y(argument0,0)
+    __r=__l
+    __i=0 repeat (path_get_number(argument0)) {
+        __u=path_get_point_y(argument0,__i)
+        __l=min(__l,__u)
+        __r=max(__r,__u)
+    __i+=1}
+    
+    return __r-__l
 //
 //

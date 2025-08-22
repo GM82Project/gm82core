@@ -3336,6 +3336,28 @@
 					"hidden": false,
 					"argtypes": null,
 					"returntype": 2
+				},
+				{
+					"name": "path_get_width",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "path_get_width(path)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "path_get_height",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "path_get_height(path)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
 				}
 			],
 			"constants": []
