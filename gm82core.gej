@@ -3,7 +3,7 @@
 	"folder": "gm82",
 	"version": "1.6",
 	"author": "renex, Floogle, Lovey01, cam900, Adamcake, Yal, Verve",
-	"date": "27/08/2025",
+	"date": "03/09/2025",
 	"license": "Free to use, also for commercial games.",
 	"description": "Part of the standard Game Maker 8.2 distribution. This extension package contains a number of helper functions that are commonly used, and also geometry functions introduced in GM:Studio. This extension is also required for using the other GM 8.2 extensions, such as Sound, Joystick, DX9 and many more.",
 	"helpfile": "",
@@ -1891,7 +1891,7 @@
 					"name": "ds_list_add_many",
 					"extname": "",
 					"calltype": 2,
-					"helpline": "ds_list_add_many(list,val...])",
+					"helpline": "ds_list_add_many(list,[val...])",
 					"hidden": false,
 					"argtypes": null,
 					"returntype": 2

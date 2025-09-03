@@ -123,7 +123,7 @@
 
 
 #define ds_list_add_many
-    ///ds_list_add_many(list,val...])
+    ///ds_list_add_many(list,[val...])
     //list: ds list index
     //val: value(s) to add
     //returns: ds list index
