@@ -628,5 +628,14 @@
     __i+=1}
     
     return __list
+
+
+#define move_towards_fixed
+    ///move_towards_fixed(x,y,speed)
+    //x,y: position to move to
+    //speed: max speed to use
+    //Fixed version of move_towards_point that doesn't jitter around the target point.
+    
+    move_towards_point(argument0,argument1,min(point_distance(x,y,argument0,argument1),argument2))
 //
 //
