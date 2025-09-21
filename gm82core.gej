@@ -2037,6 +2037,17 @@
 					"returntype": 2
 				},
 				{
+					"name": "ds_map_write_ini_string",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "ds_map_write_ini_string(map)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 1
+				},
+				{
 					"name": "ds_priority_add_many",
 					"extname": "",
 					"calltype": 2,
