@@ -228,6 +228,26 @@
     
     return file_exists(argument1)
 
+#define ds_map_write_ini_string
+    ///ds_map_write_ini_string(map)
+    //map: ds map index
+    //Returns: ini formatted string
+    //Creates a ini formatted string from a dsmap. Spaces are used to split key sections.
+    var __map, __success, __tempFileName;
+    __tempFileName = "_temp.ini"
+    __map = argument0
+    __success = ds_map_write_ini(__map, __tempFileName)
+    
+    if (!__success) {
+        return ""
+    } 
+
+    var __string;
+    __string = file_text_read_all(__tempFileName)
+    sleep(1)
+    file_delete(__tempFileName)
+    return __string
+    
 
 #define ds_map_read_ini_string
     ///ds_map_read_ini_string(map,string)
