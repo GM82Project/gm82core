@@ -313,8 +313,10 @@
             if (__width<=__w) {
                 //line already is short enough
                 if (__c==chr_cr) __cur=string_copy(__cur,1,string_length(__cur)-1)
-                if (__mode==2) __out+=__lf+string_justify(__cur,__w)
-                else __out+=__lf+__cur
+                //don't justify short lines
+                //if (__mode==2) __out+=__lf+string_justify(__cur,__w)
+                //else
+                __out+=__lf+__cur
                 __lf=chr_cr
                 __cur=""
                 __width=0
@@ -355,8 +357,10 @@
     if (__cur!="") {
         //last line
         if (__c==chr_cr) __cur=string_copy(__cur,1,string_length(__cur)-1)
-        if (__mode==2) __out+=__lf+string_justify(__cur,__w)
-        else __out+=__lf+__cur
+        //don't justify short lines
+        //if (__mode==2) __out+=__lf+string_justify(__cur,__w)
+        //else 
+        __out+=__lf+__cur
     }
 
     return __out
