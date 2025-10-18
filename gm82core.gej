@@ -1897,6 +1897,137 @@
 					"returntype": 2
 				},
 				{
+					"name": "ds_list_all",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "ds_list_all(list,callback)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "ds_list_any",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "ds_list_any(list,callback)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "ds_list_concat",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "ds_list_concat(list, lists...)",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
+					"name": "ds_list_contains",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "ds_list_contains(list,value)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "ds_list_contains_ext",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "ds_list_contains_ext(list,values...)",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
+					"name": "ds_list_filter",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "ds_list_filter(list,callback)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "ds_list_foreach",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "ds_list_foreach(list,callback)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "ds_list_pop",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "ds_list_foreach(list)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "ds_list_reverse",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "ds_list_reverse(list)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "ds_list_str",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "ds_list_str(list)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 1
+				},
+				{
+					"name": "ds_list_union",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "ds_list_union(list, lists...)",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
+					"name": "ds_list_unique",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "ds_list_unique(list)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
 					"name": "ds_list_equal",
 					"extname": "",
 					"calltype": 2,
