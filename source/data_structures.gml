@@ -138,7 +138,7 @@
 
     return argument[0];
 
-    
+
 #define ds_list_all
     ///ds_list_all(list, callback)
     //list: ds list index
@@ -251,8 +251,10 @@
     var __list, __callback, __i;
     __list = argument0
     __callback = argument1
-    for (__i = 0; __i < ds_list_size(__list); __i += 1) {
-        ds_list_replace(__list, __i, script_execute(__callback, ds_list_find_value(__list, __i), __i))
+    if (script_exists(__callback)) {
+        for (__i = 0; __i < ds_list_size(__list); __i += 1) {
+            script_execute(__callback, ds_list_find_value(__list, __i), __i)
+        }
     }
 
 
