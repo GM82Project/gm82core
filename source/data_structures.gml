@@ -258,6 +258,21 @@
     }
 
 
+#define ds_list_map
+    ///ds_list_map(list, callback)
+    //list: ds list index
+    //callback: callback script for all values
+    //Runs the callback for ALL elements
+    var __list, __callback, __i;
+    __list = argument0
+    __callback = argument1
+    if (script_exists(__callback)) {
+        for (__i = 0; __i < ds_list_size(__list); __i += 1) {
+            ds_list_replace(__list, __i, script_execute(__callback, ds_list_find_value(__list, __i), __i))
+        }
+    }
+
+
 #define ds_list_pop
     ///ds_list_pop(list)
     //list: ds list index
