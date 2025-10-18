@@ -261,8 +261,14 @@
 #define ds_list_pop
     ///ds_list_pop(list)
     //list: ds list index
+    //returns: popped value
     //Removes the last value from the list
-    ds_list_delete(argument0, ds_list_size(argument0) - 1)
+    var __list, __at, __popVal;
+    __list = argument0
+    __at = ds_list_size(__list) - 1
+    __popVal = ds_list_find_value(__list, __at)
+    ds_list_delete(__list, __at)
+    return __popVal
 
 
 #define ds_list_reverse
