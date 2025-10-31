@@ -126,7 +126,7 @@ GMREAL window_restore() {
     return 0;
 }
 
-GMREAL __gm82core_set_foreground(double gm_hwnd) {
+GMREAL __gm82core_set_foreground() {
     ///window_set_foreground()
     //Puts the game window on top of all other windows.
     
@@ -136,6 +136,14 @@ GMREAL __gm82core_set_foreground(double gm_hwnd) {
 
 GMREAL get_foreground_window() {
     return (double)(GetForegroundWindow()==window_handle);
+}
+
+GMREAL window_set_close_enabled(double enabled) {
+    HMENU hMenu;
+    if ((hMenu = GetSystemMenu(window_handle, FALSE)) == NULL) return 0;
+    uint32_t dwExtra = enabled>0.5 ? MF_ENABLED : (MF_DISABLED | MF_GRAYED);
+    EnableMenuItem(hMenu, SC_CLOSE, MF_BYCOMMAND | dwExtra);
+    return 1;
 }
 
 GMREAL get_windows_version() {
