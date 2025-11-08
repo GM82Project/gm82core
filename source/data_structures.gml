@@ -227,10 +227,16 @@
     ///ds_list_filter(list, callback)
     //list: ds list index
     //callback: callback script for all values
-    //Returns a new list that is the filtered version of the given list, or undefined if the new list is empty
+    //Returns a new list that is the filtered version of the given list, or undefined on a empty list or a error
     var __list, __callback, __new, __i, __value;
     __list = argument0
     __callback = argument1
+
+    if (argument_count != 2) {
+        show_error("in function ds_list_filter: wrong number of arguments", 0)
+        return undefined
+    }
+    
     __new = ds_list_create()
     if (script_exists(__callback)) {
         for (__i = 0; __i < ds_list_size(__list); __i += 1) {
@@ -239,7 +245,11 @@
                 ds_list_add(__new, __value)
             }
         }
+    } else {
+        show_error("in function ds_list_filter: callback script doesn't exist", 0)
+        return undefined
     }
+    
     if (ds_list_empty(__new)) 
         return undefined
     return __new
