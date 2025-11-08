@@ -1975,10 +1975,22 @@
 					"returntype": 2
 				},
 				{
+					"name": "ds_list_map",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "ds_list_map(list,callback)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
 					"name": "ds_list_pop",
 					"extname": "",
 					"calltype": 2,
-					"helpline": "ds_list_foreach(list)",
+					"helpline": "ds_list_pop(list)",
 					"hidden": false,
 					"argtypes": [
 						2
