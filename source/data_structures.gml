@@ -224,6 +224,7 @@
     //match_all: whether all the given values should be checked, or any one of them
     //values: values to check
     //returns: bool
+    //Checks if the given values exist in the given DS list. (Backport of GMS2's `array_contains_ext` function.)
     var found, n;
     found = 0;
     for (n = 2; n < argument_count; n += 1)
