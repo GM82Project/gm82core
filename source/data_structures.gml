@@ -139,6 +139,266 @@
     return argument[0];
 
 
+#define ds_list_all
+    ///ds_list_all(list, callback)
+    //list: ds list index
+    //callback: callback script for all values
+    //returns: bool
+    //Checks if callback returns true for ALL elements
+    var __list, __callback, __i;
+    __list = argument0
+    __callback = argument1
+
+    if (argument_count != 2) {
+        show_error("in function ds_list_all: wrong number of arguments", 0)
+        return false
+    }
+
+    if (script_exists(__callback)) {
+        for (__i = 0; __i < ds_list_size(__list); __i += 1) {
+            if (!script_execute(__callback, ds_list_find_value(__list, __i), __i)) {
+                return false
+            }
+        }
+    } else {
+        show_error("in function ds_list_all: callback script doesn't exist", 0)
+        return false
+    }
+    return true
+
+
+#define ds_list_any
+    ///ds_list_any(list, callback)
+    //list: ds list index
+    //callback: callback for any value
+    //returns: bool
+    //Checks if any one element in the given list matches a condition.
+    var __list, __callback, __i;
+    __list = argument0
+    __callback = argument1
+
+    if (argument_count != 2) {
+        show_error("in function ds_list_any: wrong number of arguments", 0)
+        return false
+    }
+
+    if (script_exists(__callback)) {
+        for (__i = 0; __i < ds_list_size(__list); __i += 1) {
+            if (script_execute(__callback, ds_list_find_value(__list, __i), __i)) {
+                return true
+            }
+        }
+    } else {
+        show_error("in function ds_list_any: callback script doesn't exist", 0)
+    }
+    return false
+
+
+#define ds_list_concat
+    ///ds_list_concat(list, lists...)
+    //list: ds list index
+    //lists: list(s) to concat
+    //Concats lists into the list
+    var __list, __currentList, __i, __j;
+    __list = argument0
+    for (__i = 1; __i < argument_count; __i += 1) {
+        __currentList = argument[__i]
+        for (__j = 0; __j < ds_list_size(__currentList); __j += 1) {
+            ds_list_add(__list, ds_list_find_value(__currentList, __j))
+        }
+    }
+
+
+#define ds_list_contains
+    ///ds_list_contains(list, value)
+    //list: ds list index
+    //value: value to check
+    //returns: bool
+    //Checks if the given value exists in the list.
+    return ds_list_find_index(argument0, argument1) != -1
+
+
+#define ds_list_contains_ext
+    ///ds_list_contains_ext(list, values...)
+    //list: ds list index
+    //values: values to check
+    //returns: bool
+    //Checks if the given values exists in the list.
+    var __array, __found, __i, __j;
+    __array = argument0
+    for (__i = 1; __i < argument_count; __i += 1) {
+        __found = false;
+        
+        for (__j = 0; __j < ds_list_size(__array); __j += 1) {
+            if (ds_list_find_value(__array, __j) == argument[__i]) {
+                __found = true
+                break;
+            }
+        }
+        
+        if (!__found) return false
+    }
+    return true
+
+
+#define ds_list_filter
+    ///ds_list_filter(list, callback)
+    //list: ds list index
+    //callback: callback script for all values
+    //Returns a new list that is the filtered version of the given list, or undefined on a empty list or a error
+    var __list, __callback, __new, __i, __value;
+    __list = argument0
+    __callback = argument1
+
+    if (argument_count != 2) {
+        show_error("in function ds_list_filter: wrong number of arguments", 0)
+        return undefined
+    }
+    
+    __new = ds_list_create()
+    if (script_exists(__callback)) {
+        for (__i = 0; __i < ds_list_size(__list); __i += 1) {
+            __value = ds_list_find_value(__list, __i);
+            if (script_execute(__callback, __value, __i)) {
+                ds_list_add(__new, __value)
+            }
+        }
+    } else {
+        show_error("in function ds_list_filter: callback script doesn't exist", 0)
+        return undefined
+    }
+
+    if (ds_list_empty(__new)) 
+        return undefined
+    return __new
+
+
+#define ds_list_foreach
+    ///ds_list_foreach(list, callback)
+    //list: ds list index
+    //callback: callback script for all values
+    //Runs the callback for ALL elements
+    var __list, __callback, __i;
+    __list = argument0
+    __callback = argument1
+
+    if (argument_count != 2) {
+        show_error("in function ds_list_foreach: wrong number of arguments", 0)
+        exit
+    }
+
+    if (script_exists(__callback)) {
+        for (__i = 0; __i < ds_list_size(__list); __i += 1) {
+            script_execute(__callback, ds_list_find_value(__list, __i), __i)
+        }
+    } else {
+        show_error("in function ds_list_foreach: callback script doesn't exist", 0)
+    }
+
+
+#define ds_list_map
+    ///ds_list_map(list, callback)
+    //list: ds list index
+    //callback: callback script for all values
+    //Runs the callback for ALL elements
+    var __list, __callback, __i;
+    __list = argument0
+    __callback = argument1
+
+    if (argument_count != 2) {
+        show_error("in function ds_list_map: wrong number of arguments", 0)
+        exit
+    }
+
+    if (script_exists(__callback)) {
+        for (__i = 0; __i < ds_list_size(__list); __i += 1) {
+            ds_list_replace(__list, __i, script_execute(__callback, ds_list_find_value(__list, __i), __i))
+        }
+    } else {
+        show_error("in function ds_list_map: callback script doesn't exist", 0)
+    }
+
+
+#define ds_list_pop
+    ///ds_list_pop(list)
+    //list: ds list index
+    //returns: popped value
+    //Removes the last value from the list
+    var __list, __at, __popVal;
+    __list = argument0
+    __at = ds_list_size(__list) - 1
+    __popVal = ds_list_find_value(__list, __at)
+    ds_list_delete(__list, __at)
+    return __popVal
+
+
+#define ds_list_reverse
+    ///ds_list_reverse(list)
+    //list: ds list index
+    //Reverses the list values order.
+    var __list, __size, __temp, __i;
+    __list = argument0
+    __size = ds_list_size(__list)
+    for (__i = 0; __i < __size div 2; __i += 1) {
+        __temp = ds_list_find_value(__list, __i)
+        ds_list_replace(__list, __i, ds_list_find_value(__list, __size - 1 - __i))
+        ds_list_replace(__list, __size - 1 - __i, __temp)
+    }
+
+
+#define ds_list_str
+    ///ds_list_str(list)
+    //list: ds list index
+    //returns: string
+    //Returns a list as a string
+    var __list, __str, __i;
+    __list = argument0
+    __str = ""
+    for (__i = 0; __i < ds_list_size(__list); __i += 1) {
+        if (__i > 0) __str += ", "
+        __str += string(ds_list_find_value(__list, __i))
+    }
+    return __str
+
+
+#define ds_list_union
+    ///ds_list_union(list, lists...)
+    //list: ds list index
+    //lists: list(s) to concat
+    //Returns a new list that is the union of all provided lists.
+    var __new, __i, __unique;
+    __new = ds_list_create()
+    for (__i = 0; __i < argument_count; __i += 1) {
+        ds_list_concat(__new, argument[__i])
+    }
+    __unique = ds_list_unique(__new)
+    ds_list_destroy(__new)
+    return __unique
+
+
+#define ds_list_unique
+    ///ds_list_unique(list)
+    //list: ds list index
+    //Returns a new list containing the values of the list with any duplicate values removed
+    var __list, __new, __i, __j, __value, __isDuplicate;
+    __list = argument0
+    __new = ds_list_create()
+    for (__i = 0; __i < ds_list_size(__list); __i += 1) {
+        __value = ds_list_find_value(__list, __i)
+        __isDuplicate = false
+        for (__j = 0; __j < ds_list_size(__new); __j += 1) {
+            if (ds_list_find_value(__new, __j) == __value) {
+                __isDuplicate = true
+                break;
+            }
+        }  
+        if (!__isDuplicate) {
+            ds_list_add(__new, __value)
+        }
+    }
+    return __new
+
+
 #define ds_map_add_copy
     ///ds_map_add_copy(src,dest)
     //src, dest: ds map indexes
