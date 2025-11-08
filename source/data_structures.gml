@@ -143,16 +143,26 @@
     ///ds_list_all(list, callback)
     //list: ds list index
     //callback: callback script for all values
+    //returns: bool
     //Checks if callback returns true for ALL elements
     var __list, __callback, __i;
     __list = argument0
     __callback = argument1
+
+    if (argument_count != 2) {
+        show_error("in function ds_list_all: wrong number of arguments", 0)
+        return false
+    }
+
     if (script_exists(__callback)) {
         for (__i = 0; __i < ds_list_size(__list); __i += 1) {
             if (!script_execute(__callback, ds_list_find_value(__list, __i), __i)) {
                 return false
             }
         }
+    } else {
+        show_error("in function ds_list_all: callback script doesn't exist", 0)
+        return false
     }
     return true
 
@@ -166,12 +176,20 @@
     var __list, __callback, __i;
     __list = argument0
     __callback = argument1
+
+    if (argument_count != 2) {
+        show_error("in function ds_list_any: wrong number of arguments", 0)
+        return false
+    }
+
     if (script_exists(__callback)) {
         for (__i = 0; __i < ds_list_size(__list); __i += 1) {
             if (script_execute(__callback, ds_list_find_value(__list, __i), __i)) {
                 return true
             }
         }
+    } else {
+        show_error("in function ds_list_any: callback script doesn't exist", 0)
     }
     return false
 
@@ -249,7 +267,7 @@
         show_error("in function ds_list_filter: callback script doesn't exist", 0)
         return undefined
     }
-    
+
     if (ds_list_empty(__new)) 
         return undefined
     return __new
@@ -263,10 +281,18 @@
     var __list, __callback, __i;
     __list = argument0
     __callback = argument1
+
+    if (argument_count != 2) {
+        show_error("in function ds_list_foreach: wrong number of arguments", 0)
+        exit
+    }
+
     if (script_exists(__callback)) {
         for (__i = 0; __i < ds_list_size(__list); __i += 1) {
             script_execute(__callback, ds_list_find_value(__list, __i), __i)
         }
+    } else {
+        show_error("in function ds_list_foreach: callback script doesn't exist", 0)
     }
 
 
@@ -278,10 +304,18 @@
     var __list, __callback, __i;
     __list = argument0
     __callback = argument1
+
+    if (argument_count != 2) {
+        show_error("in function ds_list_map: wrong number of arguments", 0)
+        exit
+    }
+
     if (script_exists(__callback)) {
         for (__i = 0; __i < ds_list_size(__list); __i += 1) {
             ds_list_replace(__list, __i, script_execute(__callback, ds_list_find_value(__list, __i), __i))
         }
+    } else {
+        show_error("in function ds_list_map: callback script doesn't exist", 0)
     }
 
 
