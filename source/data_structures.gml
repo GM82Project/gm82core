@@ -219,13 +219,11 @@
 
 
 #define ds_list_contains_ext
-    /// ds_list_contains_ext(list, match_all, val1, [val2, ...])
-    /// @description Checks if the given values exist in the given DS list. (Backport of GMS2's `array_contains_ext` function.)
-    /// @param {Id.DsList} list DS list to check.
-    /// @param {Bool} match_all Whether all the given values should be checked, or any one of them.
-    /// @param {Any} val1 First value to check.
-    /// @param {Any} [val2, ...] Subsequent values to check (optional).
-    /// @returns {Bool}
+    ///ds_list_contains_ext(list, match_all, val1, [val2, ...])
+    //list: DS list to check
+    //match_all: whether all the given values should be checked, or any one of them
+    //values: values to check
+    //returns: bool
     var found, n;
     found = 0;
     for (n = 2; n < argument_count; n += 1)
