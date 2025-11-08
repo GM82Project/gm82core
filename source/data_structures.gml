@@ -227,7 +227,7 @@
     ///ds_list_filter(list, callback)
     //list: ds list index
     //callback: callback script for all values
-    //Returns a new list that is the filtered version of the given list
+    //Returns a new list that is the filtered version of the given list, or undefined if the new list is empty
     var __list, __callback, __new, __i, __value;
     __list = argument0
     __callback = argument1
@@ -240,6 +240,8 @@
             }
         }
     }
+    if (ds_list_empty(__new)) 
+        return undefined
     return __new
 
 
