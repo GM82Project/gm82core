@@ -225,30 +225,18 @@
     //values: values to check
     //returns: bool
     //Checks if the given values exist in the given DS list. (Backport of GMS2's `array_contains_ext` function.)
-    var found, n;
-    found = 0;
+    var matches, n;
+    matches = 0;
     for (n = 2; n < argument_count; n += 1)
     {
         if (ds_list_find_index(argument0, argument[n]) != -1)
         {
-            if (not argument1)
-            {
-                found = 1;
-                break;
-            }
-            found += 1;
+            if (not argument1) break;
+            matches += 1;
         }
     }
     
-    if (not argument1 and found == 1)
-    {
-        return true;
-    }
-    if (argument1 and found == argument_count - 2)
-    {
-        return true;
-    }
-    return false;
+    return (n < argument_count or matches == argument_count - 2);
 
 
 #define ds_list_filter
