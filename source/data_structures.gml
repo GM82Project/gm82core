@@ -219,26 +219,37 @@
 
 
 #define ds_list_contains_ext
-    ///ds_list_contains_ext(list, values...)
-    //list: ds list index
-    //values: values to check
-    //returns: bool
-    //Checks if the given values exists in the list.
-    var __array, __found, __i, __j;
-    __array = argument0
-    for (__i = 1; __i < argument_count; __i += 1) {
-        __found = false;
-        
-        for (__j = 0; __j < ds_list_size(__array); __j += 1) {
-            if (ds_list_find_value(__array, __j) == argument[__i]) {
-                __found = true
+    /// ds_list_contains_ext(list, match_all, val1, [val2, ...])
+    /// @description Checks if the given values exist in the given DS list. (Backport of GMS2's `array_contains_ext` function.)
+    /// @param {Id.DsList} list DS list to check.
+    /// @param {Bool} match_all Whether all the given values should be checked, or any one of them.
+    /// @param {Any} val1 First value to check.
+    /// @param {Any} [val2, ...] Subsequent values to check (optional).
+    /// @returns {Bool}
+    var found, n;
+    found = 0;
+    for (n = 2; n < argument_count; n += 1)
+    {
+        if (ds_list_find_index(argument0, argument[n]) != -1)
+        {
+            if (not argument1)
+            {
+                found = 1;
                 break;
             }
+            found += 1;
         }
-        
-        if (!__found) return false
     }
-    return true
+    
+    if (not argument1 and found == 1)
+    {
+        return true;
+    }
+    if (argument1 and found == argument_count - 2)
+    {
+        return true;
+    }
+    return false;
 
 
 #define ds_list_filter
