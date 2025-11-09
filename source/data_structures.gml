@@ -461,7 +461,7 @@
     //filename: string, file to save
     //Returns: whether the function was successful
     //Writes a dsmap into an ini file. Spaces are used to split key sections.
-    var __map,__f,__section,__key,__val,__p;
+    var __map,__f,__section,__key,__name,__val,__p;
     
     __map=argument0
     
@@ -471,9 +471,12 @@
         __p=string_pos(" ",__key)
         if (__p) {
             __section=string_copy(__key,1,__p-1)
-            __key=string_delete(__key,1,__p)            
-        } else __section=""
-        ini_write_string(__section,__key,string_better(__val))
+            __name=string_delete(__key,1,__p)            
+        } else {
+            __section=""
+            __name=__key
+        }
+        ini_write_string(__section,__name,string_better(__val))
     __key=ds_map_find_next(__map,__key)}
     ini_close()
     
