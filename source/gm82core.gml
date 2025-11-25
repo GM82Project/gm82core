@@ -8,7 +8,7 @@
     object_event_add(gm82core_object,ev_step,ev_step_begin,"__gm82core_update()")
     object_event_add(gm82core_object,ev_destroy,0,"if (!__dead) instance_copy(0)")
     object_event_add(gm82core_object,ev_other,ev_room_end,"persistent=true")
-    object_event_add(gm82core_object,ev_other,ev_animation_end,"fps_real=1/max(0.00000001,(get_timer()-__gm82core_timer)/1000000) __gm82core_framecount+=1 current_frame=__gm82core_framecount")
+    object_event_add(gm82core_object,ev_other,ev_animation_end,"__gm82core_frame_end()")
     
     //notes about alarm events:
     //any of my extensions might decide to install alarms onto the core object.
@@ -93,6 +93,7 @@
         __gm82core_restart()
     }
 
+
 #define __gm82core_update
     var __tmp,__stamp;
     
@@ -118,6 +119,12 @@
     __gm82core_fpsmem=mean(__gm82core_fpsmem,ds_queue_size(__gm82core_fps_queue))
     fps_fast=round(__gm82core_fpsmem)
 
+
+#define __gm82core_frame_end
+    fps_real=1/max(0.00000001,(get_timer()-__gm82core_timer)/1000000)
+    __gm82core_framecount+=1
+    current_frame=__gm82core_framecount
+    
 
 #define __gm82core_restart
     show_error("game_restart() is currently not supported by the GM 8.2 extensions due to potential memory leaks.",1)
