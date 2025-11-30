@@ -235,7 +235,7 @@ GMREAL lerp_angle(double from, double to, double amount) {
 GMREAL darccos(double ang) {
     ///darccos(ang)
     //ang: angle in degrees
-    //returns: arc cosine in degrees.
+    //returns: arc cosine length.
     
     return acos(ang)*180/M_PI;    
 }
@@ -243,7 +243,7 @@ GMREAL darccos(double ang) {
 GMREAL darcsin(double x) {
     ///darcsin(ang)
     //ang: angle in degrees
-    //returns: arc sine in degrees.
+    //returns: arc sine length.
     
     return asin(x)*180/M_PI;    
 }
@@ -251,14 +251,14 @@ GMREAL darcsin(double x) {
 GMREAL darctan(double x) {
     ///darccos(ang)
     //ang: angle in degrees
-    //returns: arc tangent in degrees.
+    //returns: arc tangent length.
     
     return atan(x)*180/M_PI;    
 }
 
 GMREAL darctan2(double y, double x) {
     ///darctan2(y,x)
-    //returns: arc tangent 2 in degrees.
+    //returns: arc tangent 2 length.
     
     return atan2(y, x)*180/M_PI;    
 }
@@ -266,7 +266,7 @@ GMREAL darctan2(double y, double x) {
 GMREAL dcos(double ang) {
     ///dcos(x)
     //x: angle in degrees
-    //returns: cosine in degrees.
+    //returns: cosine length.
     
     return cos(ang/180*M_PI);    
 }
@@ -274,7 +274,7 @@ GMREAL dcos(double ang) {
 GMREAL dsin(double ang) {
     ///dsin(x)
     //x: angle in degrees
-    //returns: sine in degrees.
+    //returns: sine length.
     
     return sin(ang/180*M_PI);    
 }
@@ -282,7 +282,7 @@ GMREAL dsin(double ang) {
 GMREAL dtan(double ang) {
     ///dtan(x)
     //x: angle in degrees
-    //returns: tangent in degrees.
+    //returns: tangent length.
     
     return tan(ang/180*M_PI);    
 }
@@ -290,7 +290,7 @@ GMREAL dtan(double ang) {
 GMREAL secant(double ang) {
     ///secant(rad)
     //rad: angle in radians
-    //returns: secant of an angle in radians.
+    //returns: secant length of an angle.
     
     return 1/cos(ang);
 }
@@ -298,7 +298,7 @@ GMREAL secant(double ang) {
 GMREAL dsecant(double ang) {
     ///dsecant(ang)
     //ang: angle in degrees
-    //returns: secant of an angle in degrees.
+    //returns: secant length of an angle.
     
     return 1/cos(ang/180*M_PI);
 }
