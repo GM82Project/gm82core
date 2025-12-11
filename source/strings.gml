@@ -288,7 +288,7 @@
     var __in,__w,__out,__i,__p,__fail,__cur,__op,__lf,__c,__pc,__width;
 
     __lf=""
-    __valid=chr_cr+chr(9)+" -.,;:?!/\@#$%&*+<>{}[]()='"+'"'
+    __valid=chr_cr+chr(9)+" -.,;:?!/\@#$%&*+<>{}[]()="
 
     if (argument_count<2 or argument_count>3) {
         show_error("error in function string_wrap: wrong number of arguments ("+string(argument_count)+")",false)
