@@ -277,20 +277,22 @@
 
 
 #define string_wrap
-    ///string_wrap(string,width,[mode])
+    ///string_wrap(string,width,[mode,[break_chars]])
     //string: text to process
     //width: size in pixels to fit text
     //mode 0/default: just like builtin text_ext
     //mode 1: cut words at boundary
     //mode 2: add spaces to justify
+    //break_chars: characters that are allowed to break a line
     //returns: adjusted string
     //Adjusts text to fit a specified maximum width.
     var __in,__w,__out,__i,__p,__fail,__cur,__op,__lf,__c,__pc,__width;
 
     __lf=""
-    __valid=chr_cr+chr(9)+" -.,;:?!/\@#$%&*+<>{}[]()="
+    if (argument_count==4) __valid=argument[3]
+    else __valid=chr_cr+chr(9)+" -"
 
-    if (argument_count<2 or argument_count>3) {
+    if (argument_count<2 or argument_count>4) {
         show_error("error in function string_wrap: wrong number of arguments ("+string(argument_count)+")",false)
         return "ERROR"
     }
