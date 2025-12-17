@@ -196,21 +196,35 @@
     if (sprite_index>=0) draw_sprite_ext(sprite_index,-1,x,y,argument0,argument1,argument2,argument3,argument4)
 
 
-#define draw_set1
-    ///draw_set1(color,alpha)
+#define draw_setb
+    ///draw_setb(color,alpha)
     //color,alpha: blend to use
     //Sets color and alpha at once.
     draw_set_color(argument0)
     draw_set_alpha(argument1)
 
 
-#define draw_set2
-    ///draw_set2(halign,valign)
+#define draw_seta
+    ///draw_seta(halign,valign)
     //halign,valign: font align constants (fa_)
     //Sets both text align options at once.
     draw_set_halign(argument0)
     draw_set_valign(argument1)
 
+
+#define draw_setf
+    ///draw_setf(font,halign,valign,color,alpha)
+    //font: font to use
+    //halign,valign: font align constants (fa_)
+    //color,alpha: blend to use
+    //Sets all font properties at once.
+    
+    draw_set_font(argument0)
+    draw_set_halign(argument1)
+    draw_set_valign(argument2)
+    draw_set_color(argument3)
+    draw_set_alpha(argument4)
+    
 
 #define draw_set_rgba
     ///draw_set_rgba(r,g,b,a)

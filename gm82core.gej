@@ -3,9 +3,9 @@
 	"folder": "gm82",
 	"version": "1.6",
 	"author": "renex, Floogle, Lovey01, cam900, Adamcake, Yal, Verve",
-	"date": "15/12/2025",
+	"date": "17/12/2025",
 	"license": "Free to use, also for commercial games.",
-	"description": "Part of the standard Game Maker 8.2 distribution. This extension package contains a number of helper functions that are commonly used, and also geometry functions introduced in GM:Studio. This extension is also required for using the other GM 8.2 extensions, such as Sound, Joystick, DX9 and many more.",
+	"description": "Part of the standard Game Maker 8.2 distribution. This extension package contains a vast number of helper functions, and some newer functions introduced in GM:Studio. This extension is also required for using the other GM 8.2 extensions.",
 	"helpfile": "",
 	"hidden": false,
 	"dependencies": [],
@@ -2372,10 +2372,10 @@
 					"returntype": 2
 				},
 				{
-					"name": "draw_set1",
+					"name": "draw_setb",
 					"extname": "",
 					"calltype": 2,
-					"helpline": "draw_set1(color,alpha)",
+					"helpline": "draw_setb(color,alpha)",
 					"hidden": false,
 					"argtypes": [
 						2,
@@ -2384,12 +2384,27 @@
 					"returntype": 2
 				},
 				{
-					"name": "draw_set2",
+					"name": "draw_seta",
 					"extname": "",
 					"calltype": 2,
-					"helpline": "draw_set2(halign,valign)",
+					"helpline": "draw_seta(halign,valign)",
 					"hidden": false,
 					"argtypes": [
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "draw_setf",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "draw_setf(font,halign,valign,color,alpha)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2,
 						2,
 						2
 					],
@@ -2522,6 +2537,24 @@
 						2,
 						2
 					],
+					"returntype": 2
+				},
+				{
+					"name": "draw_set1",
+					"extname": "draw_setb",
+					"calltype": 2,
+					"helpline": "",
+					"hidden": true,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
+					"name": "draw_set2",
+					"extname": "draw_seta",
+					"calltype": 2,
+					"helpline": "",
+					"hidden": true,
+					"argtypes": null,
 					"returntype": 2
 				}
 			],
