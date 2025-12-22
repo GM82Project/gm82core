@@ -82,6 +82,16 @@ GMREAL unlerp(double a, double b, double val) {
     return (val-a)/(b-a);
 }
 
+GMREAL unclerp(double a, double b, double val) {
+    ///unclerp(a,b,val)
+    //a: start value
+    //b: end value
+    //val: real - value to convert
+    //returns: the reverse lerp of 'value' between 'a' and 'b', clamped to 0-1.
+    
+    return max(0,min(1,(val-a)/(b-a)));
+}
+
 GMREAL esign(double x, double def) {
     ///esign(x,default):sign
     //x: value to get the sign of
