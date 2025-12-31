@@ -2915,11 +2915,9 @@
 					"name": "collision_check_fast",
 					"extname": "",
 					"calltype": 2,
-					"helpline": "collision_check_fast(obj)",
+					"helpline": "collision_check_fast(obj, [distance])",
 					"hidden": false,
-					"argtypes": [
-						2
-					],
+					"argtypes": null,
 					"returntype": 2
 				},
 				{
