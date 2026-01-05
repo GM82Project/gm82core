@@ -1,10 +1,11 @@
 #define collision_check_fast
-    ///collision_check_fast(obj)
+    ///collision_check_fast(obj, [distance])
     //obj: object index to check
+    //distance: minimum distance, 0 by default
     //returns: if there was collision
     //performs fast but inaccurate collision checks. Best used with lots of tiny instances e.g. bullets. Avoid long or tall instances like walls.
     
-    return (distance_to_object(instance_nearest(x,y,argument0))<=0)
+    return (distance_to_object(instance_nearest(x,y,argument0))<=argument1)
 
 
 #define direction_to_object
