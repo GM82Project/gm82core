@@ -3,7 +3,7 @@
 	"folder": "gm82",
 	"version": "1.6",
 	"author": "renex, Floogle, Lovey01, cam900, Adamcake, Yal, Verve",
-	"date": "22/12/2025",
+	"date": "07/01/2026",
 	"license": "Free to use, also for commercial games.",
 	"description": "Part of the standard Game Maker 8.2 distribution. This extension package contains a vast number of helper functions, and some newer functions introduced in GM:Studio. This extension is also required for using the other GM 8.2 extensions.",
 	"helpfile": "",
@@ -4010,6 +4010,15 @@
 					"returntype": 2
 				},
 				{
+					"name": "message_default",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "message_default()",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
 					"name": "mouse_back_button",
 					"extname": "",
 					"calltype": 2,
@@ -4101,8 +4110,26 @@
 			"constants": []
 		},
 		{
-			"filename": "msgspr.gmspr",
-			"origname": "msgspr.gmspr",
+			"filename": "msgbg.jpeg",
+			"origname": "include\\msgbg.jpeg",
+			"kind": 4,
+			"init": "",
+			"final": "",
+			"functions": [],
+			"constants": []
+		},
+		{
+			"filename": "msgbut.gmspr",
+			"origname": "include\\msgbut.gmspr",
+			"kind": 4,
+			"init": "",
+			"final": "",
+			"functions": [],
+			"constants": []
+		},
+		{
+			"filename": "msgbut_core.gmspr",
+			"origname": "include\\msgbut_core.gmspr",
 			"kind": 4,
 			"init": "",
 			"final": "",

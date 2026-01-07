@@ -66,7 +66,7 @@
     __gm82core_pixel_tex=sprite_get_texture(__gm82core_pixel,0)
     surface_free(__s)
 
-    message_button(sprite_add_sprite(temp_directory+"\gm82\msgspr.gmspr"))
+    message_button(sprite_add_sprite(temp_directory+"\gm82\msgbut_core.gmspr"))
     message_background(background_create_color(1,1,$404040))
     message_text_font("Courier New",12,$ffffff,1)
     message_button_font("Courier New",12,$ffffff,1)

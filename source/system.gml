@@ -242,6 +242,25 @@
     return __list
 
 
+#define message_style_default
+    ///message_style_default()
+    //Applies the default GM 8.1 "black boxes of death" styling to message boxes.
+    
+    message_text_font("MS Sans Serif",8,$ffffff,0)
+    message_button_font("Tahoma",8,$ffffff,1)
+    message_input_font("MS Sans Serif",8,$ffffff,0)
+    message_mouse_color($ffffff)
+    message_caption(0,"")
+    message_size(-1,-1)
+    
+    globalvar __gm82core_msgbg_def,__gm82core_msgbut_def;
+    if (!__gm82core_msgbg_def) __gm82core_msgbg_def=background_add(temp_directory+"\gm82\msgbg.jpeg",0,0)
+    if (!__gm82core_msgbut_def) __gm82core_msgbut_def=sprite_add_sprite(temp_directory+"\gm82\msgbut.gmspr")
+    
+    message_button(__gm82core_msgbut_def)
+    message_background(__gm82core_msgbg_def)
+   
+
 #define font_add_winui
     ///font_add_winui(filename)
     //filename: path to ttf or fon file
