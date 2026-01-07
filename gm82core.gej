@@ -1880,6 +1880,15 @@
 					"returntype": 2
 				},
 				{
+					"name": "ds_bag_quick",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "ds_bag_quick(bag,item,[item...])",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
 					"name": "ds_bag_remove",
 					"extname": "",
 					"calltype": 2,
@@ -1975,6 +1984,18 @@
 					"returntype": 2
 				},
 				{
+					"name": "ds_list_equal",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "ds_list_equal(list1,list2)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
 					"name": "ds_list_filter",
 					"extname": "",
 					"calltype": 2,
@@ -1982,6 +2003,28 @@
 					"hidden": false,
 					"argtypes": [
 						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "ds_list_find_first",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "ds_list_find_first(list)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "ds_list_find_last",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "ds_list_find_last(list)",
+					"hidden": false,
+					"argtypes": [
 						2
 					],
 					"returntype": 2
@@ -2057,40 +2100,6 @@
 					"extname": "",
 					"calltype": 2,
 					"helpline": "ds_list_unique(list)",
-					"hidden": false,
-					"argtypes": [
-						2
-					],
-					"returntype": 2
-				},
-				{
-					"name": "ds_list_equal",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "ds_list_equal(list1,list2)",
-					"hidden": false,
-					"argtypes": [
-						2,
-						2
-					],
-					"returntype": 2
-				},
-				{
-					"name": "ds_list_find_first",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "ds_list_find_first(list)",
-					"hidden": false,
-					"argtypes": [
-						2
-					],
-					"returntype": 2
-				},
-				{
-					"name": "ds_list_find_last",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "ds_list_find_last(list)",
 					"hidden": false,
 					"argtypes": [
 						2

@@ -782,6 +782,33 @@
     return (ds_list_size(argument0)==1)
 
 
+#define ds_bag_quick
+    ///ds_bag_quick(bag,item,[item...])
+    //bag: bag to work with
+    //items: items to add to the bag if empty
+    //If the bag is empty, pre-fills the bag with some items, and then returns an item from the bag.    
+    if (__gm82core_bag_check(argument[0],"ds_bag_quick")) exit
+    
+    if (argument_count<2) show_error("in function ds_bag_quick: too few arguments",0)
+    
+    if (ds_list_size(argument0)==1) {
+        ds_list_delete(argument0,0)
+        var __i;__i=1 repeat (argument_count-1) {
+            if (string(argument1)=="__gm82core_bag_marker__") {
+                show_error("in function ds_bag_quick: forbidden value in argument "+string(__i),0)
+            } else {
+                ds_list_add(argument0,argument[__i])
+            }
+        __i+=1}
+        ds_list_shuffle(argument0)
+        ds_list_insert(argument0,0,"__gm82core_bag_marker__")
+    }
+    var __pos;__pos=irandom_range(1,ds_list_size(argument0)-1)
+    var __val;__val=ds_list_find_value(argument0,__pos)
+    ds_list_delete(argument0,__pos)
+    return __val
+    
+
 #define ds_map_read_safe
     ///ds_map_read_safe(map,str)
     //map: empty ds_map
