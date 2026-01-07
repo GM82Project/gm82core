@@ -3848,6 +3848,15 @@
 					"hidden": false,
 					"argtypes": null,
 					"returntype": 2
+				},
+				{
+					"name": "string_replace_many",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "string_replace_many(string,what1,with1,[what2,with2,...])",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
 				}
 			],
 			"constants": []

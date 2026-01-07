@@ -366,5 +366,27 @@
     }
 
     return __out
+
+
+#define string_replace_many
+    ///string_replace_many(string,what1,with1,[what2,with2,...])
+    //string: text to process
+    //what, with: pairs to replace
+    //replaces many pairs of substrings within a string.
+    var __str,__i;
+    
+    if (!(argument_count mod 2) or argument_count<3) {
+        show_error("in function string_replace_many: wrong number of arguments ("+string(argument_count)+")",0)
+        exit
+    }
+    
+    __str=argument[0]
+    __i=1
+    repeat ((argument_count-1) div 2) {
+        __str=string_replace_all(__str,argument[__i],argument[__i+1])
+        __i+=2
+    }
+    
+    return __str
 //
 //
