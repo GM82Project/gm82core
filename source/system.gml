@@ -242,8 +242,8 @@
     return __list
 
 
-#define message_style_default
-    ///message_style_default()
+#define message_default
+    ///message_default()
     //Applies the default GM 8.1 "black boxes of death" styling to message boxes.
     
     message_text_font("MS Sans Serif",8,$ffffff,0)
