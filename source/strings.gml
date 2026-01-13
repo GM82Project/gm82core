@@ -249,7 +249,7 @@
     //Truncates a string to fit a specific width, with a terminator.
     var str,etc;
 
-    if (argument_count<2 or argument_count>3) {show_error("in function string_ellipsis: wrong number of arguments ("+string(argument_count)+")",0) return ""}
+    if (argument_count<2 or argument_count>3) {show_error("in function string_truncate: wrong number of arguments ("+string(argument_count)+")",0) return ""}
 
     str=argument0
     if (argument_count==3) etc=argument2 else etc="..."
