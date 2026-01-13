@@ -240,6 +240,22 @@
     return __str
 
 
+#define string_ellipsis
+    ///string_ellipsis(str,width,[ellipsis])
+    var str,etc;
+
+    if (argument_count<2 or argument_count>3) {show_error("in function string_ellipsis: wrong number of arguments ("+string(argument_count)+")",0) return ""}
+
+    str=argument0
+    if (argument_count==3) etc=argument2 else etc="..."
+
+    if (string_width(str)<=argument1) return str
+
+    while (string_width(str+etc)>argument1) str=string_delete_end(str,1)
+
+    return str+etc
+
+
 #define string_justify
     ///string_justify(string,width)
     //string: text to process
