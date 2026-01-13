@@ -240,8 +240,13 @@
     return __str
 
 
-#define string_ellipsis
-    ///string_ellipsis(str,width,[ellipsis])
+#define string_truncate
+    ///string_truncate(string,width,[ellipsis])
+    //string: string to truncate
+    //width: maximum width in pixels with the current font
+    //ellipsis: optional string to use at the end (default "...")
+    //returns: truncated string
+    //Truncates a string to fit a specific width, with a terminator.
     var str,etc;
 
     if (argument_count<2 or argument_count>3) {show_error("in function string_ellipsis: wrong number of arguments ("+string(argument_count)+")",0) return ""}

@@ -3705,15 +3705,6 @@
 					"returntype": 2
 				},
 				{
-					"name": "string_ellipsis",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "string_ellipsis(str,width,[ellipsis])",
-					"hidden": false,
-					"argtypes": null,
-					"returntype": 2
-				},
-				{
 					"name": "string_ends_with",
 					"extname": "",
 					"calltype": 2,
@@ -3818,6 +3809,15 @@
 					"extname": "",
 					"calltype": 2,
 					"helpline": "string_trim(string,[trim1,trim2...])",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
+					"name": "string_truncate",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "string_truncate(str,width,[ellipsis])",
 					"hidden": false,
 					"argtypes": null,
 					"returntype": 2
