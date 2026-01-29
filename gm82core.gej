@@ -1125,6 +1125,19 @@
 					"returntype": 2
 				},
 				{
+					"name": "unclerp",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "unclerp(a,b,val)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
 					"name": "unlerp",
 					"extname": "",
 					"calltype": 12,
@@ -1426,19 +1439,6 @@
 					"argtypes": [
 						1,
 						1,
-						2
-					],
-					"returntype": 2
-				},
-				{
-					"name": "unclerp",
-					"extname": "",
-					"calltype": 12,
-					"helpline": "unclerp(a,b,val)",
-					"hidden": false,
-					"argtypes": [
-						2,
-						2,
 						2
 					],
 					"returntype": 2
@@ -2394,10 +2394,28 @@
 					"returntype": 2
 				},
 				{
-					"name": "draw_setb",
+					"name": "draw_set1",
+					"extname": "draw_setb",
+					"calltype": 2,
+					"helpline": "",
+					"hidden": true,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
+					"name": "draw_set2",
+					"extname": "draw_seta",
+					"calltype": 2,
+					"helpline": "",
+					"hidden": true,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
+					"name": "draw_seta",
 					"extname": "",
 					"calltype": 2,
-					"helpline": "draw_setb(color,alpha)",
+					"helpline": "draw_seta(halign,valign)",
 					"hidden": false,
 					"argtypes": [
 						2,
@@ -2406,10 +2424,10 @@
 					"returntype": 2
 				},
 				{
-					"name": "draw_seta",
+					"name": "draw_setb",
 					"extname": "",
 					"calltype": 2,
-					"helpline": "draw_seta(halign,valign)",
+					"helpline": "draw_setb(color,alpha)",
 					"hidden": false,
 					"argtypes": [
 						2,
@@ -2559,24 +2577,6 @@
 						2,
 						2
 					],
-					"returntype": 2
-				},
-				{
-					"name": "draw_set1",
-					"extname": "draw_setb",
-					"calltype": 2,
-					"helpline": "",
-					"hidden": true,
-					"argtypes": null,
-					"returntype": 2
-				},
-				{
-					"name": "draw_set2",
-					"extname": "draw_seta",
-					"calltype": 2,
-					"helpline": "",
-					"hidden": true,
-					"argtypes": null,
 					"returntype": 2
 				}
 			],
@@ -3784,6 +3784,15 @@
 					"returntype": 2
 				},
 				{
+					"name": "string_replace_many",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "string_replace_many(string,what1,with1,[what2,with2,...])",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
 					"name": "string_starts_with",
 					"extname": "",
 					"calltype": 2,
@@ -3854,15 +3863,6 @@
 					"extname": "",
 					"calltype": 2,
 					"helpline": "str_sep(sep,val1,val2,...)",
-					"hidden": false,
-					"argtypes": null,
-					"returntype": 2
-				},
-				{
-					"name": "string_replace_many",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "string_replace_many(string,what1,with1,[what2,with2,...])",
 					"hidden": false,
 					"argtypes": null,
 					"returntype": 2
