@@ -395,5 +395,15 @@
     
     if (!variable_global_exists(__prefix+"gm82"+__name+"_version")) return noone    
     return variable_global_get(__prefix+"gm82"+__name+"_version")
+
+
+#define keyboard_get_keyname
+    ///keyboard_get_keyname(key)
+    //Returns the name of a keycode from 0 to 255.
+    //key values outside of that range will attempt to return a character code.
+    
+    if (argument0<0 or argument0>255) return chr(argument0)    
+
+    return global.__gm82core_keynames[argument0]
 //
 //

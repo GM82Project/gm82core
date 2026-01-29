@@ -3,7 +3,7 @@
 	"folder": "gm82",
 	"version": "1.6",
 	"author": "renex, Floogle, Lovey01, cam900, Adamcake, Yal, Verve",
-	"date": "13/01/2026",
+	"date": "29/01/2026",
 	"license": "Free to use, also for commercial games.",
 	"description": "Part of the standard Game Maker 8.2 distribution. This extension package contains a vast number of helper functions, and some newer functions introduced in GM:Studio. This extension is also required for using the other GM 8.2 extensions.",
 	"helpfile": "",
@@ -3784,15 +3784,6 @@
 					"returntype": 2
 				},
 				{
-					"name": "string_replace_many",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "string_replace_many(string,what1,with1,[what2,with2,...])",
-					"hidden": false,
-					"argtypes": null,
-					"returntype": 2
-				},
-				{
 					"name": "string_starts_with",
 					"extname": "",
 					"calltype": 2,
@@ -3863,6 +3854,15 @@
 					"extname": "",
 					"calltype": 2,
 					"helpline": "str_sep(sep,val1,val2,...)",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
+					"name": "string_replace_many",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "string_replace_many(string,what1,with1,[what2,with2,...])",
 					"hidden": false,
 					"argtypes": null,
 					"returntype": 2
@@ -4032,6 +4032,17 @@
 					"argtypes": [
 						2,
 						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "keyboard_get_keyname",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "keyboard_get_keyname(key)",
+					"hidden": false,
+					"argtypes": [
 						2
 					],
 					"returntype": 2
