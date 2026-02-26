@@ -15,7 +15,7 @@
     //If target is an object, the nearest instance is targeted.
     
     var __n;
-    if (argument0>=100000) __n=argument0
+    else if (argument0>=100000 or argument0<0) __n=argument0.id
     else __n=instance_nearest(x,y,argument0)
     if (__n==noone) return -1
     return point_direction(x,y,__n.x,__n.y)
