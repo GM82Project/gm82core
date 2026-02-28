@@ -32,6 +32,8 @@
             __code+="argument"+string(__i)+"=__gm82core_compiler_args["+string(__i)+"];"
         __i+=1}
     }
+
+    argument0=string_replace_all(argument0,"return ","for ({}; true; exit) __gm82core_compiler_return=")
     
     //try...
     var __err,__ret;
