@@ -103,7 +103,7 @@
         __i=0 repeat (argument_count-1) {
             __gm82core_compiler_args[__i]=argument[__i+1]
         __i+=1}
-        repeat (15-__i) {
+        repeat (16-__i) {
             __gm82core_compiler_args[__i]=0
         __i+=1}
     } else {
