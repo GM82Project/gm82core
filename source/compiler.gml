@@ -5,7 +5,7 @@
     //This function will compile a string of code and return its id for use with code_execute().
     //Compilation takes a while, but execution is as fast as native game code.
     //If compilation fails, check error_last for the error string.
-    var __code,__header,__i,__argc,__char,__substr,__newstr,__j;
+    var __code,__header,__i,__argc,__starter,__ender,__substr,__newstr,__j;
 
     __code=argument0
 
@@ -41,10 +41,10 @@
         __code=string_replace(__code,__substr,__newstr)
     } else if (string_pos(__substr,__code)!=0) {
         __j=1 repeat (4) {
-            __ender=string_char_at(" (+-",__j)
-            __i=1 repeat (string_length(match_token_separators)) {
-                __char=string_char_at(match_token_separators,__i)
-                __code=string_replace_all(__code,__char+__substr+__ender,__char+__newstr+__ender)
+            __ender=string_char_at(" (+-",__j)//length 4
+            __i=1 repeat (9) {
+                __starter=string_char_at(match_whitespace+"{}();",__i)//length 9
+                __code=string_replace_all(__code,__starter+__substr+__ender,__starter+__newstr+__ender)
             __i+=1}
         __j+=1}
     }

@@ -3410,11 +3410,6 @@
 					"name": "match_quotes",
 					"value": "\"'\"+'\"'",
 					"hidden": false
-				},
-				{
-					"name": "match_token_separators",
-					"value": "match_whitespace+\"{}();\"",
-					"hidden": false
 				}
 			]
 		},
