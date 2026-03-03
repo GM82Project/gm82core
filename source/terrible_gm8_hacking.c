@@ -213,12 +213,19 @@ GMREAL __gm82core_include_file_get_buffer(const char* filename,double buffer) {
 
 //Nasty Ass Runner Shenanigans
 
-const int** room_state = (int**)0x00688C4C;
+int** room_state = (int**)0x00688C4C;
 
 GMREAL game_get_state() {
     ///game_get_state()
     //returns the current state of the game, as gs_ constants.
     return (double)**room_state;
+}
+
+GMREAL room_goto_cancel() {
+    ///room_goto_cancel()
+    //Cancels a currently pending room change. Very unstable, use with absolute care.
+    **room_state = -1;
+    return 0;
 }
 
 /*const void* delphi_clear = (void*)0x4072d8;
