@@ -5,7 +5,7 @@
     //This function will compile a string of code and return its id for use with code_execute().
     //Compilation takes a while, but execution is as fast as native game code.
     
-    var __code,__i,__argc,__chars,__substr,__newstr,__j;
+    var __code,__i,__argc,__char,__substr,__newstr,__j;
     
     __argc=0
     repeat (16) {
@@ -33,22 +33,18 @@
 
     //replace return calls with custom global
     //but protect names that end in "return"
-    if (string_pos("return",argument0)!=0) {
-        __substr = "return "
-        __newstr = "for ({};true;exit) __gm82core_compiler_return="
-        __chars[15]=ansi_char(10)
-        __chars[14]=ansi_char(13)
-        __chars[13]=" " __chars[12]=")" __chars[11]="0" __chars[10]="1"
-        __chars[ 9]="2" __chars[ 8]="3" __chars[ 7]="4" __chars[ 6]="5"
-        __chars[ 5]="6" __chars[ 4]="7" __chars[ 3]="8" __chars[ 2]="9"
-        __chars[ 1]=";" __chars[ 0]="}" 
-
-        if (string_pos("return ",argument0)==1) {
-            argument0=string_replace(argument0,__substr,__newstr)
-        }
-        for (__j=0;__j<16;__j+=1) {
-            argument0=string_replace_all(argument0,__chars[__j]+__substr,__chars[__j]+__newstr)
-        }
+    __substr = "return"
+    __newstr = "for ({};true;exit) __gm82core_compiler_return="
+    if (string_pos(__substr,argument0)==1) {
+        argument0=string_replace(argument0,__substr,__newstr)
+    } else if (string_pos(__substr,argument0)!=0) {
+        __j=1 repeat (4) {
+            __ender=string_char_at(" (+-",__j)
+            __i=1 repeat (string_length(match_token_separators)) {
+                __char=string_char_at(match_token_separators,__i)
+                argument0=string_replace_all(argument0,__char+__substr+__ender,__char+__newstr+__ender)
+            __i+=1}
+        __j+=1}
     }
 
     //replace argument_count with custom global
