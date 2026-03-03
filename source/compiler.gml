@@ -144,7 +144,7 @@
     __gm82core_compiler_return=0
     __gm82core_compiler_argc_cur=argument_count-1
     
-    __change=room_get_state()
+    __change=game_get_state()
     if (__change>0) room_goto_cancel()
     event_perform_object(__gm82core_compiler,ev_other,__code)
     if (__change>0) room_goto(__change)
