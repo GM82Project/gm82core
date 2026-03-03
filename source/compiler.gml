@@ -4,8 +4,6 @@
     //returns: code index, or noone if compilation failed
     //This function will compile a string of code and return its id for use with code_execute().
     //Compilation takes a while, but execution is as fast as native game code.
-    //Note: use the function code_return(val) to set the return value for code_execute.
-    //If code_return() is never called in the code, code_execute() will return 0.
     
     var __code,__i,__argc,__chars,__substr,__newstr,__j;
     
