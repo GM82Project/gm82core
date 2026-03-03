@@ -988,11 +988,9 @@
 					"name": "room_goto_cancel",
 					"extname": "",
 					"calltype": 12,
-					"helpline": "room_goto_cancel(gs_...)",
+					"helpline": "room_goto_cancel()",
 					"hidden": false,
-					"argtypes": [
-						2
-					],
+					"argtypes": [],
 					"returntype": 2
 				},
 				{
