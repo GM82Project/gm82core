@@ -217,9 +217,11 @@ int** room_state = (int**)0x00688C4C;
 
 GMREAL game_get_state() {
     ///game_get_state()
-    //returns the current state of the game, as gs_ constants.
+    //Returns the current state of the game, as gs_ constants.
+    //If the return value is positive, it indicates the room that is scheduled for change.
     return (double)**room_state;
 }
+
 
 GMREAL room_goto_cancel() {
     ///room_goto_cancel()
