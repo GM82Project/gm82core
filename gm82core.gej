@@ -3413,7 +3413,7 @@
 				},
 				{
 					"name": "match_token_separators",
-					"value": "match_digits+match_whitespace+\"{}();\"",
+					"value": "match_whitespace+\"{}();\"",
 					"hidden": false
 				}
 			]
