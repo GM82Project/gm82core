@@ -49,6 +49,11 @@
         argument0=string_replace_all(argument0,__chars[__j]+__substr,__chars[__j]+__newstr);
     }
 
+    //replace argument_count with custom global
+    //unrelated names which include "argument_count" are not supported
+    globalvar __gm82core_compiler_argc_cur;
+    argument0=string_replace_all(argument0,"argument_count","__gm82core_compiler_argc_cur")
+
     //try...
     var __err,__ret;
     
@@ -134,6 +139,7 @@
     __i+=1}
     
     __gm82core_compiler_return=0
+    __gm82core_compiler_argc_cur=argument_count-1
     
     event_perform_object(__gm82core_compiler,ev_other,__code)
     
