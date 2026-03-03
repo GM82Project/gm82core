@@ -4,10 +4,8 @@
     //returns: code index, or noone if compilation failed
     //This function will compile a string of code and return its id for use with code_execute().
     //Compilation takes a while, but execution is as fast as native game code.
-    //Note: use the function code_return(val) to set the return value for code_execute.
-    //If code_return() is never called in the code, code_execute() will return 0.
     
-    var __code,__i,__argc;
+    var __code,__i,__argc,__chars,__substr,__newstr,__j;
     
     __argc=0
     repeat (16) {
@@ -33,8 +31,30 @@
         __i+=1}
     }
 
-    argument0=string_replace_all(argument0,"return ","for ({}; true; exit) __gm82core_compiler_return=")
-    
+    //replace return calls with custom global
+    //but protect names that end in "return"
+    if (string_pos("return",argument0)!=0) {
+        __substr = "return "
+        __newstr = "for ({};true;exit) __gm82core_compiler_return="
+        __chars[15]=ansi_char(10)
+        __chars[14]=ansi_char(13)
+        __chars[13]=" " __chars[12]=")" __chars[11]="0" __chars[10]="1"
+        __chars[ 9]="2" __chars[ 8]="3" __chars[ 7]="4" __chars[ 6]="5"
+        __chars[ 5]="6" __chars[ 4]="7" __chars[ 3]="8" __chars[ 2]="9"
+        __chars[ 1]=";" __chars[ 0]="}" 
+
+        if (string_pos("return ",argument0)==1) {
+            argument0=string_replace(argument0,__substr,__newstr)
+        }
+        for (__j=0;__j<16;__j+=1) {
+            argument0=string_replace_all(argument0,__chars[__j]+__substr,__chars[__j]+__newstr)
+        }
+    }
+
+    //replace argument_count with custom global
+    //unrelated names which include "argument_count" are not supported
+    argument0=string_replace_all(argument0,"argument_count","__gm82core_compiler_argc_cur")
+
     //try...
     var __err,__ret;
     
@@ -56,6 +76,9 @@
 
 
 #define code_return
+    ///code_return(value)
+    //value: new return value of currently running code
+    //Deprecated: code_return is identical to a return statement and no longer necessary.
     __gm82core_compiler_return=argument0
 
 
@@ -85,8 +108,8 @@
     //code: code index to execute
     //args: script arguments to pass to the code
     //returns: return value from the code, or 0
-    //Executes a precompiled code index and returns the value last given to code_return(), or 0 if the code does not return anything.
-    var __i,__code,__argc;
+    //Executes a precompiled code index and returns its returned value, or 0 if the code does not return anything.
+    var __i,__code,__argc,__change;
     
     __code=argument0
     
@@ -120,8 +143,12 @@
     __i+=1}
     
     __gm82core_compiler_return=0
+    __gm82core_compiler_argc_cur=argument_count-1
     
+    __change=game_get_state()
+    if (__change>0) room_goto_cancel()
     event_perform_object(__gm82core_compiler,ev_other,__code)
+    if (__change>0) room_goto(__change)
     
     return __gm82core_compiler_return
 

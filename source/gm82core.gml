@@ -46,6 +46,7 @@
     globalvar __gm82core_compiler_index;
     globalvar __gm82core_compiler_exists;
     globalvar __gm82core_compiler_argc;
+    globalvar __gm82core_compiler_argc_cur;
     globalvar __gm82core_compiler_args;
     globalvar __gm82core_compiler_return;
     
