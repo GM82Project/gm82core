@@ -75,6 +75,9 @@
 
 
 #define code_return
+    ///code_return(value)
+    //value: new return value of currently running code
+    //Deprecated: code_return is identical to a return statement and no longer necessary.
     __gm82core_compiler_return=argument0
 
 
@@ -104,7 +107,7 @@
     //code: code index to execute
     //args: script arguments to pass to the code
     //returns: return value from the code, or 0
-    //Executes a precompiled code index and returns the value last given to code_return(), or 0 if the code does not return anything.
+    //Executes a precompiled code index and returns its returned value, or 0 if the code does not return anything.
     var __i,__code,__argc,__change;
     
     __code=argument0
