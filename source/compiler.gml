@@ -33,20 +33,22 @@
 
     //replace return calls with custom global
     //but protect names that end in "return"
-    __substr = "return ";
-    __newstr = "for ({};true;exit) __gm82core_compiler_return=";
-    __chars[15]=ansi_char(10);
-    __chars[14]=ansi_char(13);
-    __chars[13]=" ";__chars[12]=")";__chars[11]="0";__chars[10]="1";
-    __chars[ 9]="2";__chars[ 8]="3";__chars[ 7]="4";__chars[ 6]="5";
-    __chars[ 5]="6";__chars[ 4]="7";__chars[ 3]="8";__chars[ 2]="9";
-    __chars[ 1]=";";__chars[ 0]="}";
+    if (string_pos("return",argument0)!=0) {
+        __substr = "return ";
+        __newstr = "for ({};true;exit) __gm82core_compiler_return=";
+        __chars[15]=ansi_char(10);
+        __chars[14]=ansi_char(13);
+        __chars[13]=" ";__chars[12]=")";__chars[11]="0";__chars[10]="1";
+        __chars[ 9]="2";__chars[ 8]="3";__chars[ 7]="4";__chars[ 6]="5";
+        __chars[ 5]="6";__chars[ 4]="7";__chars[ 3]="8";__chars[ 2]="9";
+        __chars[ 1]=";";__chars[ 0]="}";
 
-    if (string_pos("return ",argument0)==1) {
-        argument0=string_replace(argument0,__substr,__newstr);
-    }
-    for (__j=0;__j<16;__j+=1) {
-        argument0=string_replace_all(argument0,__chars[__j]+__substr,__chars[__j]+__newstr);
+        if (string_pos("return ",argument0)==1) {
+            argument0=string_replace(argument0,__substr,__newstr);
+        }
+        for (__j=0;__j<16;__j+=1) {
+            argument0=string_replace_all(argument0,__chars[__j]+__substr,__chars[__j]+__newstr);
+        }
     }
 
     //replace argument_count with custom global
