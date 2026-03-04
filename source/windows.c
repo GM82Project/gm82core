@@ -462,3 +462,14 @@ GMREAL window_set_dpiaware() {
     FreeLibrary(hlib);
     return 0;
 }
+
+GMREAL window_exists(const char* caption) {
+    ///window_exists(caption)
+    //caption: window title to check for
+    //returns: whether a window with the caption exists
+    HWND hwnd = FindWindowA(NULL, caption);
+    if (hwnd) {
+        return 1.0;
+    }
+    return 0.0;
+}
