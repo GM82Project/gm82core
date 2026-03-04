@@ -473,3 +473,28 @@ GMREAL window_exists(const char* caption) {
     }
     return 0.0;
 }
+
+GMREAL process_exists(const char* name) {
+    ///process_exists(name)
+    //name: name of the process executable to check for
+    //returns: whether a process with the given name exists
+    int found = 0;
+    HANDLE hSnapshot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
+    
+    if (hSnapshot != INVALID_HANDLE_VALUE) {
+        PROCESSENTRY32 pe32;
+        pe32.dwSize = sizeof(PROCESSENTRY32);
+        
+        if (Process32First(hSnapshot, &pe32)) {
+            do {
+                if (_stricmp(pe32.szExeFile, name) == 0) {
+                    found = 1;
+                    break;
+                }
+            } while (Process32Next(hSnapshot, &pe32));
+        }
+        CloseHandle(hSnapshot);
+    }
+    
+    return (double)found;
+}

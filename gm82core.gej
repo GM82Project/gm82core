@@ -939,6 +939,17 @@
 					"returntype": 2
 				},
 				{
+					"name": "process_exists",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "process_exists(name)",
+					"hidden": false,
+					"argtypes": [
+						1
+					],
+					"returntype": 2
+				},
+				{
 					"name": "real_hex",
 					"extname": "",
 					"calltype": 12,

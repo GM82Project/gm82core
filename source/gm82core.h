@@ -13,6 +13,7 @@
 #include <commctrl.h>
 #include <stdint.h>
 #include <stdlib.h>
+#include <tlhelp32.h>
 
 #define GMREAL __declspec(dllexport) double __cdecl
 #define GMSTR __declspec(dllexport) char* __cdecl
