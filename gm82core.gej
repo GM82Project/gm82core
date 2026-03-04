@@ -1246,6 +1246,17 @@
 					"returntype": 2
 				},
 				{
+					"name": "window_exists",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "window_exists(caption)",
+					"hidden": false,
+					"argtypes": [
+						1
+					],
+					"returntype": 2
+				},
+				{
 					"name": "window_set_fixed",
 					"extname": "",
 					"calltype": 12,
