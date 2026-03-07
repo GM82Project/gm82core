@@ -540,7 +540,12 @@ GMREAL get_cpu_usage() {
         last_update_tick = current_tick;
         
         if (sys_diff > 0) {
-            last_cpu_usage = (double)(proc_diff * 100.0 / sys_diff);
+            SYSTEM_INFO sysInfo;
+            GetSystemInfo(&sysInfo);
+            int num_processors = sysInfo.dwNumberOfProcessors;
+            if (num_processors == 0) num_processors = 1;
+            
+            last_cpu_usage = (double)(proc_diff * 100.0 * num_processors / sys_diff);
         }
     }
     return last_cpu_usage;
