@@ -453,6 +453,15 @@
 					"returntype": 2
 				},
 				{
+					"name": "get_cpu_usage",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "get_cpu_usage()",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
 					"name": "get_delta",
 					"extname": "hrt_delta",
 					"calltype": 12,
@@ -466,15 +475,6 @@
 					"extname": "",
 					"calltype": 12,
 					"helpline": "get_ram_usage()",
-					"hidden": false,
-					"argtypes": [],
-					"returntype": 2
-				},
-				{
-					"name": "get_cpu_usage",
-					"extname": "",
-					"calltype": 12,
-					"helpline": "get_cpu_usage()",
 					"hidden": false,
 					"argtypes": [],
 					"returntype": 2
