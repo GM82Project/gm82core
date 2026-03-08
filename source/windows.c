@@ -498,3 +498,55 @@ GMREAL process_exists(const char* name) {
     
     return (double)found;
 }
+
+GMREAL get_cpu_usage() {
+    ///get_cpu_usage()
+    //returns: an approximate CPU usage percentage (0-100)
+    
+    static uint64_t last_sys_time = 0;
+    static uint64_t last_proc_time = 0;
+    static DWORD last_update_tick = 0;
+    static double last_cpu_usage = 0.0;
+    
+    DWORD current_tick = GetTickCount();
+    if (last_sys_time != 0 && (current_tick - last_update_tick) < 1000) {
+        return last_cpu_usage;
+    }
+    
+    FILETIME sysIdle, sysKernel, sysUser;
+    FILETIME creationTime, exitTime, procKernelTime, procUserTime;
+    
+    if (GetSystemTimes(&sysIdle, &sysKernel, &sysUser) &&
+        GetProcessTimes(GetCurrentProcess(), &creationTime, &exitTime, &procKernelTime, &procUserTime)) 
+    {
+        uint64_t sys_time = ((uint64_t)sysKernel.dwLowDateTime | ((uint64_t)sysKernel.dwHighDateTime << 32)) +
+                            ((uint64_t)sysUser.dwLowDateTime | ((uint64_t)sysUser.dwHighDateTime << 32));
+                            
+        uint64_t proc_time = ((uint64_t)procKernelTime.dwLowDateTime | ((uint64_t)procKernelTime.dwHighDateTime << 32)) +
+                             ((uint64_t)procUserTime.dwLowDateTime | ((uint64_t)procUserTime.dwHighDateTime << 32));
+                             
+        if (last_sys_time == 0) {
+            last_sys_time = sys_time;
+            last_proc_time = proc_time;
+            last_update_tick = current_tick;
+            return 0.0;
+        }
+        
+        uint64_t sys_diff = sys_time - last_sys_time;
+        uint64_t proc_diff = proc_time - last_proc_time;
+        
+        last_sys_time = sys_time;
+        last_proc_time = proc_time;
+        last_update_tick = current_tick;
+        
+        if (sys_diff > 0) {
+            SYSTEM_INFO sysInfo;
+            GetSystemInfo(&sysInfo);
+            int num_processors = sysInfo.dwNumberOfProcessors;
+            if (num_processors == 0) num_processors = 1;
+            
+            last_cpu_usage = (double)(proc_diff * 100.0 * num_processors / sys_diff);
+        }
+    }
+    return last_cpu_usage;
+}

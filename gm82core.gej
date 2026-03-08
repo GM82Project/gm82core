@@ -453,6 +453,15 @@
 					"returntype": 2
 				},
 				{
+					"name": "get_cpu_usage",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "get_cpu_usage()",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
 					"name": "get_delta",
 					"extname": "hrt_delta",
 					"calltype": 12,
@@ -4033,10 +4042,10 @@
 					"returntype": 2
 				},
 				{
-					"name": "get_cpu_usage",
+					"name": "get_frametime_usage",
 					"extname": "",
 					"calltype": 2,
-					"helpline": "get_cpu_usage()",
+					"helpline": "get_frametime_usage()",
 					"hidden": false,
 					"argtypes": [],
 					"returntype": 2
