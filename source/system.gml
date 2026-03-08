@@ -397,5 +397,13 @@
     if (argument0<0 or argument0>255) return chr(argument0)    
 
     return global.__gm82core_keynames[argument0]
+
+
+#define get_frametime_usage
+    ///get_frametime_usage()
+    //Returns an approximation of the amount of cpu time the game is occupying between frames.
+    //The precise calculation is how much of the allotted frame time is being spent not waiting for the next frame.
+    if (fps_real>0) return ceil(min(1,room_speed/fps_real)*100)
+    return 100
 //
 //

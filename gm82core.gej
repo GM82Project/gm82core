@@ -4042,6 +4042,15 @@
 					"returntype": 2
 				},
 				{
+					"name": "get_frametime_usage",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "get_frametime_usage()",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
 					"name": "get_open_filename_ext",
 					"extname": "",
 					"calltype": 2,
