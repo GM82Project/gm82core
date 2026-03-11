@@ -521,34 +521,6 @@
     return false
 
 
-#define instance_places
-    ///instance_places(x,y,obj1,[obj2...])
-    //Checks for multiple objects.
-    //returns: the earliest found instance from the list to be meeting the current instance, or 'noone' when nothing is found.
-    
-    var __i,__coll;
-    __i=2 repeat (argument_count-2) {
-        __coll=instance_place(argument0,argument1,argument[__i])
-        if (__coll) return __coll
-    __i+=1}
-    
-    return noone
-
-
-#define instance_positions
-    ///instance_positions(x,y,obj1,[obj2...])
-    //Checks for multiple objects at the position.
-    //returns: the earliest found instance from the list to be meeting the position, or 'noone' when nothing is found.
-    
-    var __i,__coll;
-    __i=2 repeat (argument_count-2) {
-        __coll=instance_position(argument0,argument1,argument[__i])
-        if (__coll) return __coll
-    __i+=1}
-    
-    return noone
-
-
 #define instances_place
     ///instances_place(x,y,obj1,[obj2...])
     //Checks for multiple objects, returns all of them in an array. use instances_place[n] to get each value.
@@ -563,8 +535,8 @@
     }
     
     var __i,__coll;
-    __i=2 repeat (argument_count-2) {
-        with (argument[__i]) __coll=instance_place(argument0,argument1,other.id)
+    __i=2 repeat (argument_count-2) with (argument[__i]) {
+        __coll=instance_place(argument0,argument1,other.id)
         if (__coll) {
             instances_place[__gm82core_ip_size]=__coll
             __gm82core_ip_size+=1
@@ -588,8 +560,8 @@
     }
     
     var __i,__coll;
-    __i=2 repeat (argument_count-2) {
-        with (argument[__i]) __coll=instance_position(argument0,argument1,id)
+    __i=2 repeat (argument_count-2) with (argument[__i]) {
+        __coll=instance_position(argument0,argument1,id)
         if (__coll) {
             instances_position[__gm82core_ipp_size]=__coll
             __gm82core_ipp_size+=1
@@ -607,8 +579,8 @@
     var __list;__list=ds_list_create()
     
     var __i,__coll;
-    __i=2 repeat (argument_count-2) {
-        with (argument[__i]) __coll=instance_place(argument0,argument1,other.id)
+    __i=2 repeat (argument_count-2) with (argument[__i]) {
+        __coll=instance_place(argument0,argument1,other.id)
         if (__coll) ds_list_add(__list,__coll)
     __i+=1}
     
@@ -623,8 +595,8 @@
     var __list;__list=ds_list_create()
     
     var __i,__coll;
-    __i=2 repeat (argument_count-2) {
-        with (argument[__i]) __coll=instance_position(argument0,argument1,id)
+    __i=2 repeat (argument_count-2) with (argument[__i]) {
+        __coll=instance_position(argument0,argument1,id)
         if (__coll) ds_list_add(__list,__coll)
     __i+=1}
     
