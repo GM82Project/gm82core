@@ -534,13 +534,19 @@
         instances_place[__gm82core_ip_size]=0
     }
     
-    var __i;
+    var __i,__oldx,__oldy;
+    __oldx=x
+    __oldy=y
+    x=argument0
+    y=argument1
     __i=2 repeat (argument_count-2) {
-        with (argument[__i]) if (instance_place(argument0,argument1,other.id)) {
+        with (argument[__i]) if (instance_place(x,y,other.id)) {
             instances_place[__gm82core_ip_size]=id
             __gm82core_ip_size+=1
         }        
     __i+=1}
+    x=__oldx
+    y=__oldy
     
     return __gm82core_ip_size
 
@@ -560,7 +566,7 @@
     
     var __i;
     __i=2 repeat (argument_count-2) {
-        with (argument[__i]) if (instance_position(argument0,argument1,other.id)) {
+        with (argument[__i]) if (instance_position(argument0,argument1,id)) {
             instances_place[__gm82core_ip_size]=id
             __gm82core_ip_size+=1
         }        
@@ -576,11 +582,17 @@
     
     var __list;__list=ds_list_create()
     
-    var __i,__coll;
-    __i=2 repeat (argument_count-2) with (argument[__i]) {
-        __coll=instance_place(argument0,argument1,other.id)
-        if (__coll) ds_list_add(__list,__coll)
+    var __i,__oldx,__oldy;
+    __oldx=x
+    __oldy=y
+    x=argument0
+    y=argument1
+    __i=2 repeat (argument_count-2) {
+        with (argument[__i]) if (instance_place(x,y,other.id))
+            ds_list_add(__list,__coll)
     __i+=1}
+    x=__oldx
+    y=__oldy
     
     return __list
 
@@ -593,9 +605,8 @@
     var __list;__list=ds_list_create()
     
     var __i,__coll;
-    __i=2 repeat (argument_count-2) with (argument[__i]) {
-        __coll=instance_position(argument0,argument1,id)
-        if (__coll) ds_list_add(__list,__coll)
+    __i=2 repeat (argument_count-2) {
+        with (argument[__i]) if (instance_position(argument0,argument1,id)) ds_list_add(__list,id)
     __i+=1}
     
     return __list
