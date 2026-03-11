@@ -534,13 +534,11 @@
         instances_place[__gm82core_ip_size]=0
     }
     
-    var __i,__coll;
-    __i=2 repeat (argument_count-2) with (argument[__i]) {
-        __coll=instance_place(argument0,argument1,other.id)
-        if (__coll) {
-            instances_place[__gm82core_ip_size]=__coll
-            __gm82core_ip_size+=1
-        }
+    var __i;
+    __i=2 repeat (argument_count-2) with (argument[__i]) if (instance_place(argument0,argument1,other.id)) {
+        instances_place[__gm82core_ip_size]=id
+        __gm82core_ip_size+=1
+    }        
     __i+=1}
     
     return __gm82core_ip_size
@@ -559,13 +557,11 @@
         instances_position[__gm82core_ipp_size]=0
     }
     
-    var __i,__coll;
-    __i=2 repeat (argument_count-2) with (argument[__i]) {
-        __coll=instance_position(argument0,argument1,id)
-        if (__coll) {
-            instances_position[__gm82core_ipp_size]=__coll
-            __gm82core_ipp_size+=1
-        }
+    var __i;
+    __i=2 repeat (argument_count-2) with (argument[__i]) if (instance_position(argument0,argument1,other.id)) {
+        instances_position[__gm82core_ipp_size]=id
+        __gm82core_ipp_size+=1
+    }
     __i+=1}
     
     return __gm82core_ipp_size
