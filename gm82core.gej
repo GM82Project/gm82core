@@ -3,7 +3,7 @@
 	"folder": "gm82",
 	"version": "1.6",
 	"author": "renex, Floogle, Lovey01, cam900, Adamcake, Yal, Verve",
-	"date": "11/03/2026",
+	"date": "21/03/2026",
 	"license": "Free to use, also for commercial games.",
 	"description": "Part of the standard Game Maker 8.2 distribution. This extension package contains a vast number of helper functions, and some newer functions introduced in GM:Studio. This extension is also required for using the other GM 8.2 extensions.",
 	"helpfile": "",
@@ -2752,6 +2752,26 @@
 					"hidden": false
 				},
 				{
+					"name": "ha_bottom",
+					"value": "3",
+					"hidden": false
+				},
+				{
+					"name": "ha_left",
+					"value": "0",
+					"hidden": false
+				},
+				{
+					"name": "ha_right",
+					"value": "1",
+					"hidden": false
+				},
+				{
+					"name": "ha_top",
+					"value": "2",
+					"hidden": false
+				},
+				{
 					"name": "infinity",
 					"value": "9218868437227405312",
 					"hidden": false
@@ -2807,29 +2827,24 @@
 					"hidden": false
 				},
 				{
+					"name": "vk_oem1",
+					"value": "186",
+					"hidden": false
+				},
+				{
+					"name": "vk_oem2",
+					"value": "191",
+					"hidden": false
+				},
+				{
+					"name": "vk_oem3",
+					"value": "192",
+					"hidden": false
+				},
+				{
 					"name": "__gm82core_compiler",
 					"value": "object_add()",
 					"hidden": true
-				},
-				{
-					"name": "ha_left",
-					"value": "0",
-					"hidden": false
-				},
-				{
-					"name": "ha_right",
-					"value": "1",
-					"hidden": false
-				},
-				{
-					"name": "ha_top",
-					"value": "2",
-					"hidden": false
-				},
-				{
-					"name": "ha_bottom",
-					"value": "3",
-					"hidden": false
 				}
 			]
 		},
