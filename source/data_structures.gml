@@ -680,7 +680,7 @@
 
 
 #define __gm82core_bag_check
-    if (argument0>=0) if (ds_list_find_value(argument0,0)=="__gm82core_bag_marker__") return 0
+    if (is_real(argument0)) if (argument0>=0) if (string(ds_list_find_value(argument0,0))=="__gm82core_bag_marker__") return 0
     show_error("in function "+argument1+": structure "+string(argument0)+" is not a bag)",0)
     return 1
     
