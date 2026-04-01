@@ -3,7 +3,7 @@
 	"folder": "gm82",
 	"version": "1.6",
 	"author": "renex, Floogle, Lovey01, cam900, Adamcake, Yal, Verve",
-	"date": "21/03/2026",
+	"date": "01/04/2026",
 	"license": "Free to use, also for commercial games.",
 	"description": "Part of the standard Game Maker 8.2 distribution. This extension package contains a vast number of helper functions, and some newer functions introduced in GM:Studio. This extension is also required for using the other GM 8.2 extensions.",
 	"helpfile": "",
@@ -959,6 +959,20 @@
 					"returntype": 2
 				},
 				{
+					"name": "range_collision",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "range_collision(a1,a2,b1,b2)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
 					"name": "real_hex",
 					"extname": "",
 					"calltype": 12,
@@ -1192,6 +1206,17 @@
 					"returntype": 2
 				},
 				{
+					"name": "window_exists",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "window_exists(caption)",
+					"hidden": false,
+					"argtypes": [
+						1
+					],
+					"returntype": 2
+				},
+				{
 					"name": "window_get_caption_color",
 					"extname": "get_window_col",
 					"calltype": 12,
@@ -1263,17 +1288,6 @@
 					"helpline": "window_set_dpiaware()",
 					"hidden": false,
 					"argtypes": [],
-					"returntype": 2
-				},
-				{
-					"name": "window_exists",
-					"extname": "",
-					"calltype": 12,
-					"helpline": "window_exists(caption)",
-					"hidden": false,
-					"argtypes": [
-						1
-					],
 					"returntype": 2
 				},
 				{

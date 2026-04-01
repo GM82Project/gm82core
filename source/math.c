@@ -313,6 +313,15 @@ GMREAL dsecant(double ang) {
     return 1/cos(ang/180*M_PI);
 }
 
+GMREAL range_collision(double a1,double a2,double b1,double b2) {
+    ///range_collision(a1,a2,b1,b2)
+    //Checks if the ranges defined by a1,a2 and b1,b2 intersect in the number line.
+
+    //thanks flogole
+    return (max(a1,a2)>min(b1,b2)) && (max(b1,b2)>min(a1,a2));
+}
+
+
 GMREAL triangle_is_clockwise(double x0, double y0, double x1, double y1, double x2, double y2) {
     ///triangle_is_clockwise(x1,y1,x2,y2,x3,y3):bool
     //x1,y1: first point.
