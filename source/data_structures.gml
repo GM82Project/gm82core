@@ -829,56 +829,57 @@
     return 1
 
 
-#define map_create
-    ///map_create()
+#define dss_map_create
+    ///dss_map_create()
     //returns: type safe map
-    return ds_map_create()+0.0625
+    return ds_map_create()+dss_type_map
 
 
-#define list_create
-    ///list_create()
+#define dss_list_create
+    ///dss_list_create()
     //returns: type safe list
-    return ds_list_create()+0.125
+    return ds_list_create()+dss_type_list
 
 
-#define queue_create
-    ///queue_create()
+#define dss_queue_create
+    ///dss_queue_create()
     //returns: type safe queue
-    return ds_queue_create()+0.1875
+    return ds_queue_create()+dss_type_queue
 
 
-#define stack_create
-    ///stack_create()
+#define dss_stack_create
+    ///dss_stack_create()
     //returns: type safe stack
-    return ds_stack_create()+0.25
+    return ds_stack_create()+dss_type_stack
 
 
-#define grid_create
-    ///grid_create(w,h)
+#define dss_grid_create
+    ///dss_grid_create(w,h)
     //w: width
     //h: height
     //returns: type safe grid
-    return ds_grid_create(argument0,argument1)+0.3125
+    return ds_grid_create(argument0,argument1)+dss_type_grid
 
 
-#define priority_create
-    ///priority_create()
+#define dss_priority_create
+    ///dss_priority_create()
     //returns: type safe priority queue
-    return ds_priority_create()+0.3
+    return ds_priority_create()+dss_type_priority
 
 
-#define ds_get_type
-    ///ds_get_type(ds)
-    //ds: data structure(map, list, queue, stack, grid, or priority queue)
-    //returns: name of the type on success, undefined on failure
-    var _f;
-    _f = frac(argument0)
-    if (abs(_f-0.0625)<0.001) return "map"
-    if (abs(_f-0.125)<0.001) return "list"
-    if (abs(_f-0.1875)<0.001) return "queue"
-    if (abs(_f-0.25)<0.001) return "stack"
-    if (abs(_f-0.3125)<0.001) return "grid"
-    if (abs(_f-0.375)<0.001) return "priority"
-    return undefined
+#define dss_get_type
+    ///dss_get_type(dss)
+    //dss: data structure(map, list, queue, stack, grid, or priority queue)
+    //returns: type on success, -1 on failure
+    var __f;
+    __f = frac(argument0)
+    if (abs(__f-dss_type_map)<0.001) return dss_type_map
+    if (abs(__f-dss_type_list)<0.001) return dss_type_list
+    if (abs(__f-dss_type_queue)<0.001) return dss_type_queue
+    if (abs(__f-dss_type_stack)<0.001) return dss_type_stack
+    if (abs(__f-dss_type_grid)<0.001) return dss_type_grid
+    if (abs(__f-dss_type_priority)<0.001) return dss_type_priority
+    show_error("in function dss_get_type: argument passed is not a dss", 0)
+    return -1
 //
 //
