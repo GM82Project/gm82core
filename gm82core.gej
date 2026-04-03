@@ -2305,6 +2305,74 @@
 					"returntype": 2
 				},
 				{
+					"name": "map_create",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "map_create()",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
+					"name": "list_create",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "list_create()",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
+					"name": "queue_create",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "queue_create()",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
+					"name": "stack_create",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "stack_create()",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
+					"name": "grid_create",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "grid_create(w,h)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "priority_create",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "priority_create()",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
+					"name": "ds_get_type",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "ds_get_type(ds)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 1
+				},
+				{
 					"name": "is_undefined",
 					"extname": "",
 					"calltype": 2,

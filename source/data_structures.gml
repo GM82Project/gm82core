@@ -827,5 +827,58 @@
 
     ds_map_read(argument0,str)
     return 1
+
+
+#define map_create
+    ///map_create()
+    //returns: type safe map
+    return ds_map_create()+0.05
+
+
+#define list_create
+    ///list_create()
+    //returns: type safe list
+    return ds_list_create()+0.1
+
+
+#define queue_create
+    ///queue_create()
+    //returns: type safe queue
+    return ds_queue_create()+0.15
+
+
+#define stack_create
+    ///stack_create()
+    //returns: type safe stack
+    return ds_stack_create()+0.2
+
+
+#define grid_create
+    ///grid_create(w,h)
+    //w: width
+    //h: height
+    //returns: type safe grid
+    return ds_grid_create(argument0,argument1)+0.25
+
+
+#define priority_create
+    ///priority_create()
+    //returns: type safe priority queue
+    return ds_priority_create()+0.3
+
+
+#define ds_get_type
+    ///ds_get_type(ds)
+    //ds: data structure(map, list, queue, stack, grid, or priority queue)
+    //returns: name of the type on success, undefined on failure
+    var _f;
+    _f = frac(argument0)
+    if (abs(_f-0.05)<0.001) return "map"
+    if (abs(_f-0.10)<0.001) return "list"
+    if (abs(_f-0.15)<0.001) return "queue"
+    if (abs(_f-0.20)<0.001) return "stack"
+    if (abs(_f-0.25)<0.001) return "grid"
+    if (abs(_f-0.30)<0.001) return "priority"
+    return undefined
 //
 //
