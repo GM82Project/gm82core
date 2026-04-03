@@ -832,25 +832,25 @@
 #define map_create
     ///map_create()
     //returns: type safe map
-    return ds_map_create()+0.05
+    return ds_map_create()+0.0625
 
 
 #define list_create
     ///list_create()
     //returns: type safe list
-    return ds_list_create()+0.1
+    return ds_list_create()+0.125
 
 
 #define queue_create
     ///queue_create()
     //returns: type safe queue
-    return ds_queue_create()+0.15
+    return ds_queue_create()+0.1875
 
 
 #define stack_create
     ///stack_create()
     //returns: type safe stack
-    return ds_stack_create()+0.2
+    return ds_stack_create()+0.25
 
 
 #define grid_create
@@ -858,7 +858,7 @@
     //w: width
     //h: height
     //returns: type safe grid
-    return ds_grid_create(argument0,argument1)+0.25
+    return ds_grid_create(argument0,argument1)+0.3125
 
 
 #define priority_create
@@ -873,12 +873,12 @@
     //returns: name of the type on success, undefined on failure
     var _f;
     _f = frac(argument0)
-    if (abs(_f-0.05)<0.001) return "map"
-    if (abs(_f-0.10)<0.001) return "list"
-    if (abs(_f-0.15)<0.001) return "queue"
-    if (abs(_f-0.20)<0.001) return "stack"
-    if (abs(_f-0.25)<0.001) return "grid"
-    if (abs(_f-0.30)<0.001) return "priority"
+    if (abs(_f-0.0625)<0.001) return "map"
+    if (abs(_f-0.125)<0.001) return "list"
+    if (abs(_f-0.1875)<0.001) return "queue"
+    if (abs(_f-0.25)<0.001) return "stack"
+    if (abs(_f-0.3125)<0.001) return "grid"
+    if (abs(_f-0.375)<0.001) return "priority"
     return undefined
 //
 //
