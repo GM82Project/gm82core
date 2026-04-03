@@ -814,7 +814,7 @@
     //map: empty ds_map
     //str: string to read
     //returns: success
-    //Cehcks if a string is supposedly a valid written dsmap before attempting to read it.
+    //Checks if a string is probably a valid written dsmap before attempting to read it.
     var str,i,l;
 
     str=string(argument1)
@@ -869,17 +869,17 @@
 
 #define dss_get_type
     ///dss_get_type(dss)
-    //dss: data structure(map, list, queue, stack, grid, or priority queue)
-    //returns: type on success, -1 on failure
-    var __f;
-    __f = frac(argument0)
-    if (__f==dss_type_map) return dss_type_map
-    if (__f==dss_type_list) return dss_type_list
-    if (__f==dss_type_queue) return dss_type_queue
-    if (__f==dss_type_stack) return dss_type_stack
-    if (__f==dss_type_grid) return dss_type_grid
-    if (__f==dss_type_priority) return dss_type_priority
-    show_error("in function dss_get_type: argument passed is not a dss", 0)
-    return -1
+    //dss: safe data structure(map, list, queue, stack, grid, or priority queue)
+    //returns: type on success, noone on failure
+    switch (frac(argument0)) {
+        case dss_type_map: return dss_type_map
+        case dss_type_list: return dss_type_list
+        case dss_type_queue: return dss_type_queue
+        case dss_type_stack: return dss_type_stack
+        case dss_type_grid: return dss_type_grid
+        case dss_type_priority: return dss_type_priority
+    }
+   
+    return noone
 //
 //
