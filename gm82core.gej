@@ -2305,6 +2305,74 @@
 					"returntype": 2
 				},
 				{
+					"name": "dss_map_create",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "dss_map_create()",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
+					"name": "dss_list_create",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "dss_list_create()",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
+					"name": "dss_queue_create",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "dss_queue_create()",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
+					"name": "dss_stack_create",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "dss_stack_create()",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
+					"name": "dss_grid_create",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "dss_grid_create(w,h)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "dss_priority_create",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "dss_priority_create()",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
+					"name": "dss_get_type",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "dss_get_type(dss)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 1
+				},
+				{
 					"name": "is_undefined",
 					"extname": "",
 					"calltype": 2,
@@ -2325,7 +2393,38 @@
 					"returntype": 2
 				}
 			],
-			"constants": []
+			"constants": [
+				{
+					"name": "dss_type_map",
+					"value": "0.0625",
+					"hidden": false
+				},
+				{
+					"name": "dss_type_list",
+					"value": "0.125",
+					"hidden": false
+				},
+				{
+					"name": "dss_type_queue",
+					"value": "0.1875",
+					"hidden": false
+				},
+				{
+					"name": "dss_type_stack",
+					"value": "0.25",
+					"hidden": false
+				},
+				{
+					"name": "dss_type_grid",
+					"value": "0.3125",
+					"hidden": false
+				},
+				{
+					"name": "dss_type_priority",
+					"value": "0.375",
+					"hidden": false
+				}
+			]
 		},
 		{
 			"filename": "drawing.gml",

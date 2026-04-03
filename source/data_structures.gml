@@ -827,5 +827,59 @@
 
     ds_map_read(argument0,str)
     return 1
+
+
+#define dss_map_create
+    ///dss_map_create()
+    //returns: type safe map
+    return ds_map_create()+dss_type_map
+
+
+#define dss_list_create
+    ///dss_list_create()
+    //returns: type safe list
+    return ds_list_create()+dss_type_list
+
+
+#define dss_queue_create
+    ///dss_queue_create()
+    //returns: type safe queue
+    return ds_queue_create()+dss_type_queue
+
+
+#define dss_stack_create
+    ///dss_stack_create()
+    //returns: type safe stack
+    return ds_stack_create()+dss_type_stack
+
+
+#define dss_grid_create
+    ///dss_grid_create(w,h)
+    //w: width
+    //h: height
+    //returns: type safe grid
+    return ds_grid_create(argument0,argument1)+dss_type_grid
+
+
+#define dss_priority_create
+    ///dss_priority_create()
+    //returns: type safe priority queue
+    return ds_priority_create()+dss_type_priority
+
+
+#define dss_get_type
+    ///dss_get_type(dss)
+    //dss: data structure(map, list, queue, stack, grid, or priority queue)
+    //returns: type on success, -1 on failure
+    var __f;
+    __f = frac(argument0)
+    if (__f==dss_type_map) return dss_type_map
+    if (__f==dss_type_list) return dss_type_list
+    if (__f==dss_type_queue) return dss_type_queue
+    if (__f==dss_type_stack) return dss_type_stack
+    if (__f==dss_type_grid) return dss_type_grid
+    if (__f==dss_type_priority) return dss_type_priority
+    show_error("in function dss_get_type: argument passed is not a dss", 0)
+    return -1
 //
 //
