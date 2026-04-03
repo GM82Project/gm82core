@@ -873,12 +873,12 @@
     //returns: type on success, -1 on failure
     var __f;
     __f = frac(argument0)
-    if (abs(__f-dss_type_map)<0.001) return dss_type_map
-    if (abs(__f-dss_type_list)<0.001) return dss_type_list
-    if (abs(__f-dss_type_queue)<0.001) return dss_type_queue
-    if (abs(__f-dss_type_stack)<0.001) return dss_type_stack
-    if (abs(__f-dss_type_grid)<0.001) return dss_type_grid
-    if (abs(__f-dss_type_priority)<0.001) return dss_type_priority
+    if (__f==dss_type_map) return dss_type_map
+    if (__f==dss_type_list) return dss_type_list
+    if (__f==dss_type_queue) return dss_type_queue
+    if (__f==dss_type_stack) return dss_type_stack
+    if (__f==dss_type_grid) return dss_type_grid
+    if (__f==dss_type_priority) return dss_type_priority
     show_error("in function dss_get_type: argument passed is not a dss", 0)
     return -1
 //
