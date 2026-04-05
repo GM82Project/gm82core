@@ -2370,7 +2370,7 @@
 					"argtypes": [
 						2
 					],
-					"returntype": 1
+					"returntype": 2
 				},
 				{
 					"name": "dss_destroy",
@@ -2381,7 +2381,7 @@
 					"argtypes": [
 						2
 					],
-					"returntype": 1
+					"returntype": 2
 				},
 				{
 					"name": "is_undefined",
