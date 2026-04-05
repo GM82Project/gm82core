@@ -2373,6 +2373,17 @@
 					"returntype": 1
 				},
 				{
+					"name": "dss_destroy",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "dss_destroy(dss)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 1
+				},
+				{
 					"name": "is_undefined",
 					"extname": "",
 					"calltype": 2,

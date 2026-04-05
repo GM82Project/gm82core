@@ -881,5 +881,68 @@
     }
    
     return noone
+
+
+#define dss_destroy
+    ///dss_destroy(dss)
+    //dss: safe data structure(map, list, queue, stack, grid, or priority queue)
+    //returns: true on success, false on dss mismatch
+    //Recursively destroys safe data structures
+    var _dss, _type;
+    _dss = argument0
+
+    if (!is_real(_dss)) return false
+
+    _type = dss_get_type(_dss);
+    if (_type == noone) return false
+
+    switch (_type) {
+        case dss_type_list:
+            var _size, i;
+            _size = ds_list_size(_dss)
+            for(i = 0; i < _size; i += 1) {
+                dss_destroy(ds_list_find_value(_dss, i))
+            }
+            ds_list_destroy(_dss)
+            break;
+
+        case dss_type_map:
+            var _size, _key, i;
+            _size = ds_map_size(_dss)
+            _key = ds_map_find_first(_dss)
+            for (i = 0; i < _size; i += 1) {
+                dss_destroy(ds_map_find_value(_dss, _key))
+                _key = ds_map_find_next(_dss, _key)
+            }
+            ds_map_destroy(_dss)
+            break;
+
+        case dss_type_grid:
+            ds_grid_destroy(_dss)
+            break;
+
+        case dss_type_queue:
+            while (!ds_queue_empty(_dss)) {
+                dss_destroy(ds_queue_dequeue(_dss))
+            }
+            ds_queue_destroy(_dss)
+            break;
+
+        case dss_type_stack:
+            while (!ds_stack_empty(_dss)) {
+                dss_destroy(ds_stack_pop(_dss))
+            }
+            ds_stack_destroy(_dss)
+            break;
+
+        case dss_type_priority:
+            while (!ds_priority_empty(_dss)) {
+                dss_destroy(ds_priority_delete_min(_dss))
+            }
+            ds_priority_destroy(_dss)
+            break;
+    }
+
+    return true
 //
 //
