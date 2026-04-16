@@ -225,18 +225,18 @@
     //values: values to check
     //returns: bool
     //Checks if the given values exist in the given DS list. (Backport of GMS2's `array_contains_ext` function.)
-    var matches, n;
-    matches = 0;
-    for (n = 2; n < argument_count; n += 1)
+    var __matches, __n;
+    __matches = 0;
+    for (__n = 2; __n < argument_count; __n += 1)
     {
-        if (ds_list_find_index(argument0, argument[n]) != -1)
+        if (ds_list_find_index(argument0, argument[__n]) != -1)
         {
-            if (not argument1) break;
-            matches += 1;
+            if (!argument1) break;
+            __matches += 1;
         }
     }
     
-    return (n < argument_count or matches == argument_count - 2);
+    return (__n < argument_count or __matches == argument_count - 2);
 
 
 #define ds_list_filter
@@ -815,17 +815,17 @@
     //str: string to read
     //returns: success
     //Checks if a string is probably a valid written dsmap before attempting to read it.
-    var str,i,l;
+    var __str,__i,__l;
 
-    str=string(argument1)
-    l=string_length(str)
-    if (l mod 2) return 0
+    __str=string(argument1)
+    __l=string_length(__str)
+    if (__l mod 2) return 0
 
     //check first and last 16 characters only for speed
-    for (i=1;i<=16;i+=1) if (!string_pos(string_char_at(str,i),"0123456789ABCDEF")) return 0
-    for (i=l;i>=l-16;i-=1) if (!string_pos(string_char_at(str,i),"0123456789ABCDEF")) return 0
+    for (__i=1;__i<=16;__i+=1) if (!string_pos(string_char_at(__str,__i),"0123456789ABCDEF")) return 0
+    for (__i=__l;__i>=__l-16;__i-=1) if (!string_pos(string_char_at(__str,__i),"0123456789ABCDEF")) return 0
 
-    ds_map_read(argument0,str)
+    ds_map_read(argument0,__str)
     return 1
 
 
@@ -888,58 +888,59 @@
     //dss: safe data structure(map, list, queue, stack, grid, or priority queue)
     //returns: true on success, false on dss mismatch
     //Recursively destroys safe data structures
-    var _dss, _type;
-    _dss = argument0
+    var __dss, __type;
+    __dss = argument0
 
-    if (!is_real(_dss)) return false
+    if (!is_real(__dss)) return false
 
-    _type = dss_get_type(_dss);
-    if (_type == noone) return false
+    __type = dss_get_type(__dss);
+    if (__type == noone) return false
 
-    switch (_type) {
+    switch (__type) {
         case dss_type_list:
-            var _size, i;
-            _size = ds_list_size(_dss)
-            for(i = 0; i < _size; i += 1) {
-                dss_destroy(ds_list_find_value(_dss, i))
+            var __size, __i;
+            __size = ds_list_size(__dss)
+            for(__i = 0; __i < __size; __i += 1) {
+                dss_destroy(ds_list_find_value(__dss, __i))
             }
-            ds_list_destroy(_dss)
+            ds_list_destroy(__dss)
             break;
 
         case dss_type_map:
-            var _size, _key, i;
-            _size = ds_map_size(_dss)
-            _key = ds_map_find_first(_dss)
-            for (i = 0; i < _size; i += 1) {
-                dss_destroy(ds_map_find_value(_dss, _key))
-                _key = ds_map_find_next(_dss, _key)
+            var __size, __key, __i;
+            __size = ds_map_size(__dss)
+            __key = ds_map_find_first(__dss)
+            for (__i = 0; __i < __size; __i += 1) {
+                dss_destroy(ds_map_find_value(__dss, __key))
+                __key = ds_map_find_next(__dss, __key)
             }
-            ds_map_destroy(_dss)
+            ds_map_destroy(__dss)
             break;
 
         case dss_type_grid:
-            ds_grid_destroy(_dss)
+            //todo: destroy all nested values
+            ds_grid_destroy(__dss)
             break;
 
         case dss_type_queue:
-            while (!ds_queue_empty(_dss)) {
-                dss_destroy(ds_queue_dequeue(_dss))
+            while (!ds_queue_empty(__dss)) {
+                dss_destroy(ds_queue_dequeue(__dss))
             }
-            ds_queue_destroy(_dss)
+            ds_queue_destroy(__dss)
             break;
 
         case dss_type_stack:
-            while (!ds_stack_empty(_dss)) {
-                dss_destroy(ds_stack_pop(_dss))
+            while (!ds_stack_empty(__dss)) {
+                dss_destroy(ds_stack_pop(__dss))
             }
-            ds_stack_destroy(_dss)
+            ds_stack_destroy(__dss)
             break;
 
         case dss_type_priority:
-            while (!ds_priority_empty(_dss)) {
-                dss_destroy(ds_priority_delete_min(_dss))
+            while (!ds_priority_empty(__dss)) {
+                dss_destroy(ds_priority_delete_min(__dss))
             }
-            ds_priority_destroy(_dss)
+            ds_priority_destroy(__dss)
             break;
     }
 
