@@ -2370,7 +2370,18 @@
 					"argtypes": [
 						2
 					],
-					"returntype": 1
+					"returntype": 2
+				},
+				{
+					"name": "dss_destroy",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "dss_destroy(dss)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
 				},
 				{
 					"name": "is_undefined",
