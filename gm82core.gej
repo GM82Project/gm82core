@@ -3,7 +3,7 @@
 	"folder": "gm82",
 	"version": "1.6",
 	"author": "renex, Floogle, Lovey01, cam900, Adamcake, Yal, Verve",
-	"date": "04/05/2026",
+	"date": "05/05/2026",
 	"license": "Free to use, also for commercial games.",
 	"description": "Part of the standard Game Maker 8.2 distribution. This extension package contains a vast number of helper functions, and some newer functions introduced in GM:Studio. This extension is also required for using the other GM 8.2 extensions.",
 	"helpfile": "",
@@ -3321,6 +3321,21 @@
 					"helpline": "move_towards_gravity(xto,yto,gravity)",
 					"hidden": false,
 					"argtypes": [
+						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "move_towards_jump",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "move_towards_jump(x,y,hspeed_limit,vspeed,gravity)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
 						2,
 						2,
 						2

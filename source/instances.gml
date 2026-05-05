@@ -371,6 +371,72 @@
     }
 
 
+#define move_towards_jump
+    ///move_towards_jump(x,y,hspeed_limit,vspeed,gravity)
+    //Performs a jump arc at the destination coordinates using predefined speeds.
+    //Set hspeed_limit to zero or a negative value to disable the limit.
+    //Returns jump frame count if the jump is possible, otherwise returns an error code:
+    //-1: falling the wrong way due to gravity conditions
+    //-2: jump requires more vspeed than supplied
+    //-3: jump requires more hspeed than permitted
+    var __gox,__goy,__hlim,__grav,__hsp,__vsp,__time,__peak;
+
+    __gox=argument0
+    __goy=argument1
+    __hlim=argument2
+    __grav=argument4
+    __vsp=argument3-__grav
+
+    if (__grav==0) {
+        //🥴         
+        __time=floor((__goy-y)/__vsp)
+        
+        if (__time<=0) {
+            //going Le Wrong Way
+            return -1
+        }
+        
+        hspeed=(__gox-x)/__time
+        vspeed=__vsp
+        
+        return __time
+    }
+
+    if (sign(__grav)==sign(__vsp)) {
+        if (sign(__goy-y)!=sign(__vsp)) {
+            //we are falling away from the intended location
+            return -1
+        }
+    } else {
+        //check if the arc goes high enough
+        __time=abs(__vsp/__grav)
+        __peak=y+__vsp*__time+0.5*__grav*__time*__time
+        
+        if (sign(__goy-__peak)!=sign(__grav)) {
+            //doesn't make it
+            return -2
+        }   
+    }
+
+    //quadratic solve for time
+    __time=floor((-__vsp+sign(__grav)*sqrt((__vsp*__vsp-2*__grav*(y-__goy))))/__grav)
+
+    if (__time<=0) __hsp=0
+    else {
+        __hsp=(__gox-x)/__time     
+        if (__hlim>0 and abs(__hsp)>__hlim) {
+            //horizontal speed limit failure
+            return -3
+        }
+    }
+
+    hspeed=__hsp
+    vspeed=__vsp
+    gravity=__grav
+
+    return max(1,__time-1)
+
+
 #define outside_room
     ///outside_room()
     //returns: whether self is completely outside the room
