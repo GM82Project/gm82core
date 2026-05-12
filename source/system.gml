@@ -1,3 +1,17 @@
+#define datetime_current_filename
+    ///datetime_current_filename()
+    //returns current date as a standard date filename
+
+    var __t; __t=date_current_datetime()
+
+    return string_pad(date_get_day(__t),2)+
+       "-"+string_pad(date_get_month(__t),2)+
+       "-"+string(date_get_year(__t))+
+       "_"+string_pad(date_get_hour(__t),2)+
+       "."+string_pad(date_get_minute(__t),2)+
+       "."+string_pad(date_get_second(__t),2)
+
+
 #define execute_program_async
     ///execute_program_async(cmdline)
     //cmdline: command string with arguments

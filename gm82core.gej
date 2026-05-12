@@ -3,7 +3,7 @@
 	"folder": "gm82",
 	"version": "1.6",
 	"author": "renex, Floogle, Lovey01, cam900, Adamcake, Yal, Verve",
-	"date": "05/05/2026",
+	"date": "12/05/2026",
 	"license": "Free to use, also for commercial games.",
 	"description": "Part of the standard Game Maker 8.2 distribution. This extension package contains a vast number of helper functions, and some newer functions introduced in GM:Studio. This extension is also required for using the other GM 8.2 extensions.",
 	"helpfile": "",
@@ -4053,6 +4053,15 @@
 			"init": "",
 			"final": "",
 			"functions": [
+				{
+					"name": "datetime_current_filename",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "datetime_current_filename()",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 2
+				},
 				{
 					"name": "date_get_moon_phase",
 					"extname": "",
