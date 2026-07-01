@@ -3,7 +3,7 @@
 	"folder": "gm82",
 	"version": "1.6",
 	"author": "renex, Floogle, Lovey01, cam900, Adamcake, Yal, Verve",
-	"date": "12/05/2026",
+	"date": "30/06/2026",
 	"license": "Free to use, also for commercial games.",
 	"description": "Part of the standard Game Maker 8.2 distribution. This extension package contains a vast number of helper functions, and some newer functions introduced in GM:Studio. This extension is also required for using the other GM 8.2 extensions.",
 	"helpfile": "",
@@ -1493,6 +1493,20 @@
 					"argtypes": [
 						1,
 						1,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "lerproach",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "lerproach(val,go,lerp,approach)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2,
 						2
 					],
 					"returntype": 2

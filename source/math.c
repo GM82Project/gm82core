@@ -133,6 +133,20 @@ GMREAL approach(double val, double go, double step) {
     return max(go,val-step);
 }
 
+GMREAL lerproach(double val, double go, double lerpamt, double appamt) {
+    ///lerproach(val,go,lerp,approach)
+    //val: value to increment
+    //go: target value
+    //lerp: interpolation amount
+    //approach: approach amount
+    //Combines lerp and approach.
+    
+    val=(val*(1.0-lerpamt)) + (go*lerpamt);
+    
+    if (val<go) return min(go,val+appamt);
+    return max(go,val-appamt);
+}
+
 GMREAL round_unbiased(double val) {
     ///round_unbiased(x)
     //x: value
