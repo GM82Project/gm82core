@@ -718,6 +718,20 @@
 					"returntype": 2
 				},
 				{
+					"name": "lerproach",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "lerproach(val,go,lerp,approach)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
 					"name": "lerp_angle",
 					"extname": "",
 					"calltype": 12,
@@ -1493,20 +1507,6 @@
 					"argtypes": [
 						1,
 						1,
-						2
-					],
-					"returntype": 2
-				},
-				{
-					"name": "lerproach",
-					"extname": "",
-					"calltype": 12,
-					"helpline": "lerproach(val,go,lerp,approach)",
-					"hidden": false,
-					"argtypes": [
-						2,
-						2,
-						2,
 						2
 					],
 					"returntype": 2
