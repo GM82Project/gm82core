@@ -654,8 +654,7 @@
     x=argument0
     y=argument1
     __i=2 repeat (argument_count-2) {
-        with (argument[__i]) if (instance_place(x,y,other.id))
-            ds_list_add(__list,__coll)
+        with (argument[__i]) if (instance_place(x,y,other.id)) ds_list_add(__list,id)
     __i+=1}
     x=__oldx
     y=__oldy
@@ -670,7 +669,7 @@
     
     var __list;__list=ds_list_create()
     
-    var __i,__coll;
+    var __i;
     __i=2 repeat (argument_count-2) {
         with (argument[__i]) if (instance_position(argument0,argument1,id)) ds_list_add(__list,id)
     __i+=1}
