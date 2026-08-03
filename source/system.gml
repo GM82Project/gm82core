@@ -289,18 +289,24 @@
 
 #define get_open_filename_ext
     ///get_open_filename_ext(filter,filename,startdir)
-    var __old_wdir;__old_wdir=working_directory
+    var __old_wdir,__fn;
+    
+    __old_wdir=working_directory
     set_working_directory(argument2)
-    get_open_filename(argument0,argument1)
+    __fn=get_open_filename(argument0,argument1)
     set_working_directory(__old_wdir)
+    return __fn
 
 
 #define get_save_filename_ext
     ///get_save_filename_ext(filter,filename,startdir)
-    var __old_wdir;__old_wdir=working_directory
+    var __old_wdir,__fn;
+    
+    __old_wdir=working_directory
     set_working_directory(argument2)
-    get_save_filename(argument0,argument1)
+    __fn=get_save_filename(argument0,argument1)
     set_working_directory(__old_wdir)
+    return __fn
 
 
 #define date_is_easter
