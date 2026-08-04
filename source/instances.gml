@@ -677,6 +677,37 @@
     return __list
 
 
+#define object_nearest
+    ///object_nearest(x,y,obj1,[obj2,etc])
+    //Returns the closest instance from multiple object types, or 'noone'.
+    var __x,__y,__i,__p,__obj;
+
+    if (argument_count<3) {
+        show_error("Error in function object_nearest: incorrect number of arguments ("+string(argument_count)+")",0)
+        return noone
+    }
+
+    __x=argument[0]
+    __y=argument[1]
+
+    __p=ds_priority_create()
+
+    __i=2 repeat (argument_count-2) {
+        __n=instance_nearest(__x,__y,argument[__i])
+        if (__n) ds_priority_add(__p,__n,distance_to_object(__n))
+    __i+=1}
+
+    if (ds_priority_empty(__p)) {
+        ds_priority_destroy(__p)
+        return noone
+    }
+
+    __n=ds_priority_find_min(__p)
+    ds_priority_destroy(__p)
+
+    return __n
+
+
 #define move_towards_fixed
     ///move_towards_fixed(x,y,speed)
     //x,y: position to move to
