@@ -65,3 +65,18 @@ GMSTR string_token_next() {
     }
     return startpos;
 }
+
+GMREAL string_token_real() {
+    ///string_token_real()
+    //returns: the next token interpreted as a real.
+    char* startpos = tokenpos;
+    if (startpos) {
+        tokenpos = strstr(tokenpos, tokensep);        
+        if (tokenpos) {
+            tokenpos[0]=0;
+            tokenpos+=tokenseplen;
+        }
+    }
+    
+    return strtod(startpos,NULL);
+}

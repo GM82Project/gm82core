@@ -1154,6 +1154,15 @@
 					"returntype": 1
 				},
 				{
+					"name": "string_token_real",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "string_token_real()",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
 					"name": "string_token_start",
 					"extname": "",
 					"calltype": 12,
