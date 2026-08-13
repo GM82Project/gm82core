@@ -78,5 +78,7 @@ GMREAL string_token_real() {
         }
     }
     
+    if (startpos==tokenpos) return 0;
+    
     return strtod(startpos,NULL);
 }
