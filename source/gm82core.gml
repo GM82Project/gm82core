@@ -27,7 +27,7 @@
     ds_queue_create()
     ds_stack_create()    
     
-    globalvar gm82core_version;gm82core_version=160
+    globalvar gm82core_version;gm82core_version=161
     
     globalvar delta_time,fps_real,fps_fast,current_frame;
     globalvar __gm82core_timer,__gm82core_fpsmem,__gm82core_fps_queue,__gm82core_framecount;
