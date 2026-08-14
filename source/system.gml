@@ -130,6 +130,7 @@
     ///mouse_in_window()
     //returns: whether the mouse cursor is currently within the game window region on the screen.
     //Note: this does not check if there are any windows in front of the game. Check that separately using window_is_focused().
+    
     var __dx,__dy,__wx,__wy,__ww,__wh;
 
     __dx=display_mouse_get_x()
@@ -265,6 +266,7 @@
     ///font_add_winui(filename)
     //filename: path to ttf or fon file
     //Temporarily loads a font for use in Windows api stuff like in message boxes.
+    
     var __fon;__fon=string(argument0)
     
     if (!string_pos(":",__fon)) __fon=working_directory+"\"+__fon
@@ -275,6 +277,7 @@
 
 #define get_open_filename_ext
     ///get_open_filename_ext(filter,filename,startdir)
+    
     var __old_wdir,__fn;
     
     __old_wdir=working_directory
@@ -286,6 +289,7 @@
 
 #define get_save_filename_ext
     ///get_save_filename_ext(filter,filename,startdir)
+    
     var __old_wdir,__fn;
     
     __old_wdir=working_directory
@@ -296,8 +300,9 @@
 
 
 #define date_is_easter
-    ///date_is_easter([date])
-    //returns whether the supplied date (or today) is easter
+    ///date_is_easter([datetime])
+    //Returns whether the supplied date (or today) is easter
+    
     var __C,__G,__H,__I,__J,__L,__month,__day;
 
     var __in_year,__in_month,__in_day;
@@ -312,8 +317,7 @@
         __in_day=current_day
     }
 
-    //note: I have no idea what this is doing, but it was
-    //not written by AI so I trust it to be correct.
+    //note: this is off wikipedia so its probably correct
     __C=floor(__in_year/100)
     __G=__in_year mod 19
     __H=(__C-floor(__C/4)-floor((8*__C+13)/25)+19*__G+15) mod 30
@@ -327,8 +331,9 @@
 
 
 #define date_get_moon_phase
-    ///date_get_moon_phase([date])
-    //returns the current moon phase as a unit where 0.0 = new and 0.5 = full.
+    ///date_get_moon_phase([datetime])
+    //Returns the moon phase during the supplied datetime (or right now) as a unit where 0.0 = new and 0.5 = full.
+    
     var __date,__y,__m,__d,__phase;
     
     if (argument_count) __date=argument[0]

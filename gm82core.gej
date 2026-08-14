@@ -3,7 +3,7 @@
 	"folder": "gm82",
 	"version": "1.6.1",
 	"author": "renex, Floogle, Lovey01, cam900, Adamcake, Yal, Verve",
-	"date": "13/08/2026",
+	"date": "14/08/2026",
 	"license": "Free to use, also for commercial games.",
 	"description": "Part of the standard Game Maker 8.2 distribution. This extension package contains a vast number of helper functions, and some newer functions introduced in GM:Studio. This extension is also required for using the other GM 8.2 extensions.",
 	"helpfile": "",
@@ -3838,11 +3838,41 @@
 			"final": "",
 			"functions": [
 				{
-					"name": "date_get_timestamp",
+					"name": "datetime_format",
 					"extname": "",
 					"calltype": 2,
-					"helpline": "date_get_timestamp([date])",
+					"helpline": "datetime_format(datetime,format)",
 					"hidden": false,
+					"argtypes": [
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "datetime_get_filename",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "datetime_get_filename([datetime])",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
+					"name": "datetime_get_readable",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "datetime_get_readable([datetime])",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
+					"name": "date_get_timestamp",
+					"extname": "datetime_get_readable",
+					"calltype": 2,
+					"helpline": "",
+					"hidden": true,
 					"argtypes": null,
 					"returntype": 2
 				},
@@ -4071,14 +4101,6 @@
 					"extname": "",
 					"calltype": 2,
 					"helpline": "str_sep(sep,val1,val2,...)",
-					"hidden": false,
-					"argtypes": null,
-					"returntype": 2
-				{
-					"name": "datetime_get_filename",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "datetime_get_filename([datetime])",
 					"hidden": false,
 					"argtypes": null,
 					"returntype": 2

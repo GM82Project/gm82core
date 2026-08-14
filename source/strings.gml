@@ -1,20 +1,110 @@
-#define date_get_timestamp
-    ///date_get_timestamp([date])
-    //date: datetime value
-    //returns: a human-readable timestamp
+#define datetime_format
+    ///datetime_format(datetime,format)
+    //datetime: datetime to format, or noone for current
+    //format: format to format the datetime
+    //Formats a datetime using the supplied format string.
+    //%dd%-%mm%-%yy% for example would return 01-04-96 for april fools '96.
+    //Available tokens:
+    //%yyy% - year
+    //%yy% - century
+    //%y% - 00 year
+    //%mmmm% - calendar month
+    //%mmm% - short calendar month
+    //%mm% - 00 month
+    //%m% - month
+    //%wwww% - weekday name
+    //%www% - short weekday name
+    //%ww% - week day
+    //%w% - week
+    //%ddd% - cardinal day
+    //%dd% - 00 day
+    //%d% - day
+    //%HHHH% - 00 hour 24
+    //%HHH% - hour 24
+    //%HH% - 00 hour 12
+    //%H% - hour 12
+    //%MM% - 00 minute
+    //%M% - minute
+    //%SS% - 00 second
+    //%S% - second
+    //%MSS% - 000 millis
+    //%MS% - 00 millis
+
+    var __date,__format;
+
+    __date=argument0
+    __format=argument1
+
+    if (__date<=0) __date=date_current_datetime()
+
+    var __year,__month,__week,__weekday,__day,__hour,__minute,__second,__millis;
+    
+    __year=date_get_year(__date)
+    __month=date_get_month(__date)
+    __week=date_get_week(__date)
+    __weekday=date_get_weekday(__date)
+    __day=date_get_day(__date)
+    __hour=date_get_hour(__date)
+    __minute=date_get_minute(__date)
+    __second=date_get_second(__date)
+    __millis=(((__date mod 1)*24*60*60) mod 1)*1000
+    
+    __format=string_replace_all(__format,"\%",chr(1)+chr(1))
+    
+    __format=string_replace_all(__format,"%yyy%",string(__year))
+    __format=string_replace_all(__format,"%yy%",string(__year div 100))
+    __format=string_replace_all(__format,"%y%",string(__year mod 100))
+    
+    __format=string_replace_all(__format,"%mmmm%",pick(__month-1,"January","February","March","April","May","June","July","August","September","October","November","December"))
+    __format=string_replace_all(__format,"%mmm%",pick(__month-1,"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"))
+    __format=string_replace_all(__format,"%mm%",string_pad(__month,2))
+    __format=string_replace_all(__format,"%m%",string(__month))
+    
+    __format=string_replace_all(__format,"%wwww%",pick(__weekday-1,"Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"))
+    __format=string_replace_all(__format,"%www%",pick(__weekday-1,"Sun","Mon","Tues","Wed","Thur","Fri","Sat"))
+    __format=string_replace_all(__format,"%ww%",string(__weekday))
+    __format=string_replace_all(__format,"%w%",string(__week)) 
+    
+    __format=string_replace_all(__format,"%ddd%",string(__day)+pick(min(3,__day mod 10),"st","nd","rd","th"))
+    __format=string_replace_all(__format,"%dd%",string_pad(__day,2))
+    __format=string_replace_all(__format,"%d%",string(__day))   
+    
+    __format=string_replace_all(__format,"%HHHH%",string_pad(__hour,2))
+    __format=string_replace_all(__format,"%HHH%",string(__hour))
+    __format=string_replace_all(__format,"%HH%",string_pad(__hour mod 12,2))
+    __format=string_replace_all(__format,"%H%",string(__hour mod 12))
+    
+    __format=string_replace_all(__format,"%MM%",string_pad(__minute,2))
+    __format=string_replace_all(__format,"%M%",string(__minute))
+    
+    __format=string_replace_all(__format,"%SS%",string_pad(__second,2))
+    __format=string_replace_all(__format,"%S%",string(__second))
+    
+    __format=string_replace_all(__format,"%MSS%",string_pad(__millis,3))
+    __format=string_replace_all(__format,"%MS%",string_pad(__millis div 10,2))  
+    
+    __format=string_replace_all(__format,chr(1)+chr(1),"%")
+
+    return __format
+
+
+#define datetime_get_readable
+    ///datetime_get_readable([datetime])
+    //datetime: datetime value
+    //Returns a human-readable timestamp string (dd/mm/yy hh:mm:ss)
+    //Call without any arguments to use the current datetime.
     
     var __t;
-    if (argument_count) __t=argument0 else __t=date_current_datetime()
-    return
-        string_pad(date_get_day(__t),2)+
-        "/"+
-        string_pad(date_get_month(__t),2)+
-        "/"+
-        string_pad(date_get_year(__t) mod 100,2)+
-        " "+
-        string_pad(date_get_hour(__t),2)+
-        ":"+
-        string_pad(date_get_minute(__t),2)
+    
+    if (argument_count) __t=argument[0]
+    else __t=date_current_datetime()
+    
+    return string_pad(date_get_day(__t),2)+
+       "/"+string_pad(date_get_month(__t),2)+
+       "/"+string_pad(date_get_year(__t) mod 100,2)+
+       " "+string_pad(date_get_hour(__t),2)+
+       ":"+string_pad(date_get_minute(__t),2)+
+       ":"+string_pad(date_get_second(__t),2)
 
 
 #define datetime_get_filename
@@ -30,7 +120,7 @@
 
     return string_pad(date_get_day(__t),2)+
        "-"+string_pad(date_get_month(__t),2)+
-       "-"+string(date_get_year(__t))+
+       "-"+string_pad(date_get_year(__t) mod 100,2)+
        "_"+string_pad(date_get_hour(__t),2)+
        "."+string_pad(date_get_minute(__t),2)+
        "."+string_pad(date_get_second(__t),2)
