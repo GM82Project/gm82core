@@ -4074,6 +4074,14 @@
 					"hidden": false,
 					"argtypes": null,
 					"returntype": 2
+				{
+					"name": "datetime_get_filename",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "datetime_get_filename([datetime])",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
 				}
 			],
 			"constants": []
@@ -4085,15 +4093,6 @@
 			"init": "",
 			"final": "",
 			"functions": [
-				{
-					"name": "datetime_current_filename",
-					"extname": "",
-					"calltype": 2,
-					"helpline": "datetime_current_filename()",
-					"hidden": false,
-					"argtypes": [],
-					"returntype": 2
-				},
 				{
 					"name": "date_get_moon_phase",
 					"extname": "",

@@ -17,6 +17,25 @@
         string_pad(date_get_minute(__t),2)
 
 
+#define datetime_get_filename
+    ///datetime_get_filename([datetime])
+    //datetime: optional datetime to convert
+    //Returns a standard formatted filename (dd-mm-yy_hh.mm.ss) for the specific datetime.
+    //Call without any arguments to use the current datetime.
+
+    var __t;
+    
+    if (argument_count) __t=argument[0]
+    else __t=date_current_datetime()
+
+    return string_pad(date_get_day(__t),2)+
+       "-"+string_pad(date_get_month(__t),2)+
+       "-"+string(date_get_year(__t))+
+       "_"+string_pad(date_get_hour(__t),2)+
+       "."+string_pad(date_get_minute(__t),2)+
+       "."+string_pad(date_get_second(__t),2)
+
+
 #define directory_previous
     ///directory_previous(dir)
     //dir: directory string
