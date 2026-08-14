@@ -65,7 +65,10 @@
     __format=string_replace_all(__format,"%ww%",string(__weekday))
     __format=string_replace_all(__format,"%w%",string(__week)) 
     
-    __format=string_replace_all(__format,"%ddd%",string(__day)+pick(min(3,__day mod 10),"st","nd","rd","th"))
+    if (__day>=11 and __day<=13)
+        __format=string_replace_all(__format,"%ddd%",string(__day)+"th")
+    else
+        __format=string_replace_all(__format,"%ddd%",string(__day)+pick(min(4,__day mod 10),"th","st","nd","rd","th"))
     __format=string_replace_all(__format,"%dd%",string_pad(__day,2))
     __format=string_replace_all(__format,"%d%",string(__day))   
     
