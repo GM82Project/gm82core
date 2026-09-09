@@ -32,8 +32,11 @@
         //builtin gm, make an index
         if (__gm82core_index_sounds==noone) {
             __gm82core_index_sounds=ds_map_create()
-            if (extension_detect("audio")) {
-                //hello,gm82audio
+            if (extension_detect("dsound")) {
+                //hello, gm82dsound
+                __l=execute_string("return __dsound_get_builtin_count()")
+            } else if (extension_detect("audio")) {
+                //hello, gm82audio
                 __l=execute_string("return __gm82audio_get_builtin_count()")
             } else {
                 __l=sound_add("c:\windows\media\flourish.mid",1,0)

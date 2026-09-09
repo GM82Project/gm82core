@@ -374,9 +374,13 @@
         case "audio":
         case "core":
         case "drag":
+        case "dsound":
         case "gltf":
         case "ui":
         case "video": break
+        
+        case "dsnd":
+        case "directsound": __name="dsound" break
         
         case "buffer":
         case "buf": __name="buf" break
