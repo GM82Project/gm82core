@@ -22,26 +22,28 @@
     //Finds a sound by its name. if the sound doesn't exist, noone is returned.
     //The first time this function is called, extra time is spent building an index, and subsequent calls are much faster.
     //Note: if the 8.2 Sound extension is present, it is always fast and returns an empty string on failed search.
+    //Additionally, if the DirectSound extension is present, it is always fast.
     var __l,__i;
     
-    if (extension_detect("sound")) {
+    if (extension_detect("dsound")) {
+        //hello, gm82dsound
+        if (ds_map_exists(__dsound_map,argument0)) return ds_map_find_value(__dsound_map,argument0)
+        return noone
+    } else if (extension_detect("sound")) {
         //hello, gm82snd
         if (sound_exists(argument0)) return argument0
         return ""
     } else {
         //builtin gm, make an index
         if (__gm82core_index_sounds==noone) {
-            __gm82core_index_sounds=ds_map_create()
-            if (extension_detect("dsound")) {
-                //hello, gm82dsound
-                __l=execute_string("return __dsound_get_builtin_count()")
-            } else if (extension_detect("audio")) {
+            if (extension_detect("audio")) {
                 //hello, gm82audio
                 __l=execute_string("return __gm82audio_get_builtin_count()")
             } else {
                 __l=sound_add("c:\windows\media\flourish.mid",1,0)
                 sound_delete(__l)
             }
+            __gm82core_index_sounds=ds_map_create()
             __i=0 repeat (__l) {if (sound_exists(__i)) ds_map_add(__gm82core_index_sounds,sound_get_name(__i),__i) __i+=1}
         }        
         if (ds_map_exists(__gm82core_index_sounds,argument0)) return ds_map_find_value(__gm82core_index_sounds,argument0)
