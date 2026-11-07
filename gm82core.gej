@@ -3,7 +3,7 @@
 	"folder": "gm82",
 	"version": "1.6.1",
 	"author": "renex, Floogle, Lovey01, cam900, Adamcake, Yal, Verve",
-	"date": "17/08/2026",
+	"date": "07/11/2026",
 	"license": "Free to use, also for commercial games.",
 	"description": "Part of the standard Game Maker 8.2 distribution. This extension package contains a vast number of helper functions, and some newer functions introduced in GM:Studio. This extension is also required for using the other GM 8.2 extensions.",
 	"helpfile": "",
@@ -3812,6 +3812,19 @@
 					"helpline": "path_get_height(path)",
 					"hidden": false,
 					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "path_get_nearest",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "path_get_nearest(path,x,y)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
 						2
 					],
 					"returntype": 2
