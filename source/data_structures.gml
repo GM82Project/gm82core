@@ -338,7 +338,7 @@
     var __list, __popVal;
     __list = argument0
     __popVal = ds_list_find_value(__list, 0)
-    ds_list_delete(__list, __at)
+    ds_list_delete(__list, 0)
     return __popVal
 
 
