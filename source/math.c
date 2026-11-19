@@ -133,6 +133,20 @@ GMREAL approach(double val, double go, double step) {
     return max(go,val-step);
 }
 
+GMREAL lerproach(double val, double go, double lerpamt, double appamt) {
+    ///lerproach(val,go,lerp,approach)
+    //val: value to increment
+    //go: target value
+    //lerp: interpolation amount
+    //approach: approach amount
+    //Combines lerp and approach.
+    
+    val=(val*(1.0-lerpamt)) + (go*lerpamt);
+    
+    if (val<go) return min(go,val+appamt);
+    return max(go,val-appamt);
+}
+
 GMREAL round_unbiased(double val) {
     ///round_unbiased(x)
     //x: value
@@ -609,14 +623,14 @@ GMREAL pack_bools(double b7, double b6, double b5, double b4, double b3, double 
     //Packs 8 boolean values into a byte.
     
     return (double)(
-        (b7>=0.5)?128:0
-    +   (b6>=0.5)?64:0
-    +   (b5>=0.5)?32:0
-    +   (b4>=0.5)?16:0
-    +   (b3>=0.5)?8:0
-    +   (b2>=0.5)?4:0
-    +   (b1>=0.5)?2:0
-    +   (b0>=0.5)?1:0
+        (b7>=0.5?128:0)
+    +   (b6>=0.5?64:0)
+    +   (b5>=0.5?32:0)
+    +   (b4>=0.5?16:0)
+    +   (b3>=0.5?8:0)
+    +   (b2>=0.5?4:0)
+    +   (b1>=0.5?2:0)
+    +   (b0>=0.5?1:0)
     );
 }
 

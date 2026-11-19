@@ -1,9 +1,9 @@
 {
 	"name": "Game Maker 8.2 Core",
 	"folder": "gm82",
-	"version": "1.6",
+	"version": "1.6.1",
 	"author": "renex, Floogle, Lovey01, cam900, Adamcake, Yal, Verve",
-	"date": "01/04/2026",
+	"date": "07/11/2026",
 	"license": "Free to use, also for commercial games.",
 	"description": "Part of the standard Game Maker 8.2 distribution. This extension package contains a vast number of helper functions, and some newer functions introduced in GM:Studio. This extension is also required for using the other GM 8.2 extensions.",
 	"helpfile": "",
@@ -718,6 +718,20 @@
 					"returntype": 2
 				},
 				{
+					"name": "lerproach",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "lerproach(val,go,lerp,approach)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
 					"name": "lerp_angle",
 					"extname": "",
 					"calltype": 12,
@@ -1140,6 +1154,15 @@
 					"returntype": 1
 				},
 				{
+					"name": "string_token_real",
+					"extname": "",
+					"calltype": 12,
+					"helpline": "string_token_real()",
+					"hidden": false,
+					"argtypes": [],
+					"returntype": 2
+				},
+				{
 					"name": "string_token_start",
 					"extname": "",
 					"calltype": 12,
@@ -1477,7 +1500,7 @@
 					"extname": "",
 					"calltype": 12,
 					"helpline": "",
-					"hidden": false,
+					"hidden": true,
 					"argtypes": [
 						1,
 						1
@@ -3339,6 +3362,21 @@
 					"returntype": 2
 				},
 				{
+					"name": "move_towards_jump",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "move_towards_jump(x,y,hspeed_limit,vspeed,gravity)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
 					"name": "move_wrap",
 					"extname": "",
 					"calltype": 2,
@@ -3349,6 +3387,15 @@
 						2,
 						2
 					],
+					"returntype": 2
+				},
+				{
+					"name": "object_nearest",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "object_nearest(x,y,obj1,[obj2,etc])",
+					"hidden": false,
+					"argtypes": null,
 					"returntype": 2
 				},
 				{
@@ -3781,6 +3828,19 @@
 					"returntype": 2
 				},
 				{
+					"name": "path_get_nearest",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "path_get_nearest(path,x,y)",
+					"hidden": false,
+					"argtypes": [
+						2,
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
 					"name": "path_get_width",
 					"extname": "",
 					"calltype": 2,
@@ -3802,11 +3862,41 @@
 			"final": "",
 			"functions": [
 				{
-					"name": "date_get_timestamp",
+					"name": "datetime_format",
 					"extname": "",
 					"calltype": 2,
-					"helpline": "date_get_timestamp([date])",
+					"helpline": "datetime_format(datetime,format)",
 					"hidden": false,
+					"argtypes": [
+						2,
+						2
+					],
+					"returntype": 2
+				},
+				{
+					"name": "datetime_get_filename",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "datetime_get_filename([datetime])",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
+					"name": "datetime_get_readable",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "datetime_get_readable([datetime])",
+					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
+					"name": "date_get_timestamp",
+					"extname": "datetime_get_readable",
+					"calltype": 2,
+					"helpline": "",
+					"hidden": true,
 					"argtypes": null,
 					"returntype": 2
 				},
@@ -4036,6 +4126,15 @@
 					"calltype": 2,
 					"helpline": "str_sep(sep,val1,val2,...)",
 					"hidden": false,
+					"argtypes": null,
+					"returntype": 2
+				},
+				{
+					"name": "datetime_current_filename",
+					"extname": "datetime_get_filename",
+					"calltype": 2,
+					"helpline": "",
+					"hidden": true,
 					"argtypes": null,
 					"returntype": 2
 				}

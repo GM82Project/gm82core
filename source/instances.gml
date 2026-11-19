@@ -371,6 +371,72 @@
     }
 
 
+#define move_towards_jump
+    ///move_towards_jump(x,y,hspeed_limit,vspeed,gravity)
+    //Performs a jump arc at the destination coordinates using predefined speeds.
+    //Set hspeed_limit to zero or a negative value to disable the limit.
+    //Returns jump frame count if the jump is possible, otherwise returns an error code:
+    //-1: falling the wrong way due to gravity conditions
+    //-2: jump requires more vspeed than supplied
+    //-3: jump requires more hspeed than permitted
+    var __gox,__goy,__hlim,__grav,__hsp,__vsp,__time,__peak;
+
+    __gox=argument0
+    __goy=argument1
+    __hlim=argument2
+    __grav=argument4
+    __vsp=argument3-__grav
+
+    if (__grav==0) {
+        //🥴         
+        __time=floor((__goy-y)/__vsp)
+        
+        if (__time<=0) {
+            //going Le Wrong Way
+            return -1
+        }
+        
+        hspeed=(__gox-x)/__time
+        vspeed=__vsp
+        
+        return __time
+    }
+
+    if (sign(__grav)==sign(__vsp)) {
+        if (sign(__goy-y)!=sign(__vsp)) {
+            //we are falling away from the intended location
+            return -1
+        }
+    } else {
+        //check if the arc goes high enough
+        __time=abs(__vsp/__grav)
+        __peak=y+__vsp*__time+0.5*__grav*__time*__time
+        
+        if (sign(__goy-__peak)!=sign(__grav)) {
+            //doesn't make it
+            return -2
+        }   
+    }
+
+    //quadratic solve for time
+    __time=floor((-__vsp+sign(__grav)*sqrt((__vsp*__vsp-2*__grav*(y-__goy))))/__grav)
+
+    if (__time<=0) __hsp=0
+    else {
+        __hsp=(__gox-x)/__time     
+        if (__hlim>0 and abs(__hsp)>__hlim) {
+            //horizontal speed limit failure
+            return -3
+        }
+    }
+
+    hspeed=__hsp
+    vspeed=__vsp
+    gravity=__grav
+
+    return max(1,__time-1)
+
+
 #define outside_room
     ///outside_room()
     //returns: whether self is completely outside the room
@@ -588,8 +654,7 @@
     x=argument0
     y=argument1
     __i=2 repeat (argument_count-2) {
-        with (argument[__i]) if (instance_place(x,y,other.id))
-            ds_list_add(__list,__coll)
+        with (argument[__i]) if (instance_place(x,y,other.id)) ds_list_add(__list,id)
     __i+=1}
     x=__oldx
     y=__oldy
@@ -604,12 +669,43 @@
     
     var __list;__list=ds_list_create()
     
-    var __i,__coll;
+    var __i;
     __i=2 repeat (argument_count-2) {
         with (argument[__i]) if (instance_position(argument0,argument1,id)) ds_list_add(__list,id)
     __i+=1}
     
     return __list
+
+
+#define object_nearest
+    ///object_nearest(x,y,obj1,[obj2,etc])
+    //Returns the closest instance from multiple object types, or 'noone'.
+    var __x,__y,__i,__p,__obj;
+
+    if (argument_count<3) {
+        show_error("Error in function object_nearest: incorrect number of arguments ("+string(argument_count)+")",0)
+        return noone
+    }
+
+    __x=argument[0]
+    __y=argument[1]
+
+    __p=ds_priority_create()
+
+    __i=2 repeat (argument_count-2) {
+        __n=instance_nearest(__x,__y,argument[__i])
+        if (__n) ds_priority_add(__p,__n,distance_to_object(__n))
+    __i+=1}
+
+    if (ds_priority_empty(__p)) {
+        ds_priority_destroy(__p)
+        return noone
+    }
+
+    __n=ds_priority_find_min(__p)
+    ds_priority_destroy(__p)
+
+    return __n
 
 
 #define move_towards_fixed

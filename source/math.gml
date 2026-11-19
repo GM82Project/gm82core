@@ -376,6 +376,29 @@
     return path_get_y(__path,__pos)/__h
 
 
+#define path_get_nearest
+    ///path_get_nearest(path,x,y)
+    //Returns the point in the path that's closest to the coordinate.
+
+    var __path,__px,__py,__maxd,__p,__i;
+
+    __path=argument0
+    __px=argument1
+    __py=argument2
+
+    __maxd=infinity
+    __p=0
+    __i=0 repeat (path_get_number(__path)) {
+        __d=point_distance(path_get_point_x(__path,__i),path_get_point_y(__path,__i),__px,__py)
+        if (__d<__maxd) {
+            __maxd=__d
+            __p=__i
+        }
+    __i+=1}
+
+    return __p
+
+
 #define envelerp
     ///envelerp(val,func,[x1,y1,x2,y2,...up to 7 pairs])
     //val: value to envelope
