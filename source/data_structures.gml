@@ -330,6 +330,18 @@
     return __popVal
 
 
+#define ds_list_pop_first
+    ///ds_list_pop_first(list)
+    //list: ds list index
+    //returns: popped value
+    //Removes the first value from the list
+    var __list, __popVal;
+    __list = argument0
+    __popVal = ds_list_find_value(__list, 0)
+    ds_list_delete(__list, __at)
+    return __popVal
+
+
 #define ds_list_reverse
     ///ds_list_reverse(list)
     //list: ds list index
