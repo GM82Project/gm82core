@@ -2142,6 +2142,17 @@
 					"returntype": 2
 				},
 				{
+					"name": "ds_list_pop_first",
+					"extname": "",
+					"calltype": 2,
+					"helpline": "ds_list_pop_first(list)",
+					"hidden": false,
+					"argtypes": [
+						2
+					],
+					"returntype": 2
+				},
+				{
 					"name": "ds_list_reverse",
 					"extname": "",
 					"calltype": 2,
